@@ -1,0 +1,1 @@
+export const RATES_ACTIONS = 'RATES_ACTIONS';

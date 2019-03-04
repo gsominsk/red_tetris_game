@@ -1,0 +1,1 @@
+export const NEWPASS_ACTIONS = 'NEWPASS_ACTIONS';

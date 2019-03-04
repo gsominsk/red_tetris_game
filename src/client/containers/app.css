@@ -1,0 +1,272 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    margin: 0;
+}
+div {
+    display: flex;
+    box-sizing: border-box;
+}
+input {
+    box-sizing: border-box;
+    outline: none;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    font-size: 25px;
+    border: 2px solid lightgray;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 5px;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border: 2px solid black;
+}
+
+input[type="submit"] {
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    font: 400 30px Arial;
+    transition: 0.3s;
+}
+input[type="submit"]:hover {
+    color: white;
+    background: lightgreen;
+}
+
+.split {
+    width: 100%;
+    border-bottom: 2px solid black;
+}
+
+
+
+#tetris {
+    height: 100%;
+    display: flex;
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
+
+.app-container,
+.app-container switch {
+    width: 100%;
+}
+/* ==============================*/
+/* ============ MENU ============*/
+/* ==============================*/
+
+
+.menu-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.menu-container .menu-wrap {
+    width: 480px;
+}
+.menu-list {
+    width: 100%;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.menu-list .btn {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 40px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    font: 400 40px Arial;
+}
+
+.menu-list .btn:hover {
+    background-color: #3498db;
+}
+
+.menu-list .btn a {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu-list .btn:hover a{
+    color: white;
+}
+
+/* ==============================*/
+/* =========== RATES ============*/
+/* ==============================*/
+
+.rates-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+.rates-container .rates-wrap {
+    flex-direction: column;
+    width: 520px;
+    padding: 50px 20px;
+}
+.rates-container .rates-wrap .rates-info {
+    text-align: center;
+    justify-content: center;
+    font: 400 40px Arial;
+}
+.rates-wrap .split {
+    margin: 15px 0;
+}
+.rates-wrap .rates-list {
+
+}
+.rates-wrap .rates-list .rl-item {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+.rates-wrap .rates-list .rl-item:nth-child(even) {
+    background: #ecf0f1;
+}
+.rates-wrap .rates-list .rl-item span {
+    color: black;
+    font: 400 19px Arial;
+}
+.rates-wrap .rates-list .rl-item .rl-item-num {
+    padding: 0 10px 0 20px;
+}
+.rates-wrap .rates-list .rl-item .rl-item-login {
+    padding: 0 10px;
+}
+.rates-wrap .rates-list .rl-item .rl-item-score {
+    display: flex;
+    margin-left: auto;
+    padding: 0 20px 0 10px;
+}
+
+/* ==============================*/
+/* =========== LOGIN ============*/
+/* ==============================*/
+
+.login-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container .login-wrap {
+    flex-direction: column;
+    max-width: 360px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.login-container .login-info {
+    font: 400 40px Arial;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+.login-container input[type="submit"] {
+    margin-bottom: 20px;
+}
+.login-container .btn {
+    justify-content: center;
+    margin-bottom: 5px;
+}
+.login-container .btn:hover a {
+    color: #3498db;
+}
+.login-container .btn a {
+    color: black;
+    font: 400 15px Arial;
+    text-decoration: none;
+}
+
+/* =================================*/
+/* =========== REGISTER ============*/
+/* =================================*/
+
+.register-container {
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.register-container .register-wrap {
+    flex-direction: column;
+    max-width: 360px;
+    width: 100%;
+    padding: 0 20px;
+
+}
+
+.register-container .register-info {
+    font: 400 40px Arial;
+    margin-bottom: 15px;
+    justify-content: center;
+}
+
+/* =====================================*/
+/* =========== NEW PASSWORD ============*/
+/* =====================================*/
+
+.newpass-container {
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.newpass-container .newpass-wrap {
+    flex-direction: column;
+    max-width: 360px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+
+.newpass-container .newpass-info {
+    font: 400 40px Arial;
+    margin-bottom: 15px;
+    justify-content: center;
+    text-align: center;
+}
+
+/*@media (max-width: 300px) {*/
+    /*.newpass-container .newpass-info,*/
+    /*.login-container .login-info,*/
+    /*.register-container .register-info {*/
+        /*font: 400 30px Arial;*/
+    /*}*/
+
+    /*input[type="submit"] {*/
+        /*font-size: 20px;*/
+    /*}*/
+
+    /*input[type="text"], input[type="email"], input[type="password"] {*/
+        /*font-size: 15px;*/
+    /*}*/
+    /*.login-container .btn a {*/
+        /*font-size: 10px;*/
+    /*}*/
+/*}*/
