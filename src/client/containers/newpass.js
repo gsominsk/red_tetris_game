@@ -2,6 +2,7 @@ import React                    from 'react'
 import { connect }              from 'react-redux'
 
 import { Route, Link } from "react-router-dom";
+import SideMenu from './sidemenu'
 
 class NewPass extends React.Component {
     constructor (props) {
@@ -11,6 +12,7 @@ class NewPass extends React.Component {
     render () {
         return (
             <div className="newpass-container">
+                <SideMenu/>
                 <div className="newpass-wrap">
                     <div className="newpass-info">FORGOT PASSWORD</div>
                     <input type="text" placeholder="code"/>

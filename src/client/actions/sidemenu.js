@@ -1,0 +1,1 @@
+export const SIDEMENU_ACTIONS = 'SIDEMENU_ACTIONS';

@@ -2,6 +2,7 @@ import React                    from 'react'
 import { connect }              from 'react-redux'
 
 import { Route, Link } from "react-router-dom";
+import SideMenu from './sidemenu'
 
 class Login extends React.Component {
     constructor (props) {
@@ -11,6 +12,7 @@ class Login extends React.Component {
     render () {
         return (
             <div className="login-container">
+                <SideMenu/>
                 <div className="login-wrap">
                     <div className="login-info">LOGIN</div>
                     <input type="email" placeholder="your email"/>

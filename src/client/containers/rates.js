@@ -2,6 +2,7 @@ import React                    from 'react'
 import { connect }              from 'react-redux'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import SideMenu from './sidemenu'
 
 class Rates extends React.Component {
     constructor (props) {
@@ -11,6 +12,7 @@ class Rates extends React.Component {
     render () {
         return (
             <div className="rates-container">
+                <SideMenu/>
                 <div className="rates-wrap">
                     <span className="rates-info">RATES</span>
                     <span className="split"></span>

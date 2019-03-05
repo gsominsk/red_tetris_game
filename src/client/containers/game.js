@@ -3,6 +3,8 @@ import { connect }              from 'react-redux'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+import SideMenu from './sidemenu'
+
 class Game extends React.Component {
     constructor (props) {
         super(props);
@@ -11,6 +13,7 @@ class Game extends React.Component {
     render () {
         return (
             <div className="play-container">
+                <SideMenu/>
                 <div className="play-wrap">
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">

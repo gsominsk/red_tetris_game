@@ -8,6 +8,7 @@ import Register from './register'
 import NewPass  from './newpass'
 import Rates    from './rates'
 import Game     from './game'
+import SideMenu from './sidemenu'
 
 import './app.css';
 
@@ -26,7 +27,6 @@ class App extends React.Component {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/login/register" component={Register} />
                     <Route exact path="/login/newpass" component={NewPass} />
-                    hello
                 </switch>
             </div>
         );

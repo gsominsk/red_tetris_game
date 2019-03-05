@@ -6,6 +6,7 @@ import game                 from './game'
 import newpass              from './newpass'
 import rates                from './rates'
 import register             from './register'
+import sidemenu             from './sidemenu'
 
 export default combineReducers({
     menu,
@@ -13,5 +14,6 @@ export default combineReducers({
     game,
     newpass,
     rates,
-    register
+    register,
+    sidemenu
 })
