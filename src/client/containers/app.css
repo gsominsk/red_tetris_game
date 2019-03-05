@@ -56,6 +56,9 @@ input[type="submit"]:hover {
     width: 100%;
     border-bottom: 2px solid black;
 }
+.opacity-zero-point-two {
+    opacity: 0.2;
+}
 
 
 
@@ -318,6 +321,10 @@ input[type="submit"]:hover {
     height: 100%;
     transition: 0.5s;
     z-index: 1;
+}
+
+.open {
+    left: 0;
 }
 
 .sidemenu-container .sidemenu-wrap {

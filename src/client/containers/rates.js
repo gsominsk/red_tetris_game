@@ -7,13 +7,24 @@ import SideMenu from './sidemenu'
 class Rates extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = ({});
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(state) {
+        this.setState({ [state.className]: state });
     }
 
     render () {
+        console.log('[+] Rates | state : ', this.state);
         return (
             <div className="rates-container">
-                <SideMenu/>
-                <div className="rates-wrap">
+                <SideMenu
+                    onChange={this.handleChange}
+                />
+                <div className={`rates-wrap ${this.state.sidemenu && this.state.sidemenu.open ? 'opacity-zero-point-two' : ''}`}>
                     <span className="rates-info">RATES</span>
                     <span className="split"></span>
                     <ul className="rates-list">

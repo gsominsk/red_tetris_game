@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/actions/sidemenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/containers/sidemenu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/reducers/sidemenu.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/newpass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/newpass.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/rates.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/sidemenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidemenu.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,31 +18,10 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/app.js">
+            <entry file="file://$PROJECT_DIR$/src/client/containers/rates.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="259">
-                  <caret line="22" column="24" lean-forward="true" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
-                  <folding>
-                    <element signature="e#0#36#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/game.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="64">
-                  <caret line="5" selection-start-line="5" selection-end-line="6" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="176">
-                  <caret line="12" column="16" lean-forward="true" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+                <state relative-caret-position="416">
+                  <caret line="26" column="69" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
                   <folding>
                     <element signature="e#0#44#0" expanded="true" />
                   </folding>
@@ -60,58 +30,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/menu.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="42">
-                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-                  <folding>
-                    <element signature="e#0#44#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/newpass.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="44">
-                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-                  <folding>
-                    <element signature="e#0#44#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/rates.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="80">
-                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-                  <folding>
-                    <element signature="e#0#44#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="176">
-                  <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
-                  <folding>
-                    <element signature="e#0#44#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/client/containers/sidemenu.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="192">
-                  <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
+                <state relative-caret-position="256">
+                  <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
                   <folding>
                     <element signature="e#0#44#0" expanded="true" />
                   </folding>
@@ -126,8 +48,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="515">
-                  <caret line="341" column="16" selection-start-line="341" selection-start-column="16" selection-end-line="341" selection-end-column="16" />
+                <state relative-caret-position="246">
+                  <caret line="60" selection-start-line="60" selection-end-line="60" />
                   <folding>
                     <element signature="e#5760#6146#0" />
                     <element signature="e#6198#6641#0" />
@@ -204,19 +126,19 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/client/reducers/game.js" />
         <option value="$PROJECT_DIR$/src/client/actions/game.js" />
-        <option value="$PROJECT_DIR$/src/client/actions/sidemenu.js" />
-        <option value="$PROJECT_DIR$/src/client/reducers/sidemenu.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/login.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/index.js" />
-        <option value="$PROJECT_DIR$/src/client/containers/sidemenu.js" />
         <option value="$PROJECT_DIR$/src/client/containers/game.js" />
         <option value="$PROJECT_DIR$/src/client/containers/login.js" />
         <option value="$PROJECT_DIR$/src/client/containers/newpass.js" />
-        <option value="$PROJECT_DIR$/src/client/containers/rates.js" />
         <option value="$PROJECT_DIR$/src/client/containers/register.js" />
-        <option value="$PROJECT_DIR$/src/client/containers/app.css" />
         <option value="$PROJECT_DIR$/src/client/containers/app.js" />
         <option value="$PROJECT_DIR$/src/client/containers/menu.js" />
+        <option value="$PROJECT_DIR$/src/client/actions/sidemenu.js" />
+        <option value="$PROJECT_DIR$/src/client/reducers/sidemenu.js" />
+        <option value="$PROJECT_DIR$/src/client/containers/app.css" />
+        <option value="$PROJECT_DIR$/src/client/containers/rates.js" />
+        <option value="$PROJECT_DIR$/src/client/containers/sidemenu.js" />
       </list>
     </option>
   </component>
@@ -254,28 +176,7 @@
               <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -323,7 +224,7 @@
       <workItem from="1551700977357" duration="12647000" />
       <workItem from="1551717031176" duration="1493000" />
       <workItem from="1551718578653" duration="4842000" />
-      <workItem from="1551786403115" duration="9334000" />
+      <workItem from="1551786403115" duration="13882000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -332,17 +233,24 @@
       <option name="project" value="LOCAL" />
       <updated>1551786714987</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Добавил статику контейнера бокового меню на все страницы, кроме страницы&#10;меню, потому что там она не требуется">
+      <created>1551799402463</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1551799402463</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56672000" />
+    <option name="totallyTimeSpent" value="61220000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19969743" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.19969743" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -370,16 +278,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Добавил новые компоненты, контейнер для игры, добавлены стили" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил новые компоненты, контейнер для игры, добавлены стили" />
+    <MESSAGE value="Добавил статику контейнера бокового меню на все страницы, кроме страницы&#10;меню, потому что там она не требуется" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил статику контейнера бокового меню на все страницы, кроме страницы&#10;меню, потому что там она не требуется" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/redux/index.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="208" column="2" selection-start-line="208" selection-start-column="2" selection-end-line="208" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-redux/lib/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -396,13 +298,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/reducers/alert.js" />
     <entry file="file://$PROJECT_DIR$/src/client/actions/alert.js" />
-    <entry file="file://$PROJECT_DIR$/src/client/actions/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/components/ClickButton.css" />
     <entry file="file://$PROJECT_DIR$/src/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -519,13 +414,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/actions/rates.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/reducers/rates.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -585,20 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/reducers/sidemenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/actions/sidemenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="41" selection-start-column="41" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/reducers/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
@@ -612,16 +486,6 @@
           <caret line="18" column="2" lean-forward="true" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/sidemenu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="48" lean-forward="true" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -643,40 +507,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/rates.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="11" column="15" lean-forward="true" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="15" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
-          <caret line="341" column="16" selection-start-line="341" selection-start-column="16" selection-end-line="341" selection-end-column="16" />
-          <folding>
-            <element signature="e#5760#6146#0" />
-            <element signature="e#6198#6641#0" />
-            <element signature="e#6603#6620#0" />
-            <element signature="e#6680#6698#0" />
-            <element signature="e#6729#6747#0" />
-            <element signature="e#6783#6831#0" />
-            <element signature="e#6867#7006#0" />
-            <element signature="e#7042#7185#0" />
-            <element signature="e#7221#7269#0" />
           </folding>
         </state>
       </provider>
@@ -703,8 +539,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/menu.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="234">
+          <caret line="16" column="67" selection-start-line="16" selection-start-column="67" selection-end-line="16" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/sidemenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/sidemenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="4" column="56" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/rates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/scratch.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
+          <folding>
+            <element signature="e#5760#6146#0" />
+            <element signature="e#6198#6641#0" />
+            <element signature="e#6603#6620#0" />
+            <element signature="e#6680#6698#0" />
+            <element signature="e#6729#6747#0" />
+            <element signature="e#6783#6831#0" />
+            <element signature="e#6867#7006#0" />
+            <element signature="e#7042#7185#0" />
+            <element signature="e#7221#7269#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/rates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="26" column="69" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/sidemenu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="22" column="21" lean-forward="true" selection-start-line="22" selection-start-column="21" selection-end-line="22" selection-end-column="21" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
