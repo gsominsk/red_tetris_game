@@ -7,13 +7,23 @@ import SideMenu from './sidemenu'
 class Register extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = ({
+            open: false
+        });
     }
+
+    menuBtnClick = () =>
+        this.setState({open: !this.state.open});
 
     render () {
         return (
             <div className="register-container">
-                <SideMenu/>
-                <div className="register-wrap">
+                <SideMenu
+                    open={this.state.open}
+                    onClick ={this.menuBtnClick}
+                />
+                <div className={`register-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="register-info">REGISTER</div>
                     <input type="email" placeholder="your email"/>
                     <input type="password" placeholder="your password"/>

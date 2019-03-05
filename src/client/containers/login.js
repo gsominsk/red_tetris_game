@@ -7,13 +7,23 @@ import SideMenu from './sidemenu'
 class Login extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = ({
+            open: false
+        });
     }
+
+    menuBtnClick = () =>
+        this.setState({open: !this.state.open});
 
     render () {
         return (
             <div className="login-container">
-                <SideMenu/>
-                <div className="login-wrap">
+                <SideMenu
+                    open={this.state.open}
+                    onClick ={this.menuBtnClick}
+                />
+                <div className={`login-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="login-info">LOGIN</div>
                     <input type="email" placeholder="your email"/>
                     <input type="password" placeholder="your password"/>

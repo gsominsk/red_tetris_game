@@ -7,13 +7,23 @@ import SideMenu from './sidemenu'
 class NewPass extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = ({
+            open: false
+        });
     }
+
+    menuBtnClick = () =>
+        this.setState({open: !this.state.open});
 
     render () {
         return (
             <div className="newpass-container">
-                <SideMenu/>
-                <div className="newpass-wrap">
+                <SideMenu
+                    open={this.state.open}
+                    onClick ={this.menuBtnClick}
+                />
+                <div className={`newpass-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="newpass-info">FORGOT PASSWORD</div>
                     <input type="text" placeholder="code"/>
                     <input type="password" placeholder="new password"/>

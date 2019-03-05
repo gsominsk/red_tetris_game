@@ -7,32 +7,22 @@ class SideMenu extends React.Component {
     constructor (props) {
         super(props);
 
-        this.state = {
-            className: 'sidemenu',
-            open: false
-        };
+        this.state = {};
     }
 
-    onClick = () => {
-        let state = this.setState({open: !this.state.open});
-
-        this.props.onChange(this.state);
-
-        return state;
-    };
-
     render () {
-        console.log('[+] Side Menu | state : ', this.state);
+        const {onClick, open} = this.props;
+
         return (
-            <div className={`sidemenu-container ${this.state.open ? 'open' : ''}`}>
+            <div className={`sidemenu-container ${open ? 'open-side-menu' : ''}`}>
                 <div className="sidemenu-wrap">
                     <div className="menu-list">
                         <div className="btn"><Link to="/play">PLAY</Link></div>
                         <div className="btn"><Link to="/rates">RATES</Link></div>
                         <div className="btn"><Link to="/login">LOGIN</Link></div>
                     </div>
-                    <div className="sidemenu-btn" onClick={this.onClick}>
-                        <div id="nav-icon3">
+                    <div className="sidemenu-btn" onClick={onClick}>
+                        <div id="nav-icon3" className={`${open ? 'open' : ''}`}>
                             <span></span>
                             <span></span>
                             <span></span>

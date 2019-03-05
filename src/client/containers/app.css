@@ -133,6 +133,7 @@ input[type="submit"]:hover {
     flex-direction: column;
     width: 520px;
     padding: 50px 20px;
+    transition: 0.3s;
 }
 .rates-container .rates-wrap .rates-info {
     text-align: center;
@@ -185,6 +186,7 @@ input[type="submit"]:hover {
     max-width: 360px;
     width: 100%;
     padding: 0 20px;
+    transition: 0.3s;
 }
 
 .login-container .login-info {
@@ -224,7 +226,7 @@ input[type="submit"]:hover {
     max-width: 360px;
     width: 100%;
     padding: 0 20px;
-
+    transition: 0.3s;
 }
 
 .register-container .register-info {
@@ -249,6 +251,7 @@ input[type="submit"]:hover {
     max-width: 360px;
     width: 100%;
     padding: 0 20px;
+    transition: 0.3s;
 }
 
 .newpass-container .newpass-info {
@@ -270,6 +273,7 @@ input[type="submit"]:hover {
 }
 
 .play-container .play-wrap {
+    transition: 0.3s;
 }
 .play-container .play-wrap .player-score {
     margin-left: auto;
@@ -323,7 +327,7 @@ input[type="submit"]:hover {
     z-index: 1;
 }
 
-.open {
+.open-side-menu {
     left: 0;
 }
 
@@ -347,6 +351,10 @@ input[type="submit"]:hover {
 }
 .sidemenu-container .sidemenu-wrap .menu-list .btn a {
     font: 400 40px Arial;
+}
+
+.sidemenu-container .sidemenu-wrap .menu-list .btn:hover a {
+    color: white;
 }
 
 #nav-icon3 {

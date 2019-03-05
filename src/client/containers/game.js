@@ -8,13 +8,23 @@ import SideMenu from './sidemenu'
 class Game extends React.Component {
     constructor (props) {
         super(props);
+
+        this.state = ({
+            open: false
+        });
     }
+
+    menuBtnClick = () =>
+        this.setState({open: !this.state.open});
 
     render () {
         return (
             <div className="play-container">
-                <SideMenu/>
-                <div className="play-wrap">
+                <SideMenu
+                    open={this.state.open}
+                    onClick ={this.menuBtnClick}
+                />
+                <div className={`play-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">
                             <div className="player-login">

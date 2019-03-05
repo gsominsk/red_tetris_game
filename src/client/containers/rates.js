@@ -8,23 +8,22 @@ class Rates extends React.Component {
     constructor (props) {
         super(props);
 
-        this.state = ({});
-
-        this.handleChange = this.handleChange.bind(this);
+        this.state = ({
+            open: false
+        });
     }
 
-    handleChange(state) {
-        this.setState({ [state.className]: state });
-    }
+    menuBtnClick = () =>
+        this.setState({open: !this.state.open});
 
     render () {
-        console.log('[+] Rates | state : ', this.state);
         return (
             <div className="rates-container">
                 <SideMenu
-                    onChange={this.handleChange}
+                    open={this.state.open}
+                    onClick ={this.menuBtnClick}
                 />
-                <div className={`rates-wrap ${this.state.sidemenu && this.state.sidemenu.open ? 'opacity-zero-point-two' : ''}`}>
+                <div className={`rates-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <span className="rates-info">RATES</span>
                     <span className="split"></span>
                     <ul className="rates-list">
