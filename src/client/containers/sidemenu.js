@@ -11,19 +11,12 @@ class SideMenu extends React.Component {
             className: 'sidemenu',
             open: false
         };
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange() {
-        console.log('[+] handle change state: ', this.state)
-        this.props.onChange(this.state);
     }
 
     onClick = () => {
         let state = this.setState({open: !this.state.open});
 
-        this.handleChange();
+        this.props.onChange(this.state);
 
         return state;
     };
