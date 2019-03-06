@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { ratesFetchData } from "../actions/rates";
 
+import RatesListItem from "../components/RatesListItem"
+
 import SideMenu from './sidemenu'
 
 class Rates extends React.Component {
@@ -36,17 +38,17 @@ class Rates extends React.Component {
                     <span className="rates-info">RATES</span>
                     <span className="split"></span>
                     <ul className="rates-list">
-                        <li className="rl-item">
-                            <span className="rl-item-num">
-                                1.
-                            </span>
-                            <span className="rl-item-login">
-                                Some Login
-                            </span>
-                            <span className="rl-item-score">
-                                10000
-                            </span>
-                        </li>
+                        {
+                            this.props.rates.map((rate, index) => {
+                                return (
+                                    <li className="rl-item" key={index}>
+                                        <span className="rl-item-num">{`${rate.num}.`}</span>
+                                        <span className="rl-item-login">{`${rate.login}`}</span>
+                                        <span className="rl-item-score">{`${rate.score}`}</span>
+                                    </li>
+                                )
+                            })
+                        }
                     </ul>
                 </div>
             </div>

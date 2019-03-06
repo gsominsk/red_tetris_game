@@ -23,7 +23,19 @@ export function ratesFetchData (url) {
     return ((dispatch) => {
         dispatch(ratesIsLoading(true));
 
-        let test = [1, 2, 3];
+        let test = [{
+            num: 1,
+            login: 'First',
+            score: '432521'
+        },{
+            num: 2,
+            login: 'Second',
+            score: '25323'
+        },{
+            num: 3,
+            login: 'Third',
+            score: '65462'
+        },];
 
         setTimeout(() => {
             dispatch(ratesIsLoading(false));
