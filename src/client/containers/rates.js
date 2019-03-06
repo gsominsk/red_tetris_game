@@ -1,13 +1,14 @@
 import React                    from 'react'
 import { connect }              from 'react-redux'
+import PropTypes                from 'prop-types'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import { ratesFetchData } from "../actions/rates";
+import { ratesFetchData }   from "../actions/rates";
 
-import Loading from "../components/Loading"
+import Loading              from "../components/Loading"
 
-import SideMenu from './sidemenu'
+import SideMenu             from './sidemenu'
 
 class Rates extends React.Component {
     constructor (props) {
@@ -26,8 +27,6 @@ class Rates extends React.Component {
         this.setState({open: !this.state.open});
 
     render () {
-        console.log('[+] Rates | props : ', this.props);
-
         return (
             <div className="rates-container">
                 <SideMenu
@@ -69,6 +68,12 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchData: (url) => dispatch(ratesFetchData(url))
     };
+};
+
+Rates.propTypes = {
+    hasErrored  : PropTypes.bool,
+    isLoading   : PropTypes.bool,
+    rates       : PropTypes.array
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Rates);

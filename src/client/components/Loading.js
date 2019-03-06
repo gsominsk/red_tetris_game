@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component}  from 'react';
+import PropTypes            from 'prop-types'
 
 export default class Loading extends Component {
     constructor(props) {
@@ -6,8 +7,6 @@ export default class Loading extends Component {
     }
 
     render () {
-        console.log('[+] this props : ', this.props);
-
         if (!this.props.loading || this.props.alreadyLoaded)
             return (<div></div>);
 
@@ -22,5 +21,9 @@ export default class Loading extends Component {
             </div>
         );
     }
-
 }
+
+Loading.propTypes = {
+    loading         : PropTypes.bool,
+    alreadyLoaded   : PropTypes.bool
+};
