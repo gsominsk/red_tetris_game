@@ -2,6 +2,9 @@ import React                    from 'react'
 import { connect }              from 'react-redux'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import { ratesFetchData } from "../actions/rates";
+
 import SideMenu from './sidemenu'
 
 class Rates extends React.Component {
@@ -13,10 +16,16 @@ class Rates extends React.Component {
         });
     }
 
+    componentDidMount() {
+        this.props.fetchData('http://599167402df2f40011e4929a.mockapi.io/items');
+    }
+
     menuBtnClick = () =>
         this.setState({open: !this.state.open});
 
     render () {
+        console.log('[+] Rates | props : ', this.props);
+
         return (
             <div className="rates-container">
                 <SideMenu
@@ -47,8 +56,16 @@ class Rates extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        rates: state.rates
+        rates: state.rates,
+        hasErrored: state.ratesHasErrored,
+        isLoading: state.ratesIsLoading
     }
 }
 
-export default connect(mapStateToProps, null)(Rates);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchData: (url) => dispatch(ratesFetchData(url))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Rates);
