@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { ratesFetchData } from "../actions/rates";
 
-import RatesListItem from "../components/RatesListItem"
+import Loading from "../components/Loading"
 
 import SideMenu from './sidemenu'
 
@@ -38,6 +38,7 @@ class Rates extends React.Component {
                     <span className="rates-info">RATES</span>
                     <span className="split"></span>
                     <ul className="rates-list">
+                        <Loading loading={this.props.isLoading} alreadyLoaded={this.props.rates && this.props.rates.length != 0}/>
                         {
                             this.props.rates.map((rate, index) => {
                                 return (

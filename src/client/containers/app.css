@@ -76,10 +76,10 @@ input[type="submit"]:hover {
 .app-container switch {
     width: 100%;
 }
+
 /* ==============================*/
 /* ============ MENU ============*/
 /* ==============================*/
-
 
 .menu-container {
     width: 100%;
@@ -422,3 +422,42 @@ input[type="submit"]:hover {
     left: 50%;
 }
 
+/* =================================*/
+/* ============ LOADING ============*/
+/* =================================*/
+
+@keyframes pointsLoadingAnimation {
+    from {
+        width: 0;
+    }
+
+    33.3% {
+        width: 8px;
+    }
+
+    66.6% {
+        width: 16px;
+    }
+
+    to {
+        width: auto;
+    }
+}
+
+.loading-container {
+    justify-content: center;
+}
+
+.loading-container .loading-wrap {
+    width: 100px;
+    font-size: 25px;
+    font-family: Arial;
+    color: black;
+}
+
+.loading-container .loading-wrap span {
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: pointsLoadingAnimation;
+    overflow: hidden;
+}
