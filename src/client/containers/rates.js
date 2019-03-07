@@ -2,12 +2,9 @@ import React                    from 'react'
 import { connect }              from 'react-redux'
 import PropTypes                from 'prop-types'
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 import { ratesFetchData }   from "../actions/rates";
 
 import Loading              from "../components/Loading"
-
 import SideMenu             from './sidemenu'
 
 class Rates extends React.Component {

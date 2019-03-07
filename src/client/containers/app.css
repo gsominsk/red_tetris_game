@@ -59,6 +59,9 @@ input[type="submit"]:hover {
 .opacity-zero-point-two {
     opacity: 0.2;
 }
+.hide {
+    display: none;
+}
 
 
 
@@ -192,6 +195,19 @@ input[type="submit"]:hover {
 .login-container .login-info {
     font: 400 40px Arial;
     margin-bottom: 15px;
+    justify-content: center;
+}
+.login-container .login-error {
+    font-size: 18px;
+    font-family: Arial;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: #f64747;
+}
+.login-container .login-form {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .login-container input[type="submit"] {

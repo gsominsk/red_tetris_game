@@ -1,1 +1,27 @@
-export const LOGIN_ACTIONS = 'LOGIN_ACTIONS';
+export function loginHasErrored (bool) {
+    return ({
+        type: 'LOGIN_HAS_ERRORED',
+        hasErrored: bool
+    })
+}
+
+export function loginFetchDataSuccess (login) {
+    return ({
+        type: 'LOGIN_FETCH_DATA_SUCCESS',
+        login
+    })
+}
+
+export function loginFetchData (url, data) {
+    return ((dispatch) => {
+        let login = {
+            data: {
+                login: 'login',
+                password: 'password',
+                successfully: true
+            }
+        };
+
+        dispatch(login.data.successfully ? loginFetchDataSuccess(login.data) : loginHasErrored(true));
+    })
+}
