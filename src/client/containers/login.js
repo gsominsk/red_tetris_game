@@ -25,11 +25,10 @@ class Login extends React.Component {
     render () {
         // console.log('[+] LOGIN | props : ', this.props)
 
-        if (this.props.login && this.props.login.successfully) {
+        if (this.props.login && this.props.login.successfully)
             return (
                 <Redirect to="/rates" push />
-            )
-        }
+            );
 
         return (
             <div className="login-container">
