@@ -1,27 +1,28 @@
-export function ratesHasErrored (state = false, action) {
-    switch (action.type) {
-        case 'RATES_HAS_ERRORED':
-            return action.hasErrored;
+const initialState = {
+    hasErrored: false,
+    isLoading: true,
+    data: []
+};
 
-        default:
-            return state;
-    }
-}
-
-export function ratesIsLoading (state = false, action) {
-    switch (action.type) {
-        case 'RATES_IS_LOADING':
-            return action.isLoading;
-
-        default:
-            return state;
-    }
-}
-
-export function rates (state = [], action) {
+export default function rates (state = initialState, action) {
     switch (action.type) {
         case 'RATES_FETCH_DATA_SUCCESS':
-            return action.rates;
+            return {
+                ...state,
+                data: action.data
+            };
+
+        case 'RATES_IS_LOADING':
+            return {
+                ...state,
+                isLoading: action.isLoading
+            };
+
+        case 'RATES_HAS_ERRORED':
+            return {
+                ...state,
+                hasErrored: action.hasErrored
+            };
 
         default:
             return state;

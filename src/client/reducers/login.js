@@ -1,6 +1,6 @@
 const initialState = {
     hasErrored: false,
-    register: {}
+    data: {}
 };
 
 export default function login (state = initialState, action) {
@@ -8,7 +8,7 @@ export default function login (state = initialState, action) {
         case 'LOGIN_FETCH_DATA_SUCCESS':
             return {
                 ...state,
-                login: action.login
+                data: action.data
             };
 
         case 'LOGIN_HAS_ERRORED':

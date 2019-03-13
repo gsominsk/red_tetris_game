@@ -18,7 +18,7 @@ export function loginFetchData (url, data) {
             data: {
                 login: 'login',
                 password: 'password',
-                successfully: false
+                successfully: true
             }
         };
 

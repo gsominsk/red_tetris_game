@@ -12,10 +12,10 @@ export function ratesIsLoading (bool) {
     })
 }
 
-export function ratesFetchDataSuccess (rates) {
+export function ratesFetchDataSuccess (data) {
     return ({
         type: 'RATES_FETCH_DATA_SUCCESS',
-        rates
+        data
     })
 }
 
@@ -35,7 +35,7 @@ export function ratesFetchData (url) {
             num: 3,
             login: 'Third',
             score: '65462'
-        },];
+        }];
 
         setTimeout(() => {
             dispatch(ratesIsLoading(false));

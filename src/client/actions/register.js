@@ -22,7 +22,7 @@ export function registerFetchData (url, data) {
     return ((dispatch) => {
         let register = {
             data: {
-                successfully: false
+                successfully: true
             }
         };
 

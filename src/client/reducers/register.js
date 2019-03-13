@@ -1,6 +1,6 @@
 const initialState = {
     hasErrored: false,
-    register: {}
+    data: {}
 };
 
 export default function register (state = initialState, action) {
@@ -8,7 +8,7 @@ export default function register (state = initialState, action) {
         case 'REGISTER_FETCH_DATA_SUCCESS':
             return {
                 ...state,
-                register: action.register
+                data: action.data
             };
 
         case 'REGISTER_HAS_ERRORED':
