@@ -5,10 +5,10 @@ export function loginHasErrored (bool) {
     })
 }
 
-export function loginFetchDataSuccess (login) {
+export function loginFetchDataSuccess (data) {
     return ({
         type: 'LOGIN_FETCH_DATA_SUCCESS',
-        login
+        data
     })
 }
 
@@ -18,7 +18,7 @@ export function loginFetchData (url, data) {
             data: {
                 login: 'login',
                 password: 'password',
-                successfully: true
+                successfully: false
             }
         };
 

@@ -17,7 +17,7 @@ class Rates extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchData('http://599167402df2f40011e4929a.mockapi.io/items');
+        this.props.ratesFetchData('http://599167402df2f40011e4929a.mockapi.io/items');
     }
 
     menuBtnClick = () =>
@@ -63,7 +63,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (url) => dispatch(ratesFetchData(url))
+        ratesFetchData: (url) => dispatch(ratesFetchData(url))
     };
 };
 

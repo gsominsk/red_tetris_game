@@ -1,10 +1,7 @@
 import {combineReducers}    from 'redux'
 
 import menu                 from './menu'
-import {
-    loginHasErrored,
-    login
-}                           from './login'
+import login                from './login'
 import game                 from './game'
 import newpass              from './newpass'
 import {
@@ -18,7 +15,6 @@ import sidemenu             from './sidemenu'
 export default combineReducers({
     menu,
     login,
-    loginHasErrored,
     game,
     newpass,
     rates,

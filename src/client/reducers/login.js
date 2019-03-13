@@ -1,17 +1,21 @@
-export function loginHasErrored (state = false, action) {
-    switch (action.type) {
-        case 'LOGIN_HAS_ERRORED':
-            return action.hasErrored;
+const initialState = {
+    hasErrored: false,
+    register: {}
+};
 
-        default:
-            return state;
-    }
-}
-
-export function login (state = {}, action) {
+export default function login (state = initialState, action) {
     switch (action.type) {
         case 'LOGIN_FETCH_DATA_SUCCESS':
-            return action.login;
+            return {
+                ...state,
+                login: action.login
+            };
+
+        case 'LOGIN_HAS_ERRORED':
+            return {
+                ...state,
+                hasErrored: action.hasErrored
+            };
 
         default:
             return state;

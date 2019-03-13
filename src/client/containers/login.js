@@ -8,6 +8,10 @@ import SideMenu from './sidemenu'
 import {loginFetchData} from "../actions/login";
 
 class Login extends React.Component {
+    static propTypes = {
+        login       : PropTypes.object
+    };
+
     constructor (props) {
         super(props);
 
@@ -19,12 +23,17 @@ class Login extends React.Component {
     menuBtnClick = () =>
         this.setState({open: !this.state.open});
 
-    onSubmit = () =>
-        this.props.fetchData('url', 'data');
+    onSubmit = (event) => {
+        if (!event.target.checkValidity())
+            return ;
+
+        event.preventDefault();
+
+        return this.props.loginFetchData('url', 'data');
+    };
 
     render () {
-        // console.log('[+] LOGIN | props : ', this.props)
-
+        console.log('[+] LOGIN | props : ', this.props);
         if (this.props.login && this.props.login.successfully)
             return (
                 <Redirect to="/rates" push />
@@ -38,7 +47,7 @@ class Login extends React.Component {
                 />
                 <div className={`login-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="login-info">LOGIN</div>
-                    <div className={`login-error ${!this.props.hasErrored ? "hide" : ""}`}>Invalid email or password.</div>
+                    <div className={`error-msg ${!this.props.login.hasErrored ? "hide" : ""}`}>Invalid email or password.</div>
                     <form className="login-form" onSubmit={this.onSubmit}>
                         <input type="email" placeholder="your email" required/>
                         <input type="password" placeholder="your password" minLength="5" required/>
@@ -55,19 +64,13 @@ class Login extends React.Component {
 function mapStateToProps(state) {
     return {
         login: state.login,
-        hasErrored: state.loginHasErrored
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchData: (url, data) => dispatch(loginFetchData(url, data))
+        loginFetchData: (url, data) => dispatch(loginFetchData(url, data))
     };
-};
-
-Login.propTypes = {
-    hasErrored  : PropTypes.bool,
-    login       : PropTypes.object
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
