@@ -11,6 +11,11 @@ export default function login (state = initialState, action) {
                 data: action.data
             };
 
+        case 'LOGIN_CLEAN_ON_UNMOUNT':
+            return {
+                ...initialState
+            };
+
         case 'LOGIN_HAS_ERRORED':
             return {
                 ...state,

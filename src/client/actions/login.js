@@ -12,13 +12,19 @@ export function loginFetchDataSuccess (data) {
     })
 }
 
+export function loginOnUnmountClean () {
+    return ({
+        type: 'LOGIN_ON_UNMOUNT_CLEAN',
+    })
+}
+
 export function loginFetchData (url, data) {
     return ((dispatch) => {
         let login = {
             data: {
                 login: 'login',
                 password: 'password',
-                successfully: true
+                successfully: false
             }
         };
 

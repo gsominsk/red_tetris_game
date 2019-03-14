@@ -4,8 +4,12 @@ import { Redirect, Link }       from "react-router-dom";
 import PropTypes                from 'prop-types'
 
 import SideMenu from './sidemenu'
+import Error    from '../components/Error'
 
-import {loginFetchData} from "../actions/login";
+import {
+    loginFetchData,
+    loginOnUnmountClean
+}               from "../actions/login";
 
 class Login extends React.Component {
     static propTypes = {
@@ -32,6 +36,10 @@ class Login extends React.Component {
         return this.props.loginFetchData('url', 'data');
     };
 
+    componentWillUnmount() {
+        this.props.loginOnUnmountClean();
+    }
+
     render () {
         console.log('[+] LOGIN | props : ', this.props);
         if (this.props.login && this.props.login.successfully)
@@ -47,7 +55,8 @@ class Login extends React.Component {
                 />
                 <div className={`login-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="login-info">LOGIN</div>
-                    <div className={`error-msg ${!this.props.login.hasErrored ? "hide" : ""}`}>Invalid email or password.</div>
+
+                    <Error msg="Invalid email or password." render={this.props.login.hasErrored}/>
                     <form className="login-form" onSubmit={this.onSubmit}>
                         <input type="email" placeholder="your email" required/>
                         <input type="password" placeholder="your password" minLength="5" required/>
@@ -69,7 +78,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loginFetchData: (url, data) => dispatch(loginFetchData(url, data))
+        loginFetchData: (url, data) => dispatch(loginFetchData(url, data)),
+        loginOnUnmountClean: () => dispatch(loginOnUnmountClean())
     };
 };
 

@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/components/Error.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/NewPassFormCode.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/NewPassFormEmail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/Success.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/actions/newpass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/actions/newpass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/newpass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/newpass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/reducers/newpass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/newpass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/reducers/rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/rates.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/actions/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/actions/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/reducers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/login.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,88 +16,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/actions/newpass.js">
+        <entry file="file://$PROJECT_DIR$/src/client/actions/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            <state relative-caret-position="272">
+              <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/reducers/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="256">
+              <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/reducers/newpass.js">
+        <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/containers/newpass.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="352">
+              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/components/Error.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/components/Success.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/components/NewPassFormCode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/components/NewPassFormEmail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="6" column="32" lean-forward="true" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1104">
-              <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -171,10 +107,7 @@
         <option value="$PROJECT_DIR$/src/client/components/RatesListItem.js" />
         <option value="$PROJECT_DIR$/src/client/components/Loading.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/index.js" />
-        <option value="$PROJECT_DIR$/src/client/actions/login.js" />
-        <option value="$PROJECT_DIR$/src/client/reducers/login.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/register.js" />
-        <option value="$PROJECT_DIR$/src/client/containers/login.js" />
         <option value="$PROJECT_DIR$/src/client/actions/register.js" />
         <option value="$PROJECT_DIR$/src/client/actions/rates.js" />
         <option value="$PROJECT_DIR$/src/client/containers/rates.js" />
@@ -188,6 +121,9 @@
         <option value="$PROJECT_DIR$/src/client/components/Success.js" />
         <option value="$PROJECT_DIR$/src/client/components/NewPassFormCode.js" />
         <option value="$PROJECT_DIR$/src/client/components/NewPassFormEmail.js" />
+        <option value="$PROJECT_DIR$/src/client/reducers/login.js" />
+        <option value="$PROJECT_DIR$/src/client/actions/login.js" />
+        <option value="$PROJECT_DIR$/src/client/containers/login.js" />
       </list>
     </option>
   </component>
@@ -202,7 +138,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,6 +201,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -313,7 +249,8 @@
       <workItem from="1552399156789" duration="18275000" />
       <workItem from="1552475062930" duration="1676000" />
       <workItem from="1552489197898" duration="13803000" />
-      <workItem from="1552563713885" duration="1069000" />
+      <workItem from="1552563713885" duration="2151000" />
+      <workItem from="1552566449201" duration="501000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -413,17 +350,24 @@
       <option name="project" value="LOCAL" />
       <updated>1552493109136</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Сделал логику на страничке восстановления пароля.&#10;Проверка полей, вывод ошибки, получение и отправка данных.&#10;Сделал разделение формы на форму имейла и форму кода.&#10;Добавил два новых компонента для вывода ошибки или саксес меммеджа.">
+      <created>1552565013538</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1552565013538</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="122427000" />
+    <option name="totallyTimeSpent" value="124010000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2118003" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21482602" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -464,7 +408,8 @@
     <MESSAGE value="При правильном вводе данных перекидывает на страницу рейтингов" />
     <MESSAGE value="Короче давно не пушил.&#10;Сделана логика для регистрации пользователя, проверка формы,&#10;тестовые данные которые пришли, переработан редьюсер компонента, добавлена&#10;отмена дефолтного действия при субмите формы.&#10;Переделан редьюсер для логина, убрано дефолтное действие при субмите формы." />
     <MESSAGE value="Поменял структуру редьюса в рейтингах. По хорошему счету это должен быть &#10;один редьюс потому что структура у этих редьюсов одна и та же." />
-    <option name="LAST_COMMIT_MESSAGE" value="Поменял структуру редьюса в рейтингах. По хорошему счету это должен быть &#10;один редьюс потому что структура у этих редьюсов одна и та же." />
+    <MESSAGE value="Сделал логику на страничке восстановления пароля.&#10;Проверка полей, вывод ошибки, получение и отправка данных.&#10;Сделал разделение формы на форму имейла и форму кода.&#10;Добавил два новых компонента для вывода ошибки или саксес меммеджа." />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал логику на страничке восстановления пароля.&#10;Проверка полей, вывод ошибки, получение и отправка данных.&#10;Сделал разделение формы на форму имейла и форму кода.&#10;Добавил два новых компонента для вывода ошибки или саксес меммеджа." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -667,24 +612,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/actions/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/reducers/register.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
           <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/reducers/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -826,16 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/reducers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -863,17 +784,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/actions/newpass.js">
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/newpass.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1104">
-          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+        <state relative-caret-position="272">
+          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -927,10 +841,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/reducers/newpass.js">
+    <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="129">
+          <caret line="69" column="24" selection-start-line="69" selection-start-column="24" selection-end-line="69" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/newpass.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="17" column="6" lean-forward="true" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="16" column="14" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
