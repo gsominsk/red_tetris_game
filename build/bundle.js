@@ -72,11 +72,11 @@
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _app = __webpack_require__(233);
+	var _app = __webpack_require__(234);
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _reactRouterDom = __webpack_require__(235);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3701,7 +3701,7 @@
 /* 32 */
 /***/ (function(module, exports) {
 
-	/** @license React v16.8.3
+	/** @license React v16.8.4
 	 * react-is.production.min.js
 	 *
 	 * Copyright (c) Facebook, Inc. and its affiliates.
@@ -3722,7 +3722,7 @@
 /* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.3
+	/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.4
 	 * react-is.development.js
 	 *
 	 * Copyright (c) Facebook, Inc. and its affiliates.
@@ -25158,11 +25158,20 @@
 
 	var _register2 = _interopRequireDefault(_register);
 
+	var _sidemenu = __webpack_require__(233);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = (0, _redux.combineReducers)({
 	    menu: _menu2.default,
-	    login: _login2.default
+	    login: _login2.default,
+	    game: _game2.default,
+	    newpass: _newpass2.default,
+	    rates: _rates2.default,
+	    register: _register2.default,
+	    sidemenu: _sidemenu2.default
 	});
 
 /***/ }),
@@ -25191,23 +25200,42 @@
 /* 228 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	exports.default = function () {
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = login;
+	var initialState = {
+	    hasErrored: false,
+	    data: {}
+	};
+
+	function login() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 
 	    switch (action.type) {
+	        case 'LOGIN_FETCH_DATA_SUCCESS':
+	            return _extends({}, state, {
+	                data: action.data
+	            });
+
+	        case 'LOGIN_CLEAN_ON_UNMOUNT':
+	            return _extends({}, initialState);
+
+	        case 'LOGIN_HAS_ERRORED':
+	            return _extends({}, state, {
+	                hasErrored: action.hasErrored
+	            });
+
 	        default:
 	            return state;
 	    }
-	};
-
-	var initialState = {};
+	}
 
 /***/ }),
 /* 229 */
@@ -25235,48 +25263,138 @@
 /* 230 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	exports.default = function () {
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = newpass;
+	var initialState = {
+	    hasErrored: false,
+	    data: {
+	        emailSent: true
+	    }
+
+	};
+
+	function newpass() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 
 	    switch (action.type) {
+	        case 'NEWPASS_FETCH_DATA_SUCCESS':
+	            return _extends({}, state, {
+	                data: action.data
+	            });
+
+	        case 'NEWPASS_IS_LOADING':
+	            return _extends({}, state, {
+	                isLoading: action.isLoading
+	            });
+
+	        case 'NEWPASS_ON_UNMOUNT_CLEAN':
+	            return _extends({}, initialState);
+
+	        case 'NEWPASS_HAS_ERRORED':
+	            return _extends({}, state, {
+	                hasErrored: action.hasErrored
+	            });
+
 	        default:
 	            return state;
 	    }
-	};
-
-	var initialState = {};
+	}
 
 /***/ }),
 /* 231 */
 /***/ (function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
 
-	exports.default = function () {
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = rates;
+	var initialState = {
+	    hasErrored: false,
+	    isLoading: false,
+	    data: []
+	};
+
+	function rates() {
 	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
 	    var action = arguments[1];
 
 	    switch (action.type) {
+	        case 'RATES_FETCH_DATA_SUCCESS':
+	            return _extends({}, state, {
+	                data: action.data
+	            });
+
+	        case 'RATES_IS_LOADING':
+	            return _extends({}, state, {
+	                isLoading: action.isLoading
+	            });
+
+	        case 'RATES_HAS_ERRORED':
+	            return _extends({}, state, {
+	                hasErrored: action.hasErrored
+	            });
+
 	        default:
 	            return state;
 	    }
-	};
-
-	var initialState = {};
+	}
 
 /***/ }),
 /* 232 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.default = register;
+	var initialState = {
+	    hasErrored: false,
+	    data: {}
+	};
+
+	function register() {
+	    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+	    var action = arguments[1];
+
+	    switch (action.type) {
+	        case 'REGISTER_FETCH_DATA_SUCCESS':
+	            return _extends({}, state, {
+	                data: action.data
+	            });
+
+	        case 'REGISTER_HAS_ERRORED':
+	            return _extends({}, state, {
+	                hasErrored: action.hasErrored
+	            });
+
+	        case 'REGISTER_ON_UNMOUNT_CLEAN':
+	            return _extends({}, initialState);
+
+	        default:
+	            return state;
+	    }
+	}
+
+/***/ }),
+/* 233 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -25298,7 +25416,7 @@
 	var initialState = {};
 
 /***/ }),
-/* 233 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25315,33 +25433,37 @@
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _reactRouterDom = __webpack_require__(235);
 
-	var _menu = __webpack_require__(273);
+	var _menu = __webpack_require__(274);
 
 	var _menu2 = _interopRequireDefault(_menu);
 
-	var _login = __webpack_require__(274);
+	var _login = __webpack_require__(275);
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _register = __webpack_require__(275);
+	var _register = __webpack_require__(279);
 
 	var _register2 = _interopRequireDefault(_register);
 
-	var _newpass = __webpack_require__(276);
+	var _newpass = __webpack_require__(281);
 
 	var _newpass2 = _interopRequireDefault(_newpass);
 
-	var _rates = __webpack_require__(277);
+	var _rates = __webpack_require__(286);
 
 	var _rates2 = _interopRequireDefault(_rates);
 
-	var _game = __webpack_require__(278);
+	var _game = __webpack_require__(289);
 
 	var _game2 = _interopRequireDefault(_game);
 
-	__webpack_require__(279);
+	var _sidemenu = __webpack_require__(276);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
+
+	__webpack_require__(290);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25374,8 +25496,7 @@
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/rates', component: _rates2.default }),
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', component: _login2.default }),
 	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login/register', component: _register2.default }),
-	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login/newpass', component: _newpass2.default }),
-	                    'hello'
+	                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login/newpass', component: _newpass2.default })
 	                )
 	            );
 	        }
@@ -25387,7 +25508,7 @@
 	exports.default = App;
 
 /***/ }),
-/* 234 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -25395,59 +25516,59 @@
 	exports.__esModule = true;
 	exports.withRouter = exports.matchPath = exports.generatePath = exports.Switch = exports.StaticRouter = exports.Router = exports.Route = exports.Redirect = exports.Prompt = exports.NavLink = exports.MemoryRouter = exports.Link = exports.HashRouter = exports.BrowserRouter = undefined;
 
-	var _BrowserRouter2 = __webpack_require__(235);
+	var _BrowserRouter2 = __webpack_require__(236);
 
 	var _BrowserRouter3 = _interopRequireDefault(_BrowserRouter2);
 
-	var _HashRouter2 = __webpack_require__(250);
+	var _HashRouter2 = __webpack_require__(251);
 
 	var _HashRouter3 = _interopRequireDefault(_HashRouter2);
 
-	var _Link2 = __webpack_require__(251);
+	var _Link2 = __webpack_require__(252);
 
 	var _Link3 = _interopRequireDefault(_Link2);
 
-	var _MemoryRouter2 = __webpack_require__(252);
+	var _MemoryRouter2 = __webpack_require__(253);
 
 	var _MemoryRouter3 = _interopRequireDefault(_MemoryRouter2);
 
-	var _NavLink2 = __webpack_require__(254);
+	var _NavLink2 = __webpack_require__(255);
 
 	var _NavLink3 = _interopRequireDefault(_NavLink2);
 
-	var _Prompt2 = __webpack_require__(260);
+	var _Prompt2 = __webpack_require__(261);
 
 	var _Prompt3 = _interopRequireDefault(_Prompt2);
 
-	var _Redirect2 = __webpack_require__(262);
+	var _Redirect2 = __webpack_require__(263);
 
 	var _Redirect3 = _interopRequireDefault(_Redirect2);
 
-	var _Route2 = __webpack_require__(255);
+	var _Route2 = __webpack_require__(256);
 
 	var _Route3 = _interopRequireDefault(_Route2);
 
-	var _Router2 = __webpack_require__(248);
+	var _Router2 = __webpack_require__(249);
 
 	var _Router3 = _interopRequireDefault(_Router2);
 
-	var _StaticRouter2 = __webpack_require__(265);
+	var _StaticRouter2 = __webpack_require__(266);
 
 	var _StaticRouter3 = _interopRequireDefault(_StaticRouter2);
 
-	var _Switch2 = __webpack_require__(267);
+	var _Switch2 = __webpack_require__(268);
 
 	var _Switch3 = _interopRequireDefault(_Switch2);
 
-	var _generatePath2 = __webpack_require__(269);
+	var _generatePath2 = __webpack_require__(270);
 
 	var _generatePath3 = _interopRequireDefault(_generatePath2);
 
-	var _matchPath2 = __webpack_require__(270);
+	var _matchPath2 = __webpack_require__(271);
 
 	var _matchPath3 = _interopRequireDefault(_matchPath2);
 
-	var _withRouter2 = __webpack_require__(271);
+	var _withRouter2 = __webpack_require__(272);
 
 	var _withRouter3 = _interopRequireDefault(_withRouter2);
 
@@ -25469,14 +25590,14 @@
 	exports.withRouter = _withRouter3.default;
 
 /***/ }),
-/* 235 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -25488,9 +25609,9 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _history = __webpack_require__(237);
+	var _history = __webpack_require__(238);
 
-	var _Router = __webpack_require__(248);
+	var _Router = __webpack_require__(249);
 
 	var _Router2 = _interopRequireDefault(_Router);
 
@@ -25541,7 +25662,7 @@
 	exports.default = BrowserRouter;
 
 /***/ }),
-/* 236 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25610,7 +25731,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 237 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25618,7 +25739,7 @@
 	exports.__esModule = true;
 	exports.createPath = exports.parsePath = exports.locationsAreEqual = exports.createLocation = exports.createMemoryHistory = exports.createHashHistory = exports.createBrowserHistory = undefined;
 
-	var _LocationUtils = __webpack_require__(238);
+	var _LocationUtils = __webpack_require__(239);
 
 	Object.defineProperty(exports, 'createLocation', {
 	  enumerable: true,
@@ -25633,7 +25754,7 @@
 	  }
 	});
 
-	var _PathUtils = __webpack_require__(241);
+	var _PathUtils = __webpack_require__(242);
 
 	Object.defineProperty(exports, 'parsePath', {
 	  enumerable: true,
@@ -25648,15 +25769,15 @@
 	  }
 	});
 
-	var _createBrowserHistory2 = __webpack_require__(242);
+	var _createBrowserHistory2 = __webpack_require__(243);
 
 	var _createBrowserHistory3 = _interopRequireDefault(_createBrowserHistory2);
 
-	var _createHashHistory2 = __webpack_require__(246);
+	var _createHashHistory2 = __webpack_require__(247);
 
 	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
 
-	var _createMemoryHistory2 = __webpack_require__(247);
+	var _createMemoryHistory2 = __webpack_require__(248);
 
 	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 
@@ -25667,7 +25788,7 @@
 	exports.createMemoryHistory = _createMemoryHistory3.default;
 
 /***/ }),
-/* 238 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25677,15 +25798,15 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _resolvePathname = __webpack_require__(239);
+	var _resolvePathname = __webpack_require__(240);
 
 	var _resolvePathname2 = _interopRequireDefault(_resolvePathname);
 
-	var _valueEqual = __webpack_require__(240);
+	var _valueEqual = __webpack_require__(241);
 
 	var _valueEqual2 = _interopRequireDefault(_valueEqual);
 
-	var _PathUtils = __webpack_require__(241);
+	var _PathUtils = __webpack_require__(242);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25750,7 +25871,7 @@
 	};
 
 /***/ }),
-/* 239 */
+/* 240 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -25829,7 +25950,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 240 */
+/* 241 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -25877,7 +25998,7 @@
 	module.exports = exports['default'];
 
 /***/ }),
-/* 241 */
+/* 242 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -25943,7 +26064,7 @@
 	};
 
 /***/ }),
-/* 242 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25954,7 +26075,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _warning = __webpack_require__(243);
+	var _warning = __webpack_require__(244);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -25962,15 +26083,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _LocationUtils = __webpack_require__(238);
+	var _LocationUtils = __webpack_require__(239);
 
-	var _PathUtils = __webpack_require__(241);
+	var _PathUtils = __webpack_require__(242);
 
-	var _createTransitionManager = __webpack_require__(244);
+	var _createTransitionManager = __webpack_require__(245);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _DOMUtils = __webpack_require__(245);
+	var _DOMUtils = __webpack_require__(246);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26255,7 +26376,7 @@
 	exports.default = createBrowserHistory;
 
 /***/ }),
-/* 243 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26322,14 +26443,14 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 244 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _warning = __webpack_require__(243);
+	var _warning = __webpack_require__(244);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -26412,7 +26533,7 @@
 	exports.default = createTransitionManager;
 
 /***/ }),
-/* 245 */
+/* 246 */
 /***/ (function(module, exports) {
 
 	'use strict';
@@ -26472,7 +26593,7 @@
 	};
 
 /***/ }),
-/* 246 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26481,7 +26602,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _warning = __webpack_require__(243);
+	var _warning = __webpack_require__(244);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -26489,15 +26610,15 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _LocationUtils = __webpack_require__(238);
+	var _LocationUtils = __webpack_require__(239);
 
-	var _PathUtils = __webpack_require__(241);
+	var _PathUtils = __webpack_require__(242);
 
-	var _createTransitionManager = __webpack_require__(244);
+	var _createTransitionManager = __webpack_require__(245);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
-	var _DOMUtils = __webpack_require__(245);
+	var _DOMUtils = __webpack_require__(246);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26801,7 +26922,7 @@
 	exports.default = createHashHistory;
 
 /***/ }),
-/* 247 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26812,15 +26933,15 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _warning = __webpack_require__(243);
+	var _warning = __webpack_require__(244);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _PathUtils = __webpack_require__(241);
+	var _PathUtils = __webpack_require__(242);
 
-	var _LocationUtils = __webpack_require__(238);
+	var _LocationUtils = __webpack_require__(239);
 
-	var _createTransitionManager = __webpack_require__(244);
+	var _createTransitionManager = __webpack_require__(245);
 
 	var _createTransitionManager2 = _interopRequireDefault(_createTransitionManager);
 
@@ -26976,14 +27097,14 @@
 	exports.default = createMemoryHistory;
 
 /***/ }),
-/* 248 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _Router = __webpack_require__(249);
+	var _Router = __webpack_require__(250);
 
 	var _Router2 = _interopRequireDefault(_Router);
 
@@ -26992,7 +27113,7 @@
 	exports.default = _Router2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 249 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27001,7 +27122,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27116,14 +27237,14 @@
 	exports.default = Router;
 
 /***/ }),
-/* 250 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27135,9 +27256,9 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _history = __webpack_require__(237);
+	var _history = __webpack_require__(238);
 
-	var _Router = __webpack_require__(248);
+	var _Router = __webpack_require__(249);
 
 	var _Router2 = _interopRequireDefault(_Router);
 
@@ -27187,7 +27308,7 @@
 	exports.default = HashRouter;
 
 /***/ }),
-/* 251 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27208,7 +27329,7 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _history = __webpack_require__(237);
+	var _history = __webpack_require__(238);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -27309,14 +27430,14 @@
 	exports.default = Link;
 
 /***/ }),
-/* 252 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _MemoryRouter = __webpack_require__(253);
+	var _MemoryRouter = __webpack_require__(254);
 
 	var _MemoryRouter2 = _interopRequireDefault(_MemoryRouter);
 
@@ -27325,14 +27446,14 @@
 	exports.default = _MemoryRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 253 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27344,9 +27465,9 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _history = __webpack_require__(237);
+	var _history = __webpack_require__(238);
 
-	var _Router = __webpack_require__(249);
+	var _Router = __webpack_require__(250);
 
 	var _Router2 = _interopRequireDefault(_Router);
 
@@ -27397,7 +27518,7 @@
 	exports.default = MemoryRouter;
 
 /***/ }),
-/* 254 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27416,11 +27537,11 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _Route = __webpack_require__(255);
+	var _Route = __webpack_require__(256);
 
 	var _Route2 = _interopRequireDefault(_Route);
 
-	var _Link = __webpack_require__(251);
+	var _Link = __webpack_require__(252);
 
 	var _Link2 = _interopRequireDefault(_Link);
 
@@ -27493,14 +27614,14 @@
 	exports.default = NavLink;
 
 /***/ }),
-/* 255 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _Route = __webpack_require__(256);
+	var _Route = __webpack_require__(257);
 
 	var _Route2 = _interopRequireDefault(_Route);
 
@@ -27509,7 +27630,7 @@
 	exports.default = _Route2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 256 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -27518,7 +27639,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27534,7 +27655,7 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _matchPath = __webpack_require__(257);
+	var _matchPath = __webpack_require__(258);
 
 	var _matchPath2 = _interopRequireDefault(_matchPath);
 
@@ -27671,14 +27792,14 @@
 	exports.default = Route;
 
 /***/ }),
-/* 257 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _pathToRegexp = __webpack_require__(258);
+	var _pathToRegexp = __webpack_require__(259);
 
 	var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
@@ -27756,10 +27877,10 @@
 	exports.default = matchPath;
 
 /***/ }),
-/* 258 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var isarray = __webpack_require__(259)
+	var isarray = __webpack_require__(260)
 
 	/**
 	 * Expose `pathToRegexp`.
@@ -28188,7 +28309,7 @@
 
 
 /***/ }),
-/* 259 */
+/* 260 */
 /***/ (function(module, exports) {
 
 	module.exports = Array.isArray || function (arr) {
@@ -28197,14 +28318,14 @@
 
 
 /***/ }),
-/* 260 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _Prompt = __webpack_require__(261);
+	var _Prompt = __webpack_require__(262);
 
 	var _Prompt2 = _interopRequireDefault(_Prompt);
 
@@ -28213,7 +28334,7 @@
 	exports.default = _Prompt2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 261 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28308,14 +28429,14 @@
 	exports.default = Prompt;
 
 /***/ }),
-/* 262 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _Redirect = __webpack_require__(263);
+	var _Redirect = __webpack_require__(264);
 
 	var _Redirect2 = _interopRequireDefault(_Redirect);
 
@@ -28324,7 +28445,7 @@
 	exports.default = _Redirect2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 263 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28341,7 +28462,7 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -28349,9 +28470,9 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _history = __webpack_require__(237);
+	var _history = __webpack_require__(238);
 
-	var _generatePath = __webpack_require__(264);
+	var _generatePath = __webpack_require__(265);
 
 	var _generatePath2 = _interopRequireDefault(_generatePath);
 
@@ -28460,14 +28581,14 @@
 	exports.default = Redirect;
 
 /***/ }),
-/* 264 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _pathToRegexp = __webpack_require__(258);
+	var _pathToRegexp = __webpack_require__(259);
 
 	var _pathToRegexp2 = _interopRequireDefault(_pathToRegexp);
 
@@ -28510,14 +28631,14 @@
 	exports.default = generatePath;
 
 /***/ }),
-/* 265 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _StaticRouter = __webpack_require__(266);
+	var _StaticRouter = __webpack_require__(267);
 
 	var _StaticRouter2 = _interopRequireDefault(_StaticRouter);
 
@@ -28526,7 +28647,7 @@
 	exports.default = _StaticRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 266 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28535,7 +28656,7 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -28551,9 +28672,9 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _history = __webpack_require__(237);
+	var _history = __webpack_require__(238);
 
-	var _Router = __webpack_require__(249);
+	var _Router = __webpack_require__(250);
 
 	var _Router2 = _interopRequireDefault(_Router);
 
@@ -28700,14 +28821,14 @@
 	exports.default = StaticRouter;
 
 /***/ }),
-/* 267 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	exports.__esModule = true;
 
-	var _Switch = __webpack_require__(268);
+	var _Switch = __webpack_require__(269);
 
 	var _Switch2 = _interopRequireDefault(_Switch);
 
@@ -28716,7 +28837,7 @@
 	exports.default = _Switch2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 268 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28731,7 +28852,7 @@
 
 	var _propTypes2 = _interopRequireDefault(_propTypes);
 
-	var _warning = __webpack_require__(236);
+	var _warning = __webpack_require__(237);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -28739,7 +28860,7 @@
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _matchPath = __webpack_require__(257);
+	var _matchPath = __webpack_require__(258);
 
 	var _matchPath2 = _interopRequireDefault(_matchPath);
 
@@ -28815,22 +28936,6 @@
 	exports.default = Switch;
 
 /***/ }),
-/* 269 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	exports.__esModule = true;
-
-	var _generatePath = __webpack_require__(264);
-
-	var _generatePath2 = _interopRequireDefault(_generatePath);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _generatePath2.default; // Written in this round about way for babel-transform-imports
-
-/***/ }),
 /* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28838,13 +28943,13 @@
 
 	exports.__esModule = true;
 
-	var _matchPath = __webpack_require__(257);
+	var _generatePath = __webpack_require__(265);
 
-	var _matchPath2 = _interopRequireDefault(_matchPath);
+	var _generatePath2 = _interopRequireDefault(_generatePath);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _matchPath2.default; // Written in this round about way for babel-transform-imports
+	exports.default = _generatePath2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
 /* 271 */
@@ -28854,7 +28959,23 @@
 
 	exports.__esModule = true;
 
-	var _withRouter = __webpack_require__(272);
+	var _matchPath = __webpack_require__(258);
+
+	var _matchPath2 = _interopRequireDefault(_matchPath);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _matchPath2.default; // Written in this round about way for babel-transform-imports
+
+/***/ }),
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	var _withRouter = __webpack_require__(273);
 
 	var _withRouter2 = _interopRequireDefault(_withRouter);
 
@@ -28863,7 +28984,7 @@
 	exports.default = _withRouter2.default; // Written in this round about way for babel-transform-imports
 
 /***/ }),
-/* 272 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -28884,7 +29005,7 @@
 
 	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
-	var _Route = __webpack_require__(256);
+	var _Route = __webpack_require__(257);
 
 	var _Route2 = _interopRequireDefault(_Route);
 
@@ -28921,7 +29042,7 @@
 	exports.default = withRouter;
 
 /***/ }),
-/* 273 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -28938,7 +29059,7 @@
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _reactRouterDom = __webpack_require__(235);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29014,7 +29135,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Menu);
 
 /***/ }),
-/* 274 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29031,7 +29152,21 @@
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _reactRouterDom = __webpack_require__(235);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _sidemenu = __webpack_require__(276);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
+
+	var _Error = __webpack_require__(277);
+
+	var _Error2 = _interopRequireDefault(_Error);
+
+	var _login = __webpack_require__(278);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29047,26 +29182,60 @@
 	    function Login(props) {
 	        _classCallCheck(this, Login);
 
-	        return _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+	        _this.menuBtnClick = function () {
+	            return _this.setState({ open: !_this.state.open });
+	        };
+
+	        _this.onSubmit = function (event) {
+	            if (!event.target.checkValidity()) return;
+
+	            event.preventDefault();
+
+	            return _this.props.loginFetchData('url', 'data');
+	        };
+
+	        _this.state = {
+	            open: false
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Login, [{
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            this.props.loginOnUnmountClean();
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
+	            console.log('[+] LOGIN | props : ', this.props);
+	            if (this.props.login && this.props.login.successfully) return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/rates', push: true });
+
 	            return _react2.default.createElement(
 	                'div',
 	                { className: 'login-container' },
+	                _react2.default.createElement(_sidemenu2.default, {
+	                    open: this.state.open,
+	                    onClick: this.menuBtnClick
+	                }),
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'login-wrap' },
+	                    { className: 'login-wrap ' + (this.state.open ? 'opacity-zero-point-two' : '') },
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'login-info' },
 	                        'LOGIN'
 	                    ),
-	                    _react2.default.createElement('input', { type: 'email', placeholder: 'your email' }),
-	                    _react2.default.createElement('input', { type: 'password', placeholder: 'your password' }),
-	                    _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' }),
+	                    _react2.default.createElement(_Error2.default, { msg: 'Invalid email or password.', render: this.props.login.hasErrored }),
+	                    _react2.default.createElement(
+	                        'form',
+	                        { className: 'login-form', onSubmit: this.onSubmit },
+	                        _react2.default.createElement('input', { type: 'email', placeholder: 'your email', required: true }),
+	                        _react2.default.createElement('input', { type: 'password', placeholder: 'your password', minLength: '5', required: true }),
+	                        _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' })
+	                    ),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'btn' },
@@ -29093,85 +29262,29 @@
 	    return Login;
 	}(_react2.default.Component);
 
+	Login.propTypes = {
+	    login: _propTypes2.default.object
+	};
+
+
 	function mapStateToProps(state) {
 	    return {
 	        login: state.login
 	    };
 	}
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Login);
-
-/***/ }),
-/* 275 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(214);
-
-	var _reactRouterDom = __webpack_require__(234);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var Register = function (_React$Component) {
-	    _inherits(Register, _React$Component);
-
-	    function Register(props) {
-	        _classCallCheck(this, Register);
-
-	        return _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
-	    }
-
-	    _createClass(Register, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'register-container' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'register-wrap' },
-	                    _react2.default.createElement(
-	                        'div',
-	                        { className: 'register-info' },
-	                        'REGISTER'
-	                    ),
-	                    _react2.default.createElement('input', { type: 'email', placeholder: 'your email' }),
-	                    _react2.default.createElement('input', { type: 'password', placeholder: 'your password' }),
-	                    _react2.default.createElement('input', { type: 'password', placeholder: 'repeat password' }),
-	                    _react2.default.createElement('input', { type: 'text', placeholder: 'login', maxLength: '10' }),
-	                    _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' })
-	                )
-	            );
-	        }
-	    }]);
-
-	    return Register;
-	}(_react2.default.Component);
-
-	function mapStateToProps(state) {
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 	    return {
-	        register: state.register
+	        loginFetchData: function loginFetchData(url, data) {
+	            return dispatch((0, _login.loginFetchData)(url, data));
+	        },
+	        loginOnUnmountClean: function loginOnUnmountClean() {
+	            return dispatch((0, _login.loginOnUnmountClean)());
+	        }
 	    };
-	}
+	};
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Register);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Login);
 
 /***/ }),
 /* 276 */
@@ -29191,7 +29304,7 @@
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _reactRouterDom = __webpack_require__(235);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29201,48 +29314,90 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var NewPass = function (_React$Component) {
-	    _inherits(NewPass, _React$Component);
+	var SideMenu = function (_React$Component) {
+	    _inherits(SideMenu, _React$Component);
 
-	    function NewPass(props) {
-	        _classCallCheck(this, NewPass);
+	    function SideMenu(props) {
+	        _classCallCheck(this, SideMenu);
 
-	        return _possibleConstructorReturn(this, (NewPass.__proto__ || Object.getPrototypeOf(NewPass)).call(this, props));
+	        var _this = _possibleConstructorReturn(this, (SideMenu.__proto__ || Object.getPrototypeOf(SideMenu)).call(this, props));
+
+	        _this.state = {};
+	        return _this;
 	    }
 
-	    _createClass(NewPass, [{
+	    _createClass(SideMenu, [{
 	        key: 'render',
 	        value: function render() {
+	            var _props = this.props,
+	                onClick = _props.onClick,
+	                open = _props.open;
+
+
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'newpass-container' },
+	                { className: 'sidemenu-container ' + (open ? 'open-side-menu' : '') },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'newpass-wrap' },
+	                    { className: 'sidemenu-wrap' },
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'newpass-info' },
-	                        'FORGOT PASSWORD'
+	                        { className: 'menu-list' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'btn' },
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Link,
+	                                { to: '/play' },
+	                                'PLAY'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'btn' },
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Link,
+	                                { to: '/rates' },
+	                                'RATES'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'btn' },
+	                            _react2.default.createElement(
+	                                _reactRouterDom.Link,
+	                                { to: '/login' },
+	                                'LOGIN'
+	                            )
+	                        )
 	                    ),
-	                    _react2.default.createElement('input', { type: 'text', placeholder: 'code' }),
-	                    _react2.default.createElement('input', { type: 'password', placeholder: 'new password' }),
-	                    _react2.default.createElement('input', { type: 'password', placeholder: 'repeat password' }),
-	                    _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' })
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'sidemenu-btn', onClick: onClick },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { id: 'nav-icon3', className: '' + (open ? 'open' : '') },
+	                            _react2.default.createElement('span', null),
+	                            _react2.default.createElement('span', null),
+	                            _react2.default.createElement('span', null),
+	                            _react2.default.createElement('span', null)
+	                        )
+	                    )
 	                )
 	            );
 	        }
 	    }]);
 
-	    return NewPass;
+	    return SideMenu;
 	}(_react2.default.Component);
 
 	function mapStateToProps(state) {
 	    return {
-	        newpass: state.newpass
+	        sidemenu: state.sidemenu
 	    };
-	}
+	};
 
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(NewPass);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(SideMenu);
 
 /***/ }),
 /* 277 */
@@ -29260,9 +29415,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactRedux = __webpack_require__(214);
+	var _propTypes = __webpack_require__(216);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _propTypes2 = _interopRequireDefault(_propTypes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29272,71 +29427,86 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var Rates = function (_React$Component) {
-	    _inherits(Rates, _React$Component);
+	var Error = function (_Component) {
+	    _inherits(Error, _Component);
 
-	    function Rates(props) {
-	        _classCallCheck(this, Rates);
+	    function Error(props) {
+	        _classCallCheck(this, Error);
 
-	        return _possibleConstructorReturn(this, (Rates.__proto__ || Object.getPrototypeOf(Rates)).call(this, props));
+	        return _possibleConstructorReturn(this, (Error.__proto__ || Object.getPrototypeOf(Error)).call(this, props));
 	    }
 
-	    _createClass(Rates, [{
+	    _createClass(Error, [{
 	        key: 'render',
 	        value: function render() {
+	            if (!this.props.render) return null;
+
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'rates-container' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'rates-wrap' },
-	                    _react2.default.createElement(
-	                        'span',
-	                        { className: 'rates-info' },
-	                        'RATES'
-	                    ),
-	                    _react2.default.createElement('span', { className: 'split' }),
-	                    _react2.default.createElement(
-	                        'ul',
-	                        { className: 'rates-list' },
-	                        _react2.default.createElement(
-	                            'li',
-	                            { className: 'rl-item' },
-	                            _react2.default.createElement(
-	                                'span',
-	                                { className: 'rl-item-num' },
-	                                '1.'
-	                            ),
-	                            _react2.default.createElement(
-	                                'span',
-	                                { className: 'rl-item-login' },
-	                                'Some Login'
-	                            ),
-	                            _react2.default.createElement(
-	                                'span',
-	                                { className: 'rl-item-score' },
-	                                '10000'
-	                            )
-	                        )
-	                    )
-	                )
+	                { className: 'error-msg' },
+	                this.props.msg
 	            );
 	        }
 	    }]);
 
-	    return Rates;
-	}(_react2.default.Component);
+	    return Error;
+	}(_react.Component);
 
-	function mapStateToProps(state) {
-	    return {
-	        rates: state.rates
-	    };
-	}
-
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Rates);
+	Error.propTypes = {
+	    render: _propTypes2.default.bool,
+	    msg: _propTypes2.default.string
+	};
+	exports.default = Error;
 
 /***/ }),
 /* 278 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.loginHasErrored = loginHasErrored;
+	exports.loginFetchDataSuccess = loginFetchDataSuccess;
+	exports.loginOnUnmountClean = loginOnUnmountClean;
+	exports.loginFetchData = loginFetchData;
+	function loginHasErrored(bool) {
+	    return {
+	        type: 'LOGIN_HAS_ERRORED',
+	        hasErrored: bool
+	    };
+	}
+
+	function loginFetchDataSuccess(data) {
+	    return {
+	        type: 'LOGIN_FETCH_DATA_SUCCESS',
+	        data: data
+	    };
+	}
+
+	function loginOnUnmountClean() {
+	    return {
+	        type: 'LOGIN_ON_UNMOUNT_CLEAN'
+	    };
+	}
+
+	function loginFetchData(url, data) {
+	    return function (dispatch) {
+	        var login = {
+	            data: {
+	                login: 'login',
+	                password: 'password',
+	                successfully: false
+	            }
+	        };
+
+	        dispatch(login.data.successfully ? loginFetchDataSuccess(login.data) : loginHasErrored(true));
+	    };
+	}
+
+/***/ }),
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -29353,7 +29523,852 @@
 
 	var _reactRedux = __webpack_require__(214);
 
-	var _reactRouterDom = __webpack_require__(234);
+	var _reactRouterDom = __webpack_require__(235);
+
+	var _sidemenu = __webpack_require__(276);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
+
+	var _register = __webpack_require__(280);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Register = function (_React$Component) {
+	    _inherits(Register, _React$Component);
+
+	    function Register(props) {
+	        _classCallCheck(this, Register);
+
+	        var _this = _possibleConstructorReturn(this, (Register.__proto__ || Object.getPrototypeOf(Register)).call(this, props));
+
+	        _this.menuBtnClick = function () {
+	            return _this.setState({ open: !_this.state.open });
+	        };
+
+	        _this.onChange = function (event) {
+	            _this.state.form[event.target.name] = event.target.value;
+	            _this.state.form.validPasswords = _this.state.form.password === _this.state.form.passwordRe;
+
+	            var passwordField = document.getElementsByClassName('register-password-input')[0];
+
+	            passwordField.setCustomValidity(_this.state.form.validPasswords ? '' : 'Пароли не совпадают');
+	        };
+
+	        _this.onSubmit = function (event) {
+	            if (!event.target.checkValidity()) return;
+
+	            event.preventDefault();
+
+	            _this.props.registerFetchData('url', 'data');
+	        };
+
+	        _this.state = {
+	            open: false,
+	            form: {
+	                email: '',
+	                login: '',
+	                password: '',
+	                passwordRe: '',
+	                validPasswords: true
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Register, [{
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            console.log('[+] REGISTER | unmount props before : ', this.props);
+	            this.props.registerClean();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            console.log('[+] REGISTER | render props : ', this.props);
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'register-container' },
+	                _react2.default.createElement(_sidemenu2.default, {
+	                    open: this.state.open,
+	                    onClick: this.menuBtnClick
+	                }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'register-wrap ' + (this.state.open ? 'opacity-zero-point-two' : '') },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'register-info' },
+	                        'REGISTER'
+	                    ),
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'error-msg ' + (!this.props.register.hasErrored ? "hide" : "") },
+	                        'Error. Try later.'
+	                    ),
+	                    _react2.default.createElement(
+	                        'form',
+	                        { className: 'register-form', onSubmit: this.onSubmit, onChange: this.onChange },
+	                        _react2.default.createElement('input', { name: 'email', type: 'email', placeholder: 'your email', required: true }),
+	                        _react2.default.createElement('input', { name: 'password', className: 'register-password-input', type: 'password', placeholder: 'your password', minLength: '5', required: true }),
+	                        _react2.default.createElement('input', { name: 'passwordRe', type: 'password', placeholder: 'repeat password', minLength: '5', required: true }),
+	                        _react2.default.createElement('input', { name: 'login', type: 'text', placeholder: 'login', maxLength: '10', required: true }),
+	                        _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Register;
+	}(_react2.default.Component);
+
+	Register.propTypes = {
+	    register: _propTypes2.default.object
+	};
+
+
+	function mapStateToProps(state) {
+	    return {
+	        register: state.register
+	    };
+	}
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        registerFetchData: function registerFetchData(url, data) {
+	            return dispatch((0, _register.registerFetchData)(url, data));
+	        },
+	        registerClean: function registerClean() {
+	            return dispatch((0, _register.registerOnUnmountClean)());
+	        }
+	    };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Register);
+
+/***/ }),
+/* 280 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.registerHasErrored = registerHasErrored;
+	exports.registerFetchDataSuccess = registerFetchDataSuccess;
+	exports.registerOnUnmountClean = registerOnUnmountClean;
+	exports.registerFetchData = registerFetchData;
+	function registerHasErrored(bool) {
+	    return {
+	        type: 'REGISTER_HAS_ERRORED',
+	        hasErrored: bool
+	    };
+	}
+
+	function registerFetchDataSuccess(data) {
+	    return {
+	        type: 'REGISTER_FETCH_DATA_SUCCESS',
+	        data: data
+	    };
+	}
+
+	function registerOnUnmountClean() {
+	    return {
+	        type: 'REGISTER_ON_UNMOUNT_CLEAN'
+	    };
+	}
+
+	function registerFetchData(url, data) {
+	    return function (dispatch) {
+	        var register = {
+	            data: {
+	                successfully: true
+	            }
+	        };
+
+	        dispatch(register.data.successfully ? registerFetchDataSuccess(register.data) : registerHasErrored(true));
+	    };
+	}
+
+/***/ }),
+/* 281 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(214);
+
+	var _reactRouterDom = __webpack_require__(235);
+
+	var _sidemenu = __webpack_require__(276);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
+
+	var _NewPassFormEmail = __webpack_require__(282);
+
+	var _NewPassFormEmail2 = _interopRequireDefault(_NewPassFormEmail);
+
+	var _NewPassFormCode = __webpack_require__(283);
+
+	var _NewPassFormCode2 = _interopRequireDefault(_NewPassFormCode);
+
+	var _Error = __webpack_require__(277);
+
+	var _Error2 = _interopRequireDefault(_Error);
+
+	var _Success = __webpack_require__(284);
+
+	var _Success2 = _interopRequireDefault(_Success);
+
+	var _newpass = __webpack_require__(285);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NewPass = function (_React$Component) {
+	    _inherits(NewPass, _React$Component);
+
+	    function NewPass(props) {
+	        _classCallCheck(this, NewPass);
+
+	        var _this = _possibleConstructorReturn(this, (NewPass.__proto__ || Object.getPrototypeOf(NewPass)).call(this, props));
+
+	        _this.menuBtnClick = function () {
+	            return _this.setState({ open: !_this.state.open });
+	        };
+
+	        _this.formEmailOnSubmit = function (event) {
+	            event.preventDefault();
+
+	            if (!event.target.checkValidity()) return;
+
+	            _this.props.newPassFetchData();
+	        };
+
+	        _this.formCodeOnSubmit = function (event) {
+	            event.preventDefault();
+	            _this.props.newPassFetchData();
+	        };
+
+	        _this.formCodeOnChange = function (event) {
+	            _this.state.formCode[event.target.name] = event.target.value;
+	            _this.state.formCode.validPasswords = _this.state.formCode.password === _this.state.formCode.passwordRe;
+
+	            var passwordField = document.getElementsByClassName('newpass-password-input')[0];
+
+	            passwordField.setCustomValidity(_this.state.formCode.validPasswords ? '' : 'Пароли не совпадают');
+	        };
+
+	        _this.state = {
+	            open: false,
+	            formCode: {
+	                code: '',
+	                password: '',
+	                passwordRe: '',
+	                validPasswords: true
+	            }
+	        };
+	        return _this;
+	    }
+
+	    _createClass(NewPass, [{
+	        key: 'componentWillUnmount',
+	        value: function componentWillUnmount() {
+	            this.props.newPassOnUnmountClean();
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'newpass-container' },
+	                _react2.default.createElement(_sidemenu2.default, {
+	                    open: this.state.open,
+	                    onClick: this.menuBtnClick
+	                }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'newpass-wrap ' + (this.state.open ? 'opacity-zero-point-two' : '') },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'newpass-info' },
+	                        'FORGOT PASSWORD'
+	                    ),
+	                    _react2.default.createElement(_Error2.default, { msg: 'Error. Try later.', render: this.props.newpass.hasErrored }),
+	                    _react2.default.createElement(_Success2.default, { msg: 'Code has sented to Email.', render: !this.props.newpass.hasErrored }),
+	                    _react2.default.createElement(_NewPassFormEmail2.default, { onSubmit: this.formEmailOnSubmit, render: !this.props.newpass.data.emailSent }),
+	                    _react2.default.createElement(_NewPassFormCode2.default, { onSubmit: this.formCodeOnSubmit, onChange: this.formCodeOnChange, render: this.props.newpass.data.emailSent })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return NewPass;
+	}(_react2.default.Component);
+
+	function mapStateToProps(state) {
+	    return {
+	        newpass: state.newpass
+	    };
+	}
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        newPassFetchData: function newPassFetchData(url, data) {
+	            return dispatch((0, _newpass.newPassFetchData)(url, data));
+	        },
+	        newPassOnUnmountClean: function newPassOnUnmountClean(url, data) {
+	            return dispatch((0, _newpass.newPassOnUnmountClean)(url, data));
+	        }
+	    };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(NewPass);
+
+/***/ }),
+/* 282 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NewPassFormEmail = function (_Component) {
+	    _inherits(NewPassFormEmail, _Component);
+
+	    function NewPassFormEmail(props) {
+	        _classCallCheck(this, NewPassFormEmail);
+
+	        return _possibleConstructorReturn(this, (NewPassFormEmail.__proto__ || Object.getPrototypeOf(NewPassFormEmail)).call(this, props));
+	    }
+
+	    _createClass(NewPassFormEmail, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.props.render) return null;
+
+	            return _react2.default.createElement(
+	                'form',
+	                { className: 'newpass-form-email', onSubmit: this.props.onSubmit },
+	                _react2.default.createElement('input', { type: 'email', placeholder: 'email', required: true }),
+	                _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' })
+	            );
+	        }
+	    }]);
+
+	    return NewPassFormEmail;
+	}(_react.Component);
+
+	NewPassFormEmail.propTypes = {
+	    onSubmit: _propTypes2.default.func,
+	    render: _propTypes2.default.bool
+	};
+	exports.default = NewPassFormEmail;
+
+/***/ }),
+/* 283 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NewPassFormCode = function (_Component) {
+	    _inherits(NewPassFormCode, _Component);
+
+	    function NewPassFormCode(props) {
+	        _classCallCheck(this, NewPassFormCode);
+
+	        return _possibleConstructorReturn(this, (NewPassFormCode.__proto__ || Object.getPrototypeOf(NewPassFormCode)).call(this, props));
+	    }
+
+	    _createClass(NewPassFormCode, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.props.render) return null;
+
+	            return _react2.default.createElement(
+	                'form',
+	                { className: 'newpass-form-code', onSubmit: this.props.onSubmit, onChange: this.props.onChange },
+	                _react2.default.createElement('input', { name: 'code', type: 'text', placeholder: 'code', required: true }),
+	                _react2.default.createElement('input', { name: 'password', className: 'newpass-password-input', type: 'password', placeholder: 'new password', minLength: '5', required: true }),
+	                _react2.default.createElement('input', { name: 'passwordRe', type: 'password', placeholder: 'repeat password', minLength: '5', required: true }),
+	                _react2.default.createElement('input', { type: 'submit', name: 'submit', placeholder: 'submit', value: 'SUBMIT' })
+	            );
+	        }
+	    }]);
+
+	    return NewPassFormCode;
+	}(_react.Component);
+
+	NewPassFormCode.propTypes = {
+	    onSubmit: _propTypes2.default.func,
+	    onChange: _propTypes2.default.func,
+	    render: _propTypes2.default.bool
+	};
+	exports.default = NewPassFormCode;
+
+/***/ }),
+/* 284 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Success = function (_Component) {
+	    _inherits(Success, _Component);
+
+	    function Success(props) {
+	        _classCallCheck(this, Success);
+
+	        return _possibleConstructorReturn(this, (Success.__proto__ || Object.getPrototypeOf(Success)).call(this, props));
+	    }
+
+	    _createClass(Success, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.props.render) return null;
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'success-msg' },
+	                this.props.msg
+	            );
+	        }
+	    }]);
+
+	    return Success;
+	}(_react.Component);
+
+	Success.propTypes = {
+	    render: _propTypes2.default.bool,
+	    msg: _propTypes2.default.string
+	};
+	exports.default = Success;
+
+/***/ }),
+/* 285 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.newPassHasErrored = newPassHasErrored;
+	exports.newPassFetchDataSuccess = newPassFetchDataSuccess;
+	exports.newPassOnUnmountClean = newPassOnUnmountClean;
+	exports.newPassFetchData = newPassFetchData;
+	function newPassHasErrored(bool) {
+	    return {
+	        type: 'NEWPASS_HAS_ERRORED',
+	        hasErrored: bool
+	    };
+	}
+
+	function newPassFetchDataSuccess(data) {
+	    return {
+	        type: 'NEWPASS_FETCH_DATA_SUCCESS',
+	        data: data
+	    };
+	}
+
+	function newPassOnUnmountClean() {
+	    return {
+	        type: 'NEWPASS_ON_UNMOUNT_CLEAN'
+	    };
+	}
+
+	function newPassFetchData(url, data) {
+	    return function (dispatch) {
+	        var newpass = {
+	            data: {
+	                emailSent: true
+	            }
+	        };
+
+	        dispatch(newpass.data ? newPassFetchDataSuccess(newpass.data) : newPassHasErrored(true));
+	    };
+	}
+
+/***/ }),
+/* 286 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(214);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _rates = __webpack_require__(287);
+
+	var _Loading = __webpack_require__(288);
+
+	var _Loading2 = _interopRequireDefault(_Loading);
+
+	var _sidemenu = __webpack_require__(276);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Rates = function (_React$Component) {
+	    _inherits(Rates, _React$Component);
+
+	    function Rates(props) {
+	        _classCallCheck(this, Rates);
+
+	        var _this = _possibleConstructorReturn(this, (Rates.__proto__ || Object.getPrototypeOf(Rates)).call(this, props));
+
+	        _this.menuBtnClick = function () {
+	            return _this.setState({ open: !_this.state.open });
+	        };
+
+	        _this.state = {
+	            open: false
+	        };
+	        return _this;
+	    }
+
+	    _createClass(Rates, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            this.props.ratesFetchData('http://599167402df2f40011e4929a.mockapi.io/items');
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            console.log('[+] RATES | props : ', this.props);
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'rates-container' },
+	                _react2.default.createElement(_sidemenu2.default, {
+	                    open: this.state.open,
+	                    onClick: this.menuBtnClick
+	                }),
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'rates-wrap ' + (this.state.open ? 'opacity-zero-point-two' : '') },
+	                    _react2.default.createElement(
+	                        'span',
+	                        { className: 'rates-info' },
+	                        'RATES'
+	                    ),
+	                    _react2.default.createElement('span', { className: 'split' }),
+	                    _react2.default.createElement(
+	                        'ul',
+	                        { className: 'rates-list' },
+	                        _react2.default.createElement(_Loading2.default, { loading: this.props.rates.isLoading, alreadyLoaded: this.props.rates && this.props.rates.data.length != 0 }),
+	                        this.props.rates.data.map(function (rate, index) {
+	                            return _react2.default.createElement(
+	                                'li',
+	                                { className: 'rl-item', key: index },
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'rl-item-num' },
+	                                    rate.num + '.'
+	                                ),
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'rl-item-login' },
+	                                    '' + rate.login
+	                                ),
+	                                _react2.default.createElement(
+	                                    'span',
+	                                    { className: 'rl-item-score' },
+	                                    '' + rate.score
+	                                )
+	                            );
+	                        })
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Rates;
+	}(_react2.default.Component);
+
+	Rates.propTypes = {
+	    rates: _propTypes2.default.object
+	};
+
+
+	function mapStateToProps(state) {
+	    return {
+	        rates: state.rates
+	    };
+	}
+
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+	    return {
+	        ratesFetchData: function ratesFetchData(url) {
+	            return dispatch((0, _rates.ratesFetchData)(url));
+	        }
+	    };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Rates);
+
+/***/ }),
+/* 287 */
+/***/ (function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.ratesHasError = ratesHasError;
+	exports.ratesIsLoading = ratesIsLoading;
+	exports.ratesFetchDataSuccess = ratesFetchDataSuccess;
+	exports.ratesFetchData = ratesFetchData;
+	function ratesHasError(bool) {
+	    return {
+	        type: 'RATES_HAS_ERRORED',
+	        hasErrored: bool
+	    };
+	}
+
+	function ratesIsLoading(bool) {
+	    return {
+	        type: 'RATES_IS_LOADING',
+	        isLoading: bool
+	    };
+	}
+
+	function ratesFetchDataSuccess(data) {
+	    return {
+	        type: 'RATES_FETCH_DATA_SUCCESS',
+	        data: data
+	    };
+	}
+
+	function ratesFetchData(url) {
+	    return function (dispatch) {
+	        dispatch(ratesIsLoading(true));
+
+	        var test = [{
+	            num: 1,
+	            login: 'First',
+	            score: '432521'
+	        }, {
+	            num: 2,
+	            login: 'Second',
+	            score: '25323'
+	        }, {
+	            num: 3,
+	            login: 'Third',
+	            score: '65462'
+	        }];
+
+	        setTimeout(function () {
+	            dispatch(ratesIsLoading(false));
+	            dispatch(ratesFetchDataSuccess(test));
+	        }, 5000);
+	    };
+	}
+
+/***/ }),
+/* 288 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(216);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Loading = function (_Component) {
+	    _inherits(Loading, _Component);
+
+	    function Loading(props) {
+	        _classCallCheck(this, Loading);
+
+	        return _possibleConstructorReturn(this, (Loading.__proto__ || Object.getPrototypeOf(Loading)).call(this, props));
+	    }
+
+	    _createClass(Loading, [{
+	        key: 'render',
+	        value: function render() {
+	            if (!this.props.loading || this.props.alreadyLoaded) return _react2.default.createElement('div', null);
+
+	            return _react2.default.createElement(
+	                'div',
+	                { className: 'loading-container' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'loading-wrap' },
+	                    'loading',
+	                    _react2.default.createElement(
+	                        'span',
+	                        null,
+	                        '...'
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Loading;
+	}(_react.Component);
+
+	exports.default = Loading;
+
+
+	Loading.propTypes = {
+	    loading: _propTypes2.default.bool,
+	    alreadyLoaded: _propTypes2.default.bool
+	};
+
+/***/ }),
+/* 289 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	                                value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(214);
+
+	var _reactRouterDom = __webpack_require__(235);
+
+	var _sidemenu = __webpack_require__(276);
+
+	var _sidemenu2 = _interopRequireDefault(_sidemenu);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29364,46 +30379,510 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var Game = function (_React$Component) {
-	    _inherits(Game, _React$Component);
+	                                _inherits(Game, _React$Component);
 
-	    function Game(props) {
-	        _classCallCheck(this, Game);
+	                                function Game(props) {
+	                                                                _classCallCheck(this, Game);
 
-	        return _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, props));
-	    }
+	                                                                var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, props));
 
-	    _createClass(Game, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                { className: 'play-container' },
-	                _react2.default.createElement(
-	                    'div',
-	                    { className: 'play-wrap' },
-	                    'PLAY'
-	                )
-	            );
-	        }
-	    }]);
+	                                                                _this.menuBtnClick = function () {
+	                                                                                                return _this.setState({ open: !_this.state.open });
+	                                                                };
 
-	    return Game;
+	                                                                _this.state = {
+	                                                                                                open: false
+	                                                                };
+	                                                                return _this;
+	                                }
+
+	                                _createClass(Game, [{
+	                                                                key: 'render',
+	                                                                value: function render() {
+	                                                                                                return _react2.default.createElement(
+	                                                                                                                                'div',
+	                                                                                                                                { className: 'play-container' },
+	                                                                                                                                _react2.default.createElement(_sidemenu2.default, {
+	                                                                                                                                                                open: this.state.open,
+	                                                                                                                                                                onClick: this.menuBtnClick
+	                                                                                                                                }),
+	                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                'div',
+	                                                                                                                                                                { className: 'play-wrap ' + (this.state.open ? 'opacity-zero-point-two' : '') },
+	                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                { className: 'player-wrap player-one-wrap' },
+	                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                { className: 'player-info' },
+	                                                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                                                { className: 'player-login' },
+	                                                                                                                                                                                                                                                                'Some Login'
+	                                                                                                                                                                                                                                ),
+	                                                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                                                { className: 'player-score' },
+	                                                                                                                                                                                                                                                                '10000'
+	                                                                                                                                                                                                                                )
+	                                                                                                                                                                                                ),
+	                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                { className: 'game-map' },
+	                                                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                                                { className: 'game-field' },
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' })
+	                                                                                                                                                                                                                                )
+	                                                                                                                                                                                                )
+	                                                                                                                                                                ),
+	                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                { className: 'player-wrap player-two-wrap' },
+	                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                { className: 'player-info' },
+	                                                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                                                { className: 'player-login' },
+	                                                                                                                                                                                                                                                                'Some Login'
+	                                                                                                                                                                                                                                ),
+	                                                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                                                { className: 'player-score' },
+	                                                                                                                                                                                                                                                                '10000'
+	                                                                                                                                                                                                                                )
+	                                                                                                                                                                                                ),
+	                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                { className: 'game-map' },
+	                                                                                                                                                                                                                                _react2.default.createElement(
+	                                                                                                                                                                                                                                                                'div',
+	                                                                                                                                                                                                                                                                { className: 'game-field' },
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' }),
+	                                                                                                                                                                                                                                                                _react2.default.createElement('div', { className: 'gf-item' })
+	                                                                                                                                                                                                                                )
+	                                                                                                                                                                                                )
+	                                                                                                                                                                )
+	                                                                                                                                )
+	                                                                                                );
+	                                                                }
+	                                }]);
+
+	                                return Game;
 	}(_react2.default.Component);
 
 	function mapStateToProps(state) {
-	    return {
-	        game: state.game
-	    };
+	                                return {
+	                                                                game: state.game
+	                                };
 	}
 
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Game);
 
 /***/ }),
-/* 279 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	
-	var content = __webpack_require__(280);
+	var content = __webpack_require__(291);
 
 	if(typeof content === 'string') content = [[module.id, content, '']];
 
@@ -29417,7 +30896,7 @@
 	options.transform = transform
 	options.insertInto = undefined;
 
-	var update = __webpack_require__(282)(content, options);
+	var update = __webpack_require__(293)(content, options);
 
 	if(content.locals) module.exports = content.locals;
 
@@ -29449,17 +30928,17 @@
 	}
 
 /***/ }),
-/* 280 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(281)(false);
+	exports = module.exports = __webpack_require__(292)(false);
 	// Module
-	exports.push([module.id, "html {\r\n    height: 100%;\r\n}\r\nbody {\r\n    height: 100%;\r\n    margin: 0;\r\n}\r\ndiv {\r\n    display: flex;\r\n    box-sizing: border-box;\r\n}\r\ninput {\r\n    box-sizing: border-box;\r\n    outline: none;\r\n}\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nli {\r\n    list-style: none;\r\n}\r\n\r\ninput[type=\"text\"],\r\ninput[type=\"email\"],\r\ninput[type=\"password\"] {\r\n    font-size: 25px;\r\n    border: 2px solid lightgray;\r\n    border-radius: 3px;\r\n    margin-bottom: 15px;\r\n    padding: 5px;\r\n    transition: 0.3s;\r\n}\r\n\r\ninput[type=\"text\"]:focus,\r\ninput[type=\"email\"]:focus,\r\ninput[type=\"password\"]:focus {\r\n    border: 2px solid black;\r\n}\r\n\r\ninput[type=\"submit\"] {\r\n    background: none;\r\n    border: none;\r\n    color: #000;\r\n    cursor: pointer;\r\n    font: 400 30px Arial;\r\n    transition: 0.3s;\r\n}\r\ninput[type=\"submit\"]:hover {\r\n    color: white;\r\n    background: lightgreen;\r\n}\r\n\r\n.split {\r\n    width: 100%;\r\n    border-bottom: 2px solid black;\r\n}\r\n\r\n\r\n\r\n#tetris {\r\n    height: 100%;\r\n    display: flex;\r\n    /*justify-content: center;*/\r\n    /*align-items: center;*/\r\n}\r\n\r\n.app-container,\r\n.app-container switch {\r\n    width: 100%;\r\n}\r\n/* ==============================*/\r\n/* ============ MENU ============*/\r\n/* ==============================*/\r\n\r\n\r\n.menu-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.menu-container .menu-wrap {\r\n    width: 480px;\r\n}\r\n.menu-list {\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    flex-direction: column;\r\n}\r\n.menu-list .btn {\r\n    background: none;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 40px;\r\n    margin-bottom: 20px;\r\n    transition: 0.3s;\r\n    font: 400 40px Arial;\r\n}\r\n\r\n.menu-list .btn:hover {\r\n    background-color: #3498db;\r\n}\r\n\r\n.menu-list .btn a {\r\n    width: 100%;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    color: #000;\r\n}\r\n\r\n.menu-list .btn:hover a{\r\n    color: white;\r\n}\r\n\r\n/* ==============================*/\r\n/* =========== RATES ============*/\r\n/* ==============================*/\r\n\r\n.rates-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    justify-content: center;\r\n}\r\n.rates-container .rates-wrap {\r\n    flex-direction: column;\r\n    width: 520px;\r\n    padding: 50px 20px;\r\n}\r\n.rates-container .rates-wrap .rates-info {\r\n    text-align: center;\r\n    justify-content: center;\r\n    font: 400 40px Arial;\r\n}\r\n.rates-wrap .split {\r\n    margin: 15px 0;\r\n}\r\n.rates-wrap .rates-list {\r\n\r\n}\r\n.rates-wrap .rates-list .rl-item {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 45px;\r\n}\r\n.rates-wrap .rates-list .rl-item:nth-child(even) {\r\n    background: #ecf0f1;\r\n}\r\n.rates-wrap .rates-list .rl-item span {\r\n    color: black;\r\n    font: 400 19px Arial;\r\n}\r\n.rates-wrap .rates-list .rl-item .rl-item-num {\r\n    padding: 0 10px 0 20px;\r\n}\r\n.rates-wrap .rates-list .rl-item .rl-item-login {\r\n    padding: 0 10px;\r\n}\r\n.rates-wrap .rates-list .rl-item .rl-item-score {\r\n    display: flex;\r\n    margin-left: auto;\r\n    padding: 0 20px 0 10px;\r\n}\r\n\r\n/* ==============================*/\r\n/* =========== LOGIN ============*/\r\n/* ==============================*/\r\n\r\n.login-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.login-container .login-wrap {\r\n    flex-direction: column;\r\n    max-width: 360px;\r\n    width: 100%;\r\n    padding: 0 20px;\r\n}\r\n\r\n.login-container .login-info {\r\n    font: 400 40px Arial;\r\n    margin-bottom: 15px;\r\n    justify-content: center;\r\n}\r\n.login-container input[type=\"submit\"] {\r\n    margin-bottom: 20px;\r\n}\r\n.login-container .btn {\r\n    justify-content: center;\r\n    margin-bottom: 5px;\r\n}\r\n.login-container .btn:hover a {\r\n    color: #3498db;\r\n}\r\n.login-container .btn a {\r\n    color: black;\r\n    font: 400 15px Arial;\r\n    text-decoration: none;\r\n}\r\n\r\n/* =================================*/\r\n/* =========== REGISTER ============*/\r\n/* =================================*/\r\n\r\n.register-container {\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.register-container .register-wrap {\r\n    flex-direction: column;\r\n    max-width: 360px;\r\n    width: 100%;\r\n    padding: 0 20px;\r\n\r\n}\r\n\r\n.register-container .register-info {\r\n    font: 400 40px Arial;\r\n    margin-bottom: 15px;\r\n    justify-content: center;\r\n}\r\n\r\n/* =====================================*/\r\n/* =========== NEW PASSWORD ============*/\r\n/* =====================================*/\r\n\r\n.newpass-container {\r\n    height: 100%;\r\n    width: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.newpass-container .newpass-wrap {\r\n    flex-direction: column;\r\n    max-width: 360px;\r\n    width: 100%;\r\n    padding: 0 20px;\r\n}\r\n\r\n.newpass-container .newpass-info {\r\n    font: 400 40px Arial;\r\n    margin-bottom: 15px;\r\n    justify-content: center;\r\n    text-align: center;\r\n}\r\n\r\n/* =============================*/\r\n/* =========== GAME ============*/\r\n/* =============================*/\r\n\r\n.play-container {\r\n    height: 100%;\r\n    width: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.play-container .play-wrap {\r\n\r\n}\r\n", ""]);
+	exports.push([module.id, "html {\r\n    height: 100%;\r\n}\r\nbody {\r\n    height: 100%;\r\n    margin: 0;\r\n}\r\ndiv {\r\n    display: flex;\r\n    box-sizing: border-box;\r\n}\r\ninput {\r\n    box-sizing: border-box;\r\n    outline: none;\r\n}\r\nul {\r\n    margin: 0;\r\n    padding: 0;\r\n}\r\nli {\r\n    list-style: none;\r\n}\r\n\r\ninput[type=\"text\"],\r\ninput[type=\"email\"],\r\ninput[type=\"password\"] {\r\n    font-size: 25px;\r\n    border: none;\r\n    border-bottom: 2px solid lightgray;\r\n    border-radius: 3px;\r\n    margin-bottom: 15px;\r\n    padding: 5px;\r\n    transition: 0.3s;\r\n}\r\n\r\ninput[type=\"text\"]:focus,\r\ninput[type=\"email\"]:focus,\r\ninput[type=\"password\"]:focus {\r\n    border-bottom: 2px solid black;\r\n}\r\n\r\ninput[type=\"submit\"] {\r\n    background: none;\r\n    border: none;\r\n    color: #000;\r\n    cursor: pointer;\r\n    font: 400 30px Arial;\r\n    transition: 0.3s;\r\n}\r\ninput[type=\"submit\"]:hover {\r\n    color: white;\r\n    background: lightgreen;\r\n}\r\n\r\n.split {\r\n    width: 100%;\r\n    border-bottom: 2px solid black;\r\n}\r\n.opacity-zero-point-two {\r\n    opacity: 0.2;\r\n}\r\n.hide {\r\n    display: none;\r\n}\r\n.error-msg {\r\n    font-size: 18px;\r\n    font-family: Arial;\r\n    text-align: center;\r\n    justify-content: center;\r\n    margin-bottom: 10px;\r\n    color: #f64747;\r\n}\r\n.success-msg {\r\n    font-size: 18px;\r\n    font-family: Arial;\r\n    text-align: center;\r\n    justify-content: center;\r\n    margin-bottom: 10px;\r\n    color: lightgreen;\r\n}\r\n\r\n#tetris {\r\n    height: 100%;\r\n    display: flex;\r\n    /*justify-content: center;*/\r\n    /*align-items: center;*/\r\n}\r\n\r\n.app-container {\r\n    position: relative;\r\n}\r\n.app-container,\r\n.app-container switch {\r\n    width: 100%;\r\n}\r\n\r\n/* ==============================*/\r\n/* ============ MENU ============*/\r\n/* ==============================*/\r\n\r\n.menu-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n.menu-container .menu-wrap {\r\n    width: 480px;\r\n}\r\n.menu-list {\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    flex-direction: column;\r\n}\r\n.menu-list .btn {\r\n    background: none;\r\n    border: none;\r\n    outline: none;\r\n    font-size: 40px;\r\n    margin-bottom: 20px;\r\n    transition: 0.3s;\r\n    font: 400 40px Arial;\r\n}\r\n\r\n.menu-list .btn:hover {\r\n    background-color: #3498db;\r\n}\r\n\r\n.menu-list .btn a {\r\n    width: 100%;\r\n    text-align: center;\r\n    text-decoration: none;\r\n    color: #000;\r\n}\r\n\r\n.menu-list .btn:hover a{\r\n    color: white;\r\n}\r\n\r\n/* ==============================*/\r\n/* =========== RATES ============*/\r\n/* ==============================*/\r\n\r\n.rates-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    justify-content: center;\r\n}\r\n.rates-container .rates-wrap {\r\n    flex-direction: column;\r\n    width: 520px;\r\n    padding: 50px 20px;\r\n    transition: 0.3s;\r\n}\r\n.rates-container .rates-wrap .rates-info {\r\n    text-align: center;\r\n    justify-content: center;\r\n    font: 400 40px Arial;\r\n}\r\n.rates-wrap .split {\r\n    margin: 15px 0;\r\n}\r\n.rates-wrap .rates-list {\r\n\r\n}\r\n.rates-wrap .rates-list .rl-item {\r\n    display: flex;\r\n    align-items: center;\r\n    height: 45px;\r\n}\r\n.rates-wrap .rates-list .rl-item:nth-child(even) {\r\n    background: #ecf0f1;\r\n}\r\n.rates-wrap .rates-list .rl-item span {\r\n    color: black;\r\n    font: 400 19px Arial;\r\n}\r\n.rates-wrap .rates-list .rl-item .rl-item-num {\r\n    padding: 0 10px 0 20px;\r\n}\r\n.rates-wrap .rates-list .rl-item .rl-item-login {\r\n    padding: 0 10px;\r\n}\r\n.rates-wrap .rates-list .rl-item .rl-item-score {\r\n    display: flex;\r\n    margin-left: auto;\r\n    padding: 0 20px 0 10px;\r\n}\r\n\r\n/* ==============================*/\r\n/* =========== LOGIN ============*/\r\n/* ==============================*/\r\n\r\n.login-container {\r\n    width: 100%;\r\n    height: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.login-container .login-wrap {\r\n    flex-direction: column;\r\n    max-width: 360px;\r\n    width: 100%;\r\n    padding: 0 20px;\r\n    transition: 0.3s;\r\n}\r\n\r\n.login-container .login-info {\r\n    font: 400 40px Arial;\r\n    margin-bottom: 15px;\r\n    justify-content: center;\r\n}\r\n.login-container .login-form {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n.login-container input[type=\"submit\"] {\r\n    margin-bottom: 20px;\r\n}\r\n.login-container .btn {\r\n    justify-content: center;\r\n    margin-bottom: 5px;\r\n}\r\n.login-container .btn:hover a {\r\n    color: #3498db;\r\n}\r\n.login-container .btn a {\r\n    color: black;\r\n    font: 400 15px Arial;\r\n    text-decoration: none;\r\n}\r\n\r\n/* =================================*/\r\n/* =========== REGISTER ============*/\r\n/* =================================*/\r\n\r\n.register-container {\r\n    justify-content: center;\r\n    align-items: center;\r\n    height: 100%;\r\n    width: 100%;\r\n}\r\n\r\n.register-container .register-wrap {\r\n    flex-direction: column;\r\n    max-width: 360px;\r\n    width: 100%;\r\n    padding: 0 20px;\r\n    transition: 0.3s;\r\n}\r\n\r\n.register-container .register-info {\r\n    font: 400 40px Arial;\r\n    margin-bottom: 15px;\r\n    justify-content: center;\r\n}\r\n\r\n.register-container .register-wrap .register-form {\r\n    display: flex;\r\n    justify-content: center;\r\n    flex-direction: column;\r\n}\r\n\r\n/* =====================================*/\r\n/* =========== NEW PASSWORD ============*/\r\n/* =====================================*/\r\n\r\n.newpass-container {\r\n    height: 100%;\r\n    width: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.newpass-container .newpass-wrap {\r\n    flex-direction: column;\r\n    max-width: 360px;\r\n    width: 100%;\r\n    padding: 0 20px;\r\n    transition: 0.3s;\r\n}\r\n\r\n.newpass-container .newpass-info {\r\n    font: 400 40px Arial;\r\n    margin-bottom: 15px;\r\n    justify-content: center;\r\n    text-align: center;\r\n}\r\n\r\n.newpass-container .newpass-wrap .newpass-form-email,\r\n.newpass-container .newpass-wrap .newpass-form-code {\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n}\r\n\r\n/* =============================*/\r\n/* =========== GAME ============*/\r\n/* =============================*/\r\n\r\n.play-container {\r\n    height: 100%;\r\n    width: 100%;\r\n    justify-content: center;\r\n    align-items: center;\r\n}\r\n\r\n.play-container .play-wrap {\r\n    transition: 0.3s;\r\n}\r\n.play-container .play-wrap .player-score {\r\n    margin-left: auto;\r\n}\r\n\r\n.play-container .play-wrap .player-one-wrap {\r\n    border-right: 2px solid black;\r\n}\r\n\r\n.play-container .play-wrap .player-wrap {\r\n    width: 292px;\r\n    padding: 0 20px;\r\n    flex-direction: column;\r\n}\r\n.play-wrap .player-info {\r\n    border-bottom: 2px solid black;\r\n    width: 100%;\r\n    font: 400 15px Arial;\r\n    padding-bottom: 15px;\r\n    margin-bottom: 20px;\r\n}\r\n\r\n.game-map {\r\n    height: 500px;\r\n    width: 250px;\r\n    background: #34495e;\r\n}\r\n.game-map .game-field {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    width: 100%;\r\n}\r\n.game-map .game-field .gf-item {\r\n    height: 25px;\r\n    width: 25px;\r\n    border: 1px solid lightgrey;\r\n    border-right: none;\r\n    border-top: none;\r\n}\r\n\r\n/* ==================================*/\r\n/* =========== SIDE MENU ============*/\r\n/* ==================================*/\r\n\r\n.sidemenu-container {\r\n    position: absolute;\r\n    left: -213px;\r\n    top: 0;\r\n    height: 100%;\r\n    transition: 0.5s;\r\n    z-index: 1;\r\n}\r\n\r\n.open-side-menu {\r\n    left: 0;\r\n}\r\n\r\n.sidemenu-container .sidemenu-wrap {\r\n    position: relative;\r\n}\r\n.sidemenu-container .sidemenu-wrap .sidemenu-btn {\r\n    position: absolute;\r\n    top: 0;\r\n    right: -80px;\r\n}\r\n.sidemenu-container .sidemenu-wrap .menu-list {\r\n    width: 100%;\r\n    margin: 0 auto;\r\n    flex-direction: column;\r\n    padding: 40px 20px 0 20px;\r\n    border-right: 2px solid black;\r\n}\r\n.sidemenu-container .sidemenu-wrap .menu-list .btn {\r\n    padding: 0 20px;\r\n}\r\n.sidemenu-container .sidemenu-wrap .menu-list .btn a {\r\n    font: 400 40px Arial;\r\n}\r\n\r\n.sidemenu-container .sidemenu-wrap .menu-list .btn:hover a {\r\n    color: white;\r\n}\r\n\r\n#nav-icon3 {\r\n    width: 60px;\r\n    height: 45px;\r\n    position: relative;\r\n    margin: 50px auto;\r\n    -webkit-transform: rotate(0deg);\r\n    -moz-transform: rotate(0deg);\r\n    -o-transform: rotate(0deg);\r\n    transform: rotate(0deg);\r\n    -webkit-transition: .5s ease-in-out;\r\n    -moz-transition: .5s ease-in-out;\r\n    -o-transition: .5s ease-in-out;\r\n    transition: .5s ease-in-out;\r\n    cursor: pointer;\r\n}\r\n#nav-icon3 span {\r\n    display: block;\r\n    position: absolute;\r\n    height: 2px;\r\n    width: 100%;\r\n    background: #000;\r\n    border-radius: 9px;\r\n    opacity: 1;\r\n    left: 0;\r\n    -webkit-transform: rotate(0deg);\r\n    -moz-transform: rotate(0deg);\r\n    -o-transform: rotate(0deg);\r\n    transform: rotate(0deg);\r\n    -webkit-transition: .25s ease-in-out;\r\n    -moz-transition: .25s ease-in-out;\r\n    -o-transition: .25s ease-in-out;\r\n    transition: .25s ease-in-out;\r\n}\r\n#nav-icon3 span:nth-child(1) {\r\n    top: 0px;\r\n}\r\n#nav-icon3 span:nth-child(2),#nav-icon3 span:nth-child(3) {\r\n    top: 18px;\r\n}\r\n#nav-icon3 span:nth-child(4) {\r\n    top: 36px;\r\n}\r\n#nav-icon3.open span:nth-child(1) {\r\n    top: 18px;\r\n    width: 0%;\r\n    left: 50%;\r\n}\r\n#nav-icon3.open span:nth-child(2) {\r\n    -webkit-transform: rotate(45deg);\r\n    -moz-transform: rotate(45deg);\r\n    -o-transform: rotate(45deg);\r\n    transform: rotate(45deg);\r\n}\r\n#nav-icon3.open span:nth-child(3) {\r\n    -webkit-transform: rotate(-45deg);\r\n    -moz-transform: rotate(-45deg);\r\n    -o-transform: rotate(-45deg);\r\n    transform: rotate(-45deg);\r\n}\r\n#nav-icon3.open span:nth-child(4) {\r\n    top: 18px;\r\n    width: 0%;\r\n    left: 50%;\r\n}\r\n\r\n/* =================================*/\r\n/* ============ LOADING ============*/\r\n/* =================================*/\r\n\r\n@keyframes pointsLoadingAnimation {\r\n    from {\r\n        width: 0;\r\n    }\r\n\r\n    33.3% {\r\n        width: 8px;\r\n    }\r\n\r\n    66.6% {\r\n        width: 16px;\r\n    }\r\n\r\n    to {\r\n        width: auto;\r\n    }\r\n}\r\n\r\n.loading-container {\r\n    justify-content: center;\r\n}\r\n\r\n.loading-container .loading-wrap {\r\n    width: 100px;\r\n    font-size: 25px;\r\n    font-family: Arial;\r\n    color: black;\r\n}\r\n\r\n.loading-container .loading-wrap span {\r\n    animation-duration: 2s;\r\n    animation-iteration-count: infinite;\r\n    animation-name: pointsLoadingAnimation;\r\n    overflow: hidden;\r\n}", ""]);
 
 
 
 /***/ }),
-/* 281 */
+/* 292 */
 /***/ (function(module, exports) {
 
 	"use strict";
@@ -29549,7 +31028,7 @@
 	}
 
 /***/ }),
-/* 282 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	/*
@@ -29618,7 +31097,7 @@
 	var	singletonCounter = 0;
 	var	stylesInsertedAtTop = [];
 
-	var	fixUrls = __webpack_require__(283);
+	var	fixUrls = __webpack_require__(294);
 
 	module.exports = function(list, options) {
 		if (false) {
@@ -29955,7 +31434,7 @@
 
 
 /***/ }),
-/* 283 */
+/* 294 */
 /***/ (function(module, exports) {
 
 	

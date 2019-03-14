@@ -18,16 +18,15 @@ export function loginOnUnmountClean () {
     })
 }
 
-export function loginFetchData (url, data) {
+export function loginFetchData (socket, data) {
     return ((dispatch) => {
-        let login = {
-            data: {
-                login: 'login',
-                password: 'password',
-                successfully: false
-            }
-        };
 
-        dispatch(login.data.successfully ? loginFetchDataSuccess(login.data) : loginHasErrored(true));
+        socket.emit('check', data);
+
+        socket.on('checkSuccess',(res)=>{
+            console.log('[+] LOGIN | CHECKSUCCESS | res : ', res);
+        });
+
+        // dispatch(login.data.successfully ? loginFetchDataSuccess(login.data) : loginHasErrored(true));
     })
 }
