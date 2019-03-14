@@ -1,6 +1,6 @@
 const initialState = {
     hasErrored: false,
-    isLoading: true,
+    isLoading: false,
     data: []
 };
 

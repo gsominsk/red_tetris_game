@@ -70,8 +70,14 @@ input[type="submit"]:hover {
     margin-bottom: 10px;
     color: #f64747;
 }
-
-
+.success-msg {
+    font-size: 18px;
+    font-family: Arial;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: lightgreen;
+}
 
 #tetris {
     height: 100%;
@@ -281,6 +287,13 @@ input[type="submit"]:hover {
     margin-bottom: 15px;
     justify-content: center;
     text-align: center;
+}
+
+.newpass-container .newpass-wrap .newpass-form-email,
+.newpass-container .newpass-wrap .newpass-form-code {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* =============================*/

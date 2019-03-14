@@ -37,10 +37,6 @@ class Register extends React.Component {
         this.state.form.validPasswords = this.state.form.password === this.state.form.passwordRe;
 
         let passwordField = document.getElementsByClassName('register-password-input')[0];
-        if (this.state.form.validPasswords)
-            passwordField.setCustomValidity('');
-        else
-            passwordField.setCustomValidity('Пароли не совпадают');
 
         passwordField.setCustomValidity(
             this.state.form.validPasswords ?
