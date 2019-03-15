@@ -8,7 +8,6 @@ import Register from './register'
 import NewPass  from './newpass'
 import Rates    from './rates'
 import Game     from './game'
-import SideMenu from './sidemenu'
 
 import './app.css';
 

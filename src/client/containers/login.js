@@ -6,14 +6,12 @@ import io                       from "socket.io-client"
 
 import SideMenu from './sidemenu'
 import Error    from '../components/Error'
+import Io       from '../components/Socket'
 
 import {
     loginFetchData,
     loginOnUnmountClean
 }               from "../actions/login";
-import {ping}   from "../actions/server";
-
-let socket;
 
 class Login extends React.Component {
     static propTypes = {
@@ -22,8 +20,6 @@ class Login extends React.Component {
 
     constructor (props) {
         super(props);
-
-        socket = io.connect("http://localhost:3000")
 
         this.state = ({
             open: false,
@@ -44,7 +40,7 @@ class Login extends React.Component {
 
         event.preventDefault();
 
-        return this.props.loginFetchData(socket, this.state.form);
+        return this.props.loginFetchData(Io.socket, this.state.form);
     };
 
     onChange = (event) =>
@@ -52,7 +48,6 @@ class Login extends React.Component {
 
     componentWillUnmount() {
         this.props.loginOnUnmountClean();
-        socket.disconnect();
     }
 
     render () {
@@ -95,7 +90,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         loginFetchData: (url, data) => dispatch(loginFetchData(url, data)),
         loginOnUnmountClean: () => dispatch(loginOnUnmountClean()),
-        ping: () => dispatch(ping)
     };
 };
 

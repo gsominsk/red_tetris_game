@@ -1,13 +1,14 @@
-import React                    from 'react'
-import { connect }              from 'react-redux'
+import React            from 'react'
+import { connect }      from 'react-redux'
+import PropTypes        from "prop-types";
 
-import { Route, Link }  from "react-router-dom";
+import Io               from '../components/Socket'
 import SideMenu         from './sidemenu'
+
 import {
     registerFetchData,
     registerOnUnmountClean
 }                       from "../actions/register";
-import PropTypes        from "prop-types";
 
 class Register extends React.Component {
     static propTypes = {
@@ -20,10 +21,12 @@ class Register extends React.Component {
         this.state = ({
             open: false,
             form: {
-                email: '',
-                login: '',
-                password: '',
-                passwordRe: '',
+                values: {
+                    email: '',
+                    login: '',
+                    password: '',
+                    passwordRe: '',
+                },
                 validPasswords: true
             }
         });
@@ -33,8 +36,8 @@ class Register extends React.Component {
         this.setState({open: !this.state.open});
 
     onChange = (event) => {
-        this.state.form[event.target.name] = event.target.value;
-        this.state.form.validPasswords = this.state.form.password === this.state.form.passwordRe;
+        this.state.form.values[event.target.name] = event.target.value;
+        this.state.form.validPasswords = this.state.form.values.password === this.state.form.values.passwordRe;
 
         let passwordField = document.getElementsByClassName('register-password-input')[0];
 
@@ -49,7 +52,7 @@ class Register extends React.Component {
 
         event.preventDefault();
 
-        this.props.registerFetchData('url', 'data')
+        this.props.registerFetchData(Io.socket, this.state.form.values)
     };
 
     componentWillUnmount() {
