@@ -34,9 +34,24 @@ io.on('connection', (socket) => {
         console.log('[+] Disconnected : ', socket.id);
     });
 
-    socket.on('check',(data) => {
-        console.log('[+] SERVER | check data : ', data);
-        socket.emit('checkSuccess', data);
+    socket.on('login', async function (data) {
+        let err, userFind;
+
+        console.log('[+] login data : ', data);
+
+        [err, userFind] = await to(User.findOne({
+            email: data.email,
+            password: data.password
+        }));
+
+        if (err)
+            return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        if (!userFind)
+            return socket.emit('login.fetched', {err: 'Wrong email or password.'});
+
+        if (userFind)
+            return socket.emit('login.fetched', {success: true, successMsg: 'Logged in.'});
     });
 
     socket.on('register', async function (data) {

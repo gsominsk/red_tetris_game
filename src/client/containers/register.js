@@ -9,8 +9,8 @@ import SideMenu         from './sidemenu'
 
 import {
     registerFetchData,
-    registerOnUnmountClean
-}                       from "../actions/register";
+    userOnUnmountClean
+}                       from "../actions/user";
 
 class Register extends React.Component {
     static propTypes = {
@@ -90,14 +90,14 @@ class Register extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        register: state.register
+        register: state.user
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         registerFetchData: (url, data) => dispatch(registerFetchData(url, data)),
-        registerClean: () => dispatch(registerOnUnmountClean())
+        registerClean: () => dispatch(userOnUnmountClean())
     };
 };
 

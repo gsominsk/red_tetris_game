@@ -6,12 +6,13 @@ import io                       from "socket.io-client"
 
 import SideMenu from './sidemenu'
 import Error    from '../components/Error'
+import Success  from '../components/Success'
 import Io       from '../components/Socket'
 
 import {
     loginFetchData,
-    loginOnUnmountClean
-}               from "../actions/login";
+    userOnUnmountClean
+}               from "../actions/user";
 
 class Login extends React.Component {
     static propTypes = {
@@ -66,7 +67,8 @@ class Login extends React.Component {
                 <div className={`login-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="login-info">LOGIN</div>
 
-                    <Error msg="Invalid email or password." render={this.props.login.hasErrored}/>
+                    <Error msg={this.props.login.errMsg} render={this.props.login.hasErrored}/>
+                    <Success msg={this.props.login.successMsg} render={this.props.login.success}/>
                     <form className="login-form" onSubmit={this.onSubmit} onChange={this.onChange}>
                         <input name="email" type="email" placeholder="your email" required/>
                         <input name="password" type="password" placeholder="your password" minLength="5" required/>
@@ -82,14 +84,14 @@ class Login extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        login: state.login,
+        login: state.user,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         loginFetchData: (url, data) => dispatch(loginFetchData(url, data)),
-        loginOnUnmountClean: () => dispatch(loginOnUnmountClean()),
+        loginOnUnmountClean: () => dispatch(userOnUnmountClean()),
     };
 };
 

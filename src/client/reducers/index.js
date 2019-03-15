@@ -8,12 +8,16 @@ import rates                from './rates'
 import register             from './register'
 import sidemenu             from './sidemenu'
 
+import user                 from './user'
+
 export default combineReducers({
-    menu,
-    login,
     game,
-    newpass,
+    user,
     rates,
+
+    menu,
+    newpass,
+    login,
     register,
     sidemenu
 })
