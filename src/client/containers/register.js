@@ -3,6 +3,8 @@ import { connect }      from 'react-redux'
 import PropTypes        from "prop-types";
 
 import Io               from '../components/Socket'
+import Error            from '../components/Error'
+import Success          from '../components/Success'
 import SideMenu         from './sidemenu'
 
 import {
@@ -44,7 +46,7 @@ class Register extends React.Component {
         passwordField.setCustomValidity(
             this.state.form.validPasswords ?
                 '' : 'Пароли не совпадают');
-    }
+    };
 
     onSubmit = (event) => {
         if (!event.target.checkValidity())
@@ -71,7 +73,8 @@ class Register extends React.Component {
                 />
                 <div className={`register-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="register-info">REGISTER</div>
-                    <div className={`error-msg ${!this.props.register.hasErrored ? "hide" : ""}`}>Error. Try later.</div>
+                    <Error render={this.props.register.hasErrored} msg={this.props.register.errMsg}/>
+                    <Success render={this.props.register.success} msg={this.props.register.successMsg}/>
                     <form className="register-form" onSubmit={this.onSubmit} onChange={this.onChange}>
                         <input name="email" type="email" placeholder="your email" required/>
                         <input name="password" className="register-password-input" type="password" placeholder="your password" minLength="5" required/>

@@ -1,4 +1,5 @@
 export function registerHasErrored (bool, string) {
+
     return ({
         type: 'REGISTER_HAS_ERRORED',
         hasErrored: bool,
@@ -9,7 +10,8 @@ export function registerHasErrored (bool, string) {
 export function registerFetchDataSuccess (data) {
     return ({
         type: 'REGISTER_FETCH_DATA_SUCCESS',
-        data
+        success: data.success,
+        successMsg: data.successMsg
     })
 }
 
@@ -20,14 +22,14 @@ export function registerOnUnmountClean () {
 }
 
 export function registerFetchData (socket, data) {
-    return ((dispatch) => {
-        console.log('[+] registerFetchData : ', data);
-
+    return ((d) => {
         socket.emit('register', data);
 
-        socket.on('register.fetched', (err, res) => {
-            if (err)
-                registerHasErrored(true, err);
+        socket.on('register.fetched', (res) => {
+            if (!res || res.err)
+                return d(registerHasErrored(true, res.err));
+
+            d(registerFetchDataSuccess(res));
         })
     })
 }

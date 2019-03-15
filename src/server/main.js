@@ -39,36 +39,25 @@ io.on('connection', (socket) => {
     });
 
     socket.on('register', async function (data) {
-        console.log('[+] REGISTER | data : ', data);
-
         let err, userFind, userCreate;
         [err, userFind] = await to(User.findOne({email: data.email}));
 
-        console.log('[+] USER FIND async : ', userFind);
+        if (err)
+            return socket.emit('register.fetched', {err: 'Something goes wrong. Try again or later.'});
 
         if (userFind)
-            return socket.emit('')
+            return socket.emit('register.fetched', {err: 'User with this email already registered.'});
 
         [err, userCreate] = await to(User.create({
             email: data.email,
             login: data.login,
             password: data.password,
-        }))
+        }));
 
-        // User.findOne({email: data.email}, (err, res) => {
-        //     console.log('[+] find user err : ', err);
-        //     console.log('[+] find user res: ', res);
-        //
-        //     if (!res) {
-        //         User.create({
-        //             email: data.email,
-        //             login: data.login,
-        //             password: data.password,
-        //         }, (err, res) => {
-        //             console.log('[+] user save err : ', err);
-        //             console.log('[+] user save res : ', res);
-        //         })
-        //     }
-        // })
+        if (err)
+            return socket.emit('register.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        if (userCreate)
+            return socket.emit('register.fetched', {success: true, successMsg: 'User registered.'})
     })
 });
