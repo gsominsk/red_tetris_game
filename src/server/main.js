@@ -13,7 +13,8 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/local', { useNewUrlParser: true });
+mongoose.set('debug', true);
+mongoose.connect('mongodb://localhost:27017/rtg', { useNewUrlParser: true });
 
 const db = mongoose.connection;
 db.on('error', ()=> {console.error('[!] Connection to database failed.')});

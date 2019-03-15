@@ -1,5 +1,4 @@
 export function registerHasErrored (bool, string) {
-
     return ({
         type: 'REGISTER_HAS_ERRORED',
         hasErrored: bool,
@@ -26,6 +25,7 @@ export function registerFetchData (socket, data) {
         socket.emit('register', data);
 
         socket.on('register.fetched', (res) => {
+            d(registerOnUnmountClean());
             if (!res || res.err)
                 return d(registerHasErrored(true, res.err));
 
