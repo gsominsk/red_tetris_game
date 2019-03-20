@@ -6,7 +6,7 @@ export default class NewPassFormCode extends Component {
         onSubmit: PropTypes.func,
         onChange: PropTypes.func,
         render  : PropTypes.bool,
-    }
+    };
 
     constructor(props) {
         super(props);

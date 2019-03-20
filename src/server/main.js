@@ -4,7 +4,9 @@ const http          = require('http');
 const socketServer  = require('socket.io');
 const mongoose      = require('mongoose');
 
-import to           from './utils/to'
+import to               from './utils/to'
+import mailer           from './utils/mailer';
+import hashGenerator    from './utils/hashGenerator';
 
 const User          = require('./models/User');
 
@@ -34,12 +36,96 @@ io.on('connection', (socket) => {
         console.log('[+] Disconnected : ', socket.id);
     });
 
-    socket.on('login', async function (data) {
-        let err, userFind;
+    socket.on('newpass.email', async function (data) {
+        let err, emailCodeSave, emailFind;
 
-        console.log('[+] login data : ', data);
+        [err, emailFind] = await to(User.findOne({
+            email: data
+        }));
+
+        if (err)
+            return socket.emit('newpass.email', {err: 'Something goes wrong. Try again or later.'});
+
+        if (!emailFind)
+            return socket.emit('newpass.email', {err: 'This email is not registered.'});
+
+        let hashCode = hashGenerator(4);
+        [err, emailCodeSave] = await to(User.findOneAndUpdate({
+            email: emailFind.email
+        }, {
+            hashCode: hashCode
+        }));
+
+        if (err)
+            return socket.emit('newpass.email', {err: 'Something goes wrong. Try again or later.'});
+
+        mailer.send(emailFind.email, {
+            from    : 'matcha.unitschool@gmail.com',
+            to      : emailFind.email,
+            subject : 'Red Tetris. Hash code to reset password.',
+            html    : (
+                '<td align="right">'+
+                '<table border="0" cellpadding="0" cellspacing="0" style=\"width: 75%;max-width:600px;display: block;margin: 0 auto;height: 100%;\">'+
+                '<tbody style="width: 100%;display: block;margin: 0 auto; background: #557780;padding: 10px;">'+
+                '<tr>'+
+                '<td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>'+
+                '<td style="font-size: 0; line-height: 0;" width="20">&nbsp;</td>'+
+                '<td>'+
+                '<h1 style="margin: 0; color: #fff;">RED TETRIS</h1>'+
+                '</td>'+
+                '</tr>'+
+                '</tbody>'+
+                '<tbody style="display:block;height: 200px; background: #EBE1E2;width:100%;padding:10px;padding-top:100px;">'+
+                '<tr style="width: 100%;display: block;text-align: -webkit-center;">'+
+                `<td><h2 style="font-weight: 800;margin:0;">Your hash code to reset password : ${hashCode}</h2></td>`+
+                '</tr>'+
+                '<tr style="width:100%;display:block;text-align:-webkit-center;text-align:center;">'+
+                '</tr>'+
+                '</tbody>'+
+                '</table>'+
+                '</td>'
+            )
+        });
+
+        socket.emit('newpass.email.success', {
+            successMsg: 'Your hash code sented on Email.',
+            code: hashCode,
+            emailSent: true,
+            email: emailFind.email
+        })
+    });
+
+    socket.on('newpass.reset', async function (data) {
+        let err, userFind, userPassSave;
 
         [err, userFind] = await to(User.findOne({
+            hashCode: data.code,
+            email: data.email
+        }));
+
+        if (err)
+            return socket.emit('newpass.reset.success', {err: 'Something goes wrong. Try again or later.'});
+
+        if (!userFind)
+            return socket.emit('newpass.reset.success', {err: 'Wrong hash code.'});
+
+        [err, userPassSave] = await to(User.findOneAndUpdate({
+            email: userFind.email,
+            hashCode: data.code
+        }, {
+            password: data.password
+        }));
+
+        if (err)
+            return socket.emit('newpass.reset.success', {err: 'Something goes wrong. Try again or later.'});
+
+        socket.emit('newpass.reset.success', {success: true});
+    });
+
+    socket.on('login', async function (data) {
+        let err, user, userSave;
+
+        [err, user] = await to(User.findOne({
             email: data.email,
             password: data.password
         }));
@@ -47,11 +133,20 @@ io.on('connection', (socket) => {
         if (err)
             return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
 
-        if (!userFind)
+        if (!user)
             return socket.emit('login.fetched', {err: 'Wrong email or password.'});
 
-        if (userFind)
-            return socket.emit('login.fetched', {success: true, successMsg: 'Logged in.'});
+        user.session = hashGenerator(10);
+        [err, userSave] = await to(user.save());
+
+        console.log('[+] user save hash code : ', userSave)
+        console.log('[+] user save hash code err : ', err)
+
+        if (err)
+            return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        if (userSave)
+            return socket.emit('login.fetched', {success: true, successMsg: 'Logged in.', session: user.session});
     });
 
     socket.on('register', async function (data) {

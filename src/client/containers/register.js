@@ -11,6 +11,7 @@ import {
     registerFetchData,
     userOnUnmountClean
 }                       from "../actions/user";
+import {Redirect} from "react-router-dom";
 
 class Register extends React.Component {
     static propTypes = {
@@ -58,12 +59,15 @@ class Register extends React.Component {
     };
 
     componentWillUnmount() {
-        console.log('[+] REGISTER | unmount props before : ', this.props);
         this.props.registerClean();
     }
 
     render () {
-        console.log('[+] REGISTER | render props : ', this.props);
+
+        if (this.props.register.success)
+            return (
+                <Redirect to="/login" push />
+            );
 
         return (
             <div className="register-container">

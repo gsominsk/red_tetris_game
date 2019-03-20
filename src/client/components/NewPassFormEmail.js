@@ -4,6 +4,7 @@ import PropTypes            from 'prop-types'
 export default class NewPassFormEmail extends Component {
     static propTypes = {
         onSubmit: PropTypes.func,
+        onChange: PropTypes.func,
         render  : PropTypes.bool
     }
 
@@ -16,8 +17,8 @@ export default class NewPassFormEmail extends Component {
             return null;
 
         return (
-            <form className="newpass-form-email" onSubmit={this.props.onSubmit}>
-                <input type="email" placeholder="email" required/>
+            <form className="newpass-form-email" onSubmit={this.props.onSubmit} onChange={this.props.onChange}>
+                <input name="email" type="email" placeholder="email" required/>
                 <input type="submit" name="submit" placeholder="submit" value="SUBMIT"/>
             </form>
         );

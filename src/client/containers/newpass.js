@@ -1,18 +1,20 @@
 import React                    from 'react'
 import { connect }              from 'react-redux'
 
-import { Route, Link }  from "react-router-dom";
+import {Route, Link, Redirect} from "react-router-dom";
 import SideMenu         from './sidemenu'
 
 import NewPassFormEmail from '../components/NewPassFormEmail'
 import NewPassFormCode  from '../components/NewPassFormCode'
 import Error            from '../components/Error'
 import Success          from '../components/Success'
+import Io               from '../components/Socket'
 
 import {
-    newPassFetchData,
-    newPassOnUnmountClean
-}                       from "../actions/newpass";
+    newPassEmailFetchData,
+    newPassResetFetchData,
+    userOnUnmountClean
+}                       from "../actions/user";
 
 class NewPass extends React.Component {
     constructor (props) {
@@ -21,6 +23,7 @@ class NewPass extends React.Component {
         this.state = ({
             open: false,
             formCode: {
+                email: '',
                 code: '',
                 password: '',
                 passwordRe: '',
@@ -38,13 +41,17 @@ class NewPass extends React.Component {
         if (!event.target.checkValidity())
             return ;
 
-        this.props.newPassFetchData();
-    }
+        this.props.newPassEmailFetchData(Io.socket, this.state.formCode.email);
+    };
 
     formCodeOnSubmit = (event) => {
         event.preventDefault();
-        this.props.newPassFetchData();
-    }
+        this.props.newPassResetFetchData(Io.socket, {
+            code: this.state.formCode.code,
+            password: this.state.formCode.password,
+            email: this.props.newpass.resetPass.email
+        });
+    };
 
     formCodeOnChange = (event) => {
         this.state.formCode[event.target.name] = event.target.value;
@@ -55,13 +62,22 @@ class NewPass extends React.Component {
         passwordField.setCustomValidity(
             this.state.formCode.validPasswords ?
                 '' : 'Пароли не совпадают');
-    }
+    };
+
+    formEmailOnChange = (event) => {
+        this.state.formCode[event.target.name] = event.target.value;
+    };
 
     componentWillUnmount() {
         this.props.newPassOnUnmountClean();
     }
 
     render () {
+        if (this.props.newpass.success)
+            return (
+                <Redirect to="/login" push />
+            );
+
         return (
             <div className="newpass-container">
                 <SideMenu
@@ -70,10 +86,10 @@ class NewPass extends React.Component {
                 />
                 <div className={`newpass-wrap ${this.state.open ? 'opacity-zero-point-two' : ''}`}>
                     <div className="newpass-info">FORGOT PASSWORD</div>
-                    <Error msg="Error. Try later." render={this.props.newpass.hasErrored}/>
-                    <Success msg="Code has sented to Email." render={!this.props.newpass.hasErrored}/>
-                    <NewPassFormEmail onSubmit={this.formEmailOnSubmit} render={!this.props.newpass.data.emailSent}/>
-                    <NewPassFormCode onSubmit={this.formCodeOnSubmit} onChange={this.formCodeOnChange} render={this.props.newpass.data.emailSent}/>
+                    <Error msg={this.props.newpass.errMsg} render={this.props.newpass.hasErrored}/>
+                    <Success msg={this.props.newpass.successMsg} render={!this.props.newpass.hasErrored && this.props.newpass.resetPass.emailSent}/>
+                    <NewPassFormEmail onSubmit={this.formEmailOnSubmit} onChange={this.formEmailOnChange} render={!this.props.newpass.resetPass.emailSent}/>
+                    <NewPassFormCode onSubmit={this.formCodeOnSubmit} onChange={this.formCodeOnChange} render={this.props.newpass.resetPass.emailSent}/>
                 </div>
             </div>
         );
@@ -82,14 +98,15 @@ class NewPass extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        newpass: state.newpass
+        newpass: state.user
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        newPassFetchData: (url, data) => dispatch(newPassFetchData(url, data)),
-        newPassOnUnmountClean: (url, data) => dispatch(newPassOnUnmountClean(url, data)),
+        newPassEmailFetchData: (url, data) => dispatch(newPassEmailFetchData(url, data)),
+        newPassResetFetchData: (url, data) => dispatch(newPassResetFetchData(url, data)),
+        newPassOnUnmountClean: (url, data) => dispatch(userOnUnmountClean(url, data)),
     };
 };
 
