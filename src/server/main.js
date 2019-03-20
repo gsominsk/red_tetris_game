@@ -179,7 +179,7 @@ io.on('connection', (socket) => {
             email: data.email,
             login: data.login,
             password: data.password,
-            score: Math.floor(Math.random() * 1000)
+            score: 0 // Math.floor(Math.random() * 1000)
         }));
 
         if (err)

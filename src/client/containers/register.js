@@ -1,6 +1,7 @@
 import React            from 'react'
 import { connect }      from 'react-redux'
 import PropTypes        from "prop-types";
+import {Redirect}       from "react-router-dom";
 
 import Io               from '../components/Socket'
 import Error            from '../components/Error'
@@ -11,7 +12,6 @@ import {
     registerFetchData,
     userOnUnmountClean
 }                       from "../actions/user";
-import {Redirect} from "react-router-dom";
 
 class Register extends React.Component {
     static propTypes = {
@@ -63,10 +63,10 @@ class Register extends React.Component {
     }
 
     render () {
-        // if (this.props.register.success)
-        //     return (
-        //         <Redirect to="/login" push />
-        //     );
+        if (this.props.register.success)
+            return (
+                <Redirect to="/login" push />
+            );
 
         return (
             <div className="register-container">
