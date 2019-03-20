@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/actions/rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/actions/rates.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/LogBtn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/LogBtn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/rates.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/rates.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/containers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/login.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+            <state relative-caret-position="339">
+              <caret line="181" column="24" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
               <folding>
                 <element signature="e#215#256#0" expanded="true" />
                 <element signature="e#1276#2015#0" />
@@ -52,42 +49,55 @@
                 <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="e#3715#4509#0" />
-                <element signature="e#5469#6245#0" />
                 <element signature="e#6812#8292#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/components/LogBtn.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/reducers/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="531">
+              <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/components/NewPassFormCode.js">
+        <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="128">
-              <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+              <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#0#36#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/models/User.js">
+        <entry file="file://$PROJECT_DIR$/src/client/actions/user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+            <state relative-caret-position="531">
+              <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+              <folding>
+                <element signature="n#!!block;n#registerFetchData#0" />
+                <element signature="n#!!block;n#newPassEmailFetchData#0" />
+                <element signature="n#!!block;n#newPassResetFetchData#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="55" selection-start-line="55" selection-end-line="59" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -166,7 +176,6 @@
         <option value="$PROJECT_DIR$/src/client/components/NewPassFormEmail.js" />
         <option value="$PROJECT_DIR$/src/server/utils/mailer.js" />
         <option value="$PROJECT_DIR$/src/server/utils/hashGenerator.js" />
-        <option value="$PROJECT_DIR$/src/client/containers/login.js" />
         <option value="$PROJECT_DIR$/src/client/containers/newpass.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/client/index.js" />
@@ -177,11 +186,12 @@
         <option value="$PROJECT_DIR$/src/client/containers/sidemenu.js" />
         <option value="$PROJECT_DIR$/src/client/containers/app.css" />
         <option value="$PROJECT_DIR$/src/server/models/User.js" />
-        <option value="$PROJECT_DIR$/src/client/containers/register.js" />
-        <option value="$PROJECT_DIR$/src/server/main.js" />
         <option value="$PROJECT_DIR$/src/client/containers/rates.js" />
         <option value="$PROJECT_DIR$/src/client/actions/rates.js" />
         <option value="$PROJECT_DIR$/src/client/components/LogBtn.js" />
+        <option value="$PROJECT_DIR$/src/server/main.js" />
+        <option value="$PROJECT_DIR$/src/client/containers/register.js" />
+        <option value="$PROJECT_DIR$/src/client/containers/login.js" />
       </list>
     </option>
   </component>
@@ -318,7 +328,7 @@
       <workItem from="1552653058935" duration="18466000" />
       <workItem from="1552740451257" duration="590000" />
       <workItem from="1552995810492" duration="10982000" />
-      <workItem from="1553081699574" duration="18085000" />
+      <workItem from="1553081699574" duration="19519000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -495,11 +505,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553101100280</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Добавил типизирование, убрал лишние логи, небольшие фиксы">
+      <created>1553102123000</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1553102123000</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Еще небольшие апдейты">
+      <created>1553103211265</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1553103211265</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185866000" />
+    <option name="totallyTimeSpent" value="187300000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -555,8 +579,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил новые компоненты, контейнер для игры, добавлены стили" />
-    <MESSAGE value="Добавил статику контейнера бокового меню на все страницы, кроме страницы&#10;меню, потому что там она не требуется" />
     <MESSAGE value="Открытие закрытие меню, передача стейта из ребенка в родителя для того &#10;что бы затемнять элемент" />
     <MESSAGE value="Переписал, криво сделал, куча всего лишнего, в пропсе есть функция которая&#10;вызывает родительскую и я вызываю ее когда мне надо, а точнее при клике,&#10;тоже криво но пока так" />
     <MESSAGE value="Сделал анимацию для меню на всех страничках кроме главной с затемнением&#10;контейнера родителя через передачу значений в пропсы сайд меню контейнера" />
@@ -580,7 +602,9 @@
     <MESSAGE value="Убрал лишние редьюсеры." />
     <MESSAGE value="Сделал логаут, добавление и удаление сессии" />
     <MESSAGE value="Добавил выдачу рейтинга. Теперь если в списке больше 10 пользователей, &#10;вас покажет 11м, если меньше то выдаст всех, если ты 10 в списке то тебя&#10;покажут 10, если рейтинг у вас и у 10 одинаковый, вас покажет 11и" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил выдачу рейтинга. Теперь если в списке больше 10 пользователей, &#10;вас покажет 11м, если меньше то выдаст всех, если ты 10 в списке то тебя&#10;покажут 10, если рейтинг у вас и у 10 одинаковый, вас покажет 11и" />
+    <MESSAGE value="Добавил типизирование, убрал лишние логи, небольшие фиксы" />
+    <MESSAGE value="Еще небольшие апдейты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Еще небольшие апдейты" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/dist/client/index.js">
@@ -819,25 +843,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/reducers/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="34" column="14" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/actions/user.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
-          <folding>
-            <element signature="n#!!block;n#registerFetchData#0" />
-            <element signature="n#!!block;n#newPassEmailFetchData#0" />
-            <element signature="n#!!block;n#newPassResetFetchData#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/menu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="371">
@@ -857,26 +862,6 @@
           <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="42" column="19" lean-forward="true" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -909,6 +894,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/components/LogBtn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="14" column="15" lean-forward="true" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/components/NewPassFormCode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -919,10 +914,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/user.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="65" column="20" lean-forward="true" selection-start-line="65" selection-start-column="20" selection-end-line="65" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!block;n#registerFetchData#0" />
+            <element signature="n#!!block;n#newPassEmailFetchData#0" />
+            <element signature="n#!!block;n#newPassResetFetchData#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+        <state relative-caret-position="339">
+          <caret line="181" column="24" selection-start-line="181" selection-start-column="24" selection-end-line="181" selection-end-column="24" />
           <folding>
             <element signature="e#215#256#0" expanded="true" />
             <element signature="e#1276#2015#0" />
@@ -940,18 +947,34 @@
             <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
             <element signature="e#3715#4509#0" />
-            <element signature="e#5469#6245#0" />
             <element signature="e#6812#8292#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/components/LogBtn.js">
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="5" column="11" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+        <state relative-caret-position="531">
+          <caret line="69" column="1" lean-forward="true" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="55" selection-start-line="55" selection-end-line="59" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
