@@ -120,10 +120,13 @@ input[type="submit"]:hover {
     margin-bottom: 20px;
     transition: 0.3s;
     font: 400 40px Arial;
+    justify-content: center;
 }
 
 .menu-list .btn:hover {
     background-color: #3498db;
+    color: white;
+    cursor: pointer;
 }
 
 .menu-list .btn a {
@@ -355,7 +358,7 @@ input[type="submit"]:hover {
 
 .sidemenu-container {
     position: absolute;
-    left: -213px;
+    left: -250px;
     top: 0;
     height: 100%;
     transition: 0.5s;
@@ -368,6 +371,7 @@ input[type="submit"]:hover {
 
 .sidemenu-container .sidemenu-wrap {
     position: relative;
+    width: 250px;
 }
 .sidemenu-container .sidemenu-wrap .sidemenu-btn {
     position: absolute;

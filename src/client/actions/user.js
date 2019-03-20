@@ -23,6 +23,12 @@ export function loginFetchDataSuccess (data) {
     })
 }
 
+export function logOutSuccess () {
+    return ({
+        type: 'LOGOUT_SUCCESS'
+    })
+}
+
 export function emailSentSuccess (data) {
     return ({
         type: 'EMAIL_SENT_SUCCESS',
@@ -35,7 +41,7 @@ export function emailSentSuccess (data) {
 
 export function userOnUnmountClean () {
     return ({
-        type: 'USER_ON_UNMOUNT_CLEAN',
+        type: 'USER_ON_UNMOUNT_CLEAN'
     })
 }
 
@@ -54,6 +60,17 @@ export function loginFetchData (socket, data) {
 
             d(loginFetchDataSuccess({success: true, successMsg: res.successMsg, session: res.session}));
         });
+    })
+}
+
+export function logOutFetch(socket, data) {
+    return ((d) => {
+        socket.emit('logout', data);
+
+        socket.on('logout.fetched', (res) => {
+            window.sessionStorage.removeItem('sessionRTG');
+            d(logOutSuccess())
+        })
     })
 }
 

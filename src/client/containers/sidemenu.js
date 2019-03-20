@@ -1,14 +1,21 @@
-import React                    from 'react'
-import { connect }              from 'react-redux'
+import { Route, Link }  from "react-router-dom";
+import React            from 'react'
+import { connect }      from 'react-redux'
 
-import { Route, Link } from "react-router-dom";
+import LogBtn           from '../components/LogBtn'
+import Io               from '../components/Socket'
+import {logOutFetch}    from "../actions/user";
 
 class SideMenu extends React.Component {
     constructor (props) {
         super(props);
-
-        this.state = {};
     }
+
+    logOutClick = () => {
+        this.props.logOutFetch(Io.socket, {
+            sessionKey: window.sessionStorage.getItem('sessionRTG')
+        });
+    };
 
     render () {
         const {onClick, open} = this.props;
@@ -19,7 +26,7 @@ class SideMenu extends React.Component {
                     <div className="menu-list">
                         <div className="btn"><Link to="/play">PLAY</Link></div>
                         <div className="btn"><Link to="/rates">RATES</Link></div>
-                        <div className="btn"><Link to="/login">LOGIN</Link></div>
+                        <LogBtn onClick={this.logOutClick} loggedIn={!(this.props.session == null)}/>
                     </div>
                     <div className="sidemenu-btn" onClick={onClick}>
                         <div id="nav-icon3" className={`${open ? 'open' : ''}`}>
@@ -37,8 +44,15 @@ class SideMenu extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        sidemenu: state.sidemenu
+        sidemenu: state.user,
+        session: state.user.session
     }
 };
 
-export default connect(mapStateToProps, null)(SideMenu);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logOutFetch: (url, data) => dispatch(logOutFetch(url, data))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideMenu);

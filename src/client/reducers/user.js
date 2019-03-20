@@ -3,7 +3,7 @@ const initialState = {
     errMsg: null,
     success: false,
     successMsg: null,
-    session: null,
+    session: window.sessionStorage.getItem('sessionRTG'),
     resetPass: {
         emailSent: false,
         code: null,
@@ -26,6 +26,12 @@ export default function user (state = initialState, action) {
                 success: action.success,
                 successMsg: action.successMsg,
                 session: action.session
+            };
+
+        case 'LOGOUT_SUCCESS':
+            return {
+                ...state,
+                session: null
             };
 
         case 'RESET_PASS_FETCH_DATA_SUCCESS':

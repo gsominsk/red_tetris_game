@@ -1,12 +1,25 @@
-import React                    from 'react'
-import { connect }              from 'react-redux'
-
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React                                    from 'react'
+import { connect }                              from 'react-redux'
+
+import LogBtn       from '../components/LogBtn'
+import Io           from '../components/Socket'
+
+import {
+    logOutFetch,
+}                   from "../actions/user";
+
 
 class Menu extends React.Component {
     constructor (props) {
         super(props);
     }
+
+    logOutClick = () => {
+        this.props.logOutFetch(Io.socket, {
+            sessionKey: window.sessionStorage.getItem('sessionRTG')
+        });
+    };
 
     render () {
         return (
@@ -15,7 +28,7 @@ class Menu extends React.Component {
                     <div className="menu-list">
                         <div className="btn"><Link to="/play">PLAY</Link></div>
                         <div className="btn"><Link to="/rates">RATES</Link></div>
-                        <div className="btn"><Link to="/login">LOGIN</Link></div>
+                        <LogBtn onClick={this.logOutClick} loggedIn={!(this.props.session == null)}/>
                     </div>
                 </div>
             </div>
@@ -25,8 +38,15 @@ class Menu extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        menu: state.menu
+        menu: state.user,
+        session: state.user.session
     }
 }
 
-export default connect(mapStateToProps, null)(Menu);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logOutFetch: (url, data) => dispatch(logOutFetch(url, data))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

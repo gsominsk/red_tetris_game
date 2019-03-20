@@ -29,11 +29,54 @@ const connections   = [];
 server.listen(3000,()=> {console.log("[+] Server is running on port: 3000")});
 
 io.on('connection', (socket) => {
-    console.log("[+] Connected to Socket : ", socket.id)
+    console.log("[+] Connected to Socket : ", socket.id);
     connections.push(socket);
 
     socket.on('disconnect', () => {
         console.log('[+] Disconnected : ', socket.id);
+    });
+
+    socket.on('login', async function (data) {
+        let err, user, userSave;
+
+        [err, user] = await to(User.findOne({
+            email: data.email,
+            password: data.password
+        }));
+
+        if (err)
+            return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        if (!user)
+            return socket.emit('login.fetched', {err: 'Wrong email or password.'});
+
+        user.session = hashGenerator(10);
+        [err, userSave] = await to(user.save());
+
+        if (err)
+            return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        if (userSave)
+            return socket.emit('login.fetched', {success: true, successMsg: 'Logged in.', session: user.session});
+    });
+
+    socket.on('logout', async function (data) {
+        let err, user, userSave;
+
+        [err, user] = await to(User.findOne({
+            session: data.sessionKey,
+        }));
+
+        if (err || !user)
+            return socket.emit('logout.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        user.session = null;
+        [err, userSave] = await to(user.save());
+
+        if (err || !userSave)
+            return socket.emit('logout.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        socket.emit('logout.fetched', {success: true});
     });
 
     socket.on('newpass.email', async function (data) {
@@ -120,33 +163,6 @@ io.on('connection', (socket) => {
             return socket.emit('newpass.reset.success', {err: 'Something goes wrong. Try again or later.'});
 
         socket.emit('newpass.reset.success', {success: true});
-    });
-
-    socket.on('login', async function (data) {
-        let err, user, userSave;
-
-        [err, user] = await to(User.findOne({
-            email: data.email,
-            password: data.password
-        }));
-
-        if (err)
-            return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
-
-        if (!user)
-            return socket.emit('login.fetched', {err: 'Wrong email or password.'});
-
-        user.session = hashGenerator(10);
-        [err, userSave] = await to(user.save());
-
-        console.log('[+] user save hash code : ', userSave)
-        console.log('[+] user save hash code err : ', err)
-
-        if (err)
-            return socket.emit('login.fetched', {err: 'Something goes wrong. Try again or later.'});
-
-        if (userSave)
-            return socket.emit('login.fetched', {success: true, successMsg: 'Logged in.', session: user.session});
     });
 
     socket.on('register', async function (data) {
