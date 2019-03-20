@@ -53,11 +53,6 @@ class Login extends React.Component {
     }
 
     render () {
-        if (this.props.login && this.props.login.success)
-            return (
-                <Redirect to="/rates" push />
-            );
-
         return (
             <div className="login-container">
                 <SideMenu

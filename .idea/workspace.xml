@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
+    <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="Еще небольшие апдейты">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/containers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/login.js" afterDir="false" />
     </list>
@@ -67,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+            <state relative-caret-position="352">
+              <caret line="75" column="18" lean-forward="true" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -93,8 +93,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="55" selection-start-line="55" selection-end-line="59" />
+            <state relative-caret-position="435">
+              <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -328,7 +328,7 @@
       <workItem from="1552653058935" duration="18466000" />
       <workItem from="1552740451257" duration="590000" />
       <workItem from="1552995810492" duration="10982000" />
-      <workItem from="1553081699574" duration="19519000" />
+      <workItem from="1553081699574" duration="19808000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -519,17 +519,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553103211265</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Еще небольшие апдейты">
+      <created>1553103505265</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1553103505265</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="187300000" />
+    <option name="totallyTimeSpent" value="187589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.22919819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -552,7 +559,7 @@
       <window_info anchor="right" id="Database" order="3" weight="0.32980332" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22617246" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -961,8 +968,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="67" column="45" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+        <state relative-caret-position="352">
+          <caret line="75" column="18" lean-forward="true" selection-start-line="75" selection-start-column="18" selection-end-line="75" selection-end-column="18" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
@@ -971,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="55" selection-start-line="55" selection-end-line="59" />
+        <state relative-caret-position="435">
+          <caret line="54" column="15" selection-start-line="54" selection-start-column="15" selection-end-line="54" selection-end-column="15" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
