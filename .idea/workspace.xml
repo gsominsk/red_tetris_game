@@ -2,24 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/server/utils/hashGenerator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/utils/mailer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/actions/newpass.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/actions/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/actions/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/NewPassFormCode.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/NewPassFormCode.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/NewPassFormEmail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/NewPassFormEmail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/newpass.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/newpass.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/actions/menu.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/reducers/newpass.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/reducers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/models/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/models/User.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/reducers/menu.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,108 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="307">
-              <caret line="141" column="30" selection-start-line="141" selection-start-column="30" selection-end-line="141" selection-end-column="30" />
-              <folding>
-                <element signature="n#style#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="e#299#305#1" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="e#363#369#1" expanded="true" />
-                <element signature="n#style#0;n#h1#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/reducers/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/actions/user.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="53" lean-forward="true" selection-start-line="53" selection-end-line="53" />
-              <folding>
-                <element signature="n#!!block;n#registerFetchData#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/containers/login.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="37" column="8" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/containers/newpass.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="74" column="15" selection-start-line="74" selection-start-column="15" selection-end-line="74" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#44#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/containers/rates.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="30" column="8" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="64" column="15" lean-forward="true" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/models/User.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/reducers/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
-              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="144">
+              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -230,7 +119,6 @@
         <option value="$PROJECT_DIR$/src/client/components/NewPassFormEmail.js" />
         <option value="$PROJECT_DIR$/src/server/utils/mailer.js" />
         <option value="$PROJECT_DIR$/src/server/models/User.js" />
-        <option value="$PROJECT_DIR$/src/client/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/server/utils/hashGenerator.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/user.js" />
         <option value="$PROJECT_DIR$/src/server/main.js" />
@@ -238,6 +126,7 @@
         <option value="$PROJECT_DIR$/src/client/actions/user.js" />
         <option value="$PROJECT_DIR$/src/client/containers/newpass.js" />
         <option value="$PROJECT_DIR$/src/client/containers/register.js" />
+        <option value="$PROJECT_DIR$/src/client/reducers/index.js" />
       </list>
     </option>
   </component>
@@ -388,7 +277,7 @@
       <workItem from="1552653058935" duration="18466000" />
       <workItem from="1552740451257" duration="590000" />
       <workItem from="1552995810492" duration="10982000" />
-      <workItem from="1553081699574" duration="1793000" />
+      <workItem from="1553081699574" duration="2083000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -537,11 +426,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552673993955</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Обновлена модель юзера.&#10;Переделаны и убраны лишние редьюсеры.&#10;Сделано добавление сессии при входе.&#10;Добавлены автоматические переходы во время регистрации, логина и восстановления&#10;пароля.">
+      <created>1553083650153</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1553083650153</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169574000" />
+    <option name="totallyTimeSpent" value="169864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -618,106 +514,10 @@
     <MESSAGE value="Добавил регистрацию пользователя" />
     <MESSAGE value="Апдейт регистрации пользователя, теперь при регистарции идет обновление &#10;стейта регистра в ноль, что бы не выводились лищние данные" />
     <MESSAGE value="Сделал вместо двух редьюсеров и екшенов регистер и логин один юзер, &#10;перевел на него контейнеры регистр и юзер.&#10;Сделал вход, но не до конца, пока что только проверку пользователя на &#10;валидность, надо сделать переходы и сессию через локал сторейдж" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сделал вместо двух редьюсеров и екшенов регистер и логин один юзер, &#10;перевел на него контейнеры регистр и юзер.&#10;Сделал вход, но не до конца, пока что только проверку пользователя на &#10;валидность, надо сделать переходы и сессию через локал сторейдж" />
+    <MESSAGE value="Обновлена модель юзера.&#10;Переделаны и убраны лишние редьюсеры.&#10;Сделано добавление сессии при входе.&#10;Добавлены автоматические переходы во время регистрации, логина и восстановления&#10;пароля." />
+    <option name="LAST_COMMIT_MESSAGE" value="Обновлена модель юзера.&#10;Переделаны и убраны лишние редьюсеры.&#10;Сделано добавление сессии при входе.&#10;Добавлены автоматические переходы во время регистрации, логина и восстановления&#10;пароля." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/google-mapsrc.uml">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JavaScript-modules-diagram</ID>
-          <OriginalElement>/mnt/old/home/paha/Документы/projects/google-map/src</OriginalElement>
-          <nodes>
-            <node x="" y="">$PROJECT_DIR$/src/client/components/Loading.js#Component#16;D:/code/red_tetris_project/src/client/components/Loading.js#PropTypes#49;D:/code/red_tetris_project/src/client/components/Loading.js#React#7;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/components/NewPassFormCode.js#Component#16;D:/code/red_tetris_project/src/client/components/NewPassFormCode.js#PropTypes#49;D:/code/red_tetris_project/src/client/components/NewPassFormCode.js#React#7;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/components/NewPassFormEmail.js#Component#16;D:/code/red_tetris_project/src/client/components/NewPassFormEmail.js#PropTypes#49;D:/code/red_tetris_project/src/client/components/NewPassFormEmail.js#React#7;</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/react-dom/lib/ReactTestUtils.js#createRenderer#11561;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/actions/alert.js</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/reducers/alert.js#_alert#85;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/app.css</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/app.js#Game#291;D:/code/red_tetris_project/src/client/containers/app.js#Login#162;D:/code/red_tetris_project/src/client/containers/app.js#Menu#132;D:/code/red_tetris_project/src/client/containers/app.js#NewPass#227;D:/code/red_tetris_project/src/client/containers/app.js#Rates#260;D:/code/red_tetris_project/src/client/containers/app.js#React#7;D:/code/red_tetris_project/src/client/containers/app.js#Register#193;D:/code/red_tetris_project/src/client/containers/app.js#Route#89;D:/code/red_tetris_project/src/client/containers/app.js#SideMenu#321;D:/code/red_tetris_project/src/client/containers/app.js#app.css#349;D:/code/red_tetris_project/src/client/containers/app.js#connect#46;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/containers/app.js#_react#85;D:/code/red_tetris_project/dist/client/containers/app.js#_reactRedux#164;</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/chai-equal-jsx/chai-equal-jsx.js</node>
-            <node x="" y="">$PROJECT_DIR$/test/fake.js#chai#7;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/game.js#Link#138;D:/code/red_tetris_project/src/client/containers/game.js#React#7;D:/code/red_tetris_project/src/client/containers/game.js#Route#131;D:/code/red_tetris_project/src/client/containers/game.js#Router#106;D:/code/red_tetris_project/src/client/containers/game.js#SideMenu#178;D:/code/red_tetris_project/src/client/containers/game.js#connect#54;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/game.js</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/glob/glob.js</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/redux/index.d.ts#applyMiddleware#11389;D:/code/red_tetris_project/node_modules/redux/index.d.ts#combineReducers#2351;D:/code/red_tetris_project/node_modules/redux/index.d.ts#createStore#10782;</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/redux-thunk/index.d.ts</node>
-            <node x="" y="">$PROJECT_DIR$/index.html</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/react-dom/index.js</node>
-            <node x="" y="">Provider;connect;</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/redux-logger/lib/index.js</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/debug/index.js</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/prop-types/index.js</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/socket.io-client/lib/index.js</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/react-router-dom/es/index.js#BrowserRouter#70;D:/code/red_tetris_project/node_modules/react-router-dom/es/index.js#HashRouter#151;D:/code/red_tetris_project/node_modules/react-router-dom/es/index.js#Link#211;D:/code/red_tetris_project/node_modules/react-router-dom/es/index.js#Redirect#491;D:/code/red_tetris_project/node_modules/react-router-dom/es/index.js#Route#552;</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/chai/index.js</node>
-            <node x="" y="">$PROJECT_DIR$/test/index.js#glob#7;</node>
-            <node x="" y="">$PROJECT_DIR$/src/server/index.js#app#60;D:/code/red_tetris_project/src/server/index.js#debug#28;D:/code/red_tetris_project/src/server/index.js#fs#7;D:/code/red_tetris_project/src/server/index.js#io#98;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/index.js#_alert#721;D:/code/red_tetris_project/dist/client/index.js#_app#637;D:/code/red_tetris_project/dist/client/index.js#_react#19;D:/code/red_tetris_project/dist/client/index.js#_reactDom#98;D:/code/red_tetris_project/dist/client/index.js#_reactRedux#426;D:/code/red_tetris_project/dist/client/index.js#_reducers#544;D:/code/red_tetris_project/dist/client/index.js#_redux#394;D:/code/red_tetris_project/dist/client/index.js#_reduxLogger#190;D:/code/red_tetris_project/dist/client/index.js#_reduxThunk#294;D:/code/red_tetris_project/dist/client/index.js#_storeStateMiddleWare#469;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/index.js#combineReducers#8;D:/code/red_tetris_project/src/client/reducers/index.js#game#134;D:/code/red_tetris_project/src/client/reducers/index.js#login#91;D:/code/red_tetris_project/src/client/reducers/index.js#menu#49;D:/code/red_tetris_project/src/client/reducers/index.js#newpass#176;D:/code/red_tetris_project/src/client/reducers/index.js#rates#221;D:/code/red_tetris_project/src/client/reducers/index.js#register#264;D:/code/red_tetris_project/src/client/reducers/index.js#sidemenu#310;</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/socket.io/lib/index.js</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/reducers/index.js#_alert#85;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/index.js#App#472;D:/code/red_tetris_project/src/client/index.js#HashRouter#530;D:/code/red_tetris_project/src/client/index.js#Provider#291;D:/code/red_tetris_project/src/client/index.js#React#7;D:/code/red_tetris_project/src/client/index.js#ReactDom#60;D:/code/red_tetris_project/src/client/index.js#applyMiddleware#251;D:/code/red_tetris_project/src/client/index.js#createLogger#117;D:/code/red_tetris_project/src/client/index.js#createStore#238;D:/code/red_tetris_project/src/client/index.js#reducer#422;D:/code/red_tetris_project/src/client/index.js#storeStateMiddleWare#350;D:/code/red_tetris_project/src/client/index.js#thunk#177;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/server/index.js#_debug#177;D:/code/red_tetris_project/dist/server/index.js#_fs#110;D:/code/red_tetris_project/dist/server/index.js#app#359;D:/code/red_tetris_project/dist/server/index.js#io#395;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/login.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/actions/login.js#loginFetchData#251;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/login.js#Link#115;D:/code/red_tetris_project/src/client/containers/login.js#PropTypes#160;D:/code/red_tetris_project/src/client/containers/login.js#React#7;D:/code/red_tetris_project/src/client/containers/login.js#Redirect#105;D:/code/red_tetris_project/src/client/containers/login.js#SideMenu#211;D:/code/red_tetris_project/src/client/containers/login.js#connect#54;D:/code/red_tetris_project/src/client/containers/login.js#loginFetchData#247;</node>
-            <node x="" y="">$PROJECT_DIR$/src/server/main.js#params#7;D:/code/red_tetris_project/src/server/main.js#server#42;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/server/main.js#_index#108;D:/code/red_tetris_project/dist/server/main.js#_params#19;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/menu.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/menu.js#Link#138;D:/code/red_tetris_project/src/client/containers/menu.js#React#7;D:/code/red_tetris_project/src/client/containers/menu.js#Route#131;D:/code/red_tetris_project/src/client/containers/menu.js#Router#106;D:/code/red_tetris_project/src/client/containers/menu.js#connect#54;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/newpass.js#Link#113;D:/code/red_tetris_project/src/client/containers/newpass.js#NewPassFormCode#258;D:/code/red_tetris_project/src/client/containers/newpass.js#NewPassFormEmail#196;D:/code/red_tetris_project/src/client/containers/newpass.js#React#7;D:/code/red_tetris_project/src/client/containers/newpass.js#Route#106;D:/code/red_tetris_project/src/client/containers/newpass.js#SideMenu#153;D:/code/red_tetris_project/src/client/containers/newpass.js#connect#54;D:/code/red_tetris_project/src/client/containers/newpass.js#newPassFetchData#326;D:/code/red_tetris_project/src/client/containers/newpass.js#newPassOnUnmountClean#348;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/newpass.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/actions/newpass.js#newPassFetchData#367;D:/code/red_tetris_project/src/client/actions/newpass.js#newPassOnUnmountClean#259;</node>
-            <node x="" y="">$PROJECT_DIR$/params.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/rates.js#Loading#208;D:/code/red_tetris_project/src/client/containers/rates.js#PropTypes#103;D:/code/red_tetris_project/src/client/containers/rates.js#React#7;D:/code/red_tetris_project/src/client/containers/rates.js#SideMenu#265;D:/code/red_tetris_project/src/client/containers/rates.js#connect#54;D:/code/red_tetris_project/src/client/containers/rates.js#ratesFetchData#156;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/rates.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/actions/rates.js#ratesFetchData#371;</node>
-            <node x="" y="">$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react.d.ts</node>
-            <node x="" y="">$PROJECT_DIR$/node_modules/react/react.js</node>
-            <node x="" y="">$PROJECT_DIR$/test/react1.js#Board#159;D:/code/red_tetris_project/test/react1.js#React#31;D:/code/red_tetris_project/test/react1.js#Tetris#151;D:/code/red_tetris_project/test/react1.js#chai#7;D:/code/red_tetris_project/test/react1.js#createRenderer#96;D:/code/red_tetris_project/test/react1.js#equalJSX#57;</node>
-            <node x="" y="">$PROJECT_DIR$/test/redux1.js#ALERT_POP#105;D:/code/red_tetris_project/test/redux1.js#alert#116;D:/code/red_tetris_project/test/redux1.js#chai#165;D:/code/red_tetris_project/test/redux1.js#configureStore#8;D:/code/red_tetris_project/test/redux1.js#rootReducer#55;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/actions/register.js#registerFetchData#373;D:/code/red_tetris_project/src/client/actions/register.js#registerOnUnmountClean#263;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/register.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/register.js#Link#113;D:/code/red_tetris_project/src/client/containers/register.js#PropTypes#306;D:/code/red_tetris_project/src/client/containers/register.js#React#7;D:/code/red_tetris_project/src/client/containers/register.js#Route#106;D:/code/red_tetris_project/src/client/containers/register.js#SideMenu#153;D:/code/red_tetris_project/src/client/containers/register.js#connect#54;D:/code/red_tetris_project/src/client/containers/register.js#registerFetchData#201;D:/code/red_tetris_project/src/client/containers/register.js#registerOnUnmountClean#224;</node>
-            <node x="" y="">$PROJECT_DIR$/test/helpers/server.js#applyMiddleware#71;D:/code/red_tetris_project/test/helpers/server.js#configureStore#289;D:/code/red_tetris_project/test/helpers/server.js#createStore#58;D:/code/red_tetris_project/test/helpers/server.js#server#7;D:/code/red_tetris_project/test/helpers/server.js#startServer#148;D:/code/red_tetris_project/test/helpers/server.js#thunk#109;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/actions/server.js#ping#13;</node>
-            <node x="" y="">$PROJECT_DIR$/test/server1.js#chai#7;D:/code/red_tetris_project/test/server1.js#configureStore#45;D:/code/red_tetris_project/test/server1.js#io#191;D:/code/red_tetris_project/test/server1.js#params#225;D:/code/red_tetris_project/test/server1.js#ping#142;D:/code/red_tetris_project/test/server1.js#rootReducer#92;D:/code/red_tetris_project/test/server1.js#startServer#32;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/containers/sidemenu.js#Link#113;D:/code/red_tetris_project/src/client/containers/sidemenu.js#React#7;D:/code/red_tetris_project/src/client/containers/sidemenu.js#Route#106;D:/code/red_tetris_project/src/client/containers/sidemenu.js#connect#54;</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/reducers/sidemenu.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/middleware/storeStateMiddleWare.js#storeStateMiddleWare#13;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/middleware/storeStateMiddleWare.js</node>
-            <node x="" y="">$PROJECT_DIR$/src/client/components/test.js#Board#101;D:/code/red_tetris_project/src/client/components/test.js#React#7;D:/code/red_tetris_project/src/client/components/test.js#Tetris#40;</node>
-            <node x="" y="">$PROJECT_DIR$/dist/client/components/test.js#_react#129;</node>
-            <node x="" y="">$PROJECT_DIR$/webpack.config.js#path#4;</node>
-            <node x="" y="">ALERT_POP;alert;</node>
-            <node x="" y="">bundle.js</node>
-            <node x="" y="">fs</node>
-            <node x="" y="">createServer;</node>
-            <node x="" y="">http://redpelicans.com/favicon.ico</node>
-            <node x="" y="">path</node>
-            <node x="" y="">Component;</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="0.43273273273273305" x="1169.0" y="1177.0" />
-          <SelectedNodes />
-          <Categories>
-            <Category>All</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>Details</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Downloads/scratch.es6">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" column="26" lean-forward="true" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/components/Loading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -859,16 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/menu.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -988,23 +778,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/models/User.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="307">
@@ -1071,10 +844,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/register.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="64" column="15" lean-forward="true" selection-start-line="64" selection-start-column="15" selection-end-line="64" selection-end-column="15" />
+        <state relative-caret-position="323">
+          <caret line="69" selection-start-line="69" selection-end-line="70" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/menu.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/menu.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/menu.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/models/User.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
