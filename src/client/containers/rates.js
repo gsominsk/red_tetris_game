@@ -33,7 +33,6 @@ class Rates extends React.Component {
         this.setState({open: !this.state.open});
 
     render () {
-        console.log('[+] RATES | props : ', this.props);
         return (
             <div className="rates-container">
                 <SideMenu

@@ -19,28 +19,16 @@ export function ratesFetchDataSuccess (data) {
     })
 }
 
-export function ratesFetchData (socket, data) {
+export function ratesFetchData (socket) {
     return ((dispatch) => {
         dispatch(ratesIsLoading(true));
-
-        let test = [{
-            num: 1,
-            login: 'First',
-            score: '432521'
-        }];
 
         let session = window.sessionStorage.getItem('sessionRTG');
         socket.emit('rates', {session});
 
         socket.on('rates.fetched', (res) => {
-            console.log('[+] RATES FETCHED : ', res);
             dispatch(ratesIsLoading(false));
             dispatch(ratesFetchDataSuccess(res));
         });
-
-        // setTimeout(() => {
-        //     dispatch(ratesIsLoading(false));
-        //     dispatch(ratesFetchDataSuccess(test));
-        // }, 5000)
     })
 }

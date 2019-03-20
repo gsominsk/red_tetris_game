@@ -187,7 +187,7 @@ io.on('connection', (socket) => {
 
         if (userCreate)
             return socket.emit('register.fetched', {success: true, successMsg: 'User registered.'})
-    })
+    });
 
     socket.on('rates', async function (data) {
         let err, user, players;
