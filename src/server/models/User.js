@@ -9,7 +9,8 @@ const users = new Schema({
     password: String,
     loggedIn: Boolean,
     session: String,
-    hashCode: String
+    hashCode: String,
+    score: Number
 }, {collection:"users"});
 
 module.exports = mongoose.model('User', users);

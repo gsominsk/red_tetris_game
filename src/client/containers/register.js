@@ -63,11 +63,10 @@ class Register extends React.Component {
     }
 
     render () {
-
-        if (this.props.register.success)
-            return (
-                <Redirect to="/login" push />
-            );
+        // if (this.props.register.success)
+        //     return (
+        //         <Redirect to="/login" push />
+        //     );
 
         return (
             <div className="register-container">

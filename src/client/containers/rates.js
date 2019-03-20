@@ -1,11 +1,16 @@
-import React                    from 'react'
-import { connect }              from 'react-redux'
-import PropTypes                from 'prop-types'
+import React        from 'react'
+import { connect }  from 'react-redux'
+import PropTypes    from 'prop-types'
 
-import { ratesFetchData }   from "../actions/rates";
+import SideMenu     from './sidemenu'
 
-import Loading              from "../components/Loading"
-import SideMenu             from './sidemenu'
+import Loading      from "../components/Loading"
+import Io           from '../components/Socket'
+
+import {
+    ratesFetchData
+}                   from "../actions/rates";
+
 
 class Rates extends React.Component {
     static propTypes = {
@@ -21,7 +26,7 @@ class Rates extends React.Component {
     }
 
     componentDidMount() {
-        this.props.ratesFetchData('http://599167402df2f40011e4929a.mockapi.io/items');
+        this.props.ratesFetchData(Io.socket);
     }
 
     menuBtnClick = () =>

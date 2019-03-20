@@ -179,6 +179,7 @@ io.on('connection', (socket) => {
             email: data.email,
             login: data.login,
             password: data.password,
+            score: Math.floor(Math.random() * 1000)
         }));
 
         if (err)
@@ -186,5 +187,50 @@ io.on('connection', (socket) => {
 
         if (userCreate)
             return socket.emit('register.fetched', {success: true, successMsg: 'User registered.'})
+    })
+
+    socket.on('rates', async function (data) {
+        let err, user, players;
+
+        if (data && data.session != null)
+            [err, user] = await to(User.findOne({session: data.session}));
+
+        if (err)
+            return socket.emit('rates.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        [err, players] = await to(User.find().sort({score: -1}).limit(10));
+
+        if (err)
+            return socket.emit('rates.fetched', {err: 'Something goes wrong. Try again or later.'});
+
+        let res = [];
+        for (let i = 0; i < players.length; i++)
+            res.push({
+                num: i + 1,
+                login: players[i].login,
+                score: players[i].score
+            });
+
+        if (players.length < 10)
+            socket.emit('rates.fetched', res);
+
+        let topTenLast = res[res.length - 1];
+
+        if (user) {
+            if (user.score > topTenLast.score)
+                return socket.emit('rates.fetched', res);
+
+            if (user.score == topTenLast.score && user.login == topTenLast.login)
+                return socket.emit('rates.fetched', res);
+
+            res.push({
+                num: topTenLast.num + 1,
+                login: user.login,
+                score: user.score
+            });
+        }
+
+        return socket.emit('rates.fetched', res);
+
     })
 });
