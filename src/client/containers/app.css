@@ -60,7 +60,7 @@ input[type="submit"]:hover {
     opacity: 0.2;
 }
 .hide {
-    display: none;
+    display: none !important;
 }
 .error-msg {
     font-size: 18px;
@@ -312,6 +312,22 @@ input[type="submit"]:hover {
 
 .play-container .loading-container {
     position: absolute;
+}
+
+.play-container .disconnection-msg {
+    font: 400 25px Arial;
+    text-align: center;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.play-container .disconnection-msg .restart-game-btn {
+    text-align: center;
+    justify-content: center;
+    background: lightgreen;
+    cursor: pointer;
 }
 
 .play-container .play-wrap {

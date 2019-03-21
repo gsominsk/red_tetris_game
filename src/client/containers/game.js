@@ -23,6 +23,11 @@ class Game extends React.Component {
     menuBtnClick = () =>
         this.setState({open: !this.state.open});
 
+    restartGame = () => {
+        console.log('restart game btn click')
+        this.props.findGame(Io.socket);
+    }
+
     componentDidMount() {
         this.props.findGame(Io.socket)
     }
@@ -33,21 +38,28 @@ class Game extends React.Component {
 
     render () {
         console.log('[+] GAME | props : ', this.props);
+
         return (
             <div className="play-container">
                 <SideMenu
                     open={this.state.open}
                     onClick ={this.menuBtnClick}
                 />
+
                 <Loading alreadyLoaded={false} loading={this.props.game.loading}/>
-                <div className={`play-wrap ${this.state.open || this.props.game.loading ? 'opacity-zero-point-two' : ''}`}>
+                <div className={`disconnection-msg ${this.props.game.disconnected ? '' : 'hide'}`}>
+                    PLAYER HAS DISCONNECTED.<br/>
+                    YOU WIN.<br/>
+                    <div className="restart-game-btn" onClick={this.restartGame}>RESTART?</div>
+                </div>
+                <div className={`play-wrap ${this.state.open || this.props.game.loading || this.props.game.disconnected ? 'opacity-zero-point-two' : ''}`}>
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">
                             <div className="player-login">
-                                Some Login
+                                {/*{this.props.game.enemyInfo.login}*/}
                             </div>
                             <div className="player-score">
-                                10000
+                                {/*{this.props.game.enemyInfo.score}*/}
                             </div>
                         </div>
                         <div className="game-map">
@@ -278,10 +290,10 @@ class Game extends React.Component {
                     <div className="player-wrap player-two-wrap">
                         <div className="player-info">
                             <div className="player-login">
-                                Some Login
+                                {/*{this.props.game.userInfo.login}*/}
                             </div>
                             <div className="player-score">
-                                10000
+                                {/*{this.props.game.userInfo.score}*/}
                             </div>
                         </div>
                         <div className="game-map">

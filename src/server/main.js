@@ -54,11 +54,13 @@ let gameWaitingPlayers= [];
 * 'gameKey': { //generated game key from hashGenerator
 *     firstPlayer: {
 *         key: '', // socket or session key
-*         loggedIn: false // anonymous player
+*         loggedIn: false, // anonymous player
+*         socketId: 'key' // socketId of user
 *     },
 *     secondPlayer: {
 *         key: '', // socket or session key
-*         loggedIn: true // registered player
+*         loggedIn: true, // registered player
+*         socketId: 'key' // socketId of user
 *     }
 * }
 *
@@ -74,8 +76,7 @@ io.on('connection', (socket) => {
     connections.push(socket);
 
     socket.on('disconnect', () => {
-
-        console.log('=============== DISCONNECTING USER =================');
+        console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
         for(let i = 0; i < gameWaitingPlayers.length; i++){
             console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
             if (gameWaitingPlayers[i].key === socket.id) {
@@ -83,11 +84,24 @@ io.on('connection', (socket) => {
                 gameWaitingPlayers.splice(i, 1);
             }
         }
-        console.log('[+] Disconnected : ', socket.id);
-        console.log('====================================================');
+        console.log('======================================================================');
 
+        console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+        for (let room in gamePlayingRoooms) {
+            if (gamePlayingRoooms[room].firstPlayer.socketId == socket.id || gamePlayingRoooms[room].secondPlayer.socketId == socket.id) {
+                socket.to(gamePlayingRoooms[room].firstPlayer.roomName).emit('game.disconnect', {
+                    disconnected: true
+                });
+                delete gamePlayingRoooms[room];
+                console.log('[+] deleting room : ', gamePlayingRoooms);
+            }
+        }
+        console.log('=====================================================================');
+        console.log('[+] Disconnected : ', socket.id);
 
     });
+
+
 
     socket.on('game.find', async function (data) {
         // 1. Сначала попробуем найти второго игрока в списке игкронов в ожидании,
@@ -96,11 +110,30 @@ io.on('connection', (socket) => {
         // 2. Если игроков в списке ожидания нету, закидываем пользователя в список
         //    ожидания, возвращаем сообщение об ожидании.
 
+        /*
+        * 1. Смотрим есть ли кто то в списке ожидания, если нету создаем комнату,
+        *    закидываем в список ожидания пользователя с его данными и названием комнаты.
+        * 2. Если в списке ожидания игры кто то уже есть, берем его из списка, подключаемся
+        *    к той же комнате что и он
+        * */
+
+        let err, user;
+        if (data.sessionKey) {
+            [err, user] = await to(User.findOne({
+                sessionKey: data.sessionKey
+            }));
+        }
+
+
+        console.log('================= TRYING TO FIND GAME ====================');
         // Создаем игрока, если зарегестрирован то вводим ключ сессии, если не зарегестрирован
         // вводим айди сокета.
         let player = {
             loggedIn: (!data.sessionKey ? false : true),
-            key: (!data.sessionKey ? socket.id : data.sessionKey)
+            key: (!data.sessionKey ? socket.id : data.sessionKey),
+            socketId: socket.id,
+            login: user ? user.login : 'Anonymous',
+            score: user ? user.score: '0',
         };
 
         console.log('[+] GAME FIND | player : ', player);
@@ -109,12 +142,56 @@ io.on('connection', (socket) => {
         // Первая проверка, если других игроков ожидающих игру нету, записываем игрока в комнату
         // ожидания, после чего отправляем обратно что пользователь ожидает игру.
         if (gameWaitingPlayers.length == 0) {
+            player.room = hashGenerator(12);
+            socket.join(player.room);
             gameWaitingPlayers.push(player);
+
             console.log('[+] GAME FIND | user added to waiting room : ', gameWaitingPlayers);
-            return socket.emit('game.find.success', {
+
+            return socket.emit('game.find.loading', {
                 loading: true
             })
         }
+
+        let roomName = gameWaitingPlayers[0].room;
+        console.log('[+] GAME FIND | user found : ', gameWaitingPlayers[0]);
+
+        socket.join(roomName);
+
+        // Создаем комнату
+        let gameKey = hashGenerator(11);
+        gamePlayingRoooms[gameKey] = {
+            firstPlayer: {
+                loggedIn: player.loggedIn,
+                socketId: player.socketId,
+                key: player.key,
+                roomName: roomName,
+            },
+            secondPlayer: {
+                loggedIn: gameWaitingPlayers[0].loggedIn,
+                socketId: gameWaitingPlayers[0].socketId,
+                key: gameWaitingPlayers[0].key,
+                roomName: roomName,
+            }
+        };
+
+        console.log('[+] GAME FIND | socket rooms : ', socket.rooms);
+        socket.to(roomName).emit('game.find.success', {
+            userInfo: {
+                login: player.login,
+                score: player.score,
+            },
+            enemyInfo: {
+                login: gameWaitingPlayers[0].login,
+                score: gameWaitingPlayers[0].score
+            }
+        });
+
+        // Удаляем второго игрока из списка ожидания
+        gameWaitingPlayers.splice(0, 1);
+
+        console.log('[+] GAME FIND | creating room : ', gamePlayingRoooms[gameKey]);
+        console.log('==========================================================');
     });
 
     socket.on('login', async function (data) {
