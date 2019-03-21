@@ -310,6 +310,10 @@ input[type="submit"]:hover {
     align-items: center;
 }
 
+.play-container .loading-container {
+    position: absolute;
+}
+
 .play-container .play-wrap {
     transition: 0.3s;
 }

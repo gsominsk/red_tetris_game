@@ -2,6 +2,11 @@ import React, { Component}  from 'react';
 import PropTypes            from 'prop-types'
 
 export default class Loading extends Component {
+    static propTypes = {
+        loading         : PropTypes.bool,
+        alreadyLoaded   : PropTypes.bool
+    };
+
     constructor(props) {
         super(props);
     }
@@ -22,8 +27,3 @@ export default class Loading extends Component {
         );
     }
 }
-
-Loading.propTypes = {
-    loading         : PropTypes.bool,
-    alreadyLoaded   : PropTypes.bool
-};

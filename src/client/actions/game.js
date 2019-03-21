@@ -1,1 +1,26 @@
-export const GAME_ACTIONS = 'GAME_ACTIONS';
+export function ganeHasErrored (bool) {
+    return ({
+        type: 'GAME_HAS_ERRORED',
+        hasErrored: bool
+    })
+}
+
+export function gameIsLoading (bool) {
+    return ({
+        type: 'GAME_LOADING_ACTION',
+        loading: bool
+    })
+}
+
+export function findGame (socket) {
+    return ((d) => {
+        let sessionKey = window.sessionStorage.getItem('sessionRTG') || false;
+
+        socket.emit('game.find', {sessionKey});
+
+        socket.on('game.find.success', (res) => {
+            if (res && res.loading)
+                d(gameIsLoading(true));
+        })
+    })
+}

@@ -22,9 +22,50 @@ const db = mongoose.connection;
 db.on('error', ()=> {console.error('[!] Connection to database failed.')});
 db.once('open', () => {console.log('[+] Connection to database successful.')});
 
-const server        = http.createServer(app);
-const io            = socketServer(server);
-const connections   = [];
+const server            = http.createServer(app);
+const io                = socketServer(server);
+
+let connections       = [];
+
+/*
+* =========== GAME WAITING ROOM ===========
+*
+* Представление того как выглядит комната ожидания.
+*
+* {
+*     loggedIn: false, // anonymous player
+*     userKey: '...' // socket id key
+* },{
+*     loggedIn: true, // registered player
+*     userKey: '...' // session key
+* }
+*
+* =========================================
+* */
+
+let gameWaitingPlayers= [];
+
+/*
+* =========== GAME PLAYING ROOM ===========
+*
+* Представление того как выглядит созданная
+* игровая комната.
+*
+* 'gameKey': { //generated game key from hashGenerator
+*     firstPlayer: {
+*         key: '', // socket or session key
+*         loggedIn: false // anonymous player
+*     },
+*     secondPlayer: {
+*         key: '', // socket or session key
+*         loggedIn: true // registered player
+*     }
+* }
+*
+* =========================================
+* */
+
+let gamePlayingRoooms = {};
 
 server.listen(3000,()=> {console.log("[+] Server is running on port: 3000")});
 
@@ -33,7 +74,47 @@ io.on('connection', (socket) => {
     connections.push(socket);
 
     socket.on('disconnect', () => {
+
+        console.log('=============== DISCONNECTING USER =================');
+        for(let i = 0; i < gameWaitingPlayers.length; i++){
+            console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
+            if (gameWaitingPlayers[i].key === socket.id) {
+                console.log('[+] user disconnected from waiting room : ', gameWaitingPlayers[i]);
+                gameWaitingPlayers.splice(i, 1);
+            }
+        }
         console.log('[+] Disconnected : ', socket.id);
+        console.log('====================================================');
+
+
+    });
+
+    socket.on('game.find', async function (data) {
+        // 1. Сначала попробуем найти второго игрока в списке игкронов в ожидании,
+        //    если нашли, выдаем ключ игры, перебрасываем их в комнату игры, обоим
+        //    отправляем сообщения что игра найдена и удаляем их со списка ожидания.
+        // 2. Если игроков в списке ожидания нету, закидываем пользователя в список
+        //    ожидания, возвращаем сообщение об ожидании.
+
+        // Создаем игрока, если зарегестрирован то вводим ключ сессии, если не зарегестрирован
+        // вводим айди сокета.
+        let player = {
+            loggedIn: (!data.sessionKey ? false : true),
+            key: (!data.sessionKey ? socket.id : data.sessionKey)
+        };
+
+        console.log('[+] GAME FIND | player : ', player);
+        console.log('[+] GAME FIND | waiting players length : ', gameWaitingPlayers.length);
+
+        // Первая проверка, если других игроков ожидающих игру нету, записываем игрока в комнату
+        // ожидания, после чего отправляем обратно что пользователь ожидает игру.
+        if (gameWaitingPlayers.length == 0) {
+            gameWaitingPlayers.push(player);
+            console.log('[+] GAME FIND | user added to waiting room : ', gameWaitingPlayers);
+            return socket.emit('game.find.success', {
+                loading: true
+            })
+        }
     });
 
     socket.on('login', async function (data) {
