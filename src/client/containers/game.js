@@ -4,7 +4,8 @@ import { connect }              from 'react-redux'
 import SideMenu from './sidemenu'
 
 import {
-    findGame
+    findGame,
+    onUnmountClean
 }               from "../actions/game";
 
 import Io       from '../components/Socket'
@@ -24,6 +25,10 @@ class Game extends React.Component {
 
     componentDidMount() {
         this.props.findGame(Io.socket)
+    }
+
+    componentWillUnmount() {
+        this.props.onUnmountClean();
     }
 
     render () {
@@ -518,7 +523,8 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (d) => {
     return {
-        findGame: (socket) => d(findGame(socket))
+        findGame: (socket) => d(findGame(socket)),
+        onUnmountClean: () => d(onUnmountClean())
     };
 }
 

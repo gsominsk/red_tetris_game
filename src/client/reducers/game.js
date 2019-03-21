@@ -9,6 +9,11 @@ export default function (state = initialState, action) {
                 loading: action.loading
             }
 
+        case 'ON_UNMOUNT_CLEAN':
+            return {
+                ...initialState
+            }
+
         default:
             return state
     }

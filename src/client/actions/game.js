@@ -1,7 +1,13 @@
-export function ganeHasErrored (bool) {
+export function gameHasErrored (bool) {
     return ({
         type: 'GAME_HAS_ERRORED',
         hasErrored: bool
+    })
+}
+
+export function onUnmountClean () {
+    return ({
+        type: 'ON_UNMOUNT_CLEAN'
     })
 }
 
