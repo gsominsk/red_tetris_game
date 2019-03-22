@@ -32,12 +32,12 @@ class Game extends React.Component {
 
     check = () => {
         console.log('check')
-    }
+    };
 
     handleKeyPress = (event) => {
         event.preventDefault();
         console.log('[+] KEY PRESS EVENT : ', event.key)
-    }
+    };
 
     componentDidMount() {
         this.props.findGame(Io.socket)

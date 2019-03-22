@@ -45,6 +45,14 @@ export function findGame (socket) {
             d(gameSuccessLoaded(res));
         });
 
+        socket.on('game.start.success', (res) => {
+            socket.emit('game.start', {gameKey: res.gameKey});
+        });
+
+        socket.on('game.update.success', (res) => {
+            console.log('[+] GAME UPDATE SUCCESS : ', res);
+        });
+
         socket.on('game.find.loading', (res) => {
             d(gameIsLoading(res.loading));
         });
@@ -58,5 +66,11 @@ export function findGame (socket) {
 export function disconnectGame (socket) {
     return ((d) => {
         socket.emit('game.disconnect.push');
+    })
+}
+
+export function gameStart (socket) {
+    return ((d) => {
+
     })
 }

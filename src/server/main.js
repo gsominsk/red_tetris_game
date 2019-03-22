@@ -7,6 +7,7 @@ const mongoose      = require('mongoose');
 import to               from './utils/to'
 import mailer           from './utils/mailer';
 import hashGenerator    from './utils/hashGenerator';
+import Game             from './utils/Game';
 
 const User          = require('./models/User');
 
@@ -89,10 +90,10 @@ io.on('connection', (socket) => {
         console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
         for (let room in gamePlayingRoooms) {
             if (gamePlayingRoooms[room].firstPlayer.socketId == socket.id || gamePlayingRoooms[room].secondPlayer.socketId == socket.id) {
-                io.to(gamePlayingRoooms[room].firstPlayer.roomName).emit('game.disconnect', {
+                io.to(gamePlayingRoooms[room].roomName).emit('game.disconnect', {
                     disconnected: true
                 });
-                socket.leave(gamePlayingRoooms[room].firstPlayer.roomName);
+                socket.leave(gamePlayingRoooms[room].roomName);
                 delete gamePlayingRoooms[room];
             }
         }
@@ -114,10 +115,10 @@ io.on('connection', (socket) => {
         console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
         for (let room in gamePlayingRoooms) {
             if (gamePlayingRoooms[room].firstPlayer.socketId == socket.id || gamePlayingRoooms[room].secondPlayer.socketId == socket.id) {
-                io.to(gamePlayingRoooms[room].firstPlayer.roomName).emit('game.disconnect', {
+                io.to(gamePlayingRoooms[room].roomName).emit('game.disconnect', {
                     disconnected: true
                 });
-                socket.leave(gamePlayingRoooms[room].firstPlayer.roomName);
+                socket.leave(gamePlayingRoooms[room].roomName);
                 delete gamePlayingRoooms[room];
             }
         }
@@ -174,14 +175,14 @@ io.on('connection', (socket) => {
                 loggedIn: player.loggedIn,
                 socketId: player.socketId,
                 key: player.key,
-                roomName: roomName,
             },
             secondPlayer: {
                 loggedIn: gameWaitingPlayers[0].loggedIn,
                 socketId: gameWaitingPlayers[0].socketId,
                 key: gameWaitingPlayers[0].key,
-                roomName: roomName,
-            }
+            },
+            game: new Game(),
+            roomName: roomName
         };
 
         io.to(roomName).emit('game.find.success', {
@@ -198,8 +199,24 @@ io.on('connection', (socket) => {
         // Удаляем второго игрока из списка ожидания
         gameWaitingPlayers.splice(0, 1);
 
+        socket.emit('game.start.success', {gameKey});
         console.log('[+] creating room : ', gamePlayingRoooms[gameKey]);
         console.log('==========================================================');
+    });
+
+    socket.on('game.start', async function (data) {
+        console.log('================== GAME START ======================');
+        console.log('[+] game key : ', data.gameKey);
+        console.log('[+] playing room : ', gamePlayingRoooms[data.gameKey]);
+
+        let gameLoop = setInterval(() => {
+            if (gamePlayingRoooms[data.gameKey])
+                io.to(gamePlayingRoooms[data.gameKey].roomName).emit('game.update.success');
+        }, 1000);
+
+        if (!gamePlayingRoooms[data.gameKey])
+            clearInterval(gameLoop);
+        console.log('====================================================');
     });
 
     socket.on('login', async function (data) {
