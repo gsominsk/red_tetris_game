@@ -16,7 +16,7 @@ export default class Loading extends Component {
             return (<div></div>);
 
         return (
-            <div className="loading-container">
+            <div contentEditable={false} className="loading-container">
                 <div className="loading-wrap">
                     loading
                     <span>

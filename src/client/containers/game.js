@@ -30,6 +30,15 @@ class Game extends React.Component {
         this.props.findGame(Io.socket);
     };
 
+    check = () => {
+        console.log('check')
+    }
+
+    handleKeyPress = (event) => {
+        event.preventDefault();
+        console.log('[+] KEY PRESS EVENT : ', event.key)
+    }
+
     componentDidMount() {
         this.props.findGame(Io.socket)
     }
@@ -46,19 +55,19 @@ class Game extends React.Component {
         console.log('[+] GAME | props : ', this.props);
 
         return (
-            <div className="play-container">
+            <div className="play-container" contentEditable={true} suppressContentEditableWarning={true} onKeyUp={this.handleKeyPress}>
                 <SideMenu
                     open={this.state.open}
                     onClick ={this.menuBtnClick}
                 />
 
                 <Loading alreadyLoaded={false} loading={this.props.game.loading}/>
-                <div className={`disconnection-msg ${this.props.game.disconnected ? '' : 'hide'}`}>
+                <div contentEditable={false} className={`disconnection-msg ${this.props.game.disconnected ? '' : 'hide'}`}>
                     PLAYER HAS DISCONNECTED.<br/>
                     YOU WIN.<br/>
                     <div className="restart-game-btn" onClick={this.restartGame}>RESTART?</div>
                 </div>
-                <div className={`play-wrap ${this.state.open || this.props.game.loading || this.props.game.disconnected ? 'opacity-zero-point-two' : ''}`}>
+                <div contentEditable={false} className={`play-wrap ${this.state.open || this.props.game.loading || this.props.game.disconnected ? 'opacity-zero-point-two' : ''}`}>
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">
                             <div className="player-login">

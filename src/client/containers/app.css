@@ -522,4 +522,5 @@ input[type="submit"]:hover {
     animation-iteration-count: infinite;
     animation-name: pointsLoadingAnimation;
     overflow: hidden;
+    word-break: break-all;
 }
