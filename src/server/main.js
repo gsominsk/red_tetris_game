@@ -120,7 +120,7 @@ io.on('connection', (socket) => {
         let err, user;
         if (data.sessionKey) {
             [err, user] = await to(User.findOne({
-                sessionKey: data.sessionKey
+                session: data.sessionKey
             }));
         }
 
@@ -137,6 +137,7 @@ io.on('connection', (socket) => {
         };
 
         console.log('[+] GAME FIND | player : ', player);
+        console.log('[+] GAME FIND | user : ', user);
         console.log('[+] GAME FIND | waiting players length : ', gameWaitingPlayers.length);
 
         // Первая проверка, если других игроков ожидающих игру нету, записываем игрока в комнату

@@ -56,10 +56,10 @@ class Game extends React.Component {
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">
                             <div className="player-login">
-                                {/*{this.props.game.enemyInfo.login}*/}
+                                {this.props.game.enemyInfo.login}
                             </div>
                             <div className="player-score">
-                                {/*{this.props.game.enemyInfo.score}*/}
+                                {this.props.game.enemyInfo.score}
                             </div>
                         </div>
                         <div className="game-map">
@@ -290,10 +290,10 @@ class Game extends React.Component {
                     <div className="player-wrap player-two-wrap">
                         <div className="player-info">
                             <div className="player-login">
-                                {/*{this.props.game.userInfo.login}*/}
+                                {this.props.game.userInfo.login}
                             </div>
                             <div className="player-score">
-                                {/*{this.props.game.userInfo.score}*/}
+                                {this.props.game.userInfo.score}
                             </div>
                         </div>
                         <div className="game-map">
