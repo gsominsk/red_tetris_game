@@ -353,6 +353,9 @@ input[type="submit"]:hover {
     padding-bottom: 15px;
     margin-bottom: 20px;
 }
+/*.play-wrap .player-wrap:last-child .player-info {*/
+    /*border-bottom: 2px solid limegreen;*/
+/*}*/
 
 .game-map {
     height: 500px;

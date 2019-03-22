@@ -100,7 +100,29 @@ io.on('connection', (socket) => {
         console.log('[+] Disconnected : ', socket.id);
     });
 
+    socket.on('game.disconnect.push', async function () {
+        console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
+        for(let i = 0; i < gameWaitingPlayers.length; i++){
+            console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
+            if (gameWaitingPlayers[i].socketId === socket.id) {
+                console.log('[+] user disconnected from waiting room : ', gameWaitingPlayers[i]);
+                gameWaitingPlayers.splice(i, 1);
+            }
+        }
+        console.log('======================================================================');
 
+        console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+        for (let room in gamePlayingRoooms) {
+            if (gamePlayingRoooms[room].firstPlayer.socketId == socket.id || gamePlayingRoooms[room].secondPlayer.socketId == socket.id) {
+                io.to(gamePlayingRoooms[room].firstPlayer.roomName).emit('game.disconnect', {
+                    disconnected: true
+                });
+                socket.leave(gamePlayingRoooms[room].firstPlayer.roomName);
+                delete gamePlayingRoooms[room];
+            }
+        }
+        console.log('=====================================================================');
+    });
 
     socket.on('game.find', async function (data) {
         let err, user;
@@ -109,7 +131,6 @@ io.on('connection', (socket) => {
                 session: data.sessionKey
             }));
         }
-
 
         console.log('================= TRYING TO FIND GAME ====================');
 

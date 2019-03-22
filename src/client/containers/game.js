@@ -5,6 +5,7 @@ import SideMenu from './sidemenu'
 
 import {
     findGame,
+    disconnectGame,
     onUnmountClean
 }               from "../actions/game";
 
@@ -25,15 +26,20 @@ class Game extends React.Component {
 
     restartGame = () => {
         console.log('restart game btn click')
+        this.props.onUnmountClean();
         this.props.findGame(Io.socket);
-    }
+    };
 
     componentDidMount() {
         this.props.findGame(Io.socket)
     }
 
-    componentWillUnmount() {
+    componentWillMount() {
         this.props.onUnmountClean();
+    }
+
+    componentWillUnmount() {
+        this.props.disconnectGame(Io.socket);
     }
 
     render () {
@@ -536,8 +542,9 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (d) => {
     return {
         findGame: (socket) => d(findGame(socket)),
+        disconnectGame: (socket) => d(disconnectGame(socket)),
         onUnmountClean: () => d(onUnmountClean())
-    };
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);

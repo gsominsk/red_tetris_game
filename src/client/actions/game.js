@@ -54,3 +54,9 @@ export function findGame (socket) {
         });
     })
 }
+
+export function disconnectGame (socket) {
+    return ((d) => {
+        socket.emit('game.disconnect.push');
+    })
+}
