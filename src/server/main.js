@@ -176,7 +176,7 @@ io.on('connection', (socket) => {
         };
 
         console.log('[+] GAME FIND | socket rooms : ', socket.rooms);
-        socket.to(roomName).emit('game.find.success', {
+        io.to(roomName).emit('game.find.success', {
             userInfo: {
                 login: player.login,
                 score: player.score,
