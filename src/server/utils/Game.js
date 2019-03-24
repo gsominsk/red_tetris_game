@@ -8,11 +8,11 @@ class Figure {
             {
                 rotationIndex: 0,
                 maxRotations: 4,
+                color: 'middle-blue',
                 rotations: [
                     [
                         [0,0,0,0],
-                        [1,1,1,1],
-                        [0,0,0,0]
+                        [1,1,1,1]
                     ], [
                         [0,0,1],
                         [0,0,1],
@@ -32,135 +32,136 @@ class Figure {
             },{
                 rotationIndex: 0,
                 maxRotations: 4,
+                color: 'blurple',
                 rotations: [
                     [
-                        [1,0,0],
-                        [1,1,1]
+                        [2,0,0],
+                        [2,2,2]
                     ],
                     [
-                        [0,1,1],
-                        [0,1,0],
-                        [0,1,0]
+                        [0,2,2],
+                        [0,2,0],
+                        [0,2,0]
                     ],
                     [
                         [0,0,0],
-                        [1,1,1],
-                        [0,0,1]
+                        [2,2,2],
+                        [0,0,2]
                     ],
                     [
-                        [0,1,0],
-                        [0,1,0],
-                        [1,1,0]
+                        [0,2,0],
+                        [0,2,0],
+                        [2,2,0]
                     ]
                 ]
             },{
                 rotationIndex: 0,
                 maxRotations: 4,
+                color: 'quince-jelly',
                 rotations: [
                     [
-                        [0,0,1],
-                        [1,1,1],
+                        [0,0,3],
+                        [3,3,3]
+                    ],
+                    [
+                        [0,3,0],
+                        [0,3,0],
+                        [0,3,3]
+                    ],
+                    [
                         [0,0,0],
+                        [3,3,3],
+                        [3,0,0]
                     ],
                     [
-                        [0,1,0],
-                        [0,1,0],
-                        [0,1,1]
-                    ],
-                    [
-                        [0,0,0],
-                        [1,1,1],
-                        [1,0,0]
-                    ],
-                    [
-                        [1,1,0],
-                        [0,1,0],
-                        [0,1,0]
+                        [3,3,0],
+                        [0,3,0],
+                        [0,3,0]
                     ]
                 ]
             },{
                 rotationIndex: 0,
                 maxRotations: 0,
+                color: 'turbo',
                 rotations: [
                     [
-                        [1,1],
-                        [1,1]
+                        [4,4],
+                        [4,4]
                     ]
                 ]
             },{
                 rotationIndex: 0,
                 maxRotations: 4,
+                color: 'june-bud',
                 rotations: [
                     [
-                        [0,1,1],
-                        [1,1,0],
-                        [0,0,0]
-
+                        [0,5,5],
+                        [5,5,0]
                     ],
                     [
-                        [0,1,0],
-                        [0,1,1],
-                        [0,0,1]
+                        [0,5,0],
+                        [0,5,5],
+                        [0,0,5]
                     ],
                     [
                         [0,0,0],
-                        [0,1,1],
-                        [1,1,0]
+                        [0,5,5],
+                        [5,5,0]
                     ],
                     [
-                        [1,0,0],
-                        [1,1,0],
-                        [0,1,0]
+                        [5,0,0],
+                        [5,5,0],
+                        [0,5,0]
                     ]
                 ]
             },{
                 rotationIndex: 0,
                 maxRotations: 4,
+                color: 'steel-pink',
                 rotations: [
                     [
-                        [0,1,0],
-                        [1,1,1],
-                        [0,0,0]
+                        [0,6,0],
+                        [6,6,6]
                     ],
                     [
-                        [0,1,0],
-                        [0,1,1],
-                        [0,1,0]
+                        [0,6,0],
+                        [0,6,6],
+                        [0,6,0]
                     ],
                     [
                         [0,0,0],
-                        [1,1,1],
-                        [0,1,0]
+                        [6,6,6],
+                        [0,6,0]
                     ],
                     [
-                        [0,1,0],
-                        [1,1,0],
-                        [0,1,0]
+                        [0,6,0],
+                        [6,6,0],
+                        [0,6,0]
                     ]
                 ]
             },{
                 rotationIndex: 0,
                 maxRotations: 4,
+                color: 'red',
                 rotations: [
                     [
-                        [1,1,0],
-                        [0,1,1],
-                        [0,0,0]
+                        [7,7,0],
+                        [0,7,7]
                     ],
                     [
-                        [0,0,1],
-                        [0,1,1],
-                        [0,1,0]
+                        [0,0,7],
+                        [0,7,7],
+                        [0,7,0]
                     ],
                     [
                         [0,0,0],
-                        [1,1,0],
-                        [0,1,1]
+                        [7,7,0],
+                        [0,7,7]
                     ],
                     [
-                        [0,1,0],
-                        [1,1,0],
-                        [1,0,0]
+                        [0,7,0],
+                        [7,7,0],
+                        [7,0,0]
                     ]
                 ]
             }
@@ -178,163 +179,6 @@ class Figure {
     }
 }
 
-let testFigures = [
-    {
-        rotationIndex: 0,
-        maxRotations: 4,
-        rotations: [
-            [
-                [0,0,0,0],
-                [1,1,1,1]
-            ], [
-                [0,1],
-                [0,1],
-                [0,1],
-                [0,1]
-            ], [
-                [0,0,0,0],
-                [0,0,0,0],
-                [1,1,1,1]
-            ], [
-                [1,0],
-                [1,0],
-                [1,0],
-                [1,0]
-            ]
-        ]
-    },{
-        rotationIndex: 0,
-        maxRotations: 4,
-        rotations: [
-            [
-                [1,0,0],
-                [1,1,1]
-            ],
-            [
-                [0,1,1],
-                [0,1,0],
-                [0,1,0]
-            ],
-            [
-                [0,0,0],
-                [1,1,1],
-                [0,0,1]
-            ],
-            [
-                [0,1,0],
-                [0,1,0],
-                [1,1,0]
-            ]
-        ]
-    },{
-        rotationIndex: 0,
-        maxRotations: 4,
-        rotations: [
-            [
-                [0,0,1],
-                [1,1,1]
-            ],
-            [
-                [0,1,0],
-                [0,1,0],
-                [0,1,1]
-            ],
-            [
-                [0,0,0],
-                [1,1,1],
-                [1,0,0]
-            ],
-            [
-                [1,1,0],
-                [0,1,0],
-                [0,1,0]
-            ]
-        ]
-    },{
-        rotationIndex: 0,
-        maxRotations: 0,
-        rotations: [
-            [
-                [1,1],
-                [1,1]
-            ]
-        ]
-    },{
-        rotationIndex: 0,
-        maxRotations: 4,
-        rotations: [
-            [
-                [0,1,1],
-                [1,1,0]
-
-            ],
-            [
-                [0,1,0],
-                [0,1,1],
-                [0,0,1]
-            ],
-            [
-                [0,0,0],
-                [0,1,1],
-                [1,1,0]
-            ],
-            [
-                [1,0,0],
-                [1,1,0],
-                [0,1,0]
-            ]
-        ]
-    },{
-        rotationIndex: 0,
-        maxRotations: 4,
-        rotations: [
-            [
-                [0,1,0],
-                [1,1,1]
-            ],
-            [
-                [0,1,0],
-                [0,1,1],
-                [0,1,0]
-            ],
-            [
-                [0,0,0],
-                [1,1,1],
-                [0,1,0]
-            ],
-            [
-                [0,1,0],
-                [1,1,0],
-                [0,1,0]
-            ]
-        ]
-    },{
-        rotationIndex: 0,
-        maxRotations: 4,
-        rotations: [
-            [
-                [1,1,0],
-                [0,1,1]
-            ],
-            [
-                [0,0,1],
-                [0,1,1],
-                [0,1,0]
-            ],
-            [
-                [0,0,0],
-                [1,1,0],
-                [0,1,1]
-            ],
-            [
-                [0,1,0],
-                [1,1,0],
-                [1,0,0]
-            ]
-        ]
-    }
-];
-
 class Game {
     constructor () {
         console.log('=============== CREATING GAME FIELD ==================');
@@ -343,11 +187,9 @@ class Game {
             el: [],
             onField: false,
             lastStep: false,
-            vPos: 19,
+            vPos: 1,
             hPos: 2
         };
-
-        this.figureVerticalPosition = 19;
 
         // generating new field
         this.generateMap();
@@ -403,9 +245,9 @@ class Game {
         * */
 
         let figurePosition = this.figure.hPos;
-        let figureWidth = this.figure.el.rotations[this.figure.rotationIndex][0].length;
-        let figureHeight = this.figure.el.rotations[this.figure.rotationIndex].length;
-        let figure = this.figure.el.rotations[this.figure.rotationIndex];
+        let figureWidth = this.figure.el.rotations[this.figure.el.rotationIndex][0].length;
+        let figureHeight = this.figure.el.rotations[this.figure.el.rotationIndex].length;
+        let figure = this.figure.el.rotations[this.figure.el.rotationIndex];
 
         console.log('[+] figure height : ', figureHeight);
         console.log('[+] figure width : ', figureWidth);
@@ -474,6 +316,43 @@ class Game {
         // }
     }
 
+    step() {
+        this.clearMap();
+        this.figure.vPos++;
+        if (this.figure.vPos > 20)
+            this.figure.vPos = 1;
+
+        this.placeFigureOnMap();
+    }
+
+    getFiguresPosition () {
+        let res = [];
+        for (let i = 0; i < this.map.length; i++) {
+            for (let j = 0; j < this.map[0].length; j++) {
+                if (this.map[i][j] != 0) {
+                    res.push({
+                        pos: ((i) * 10) + (j),
+                        color: this.figureColors()[this.map[i][j]]
+                    })
+                }
+            }
+        }
+
+        return res;
+    }
+
+    figureColors () {
+        return ({
+            1: 'middle-blue',
+            2: 'blurple',
+            3: 'quince-jelly',
+            4: 'turbo',
+            5: 'june-bud',
+            6: 'steel-pink',
+            7: 'red'
+        });
+    }
+
     generateMap () {
         for (let l = 0; l < 20; l++) {
             this.map[l] = [];
@@ -481,6 +360,12 @@ class Game {
                 this.map[l][c] = 0;
             }
         }
+    }
+
+    clearMap () {
+        for (let l = 0; l < 20; l++)
+            for (let c = 0; c < 10; c++)
+                this.map[l][c] != 0 ? this.map[l][c] = 0 : 0;
     }
 
     getRandomInt(min, max) {

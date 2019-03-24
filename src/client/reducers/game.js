@@ -1,14 +1,16 @@
 const initialState = {
     loading: false,
     disconnected: false,
-    userInfo: {
+    firstPlayer: {
         login: 'Anonymous',
-        score: 0
+        score: 0,
+        figures: []
     },
-    enemyInfo: {
+    secondPlayer: {
         login: 'Anonymous',
-        score: 0
-    },
+        score: 0,
+        figures: []
+    }
 };
 
 export default function (state = initialState, action) {
@@ -30,13 +32,26 @@ export default function (state = initialState, action) {
                 ...state,
                 loading: action.loading,
                 disconnected: action.disconnected,
-                userInfo: {
-                    login: action.userInfo.login,
-                    score: action.userInfo.score
+                firstPlayer: {
+                    login: action.firstPlayer.login,
+                    score: action.firstPlayer.score,
+                    figures: action.firstPlayer.figures
                 },
-                enemyInfo: {
-                    login: action.enemyInfo.login,
-                    score: action.enemyInfo.score
+                secondPlayer: {
+                    login: action.secondPlayer.login,
+                    score: action.secondPlayer.score,
+                    figures: action.secondPlayer.figures
+                }
+            };
+
+        case 'GAME_UPDATE_SUCCESS':
+            return {
+                ...state,
+                firstPlayer: {
+                    figures: action.firstPlayer.figures
+                },
+                secondPlayer: {
+                    figures: action.secondPlayer.figures
                 }
             };
 

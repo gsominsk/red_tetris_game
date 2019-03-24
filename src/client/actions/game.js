@@ -3,14 +3,28 @@ export function gameSuccessLoaded (data) {
         type: 'GAME_SUCCESS_LOADED',
         loading: false,
         disconnected: false,
-        userInfo: {
-            login: data.userInfo.login,
-            score: data.userInfo.score
+        firstPlayer: {
+            login: data.firstPlayer.login,
+            score: data.firstPlayer.score,
+            figures: data.firstPlayer.figures
         },
-        enemyInfo: {
-            login: data.enemyInfo.login,
-            score: data.enemyInfo.score
-        }
+        secondPlayer: {
+            login: data.secondPlayer.login,
+            score: data.secondPlayer.score,
+            figures: data.secondPlayer.figures
+        },
+    })
+}
+
+export function gameUpdateSuccess (data) {
+    return ({
+        type: 'GAME_UPDATE_SUCCESS',
+        firstPlayer: {
+            figures: data.firstPlayer.figures
+        },
+        secondPlayer: {
+            figures: data.secondPlayer.figures
+        },
     })
 }
 
@@ -51,6 +65,7 @@ export function findGame (socket) {
 
         socket.on('game.update.success', (res) => {
             console.log('[+] GAME UPDATE SUCCESS : ', res);
+            d(gameUpdateSuccess(res));
         });
 
         socket.on('game.find.loading', (res) => {
