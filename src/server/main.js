@@ -200,14 +200,14 @@ io.on('connection', (socket) => {
         gameWaitingPlayers.splice(0, 1);
 
         socket.emit('game.start.success', {gameKey});
-        console.log('[+] creating room : ', gamePlayingRoooms[gameKey]);
+        console.log('[+] creating room : ', gamePlayingRoooms[gameKey].roomName);
         console.log('==========================================================');
     });
 
     socket.on('game.start', async function (data) {
         console.log('================== GAME START ======================');
         console.log('[+] game key : ', data.gameKey);
-        console.log('[+] playing room : ', gamePlayingRoooms[data.gameKey]);
+        console.log('[+] playing room : ', gamePlayingRoooms[data.gameKey].roomName);
 
         let gameLoop = setInterval(() => {
             if (gamePlayingRoooms[data.gameKey])
