@@ -410,7 +410,7 @@ class Game {
         console.log('[+] figure height : ', figureHeight);
         console.log('[+] figure width : ', figureWidth);
         console.log('[+] figure position : ', figurePosition);
-        console.log('[+] figure : ', f[i].rotations[0]);
+        console.log('[+] figure : ', figure);
 
         figurePosition = figurePosition - (figureWidth > 2 ? (figureWidth - 2) : 0);
         console.log('[+] figure position start : ', figurePosition);

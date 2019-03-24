@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="Добавил обновление карты.&#10;Добавил класс игры который создает карту и управляет фигуру.&#10;Создал класс фигуры который создает фигуру.">
+    <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/utils/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/utils/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="363" lean-forward="true" selection-start-line="363" selection-end-line="363" />
+            <state relative-caret-position="304">
+              <caret line="412" column="44" selection-start-line="412" selection-start-column="44" selection-end-line="412" selection-end-column="44" />
               <folding>
                 <element signature="e#5446#5843#0" />
                 <element signature="e#5922#6345#0" />
@@ -369,7 +368,7 @@
       <workItem from="1553188719987" duration="4775000" />
       <workItem from="1553196717911" duration="753000" />
       <workItem from="1553257949065" duration="17833000" />
-      <workItem from="1553429137699" duration="8233000" />
+      <workItem from="1553429137699" duration="8430000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -637,11 +636,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553274938524</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Добавил логику отрисовки фигуры на карту по вертикали и горизонтали.&#10;Добавил рандомную позицию по горизонтали фигуры на карте.">
+      <created>1553438273783</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1553438273784</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="232956000" />
+    <option name="totallyTimeSpent" value="233153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -698,7 +704,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Короче давно не пушил.&#10;Сделана логика для регистрации пользователя, проверка формы,&#10;тестовые данные которые пришли, переработан редьюсер компонента, добавлена&#10;отмена дефолтного действия при субмите формы.&#10;Переделан редьюсер для логина, убрано дефолтное действие при субмите формы." />
     <MESSAGE value="Поменял структуру редьюса в рейтингах. По хорошему счету это должен быть &#10;один редьюс потому что структура у этих редьюсов одна и та же." />
     <MESSAGE value="Сделал логику на страничке восстановления пароля.&#10;Проверка полей, вывод ошибки, получение и отправка данных.&#10;Сделал разделение формы на форму имейла и форму кода.&#10;Добавил два новых компонента для вывода ошибки или саксес меммеджа." />
     <MESSAGE value="Сделал клин логина при анмаунте" />
@@ -723,7 +728,8 @@
     <MESSAGE value="Добавил отключение из очереди и дисконект от игры в случае перехода одного&#10;из пользователей на другую страничку" />
     <MESSAGE value="сделал отлов кнопок во время игры" />
     <MESSAGE value="Добавил обновление карты.&#10;Добавил класс игры который создает карту и управляет фигуру.&#10;Создал класс фигуры который создает фигуру." />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил обновление карты.&#10;Добавил класс игры который создает карту и управляет фигуру.&#10;Создал класс фигуры который создает фигуру." />
+    <MESSAGE value="Добавил логику отрисовки фигуры на карту по вертикали и горизонтали.&#10;Добавил рандомную позицию по горизонтали фигуры на карте." />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил логику отрисовки фигуры на карту по вертикали и горизонтали.&#10;Добавил рандомную позицию по горизонтали фигуры на карте." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/socket/src/js/client.js" />
@@ -1032,8 +1038,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="363" lean-forward="true" selection-start-line="363" selection-end-line="363" />
+        <state relative-caret-position="304">
+          <caret line="412" column="44" selection-start-line="412" selection-start-column="44" selection-end-line="412" selection-end-column="44" />
           <folding>
             <element signature="e#5446#5843#0" />
             <element signature="e#5922#6345#0" />
