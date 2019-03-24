@@ -190,6 +190,7 @@ class Game {
             vPos: 1,
             hPos: 2
         };
+        this.heap = [];
 
         // generating new field
         this.generateMap();
@@ -201,6 +202,7 @@ class Game {
             this.figure.el = new Figure();
             this.figure.hPos = this.getRandomInt(2, 8);
             console.log('[+] generating new figure : ', this.figure.el.rotations[this.figure.el.rotationIndex]);
+            this.placeFigureToHeap();
             this.placeFigureOnMap();
         }
 
@@ -260,16 +262,19 @@ class Game {
         let figureLineToDraw = figureHeight - 1;
         let mapLine = this.figure.vPos - 1;
 
-        // Проверяем упала ли фигура до дна
-        if (!this.map[mapLine])
-            this.figure.lastStep = true;
-
-        for (let fH = 0; mapLine >= 0 && fH < figureHeight; mapLine--, fH++, figureLineToDraw--) {
+        console.log('[+] map line : ', mapLine);
+        for (let fH = 0; mapLine >= 0 && fH < figureHeight && !this.figure.lastStep; mapLine--, fH++, figureLineToDraw--) {
             for (let cell = 0, mapPos = figurePosition; cell < this.map[0].length && cell < figureWidth; cell++, mapPos++) {
-                // console.log('[+] figure line to draw : ', figureLineToDraw);
                 this.map[mapLine][mapPos] = figure[figureLineToDraw][cell];
             }
         }
+
+        // Проверяем упала ли фигура до дна
+        if (!this.map[this.figure.vPos]) {
+            this.figure.lastStep = true;
+            console.log('[+] last step : ', this.figure.lastStep);
+        }
+
 
         console.log('[+] figure placed on map : ');
         console.log(this.map);
@@ -317,12 +322,45 @@ class Game {
     }
 
     step() {
-        this.clearMap();
-        this.figure.vPos++;
-        if (this.figure.vPos > 20)
-            this.figure.vPos = 1;
+        console.log('================= STEP ===================');
+        console.log('[+] figure : ', this.figure);
 
+        if (this.figure.lastStep) {
+            this.figure = {
+                el: new Figure(),
+                onField: false,
+                lastStep: false,
+                vPos: 1,
+                hPos: this.getRandomInt(2, 8),
+            };
+
+            this.placeFigureToHeap()
+        } else {
+            this.figure.vPos++;
+        }
+
+        // this.clearMap();
+        this.addHeapOnMap();
         this.placeFigureOnMap();
+
+        // if (this.figure.vPos > 20)
+        //     this.figure.vPos = 1;
+        console.log('==========================================');
+    }
+
+    placeFigureToHeap () {
+        console.log('================= PLACING TO HEAP ===================');
+        this.heap = [];
+
+        for (let l = 0; l < 20; l++) {
+            this.heap[l] = [];
+            for (let c = 0; c < 10; c++) {
+                this.heap[l][c] = this.map[l][c];
+            }
+        }
+
+        console.log('[+] heap : ', this.heap);
+        console.log('=====================================================');
     }
 
     getFiguresPosition () {
@@ -356,16 +394,36 @@ class Game {
     generateMap () {
         for (let l = 0; l < 20; l++) {
             this.map[l] = [];
-            for (let c = 0; c < 10; c++) {
+            for (let c = 0; c < 10; c++)
                 this.map[l][c] = 0;
-            }
         }
     }
 
     clearMap () {
+        console.log('================= CLEARING MAP ===================');
+        console.log('[+] map cleared before heap : ', this.heap);
         for (let l = 0; l < 20; l++)
             for (let c = 0; c < 10; c++)
                 this.map[l][c] != 0 ? this.map[l][c] = 0 : 0;
+        console.log('[+] map cleared after heap : ', this.heap);
+        console.log('==================================================');
+    }
+
+    addHeapOnMap () {
+        console.log('================= ADDING HEAP TO MAP ===================');
+        // this.map = [...this.heap];
+
+        this.map = [];
+        for (let l = 0; l < 20; l++) {
+            this.map[l] = [];
+            for (let c = 0; c < 10; c++) {
+                this.map[l][c] = this.heap[l][c];
+            }
+        }
+
+
+        console.log('[+] map from heap : ', this.map);
+        console.log('========================================================');
     }
 
     getRandomInt(min, max) {
