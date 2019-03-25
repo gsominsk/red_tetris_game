@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/actions/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/actions/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/reducers/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/reducers/game.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/utils/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/utils/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/src/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="229" column="13" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="13" />
+              <caret line="65" column="3" lean-forward="true" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="3" />
               <folding>
                 <element signature="e#215#256#0" expanded="true" />
                 <element signature="e#2162#3430#0" />
@@ -66,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="496" column="53" lean-forward="true" selection-start-line="496" selection-start-column="53" selection-end-line="496" selection-end-column="53" />
+            <state relative-caret-position="16">
+              <caret line="258" lean-forward="true" selection-start-line="258" selection-end-line="258" />
               <folding>
                 <element signature="n#Figure#0" />
                 <element signature="n#!!block;n#constructor#0;n#Figure#0" />
@@ -80,6 +76,7 @@
                 <element signature="e#8946#8969#0" />
                 <element signature="n#!!block;n#placeFigureToHeap#0;n#Game#0" />
                 <element signature="n#!!block;n#getFiguresPosition#0;n#Game#0" />
+                <element signature="n#!!block;n#getFigureSize#0;n#Game#0" />
                 <element signature="n#!!block;n#figureColors#0;n#Game#0" />
                 <element signature="n#!!block;n#generateMap#0;n#Game#0" />
                 <element signature="n#!!block;n#addHeapOnMap#0;n#Game#0" />
@@ -291,7 +288,7 @@
       <workItem from="1553196717911" duration="753000" />
       <workItem from="1553257949065" duration="17833000" />
       <workItem from="1553429137699" duration="24434000" />
-      <workItem from="1553515180484" duration="16087000" />
+      <workItem from="1553515180484" duration="19616000" />
     </task>
     <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
       <created>1551786714987</created>
@@ -594,11 +591,25 @@
       <option name="project" value="LOCAL" />
       <updated>1553518121687</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Сделал движение фигур влево и вправо.&#10;Сделал поворот фигур вокруг своей оси.&#10;Не сделал проверку на то что при повороте оно может влезть в хип.">
+      <created>1553533113653</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1553533113653</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Пофиксил баг из за которого при последнем шаге, фигура не записывалась&#10;на карту, из за того что при последнем шаге один шаг пустой для того&#10;что бы человек мог двинуть фигуру, при этом если мы делали движение, &#10;фигура не записывалась">
+      <created>1553535895861</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1553535895861</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="265244000" />
+    <option name="totallyTimeSpent" value="268773000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -632,8 +643,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Переписал сервер, добавил сокеты.&#10;Обновил бейбл и добавил возможность использования асин евейта.&#10;Добавил описание колекции пользователя.&#10;Подключил монгуз." />
-    <MESSAGE value="Добавил регистрацию пользователя" />
     <MESSAGE value="Апдейт регистрации пользователя, теперь при регистарции идет обновление &#10;стейта регистра в ноль, что бы не выводились лищние данные" />
     <MESSAGE value="Сделал вместо двух редьюсеров и екшенов регистер и логин один юзер, &#10;перевел на него контейнеры регистр и юзер.&#10;Сделал вход, но не до конца, пока что только проверку пользователя на &#10;валидность, надо сделать переходы и сессию через локал сторейдж" />
     <MESSAGE value="Обновлена модель юзера.&#10;Переделаны и убраны лишние редьюсеры.&#10;Сделано добавление сессии при входе.&#10;Добавлены автоматические переходы во время регистрации, логина и восстановления&#10;пароля." />
@@ -657,7 +666,9 @@
     <MESSAGE value="Вывод фигуры клиенту" />
     <MESSAGE value="Сделал создание кучи, записываение фигуры в кучу и создание новой фигуры. &#10;Пока что не работает логика наложения друг на друга" />
     <MESSAGE value="Добавил вертикальное наложение фигур на кучу. &#10;Так же надо сделать горизонтальное когда например фигура Г попытается&#10;встать вправо в кучу с вырезом под крючок Г" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил вертикальное наложение фигур на кучу. &#10;Так же надо сделать горизонтальное когда например фигура Г попытается&#10;встать вправо в кучу с вырезом под крючок Г" />
+    <MESSAGE value="Сделал движение фигур влево и вправо.&#10;Сделал поворот фигур вокруг своей оси.&#10;Не сделал проверку на то что при повороте оно может влезть в хип." />
+    <MESSAGE value="Пофиксил баг из за которого при последнем шаге, фигура не записывалась&#10;на карту, из за того что при последнем шаге один шаг пустой для того&#10;что бы человек мог двинуть фигуру, при этом если мы делали движение, &#10;фигура не записывалась" />
+    <option name="LAST_COMMIT_MESSAGE" value="Пофиксил баг из за которого при последнем шаге, фигура не записывалась&#10;на карту, из за того что при последнем шаге один шаг пустой для того&#10;что бы человек мог двинуть фигуру, при этом если мы делали движение, &#10;фигура не записывалась" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/socket/src/js/reducers/reducer.js" />
@@ -978,7 +989,7 @@
     <entry file="file://$PROJECT_DIR$/src/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="229" column="13" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="13" />
+          <caret line="65" column="3" lean-forward="true" selection-start-line="65" selection-start-column="3" selection-end-line="65" selection-end-column="3" />
           <folding>
             <element signature="e#215#256#0" expanded="true" />
             <element signature="e#2162#3430#0" />
@@ -1007,8 +1018,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="496" column="53" lean-forward="true" selection-start-line="496" selection-start-column="53" selection-end-line="496" selection-end-column="53" />
+        <state relative-caret-position="16">
+          <caret line="258" lean-forward="true" selection-start-line="258" selection-end-line="258" />
           <folding>
             <element signature="n#Figure#0" />
             <element signature="n#!!block;n#constructor#0;n#Figure#0" />
@@ -1021,6 +1032,7 @@
             <element signature="e#8946#8969#0" />
             <element signature="n#!!block;n#placeFigureToHeap#0;n#Game#0" />
             <element signature="n#!!block;n#getFiguresPosition#0;n#Game#0" />
+            <element signature="n#!!block;n#getFigureSize#0;n#Game#0" />
             <element signature="n#!!block;n#figureColors#0;n#Game#0" />
             <element signature="n#!!block;n#generateMap#0;n#Game#0" />
             <element signature="n#!!block;n#addHeapOnMap#0;n#Game#0" />

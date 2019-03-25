@@ -295,6 +295,10 @@ class Game {
             }
         }
 
+        if (this.figure.moved && !onHeap) {
+            this.figure.lastStep = false;
+        }
+
         // Проверяем упала ли фигура до дна
         if (onHeap) {
             this.figure.lastStep = true;
