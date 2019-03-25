@@ -265,12 +265,34 @@ class Game {
         console.log('[+] map line : ', mapLine);
         for (let fH = 0; mapLine >= 0 && fH < figureHeight && !this.figure.lastStep; mapLine--, fH++, figureLineToDraw--) {
             for (let cell = 0, mapPos = figurePosition; cell < this.map[0].length && cell < figureWidth; cell++, mapPos++) {
-                this.map[mapLine][mapPos] = figure[figureLineToDraw][cell];
+                // Условие на случай если угол фигуры пустой, при падении на угол другой фигуры
+                // не перерисовывало его в пустоту
+                if (this.map[mapLine][mapPos] == 0)
+                    this.map[mapLine][mapPos] = figure[figureLineToDraw][cell];
             }
         }
 
+        // После отрисовки фигуры, проверяем можно ли ее отрисовать на следующем ходу.
+        // Если на следующем ходу она пересекается с хипом значит это ее последний ход
+        // до записи в хип и мы ставим ласт степ у тру.
+
+        let onHeap = false;
+        figureLineToDraw = figureHeight - 1;
+        mapLine = this.figure.vPos;
+
+        if (!this.map[mapLine])
+            onHeap = true;
+
+        for (let i = figurePosition, cell = 0; cell < this.map[0].length && cell < figureWidth && !onHeap; i++, cell++) {
+            if (this.map[mapLine][i] != 0 && figure[figureLineToDraw][cell] != 0) {
+                onHeap = true;
+                break ;
+            }
+        }
+
+
         // Проверяем упала ли фигура до дна
-        if (!this.map[this.figure.vPos]) {
+        if (onHeap) {
             this.figure.lastStep = true;
             console.log('[+] last step : ', this.figure.lastStep);
         }
@@ -339,12 +361,9 @@ class Game {
             this.figure.vPos++;
         }
 
-        // this.clearMap();
         this.addHeapOnMap();
         this.placeFigureOnMap();
 
-        // if (this.figure.vPos > 20)
-        //     this.figure.vPos = 1;
         console.log('==========================================');
     }
 
@@ -397,16 +416,6 @@ class Game {
             for (let c = 0; c < 10; c++)
                 this.map[l][c] = 0;
         }
-    }
-
-    clearMap () {
-        console.log('================= CLEARING MAP ===================');
-        console.log('[+] map cleared before heap : ', this.heap);
-        for (let l = 0; l < 20; l++)
-            for (let c = 0; c < 10; c++)
-                this.map[l][c] != 0 ? this.map[l][c] = 0 : 0;
-        console.log('[+] map cleared after heap : ', this.heap);
-        console.log('==================================================');
     }
 
     addHeapOnMap () {
