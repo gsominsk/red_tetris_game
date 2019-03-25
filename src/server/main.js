@@ -227,7 +227,7 @@ io.on('connection', (socket) => {
 
                 io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.update.success', res);
             }
-        }, 10000);
+        }, 1000);
 
 
         if (!gamePlayingRooms[data.gameKey])

@@ -7,7 +7,7 @@ class Figure {
         return ([
             {
                 rotationIndex: 0,
-                maxRotations: 4,
+                maxRotations: 2,
                 color: 'middle-blue',
                 rotations: [
                     [
@@ -173,6 +173,7 @@ class Game {
     constructor () {
         console.log('=============== CREATING GAME FIELD ==================');
         this.map = [];
+        this.newStep = false;
         this.figure = {
             el: [],
             onField: false,
@@ -189,21 +190,7 @@ class Game {
 
         //generate new figure
         if (!this.figure.onField) {
-            this.figure = {
-                el: new Figure(),
-                onField: false,
-                lastStep: false,
-                vPos: 1,
-                hPos: 0,
-                fW: 0,
-                fH: 0,
-            };
-
-            let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
-            this.figure.fH = fSize.h;
-            this.figure.fW = fSize.w;
-            this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
-
+            this.createNewFigure();
             console.log('[+] generating new figure : ', this.figure.el.rotations[this.figure.el.rotationIndex]);
             this.placeFigureToHeap();
             this.placeFigureOnMap();
@@ -213,6 +200,7 @@ class Game {
     }
 
     placeFigureOnMap () {
+        console.log('==================== PLACE FIGURE ON MAP ===========================');
         /*
         * Отрисовка фигуры.
         * Отрисовка происходит слева направно, снизу вверх.
@@ -265,8 +253,14 @@ class Game {
         let figureLineToDraw = figureHeight - 1;
         let mapLine = this.figure.vPos - 1;
 
+        let figureDraw = true;
+        if (this.figure.lastStep && !this.figure.moved)
+            figureDraw = false;
+
+        console.log('[+] figure draw : ', figureDraw);
+
         console.log('[+] map line : ', mapLine);
-        for (let fH = 0; mapLine >= 0 && fH < figureHeight && !this.figure.lastStep; mapLine--, fH++, figureLineToDraw--) {
+        for (let fH = 0; mapLine >= 0 && fH < figureHeight && figureDraw; mapLine--, fH++, figureLineToDraw--) {
             for (let cell = 0, mapPos = figurePosition; cell < this.map[0].length && cell < figureWidth; cell++, mapPos++) {
                 // Условие на случай если угол фигуры пустой, при падении на угол другой фигуры
                 // не перерисовывало его в пустоту
@@ -350,28 +344,17 @@ class Game {
         //     console.log('[+] figure placed on map : ');
         //     console.log(this.map);
         // }
+        console.log('====================================================================');
     }
 
     step() {
         console.log('================= STEP ===================');
         console.log('[+] figure : ', this.figure);
 
+        this.newStep = true;
         if (this.figure.lastStep) {
-            this.figure = {
-                el: new Figure(),
-                onField: false,
-                lastStep: false,
-                vPos: 1,
-                hPos: 0,
-                fW: 0,
-                fH: 0,
-            };
-            let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
-            this.figure.fH = fSize.h;
-            this.figure.fW = fSize.w;
-            this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
-
-            this.placeFigureToHeap()
+            this.createNewFigure();
+            this.placeFigureToHeap();
         } else {
             this.figure.vPos++;
         }
@@ -379,8 +362,26 @@ class Game {
         this.addHeapOnMap();
         this.placeFigureOnMap();
 
-
+        this.newStep = false;
         console.log('==========================================');
+    }
+
+    createNewFigure () {
+        this.figure = {
+            el: new Figure(),
+            onField: false,
+            lastStep: false,
+            moved: false,
+            vPos: 1,
+            hPos: 0,
+            fW: 0,
+            fH: 0,
+        };
+
+        let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
+        this.figure.fH = fSize.h;
+        this.figure.fW = fSize.w;
+        this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
     }
 
     placeFigureToHeap () {
@@ -481,6 +482,11 @@ class Game {
         console.log('================ FIGURE MOVE ====================');
         console.log('[+] key : ', key);
 
+        if (this.newStep)
+            return ;
+
+        this.figure.moved = true;
+
         if (key == 'ArrowRight' && this.figure.hPos + this.figure.fW <= 9) {
             this.figure.hPos++;
         } else if (key == 'ArrowLeft' && this.figure.hPos - 1 >= 0) {
@@ -515,6 +521,8 @@ class Game {
 
         this.addHeapOnMap();
         this.placeFigureOnMap();
+
+        this.figure.moved = true;
         console.log('=================================================');
     }
 
