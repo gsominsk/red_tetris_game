@@ -13,6 +13,7 @@ export function gameSuccessLoaded (data) {
             score: data.secondPlayer.score,
             figures: data.secondPlayer.figures
         },
+        gameKey: data.gameKey
     })
 }
 
@@ -75,6 +76,12 @@ export function findGame (socket) {
         socket.on('game.disconnect', (res) => {
             d(gameDisconnectionAction(res.disconnected));
         });
+    })
+}
+
+export function figureMove (socket, data) {
+    return ((d) => {
+        socket.emit('game.move', data);
     })
 }
 

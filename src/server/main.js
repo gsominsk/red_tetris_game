@@ -196,6 +196,7 @@ io.on('connection', (socket) => {
                 score: gameWaitingPlayers[0].score,
                 figures : gamePlayingRooms[gameKey].game.getFiguresPosition()
             },
+            gameKey: gameKey
         });
 
         // Удаляем второго игрока из списка ожидания
@@ -226,12 +227,27 @@ io.on('connection', (socket) => {
 
                 io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.update.success', res);
             }
-        }, 500);
+        }, 10000);
 
 
         if (!gamePlayingRooms[data.gameKey])
             clearInterval(gameLoop);
         console.log('====================================================');
+    });
+
+    socket.on('game.move', async function (data) {
+        gamePlayingRooms[data.gameKey].game.move(data.move);
+        let res = {
+            firstPlayer: {
+                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()
+            },
+            secondPlayer: {
+                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()
+            }
+        };
+
+        io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.update.success', res);
+
     });
 
     socket.on('login', async function (data) {

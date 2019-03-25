@@ -10,7 +10,8 @@ const initialState = {
         login: 'Anonymous',
         score: 0,
         figures: []
-    }
+    },
+    gameKey: ''
 };
 
 export default function (state = initialState, action) {
@@ -41,7 +42,8 @@ export default function (state = initialState, action) {
                     login: action.secondPlayer.login,
                     score: action.secondPlayer.score,
                     figures: action.secondPlayer.figures
-                }
+                },
+                gameKey: action.gameKey
             };
 
         case 'GAME_UPDATE_SUCCESS':

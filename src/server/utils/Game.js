@@ -11,22 +11,12 @@ class Figure {
                 color: 'middle-blue',
                 rotations: [
                     [
-                        [0,0,0,0],
                         [1,1,1,1]
                     ], [
-                        [0,0,1],
-                        [0,0,1],
-                        [0,0,1],
-                        [0,0,1]
-                    ], [
-                        [0,0,0,0],
-                        [0,0,0,0],
-                        [1,1,1,1]
-                    ], [
-                        [0,1,0],
-                        [0,1,0],
-                        [0,1,0],
-                        [0,1,0]
+                        [1],
+                        [1],
+                        [1],
+                        [1]
                     ]
                 ]
             },{
@@ -39,9 +29,9 @@ class Figure {
                         [2,2,2]
                     ],
                     [
-                        [0,2,2],
-                        [0,2,0],
-                        [0,2,0]
+                        [2,2],
+                        [2,0],
+                        [2,0]
                     ],
                     [
                         [0,0,0],
@@ -49,9 +39,9 @@ class Figure {
                         [0,0,2]
                     ],
                     [
-                        [0,2,0],
-                        [0,2,0],
-                        [2,2,0]
+                        [0,2],
+                        [0,2],
+                        [2,2]
                     ]
                 ]
             },{
@@ -64,9 +54,9 @@ class Figure {
                         [3,3,3]
                     ],
                     [
-                        [0,3,0],
-                        [0,3,0],
-                        [0,3,3]
+                        [3,0],
+                        [3,0],
+                        [3,3]
                     ],
                     [
                         [0,0,0],
@@ -74,9 +64,9 @@ class Figure {
                         [3,0,0]
                     ],
                     [
-                        [3,3,0],
-                        [0,3,0],
-                        [0,3,0]
+                        [3,3],
+                        [0,3],
+                        [0,3]
                     ]
                 ]
             },{
@@ -99,9 +89,9 @@ class Figure {
                         [5,5,0]
                     ],
                     [
-                        [0,5,0],
-                        [0,5,5],
-                        [0,0,5]
+                        [5,0],
+                        [5,5],
+                        [0,5]
                     ],
                     [
                         [0,0,0],
@@ -109,9 +99,9 @@ class Figure {
                         [5,5,0]
                     ],
                     [
-                        [5,0,0],
-                        [5,5,0],
-                        [0,5,0]
+                        [5,0],
+                        [5,5],
+                        [0,5]
                     ]
                 ]
             },{
@@ -124,9 +114,9 @@ class Figure {
                         [6,6,6]
                     ],
                     [
-                        [0,6,0],
-                        [0,6,6],
-                        [0,6,0]
+                        [6,0],
+                        [6,6],
+                        [6,0]
                     ],
                     [
                         [0,0,0],
@@ -134,9 +124,9 @@ class Figure {
                         [0,6,0]
                     ],
                     [
-                        [0,6,0],
-                        [6,6,0],
-                        [0,6,0]
+                        [0,6],
+                        [6,6],
+                        [0,6]
                     ]
                 ]
             },{
@@ -149,9 +139,9 @@ class Figure {
                         [0,7,7]
                     ],
                     [
-                        [0,0,7],
-                        [0,7,7],
-                        [0,7,0]
+                        [0,7],
+                        [7,7],
+                        [7,0]
                     ],
                     [
                         [0,0,0],
@@ -159,9 +149,9 @@ class Figure {
                         [0,7,7]
                     ],
                     [
-                        [0,7,0],
-                        [7,7,0],
-                        [7,0,0]
+                        [0,7],
+                        [7,7],
+                        [7,0]
                     ]
                 ]
             }
@@ -199,8 +189,21 @@ class Game {
 
         //generate new figure
         if (!this.figure.onField) {
-            this.figure.el = new Figure();
-            this.figure.hPos = this.getRandomInt(2, 8);
+            this.figure = {
+                el: new Figure(),
+                onField: false,
+                lastStep: false,
+                vPos: 1,
+                hPos: 0,
+                fW: 0,
+                fH: 0,
+            };
+
+            let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
+            this.figure.fH = fSize.h;
+            this.figure.fW = fSize.w;
+            this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
+
             console.log('[+] generating new figure : ', this.figure.el.rotations[this.figure.el.rotationIndex]);
             this.placeFigureToHeap();
             this.placeFigureOnMap();
@@ -256,7 +259,7 @@ class Game {
         console.log('[+] figure position : ', figurePosition);
         console.log('[+] figure : ', figure);
 
-        figurePosition = figurePosition - (figureWidth > 2 ? (figureWidth - 2) : 0);
+        // figurePosition = figurePosition - (figureWidth > 2 ? (figureWidth - 2) : 0);
         console.log('[+] figure position start : ', figurePosition);
 
         let figureLineToDraw = figureHeight - 1;
@@ -272,9 +275,17 @@ class Game {
             }
         }
 
-        // После отрисовки фигуры, проверяем можно ли ее отрисовать на следующем ходу.
-        // Если на следующем ходу она пересекается с хипом значит это ее последний ход
-        // до записи в хип и мы ставим ласт степ у тру.
+        /*
+        * Проверка следующего хода.
+        *
+        * Надо проверить можно ли продолжать двигать фигуру или это последний ее ход.
+        *
+        * Делаем проверку на дно карты, если карта закончилась значит это конечная ее
+        * позиция.
+        *
+        * Делаем проверку на прилипание к хипу, и если след шаг фигуры в местах отрисовки
+        * фигуры пересикается с хипом, значит это последний шаг фигуры.
+        * */
 
         let onHeap = false;
         figureLineToDraw = figureHeight - 1;
@@ -290,13 +301,11 @@ class Game {
             }
         }
 
-
         // Проверяем упала ли фигура до дна
         if (onHeap) {
             this.figure.lastStep = true;
             console.log('[+] last step : ', this.figure.lastStep);
         }
-
 
         console.log('[+] figure placed on map : ');
         console.log(this.map);
@@ -353,8 +362,14 @@ class Game {
                 onField: false,
                 lastStep: false,
                 vPos: 1,
-                hPos: this.getRandomInt(2, 8),
+                hPos: 0,
+                fW: 0,
+                fH: 0,
             };
+            let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
+            this.figure.fH = fSize.h;
+            this.figure.fW = fSize.w;
+            this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
 
             this.placeFigureToHeap()
         } else {
@@ -363,6 +378,7 @@ class Game {
 
         this.addHeapOnMap();
         this.placeFigureOnMap();
+
 
         console.log('==========================================');
     }
@@ -398,6 +414,35 @@ class Game {
         return res;
     }
 
+    getFigureSize(figure) {
+        let fW = 0;
+        let fH = figure.length;
+        let columnsToCalc = []
+
+        for (let i = 0; i < figure.length; i++) {
+            columnsToCalc.push(0);
+            for (let j = 0; j < figure[0].length; j++) {
+                if (i == 0)
+                    columnsToCalc.push(0)
+
+                if (figure[i][j] != 0)
+                    columnsToCalc[j] = 1;
+            }
+        }
+
+        for (let i = 0; i < columnsToCalc.length; i++)
+            columnsToCalc[i] == 1 ? fW++ : 0;
+
+        console.log('=============== CALC FIGURE LENGTH ================');
+        console.log('[+] figure length : ', fW);
+        console.log('===================================================');
+
+        return ({
+            h: fH,
+            w: fW
+        })
+    }
+
     figureColors () {
         return ({
             1: 'middle-blue',
@@ -420,8 +465,6 @@ class Game {
 
     addHeapOnMap () {
         console.log('================= ADDING HEAP TO MAP ===================');
-        // this.map = [...this.heap];
-
         this.map = [];
         for (let l = 0; l < 20; l++) {
             this.map[l] = [];
@@ -430,9 +473,49 @@ class Game {
             }
         }
 
-
-        console.log('[+] map from heap : ', this.map);
+        // console.log('[+] map from heap : ', this.map);
         console.log('========================================================');
+    }
+
+    move (key) {
+        console.log('================ FIGURE MOVE ====================');
+        console.log('[+] key : ', key);
+
+        if (key == 'ArrowRight' && this.figure.hPos + this.figure.fW <= 9) {
+            this.figure.hPos++;
+        } else if (key == 'ArrowLeft' && this.figure.hPos - 1 >= 0) {
+            this.figure.hPos--;
+        } else if (key == 'ArrowUp' && this.figure.el.maxRotations != 0) {
+            if (this.figure.el.rotationIndex + 1 >= this.figure.el.maxRotations) {
+                this.figure.el.rotationIndex = 0;
+            } else this.figure.el.rotationIndex++
+
+            let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
+            this.figure.fH = fSize.h;
+            this.figure.fW = fSize.w;
+
+            if (this.figure.hPos + this.figure.fW > 9) {
+                this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
+            }
+        } else if (key == 'ArrowDown' && this.figure.el.maxRotations != 0) {
+            if (this.figure.el.rotationIndex - 1 < 0) {
+                this.figure.el.rotationIndex = this.figure.el.maxRotations - 1;
+            } else this.figure.el.rotationIndex--
+
+            let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
+            this.figure.fH = fSize.h;
+            this.figure.fW = fSize.w;
+
+            if (this.figure.hPos + this.figure.fW > 9) {
+                this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
+            }
+        }
+
+        console.log('[+] figure : ', this.figure);
+
+        this.addHeapOnMap();
+        this.placeFigureOnMap();
+        console.log('=================================================');
     }
 
     getRandomInt(min, max) {

@@ -6,6 +6,7 @@ import SideMenu from './sidemenu'
 import {
     findGame,
     disconnectGame,
+    figureMove,
     onUnmountClean
 }               from "../actions/game";
 
@@ -38,6 +39,26 @@ class Game extends React.Component {
     handleKeyPress = (event) => {
         event.preventDefault();
         console.log('[+] KEY PRESS EVENT : ', event.key)
+
+        let validKeys = [
+            ' ',
+            'ArrowLeft',
+            'ArrowUp',
+            'ArrowRight',
+            'ArrowDown'
+        ];
+
+        let valid = false;
+        for (let i = 0; i < validKeys.length; i++) {
+            if (event.key == validKeys[i]) {
+                valid = true;
+                break ;
+            }
+        }
+
+        if (valid) {
+            this.props.figureMove(Io.socket, {gameKey: this.props.game.gameKey, move: event.key});
+        }
     };
 
     componentDidMount() {
@@ -107,6 +128,7 @@ const mapDispatchToProps = (d) => {
     return {
         findGame: (socket) => d(findGame(socket)),
         disconnectGame: (socket) => d(disconnectGame(socket)),
+        figureMove: (socket, move) => d(figureMove(socket, move)),
         onUnmountClean: () => d(onUnmountClean())
     }
 }
