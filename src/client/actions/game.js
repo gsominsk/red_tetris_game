@@ -56,7 +56,6 @@ export function findGame (socket) {
         socket.emit('game.find', {sessionKey});
 
         socket.on('game.find.success', (res) => {
-            console.log('[+] GAME FOUND SUCCESS : ', res);
             d(gameSuccessLoaded(res));
         });
 
@@ -65,7 +64,6 @@ export function findGame (socket) {
         });
 
         socket.on('game.update.success', (res) => {
-            console.log('[+] GAME UPDATE SUCCESS : ', res);
             d(gameUpdateSuccess(res));
         });
 

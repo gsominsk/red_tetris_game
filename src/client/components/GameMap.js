@@ -38,12 +38,6 @@ export default class GameMap extends Component {
     }
 
     render () {
-        // let cells = document.getElementsByClassName('gf-item');
-        console.log(this.props);
-
-        // this.clearMap(cells);
-        // this.fillMap(cells);
-
         let arr = [];
         for (let i = 0; i < 200; i++)
             for (let j = 0; j < this.props.figures.length; j++) {

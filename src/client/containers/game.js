@@ -74,8 +74,6 @@ class Game extends React.Component {
     }
 
     render () {
-        console.log('[+] GAME | props : ', this.props);
-
         return (
             <div className="play-container" contentEditable={true} suppressContentEditableWarning={true} onKeyUp={this.handleKeyPress}>
                 <SideMenu

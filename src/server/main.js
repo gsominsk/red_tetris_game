@@ -210,7 +210,13 @@ io.on('connection', (socket) => {
     socket.on('game.start', async function (data) {
         console.log('================== GAME START ======================');
         console.log('[+] game key : ', data.gameKey);
+        console.log('[+] socket id : ', socket.id);
         console.log('[+] playing room : ', gamePlayingRooms[data.gameKey].roomName);
+
+        if (gamePlayingRooms[data.gameKey].game.alreadyStart())
+            return ;
+
+        gamePlayingRooms[data.gameKey].game.start();
 
         let gameLoop = setInterval(() => {
             if (gamePlayingRooms[data.gameKey]) {

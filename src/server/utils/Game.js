@@ -181,6 +181,7 @@ class Game {
             hPos: 0
         };
         this.heap = [];
+        this.startBool = false;
 
         // generating new field
         this.generateMap();
@@ -549,6 +550,14 @@ class Game {
         this.placeFigureOnMap();
 
         console.log('=================================================');
+    }
+
+    start () {
+        this.startBool = true;
+    }
+
+    alreadyStart () {
+        return this.startBool;
     }
 
     getRandomInt(min, max) {
