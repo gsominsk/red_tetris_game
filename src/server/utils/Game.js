@@ -173,13 +173,12 @@ class Game {
     constructor () {
         console.log('=============== CREATING GAME FIELD ==================');
         this.map = [];
-        this.newStep = false;
         this.figure = {
             el: [],
             onField: false,
             lastStep: false,
-            vPos: 1,
-            hPos: 2
+            vPos: 0,
+            hPos: 0
         };
         this.heap = [];
 
@@ -251,7 +250,7 @@ class Game {
         console.log('[+] figure position start : ', figurePosition);
 
         let figureLineToDraw = figureHeight - 1;
-        let mapLine = this.figure.vPos - 1;
+        let mapLine = this.figure.vPos;
 
         let figureDraw = true;
         if (this.figure.lastStep && !this.figure.moved)
@@ -283,16 +282,20 @@ class Game {
 
         let onHeap = false;
         figureLineToDraw = figureHeight - 1;
-        mapLine = this.figure.vPos;
+        mapLine = this.figure.vPos + 1;
 
         if (!this.map[mapLine])
             onHeap = true;
 
-        for (let i = figurePosition, cell = 0; cell < this.map[0].length && cell < figureWidth && !onHeap; i++, cell++) {
-            if (this.map[mapLine][i] != 0 && figure[figureLineToDraw][cell] != 0) {
-                onHeap = true;
-                break ;
+        for (let mL = mapLine, fL = figureLineToDraw; fL >= 0 && mL >= 0; fL--, mL--) {
+            for (let i = figurePosition, cell = 0; cell < this.heap[0].length && cell < figureWidth && !onHeap; i++, cell++) {
+                if (this.heap[mL][i] != 0 && figure[fL][cell] != 0) {
+                    onHeap = true;
+                    break ;
+                }
             }
+
+            if (onHeap) break;
         }
 
         if (this.figure.moved && !onHeap) {
@@ -355,7 +358,6 @@ class Game {
         console.log('================= STEP ===================');
         console.log('[+] figure : ', this.figure);
 
-        this.newStep = true;
         if (this.figure.lastStep) {
             this.createNewFigure();
             this.placeFigureToHeap();
@@ -366,7 +368,6 @@ class Game {
         this.addHeapOnMap();
         this.placeFigureOnMap();
 
-        this.newStep = false;
         console.log('==========================================');
     }
 
@@ -376,7 +377,7 @@ class Game {
             onField: false,
             lastStep: false,
             moved: false,
-            vPos: 1,
+            vPos: 0,
             hPos: 0,
             fW: 0,
             fH: 0,
@@ -486,39 +487,60 @@ class Game {
         console.log('================ FIGURE MOVE ====================');
         console.log('[+] key : ', key);
 
-        if (this.newStep)
-            return ;
-
         this.figure.moved = true;
 
-        if (key == 'ArrowRight' && this.figure.hPos + this.figure.fW <= 9) {
+        if (key === ' ') {
+            let figure = this.figure.el.rotations[this.figure.el.rotationIndex];
+
+            for (let line = this.figure.vPos; line >= 0 && line < this.heap.length; line++) {
+                let canDraw = true;
+
+                for (let i = line, fL = 0; i < this.heap.length && fL < this.figure.fH; i++, fL++) {
+                    for (let fC = 0, j = this.figure.hPos; fC < this.figure.fW; fC++, j++) {
+                        if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
+                            canDraw = false;
+                            break ;
+                        }
+                    }
+                    if (!canDraw) break ;
+                }
+
+                if (line == this.map.length - 1) {
+                    this.figure.vPos = line;
+                    break ;
+                }
+
+                if (!canDraw) {
+                    this.figure.vPos = line + this.figure.fH - 2;
+                    break ;
+                }
+            }
+        } else if (key == 'ArrowRight' && this.figure.hPos + this.figure.fW <= 9) {
             this.figure.hPos++;
         } else if (key == 'ArrowLeft' && this.figure.hPos - 1 >= 0) {
             this.figure.hPos--;
         } else if (key == 'ArrowUp' && this.figure.el.maxRotations != 0) {
             if (this.figure.el.rotationIndex + 1 >= this.figure.el.maxRotations) {
                 this.figure.el.rotationIndex = 0;
-            } else this.figure.el.rotationIndex++
+            } else this.figure.el.rotationIndex++;
 
             let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
             this.figure.fH = fSize.h;
             this.figure.fW = fSize.w;
 
-            if (this.figure.hPos + this.figure.fW > 9) {
+            if (this.figure.hPos + this.figure.fW > 9)
                 this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
-            }
         } else if (key == 'ArrowDown' && this.figure.el.maxRotations != 0) {
             if (this.figure.el.rotationIndex - 1 < 0) {
                 this.figure.el.rotationIndex = this.figure.el.maxRotations - 1;
-            } else this.figure.el.rotationIndex--
+            } else this.figure.el.rotationIndex--;
 
             let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
             this.figure.fH = fSize.h;
             this.figure.fW = fSize.w;
 
-            if (this.figure.hPos + this.figure.fW > 9) {
+            if (this.figure.hPos + this.figure.fW > 9)
                 this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
-            }
         }
 
         console.log('[+] figure : ', this.figure);
@@ -526,7 +548,6 @@ class Game {
         this.addHeapOnMap();
         this.placeFigureOnMap();
 
-        this.figure.moved = true;
         console.log('=================================================');
     }
 
