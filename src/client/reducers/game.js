@@ -50,9 +50,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 firstPlayer: {
+                    login: state.firstPlayer.login,
+                    score: state.firstPlayer.score,
                     figures: action.firstPlayer.figures
                 },
                 secondPlayer: {
+                    login: state.secondPlayer.login,
+                    score: state.secondPlayer.score,
                     figures: action.secondPlayer.figures
                 }
             };
