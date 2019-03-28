@@ -439,6 +439,9 @@ class Game {
         let canDraw = true;
         let figure = this.figure.el.rotations[this.figure.el.rotationIndex];
         let hPos = this.figure.hPos;
+        let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
+        let fH = fSize.h;
+        let fW = fSize.w;
 
         if (move == 'ArrowRight') {
             if (!(this.figure.hPos + this.figure.fW <= 9))
@@ -450,10 +453,48 @@ class Game {
                 return false;
 
             hPos--;
+        } else if (move == 'ArrowUp') {
+            if (!(this.figure.el.maxRotations != 0))
+                return false;
+
+            let rotationIndex = this.figure.el.rotationIndex;
+
+            if (this.figure.el.rotationIndex + 1 >= this.figure.el.maxRotations) {
+                rotationIndex = 0;
+            } else rotationIndex++;
+
+            figure = this.figure.el.rotations[rotationIndex];
+            let fSize = this.getFigureSize(figure);
+            fH = fSize.h;
+            fW = fSize.w;
+
+            if (hPos + fW > 9)
+                hPos -= (hPos + fW) - 10;
+        } else if (move = 'ArrowDown') {
+            if (!(this.figure.el.maxRotations != 0))
+                return false
+
+            let rotationIndex = this.figure.el.rotationIndex;
+
+            if (this.figure.el.rotationIndex - 1 < 0) {
+                rotationIndex = this.figure.el.maxRotations - 1;
+            } else rotationIndex--;
+
+            figure = this.figure.el.rotations[rotationIndex];
+            let fSize = this.getFigureSize(this.figure.el.rotations[rotationIndex]);
+            fH = fSize.h;
+            fW = fSize.w;
+
+            if (hPos + fW > 9)
+                hPos -= (hPos + fW) - 10;
         }
 
-        for (let i = this.figure.vPos, fL = this.figure.fH - 1; i >= 0 && fL >= 0; i--, fL--) {
-            for (let fC = 0, j = hPos; fC < this.figure.fW; fC++, j++) {
+        for (let i = this.figure.vPos, fL = fH - 1; i >= 0 && fL >= 0; i--, fL--) {
+            console.log('-------------------------------');
+            console.log('[+] heap line : ', this.heap[i]);
+            console.log('[+] figure line : ', figure[fL]);
+            console.log('-------------------------------');
+            for (let fC = 0, j = hPos; fC < fW; fC++, j++) {
                 if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
                     canDraw = false;
                     break ;
@@ -461,6 +502,8 @@ class Game {
             }
             if (!canDraw) break ;
         }
+
+        console.log('[+] can draw : ', canDraw);
 
         return canDraw;
     }
@@ -525,7 +568,7 @@ class Game {
             this.figure.hPos++;
         } else if (key == 'ArrowLeft' && canDraw) {
             this.figure.hPos--;
-        } else if (key == 'ArrowUp' && this.figure.el.maxRotations != 0) {
+        } else if (key == 'ArrowUp' && canDraw) {
             if (this.figure.el.rotationIndex + 1 >= this.figure.el.maxRotations) {
                 this.figure.el.rotationIndex = 0;
             } else this.figure.el.rotationIndex++;
@@ -536,7 +579,7 @@ class Game {
 
             if (this.figure.hPos + this.figure.fW > 9)
                 this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
-        } else if (key == 'ArrowDown' && this.figure.el.maxRotations != 0) {
+        } else if (key == 'ArrowDown' && canDraw) {
             if (this.figure.el.rotationIndex - 1 < 0) {
                 this.figure.el.rotationIndex = this.figure.el.maxRotations - 1;
             } else this.figure.el.rotationIndex--;
