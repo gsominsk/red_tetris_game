@@ -312,46 +312,6 @@ class Game {
         console.log('[+] figure placed on map : ');
         console.log(this.map);
 
-        // let f = testFigures;
-        // for (let i = 0; i < f.length; i++) {
-        //     let figurePosition = this.figure.hPos;
-        //     this.generateMap();
-        //     console.log('=========================================')
-        //
-        //     // let figureWidth = this.figure.el.rotations[this.figure.rotationIndex][0].length;
-        //     // let figureHeight = this.figure.el.rotations[this.figure.rotationIndex].length;
-        //     // let figure = this.figure.el.rotations[this.figure.rotationIndex];
-        //
-        //     let figureWidth = f[i].rotations[0][0].length;
-        //     let figureHeight = f[i].rotations[0].length;
-        //     let figure = f[i].rotations[0];
-        //
-        //     console.log('[+] figure height : ', figureHeight);
-        //     console.log('[+] figure width : ', figureWidth);
-        //     console.log('[+] figure position : ', figurePosition);
-        //     console.log('[+] figure : ', f[i].rotations[0]);
-        //
-        //     // отрисовать конец фигуры на начале карты
-        //
-        //     figurePosition = figurePosition - (figureWidth > 2 ? (figureWidth - 2) : 0);
-        //     console.log('[+] figure position start : ', figurePosition);
-        //     let figureLineToDraw = figureHeight - 1;
-        //     let mapLine = this.figure.vPos - 1;
-        //
-        //     // Проверяем упала ли фигура до дна
-        //     if (!this.map[mapLine])
-        //         this.figure.lastStep = true;
-        //
-        //     for (let fH = 0; mapLine >= 0 && fH < figureHeight; mapLine--, fH++, figureLineToDraw--) {
-        //         for (let cell = 0, mapPos = figurePosition; cell < this.map[0].length && cell < figureWidth; cell++, mapPos++) {
-        //             // console.log('[+] figure line to draw : ', figureLineToDraw);
-        //             this.map[mapLine][mapPos] = figure[figureLineToDraw][cell];
-        //         }
-        //     }
-        //
-        //     console.log('[+] figure placed on map : ');
-        //     console.log(this.map);
-        // }
         console.log('====================================================================');
     }
 
@@ -401,6 +361,21 @@ class Game {
             }
         }
 
+        for (let i = 0; i < this.heap.length; i++) {
+            let filledLine = [];
+            for (let j = 0; j < this.heap[0].length; j++) {
+                if (this.heap[i][j] != 0)
+                    filledLine.push(0);
+            }
+
+            if (filledLine.length == this.heap[0].length) {
+                for (let line = i; line > 0; line--) {
+                    for (let cell = 0; cell < this.heap[0].length; cell++) {
+                        this.heap[line][cell] = this.heap[line - 1][cell];
+                    }
+                }
+            }
+        }
         console.log('[+] heap : ', this.heap);
         console.log('=====================================================');
     }
