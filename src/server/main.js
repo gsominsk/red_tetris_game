@@ -222,6 +222,11 @@ io.on('connection', (socket) => {
             if (gamePlayingRooms[data.gameKey]) {
                 gamePlayingRooms[data.gameKey].game.step();
 
+                // Кто то достиг потолка и игра закончилась
+                // if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
+                //
+                // }
+
                 let res = {
                     firstPlayer: {
                         figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()

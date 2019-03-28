@@ -182,6 +182,7 @@ class Game {
         };
         this.heap = [];
         this.startBool = false;
+        this.endGame = false;
 
         // generating new field
         this.generateMap();
@@ -303,6 +304,15 @@ class Game {
             this.figure.lastStep = false;
         }
 
+        // Проверяем потолок, если фигура упала на хип и при этом не отресовалась
+        // полностью, мы ставим флаг ендгейм
+        if (onHeap && this.figure.vPos - this.figure.fH < 0) {
+            console.log('+++==========+++');
+            console.log('+++ END GAME +++');
+            console.log('+++==========+++');
+            this.endGame = true;
+        }
+
         // Проверяем упала ли фигура до дна
         if (onHeap) {
             this.figure.lastStep = true;
@@ -396,25 +406,32 @@ class Game {
 
     getFigureSize(figure) {
         let fW = 0;
-        let fH = figure.length;
+        let fH = 0;
         let columnsToCalc = []
 
-        for (let i = 0; i < figure.length; i++) {
+        for (let i = 0, lineNotEmpty = false; i < figure.length; i++, lineNotEmpty = false) {
             columnsToCalc.push(0);
             for (let j = 0; j < figure[0].length; j++) {
                 if (i == 0)
                     columnsToCalc.push(0)
 
-                if (figure[i][j] != 0)
+                if (figure[i][j] != 0) {
                     columnsToCalc[j] = 1;
+                    lineNotEmpty = true;
+                }
             }
+
+            if (lineNotEmpty)
+                fH++;
         }
 
         for (let i = 0; i < columnsToCalc.length; i++)
             columnsToCalc[i] == 1 ? fW++ : 0;
 
         console.log('=============== CALC FIGURE LENGTH ================');
+        console.log('[+] figure : ', figure);
         console.log('[+] figure length : ', fW);
+        console.log('[+] figure height : ', fH);
         console.log('===================================================');
 
         return ({
@@ -490,10 +507,6 @@ class Game {
         }
 
         for (let i = this.figure.vPos, fL = fH - 1; i >= 0 && fL >= 0; i--, fL--) {
-            console.log('-------------------------------');
-            console.log('[+] heap line : ', this.heap[i]);
-            console.log('[+] figure line : ', figure[fL]);
-            console.log('-------------------------------');
             for (let fC = 0, j = hPos; fC < fW; fC++, j++) {
                 if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
                     canDraw = false;
@@ -604,6 +617,10 @@ class Game {
 
     alreadyStart () {
         return this.startBool;
+    }
+
+    checkEndGame () {
+        return this.endGame;
     }
 
     getRandomInt(min, max) {
