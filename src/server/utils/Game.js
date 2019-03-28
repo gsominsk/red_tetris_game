@@ -370,9 +370,10 @@ class Game {
 
             if (filledLine.length == this.heap[0].length) {
                 for (let line = i; line > 0; line--) {
-                    for (let cell = 0; cell < this.heap[0].length; cell++) {
-                        this.heap[line][cell] = this.heap[line - 1][cell];
-                    }
+                    this.heap[line] = this.heap[line - 1];
+                    // for (let cell = 0; cell < this.heap[0].length; cell++) {
+                    //     this.heap[line][cell] = this.heap[line - 1][cell];
+                    // }
                 }
             }
         }
@@ -481,7 +482,7 @@ class Game {
                     if (!canDraw) break ;
                 }
 
-                if (line == this.map.length - 1) {
+                if (canDraw && line == this.map.length - 1) {
                     this.figure.vPos = line;
                     break ;
                 }

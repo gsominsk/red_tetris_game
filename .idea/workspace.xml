@@ -44,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="372" column="67" selection-start-line="372" selection-start-column="67" selection-end-line="372" selection-end-column="67" />
+            <state relative-caret-position="467">
+              <caret line="495" selection-start-line="495" selection-end-line="495" />
               <folding>
                 <element signature="n#Figure#0" />
                 <element signature="n#!!block;n#constructor#0;n#Figure#0" />
@@ -56,8 +56,6 @@
                 <element signature="n#!!block;n#getFigureSize#0;n#Game#0" />
                 <element signature="n#!!block;n#figureColors#0;n#Game#0" />
                 <element signature="n#!!block;n#generateMap#0;n#Game#0" />
-                <element signature="n#!!block;n#addHeapOnMap#0;n#Game#0" />
-                <element signature="n#!!block;n#move#0;n#Game#0" />
                 <element signature="n#!!block;n#getRandomInt#0;n#Game#0" />
               </folding>
             </state>
@@ -348,14 +346,7 @@
       <workItem from="1553515180484" duration="21291000" />
       <workItem from="1553541352948" duration="737000" />
       <workItem from="1553600135874" duration="19310000" />
-      <workItem from="1553773320018" duration="914000" />
-    </task>
-    <task id="LOCAL-00001" summary="Добавил новые компоненты, контейнер для игры, добавлены стили">
-      <created>1551786714987</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1551786714987</updated>
+      <workItem from="1553773320018" duration="3961000" />
     </task>
     <task id="LOCAL-00002" summary="Добавил статику контейнера бокового меню на все страницы, кроме страницы&#10;меню, потому что там она не требуется">
       <created>1551799402463</created>
@@ -693,11 +684,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553619524641</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="Сделал удаление заполненой линии на карте.">
+      <created>1553774887947</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1553774887951</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291409000" />
+    <option name="totallyTimeSpent" value="294456000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -731,7 +729,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Сделал логаут, добавление и удаление сессии" />
     <MESSAGE value="Добавил выдачу рейтинга. Теперь если в списке больше 10 пользователей, &#10;вас покажет 11м, если меньше то выдаст всех, если ты 10 в списке то тебя&#10;покажут 10, если рейтинг у вас и у 10 одинаковый, вас покажет 11и" />
     <MESSAGE value="Добавил типизирование, убрал лишние логи, небольшие фиксы" />
     <MESSAGE value="Еще небольшие апдейты" />
@@ -756,7 +753,8 @@
     <MESSAGE value="Добавил падение на карту.&#10;Переделал проверку фигуры на наложение на кучу. Раньше оно проверяло только&#10;по нижней части фигуры, а если кучу задевала верхняя часть фигуры оно не &#10;обрабатывало наложение." />
     <MESSAGE value="фиксанул баг с пропаданием логина и пароля на клиенте" />
     <MESSAGE value="Фикс бага с двойным запуском игры. Убрал лишние логи." />
-    <option name="LAST_COMMIT_MESSAGE" value="Фикс бага с двойным запуском игры. Убрал лишние логи." />
+    <MESSAGE value="Сделал удаление заполненой линии на карте." />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал удаление заполненой линии на карте." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/socket/src/js/reducers/reducer.js" />
@@ -1088,8 +1086,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="372" column="67" selection-start-line="372" selection-start-column="67" selection-end-line="372" selection-end-column="67" />
+        <state relative-caret-position="467">
+          <caret line="495" selection-start-line="495" selection-end-line="495" />
           <folding>
             <element signature="n#Figure#0" />
             <element signature="n#!!block;n#constructor#0;n#Figure#0" />
@@ -1100,8 +1098,6 @@
             <element signature="n#!!block;n#getFigureSize#0;n#Game#0" />
             <element signature="n#!!block;n#figureColors#0;n#Game#0" />
             <element signature="n#!!block;n#generateMap#0;n#Game#0" />
-            <element signature="n#!!block;n#addHeapOnMap#0;n#Game#0" />
-            <element signature="n#!!block;n#move#0;n#Game#0" />
             <element signature="n#!!block;n#getRandomInt#0;n#Game#0" />
           </folding>
         </state>
