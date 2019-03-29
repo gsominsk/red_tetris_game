@@ -1,6 +1,6 @@
 class Figure {
     constructor () {
-        return this.getRandFigure()
+        return this.generateFiguresList();
     }
 
     figures () {
@@ -170,6 +170,13 @@ class Figure {
         ])
     }
 
+    generateFiguresList() {
+        let arr = [];
+        for (let i = 0; i < 10; i++)
+            arr.push(this.getRandFigure())
+        return arr;
+    }
+
     getRandFigure() {
         return this.figures()[this.getRandomInt(0, 6)];
     };
@@ -195,16 +202,20 @@ class Game {
         this.heap = [];
         this.startBool = false;
         this.endGame = false;
+        this.figuresListMarker = 0;
+        this.figuresList = new Figure();
 
+        console.log('[+] figures list : ');
+        console.log(this.figuresList);
         // generating new field
         this.generateMap();
-        console.log('[+] map : ');
+        // console.log('[+] map : ');
         console.log(this.map);
 
         //generate new figure
         if (!this.figure.onField) {
             this.createNewFigure();
-            console.log('[+] generating new figure : ', this.figure.el.rotations[this.figure.el.rotationIndex]);
+            // console.log('[+] generating new figure : ', this.figure.el.rotations[this.figure.el.rotationIndex]);
             this.placeFigureToHeap();
             this.placeFigureOnMap();
         }
@@ -332,15 +343,6 @@ class Game {
             this.figure.lastStep = false;
         }
 
-        // Проверяем потолок, если фигура упала на хип и при этом не отресовалась
-        // полностью, мы ставим флаг ендгейм
-        // if (onHeap && this.figure.vPos - this.figure.mH < 0) {
-        //     console.log('+++==========+++');
-        //     console.log('+++ END GAME +++');
-        //     console.log('+++==========+++');
-        //     this.endGame = true;
-        // }
-
         // Проверяем упала ли фигура до дна
         if (onHeap) {
             this.figure.lastStep = true;
@@ -371,8 +373,9 @@ class Game {
     }
 
     createNewFigure () {
+
         this.figure = {
-            el: new Figure(),
+            el: this.figuresList[this.figuresListMarker],
             onField: false,
             lastStep: false,
             moved: false,
@@ -391,6 +394,14 @@ class Game {
         this.figure.fH = fSize.h;
         this.figure.vPos += fSize.mH - fSize.h;
         this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
+        this.figuresListMarker++;
+
+        console.log('[+] figure list marker plus : ', this.figuresListMarker);
+        console.log('[+] figures out of range : ', this.figuresListMarker >= this.figuresList.length);
+        if (this.figuresListMarker >= this.figuresList.length) {
+            this.figuresList = this.figuresList.concat(new Figure());
+            console.log('[+] adding new figures to list : ', this.figuresList);
+        }
     }
 
     placeFigureToHeap () {
