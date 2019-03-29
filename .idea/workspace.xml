@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/utils/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/utils/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="259">
-              <caret line="224" column="59" selection-start-line="224" selection-start-column="59" selection-end-line="224" selection-end-column="59" />
+            <state relative-caret-position="531">
+              <caret line="246" column="7" lean-forward="true" selection-start-line="246" selection-start-column="7" selection-end-line="246" selection-end-column="7" />
               <folding>
                 <element signature="e#980#1307#0" />
                 <element signature="e#1338#1895#0" />
@@ -59,32 +58,17 @@
                 <element signature="e#6848#7307#0" />
                 <element signature="e#6875#7042#0" />
                 <element signature="e#7070#7267#0" />
-                <element signature="e#8309#8422#0" />
-                <element signature="e#8458#8571#0" />
-                <element signature="e#8939#9377#0" />
-                <element signature="e#9020#9279#0" />
-                <element signature="e#9047#9144#0" />
-                <element signature="e#9172#9269#0" />
-                <element signature="e#9426#10165#0" />
-                <element signature="e#9506#9584#0" />
-                <element signature="e#10215#10751#0" />
-                <element signature="e#10295#10344#0" />
-                <element signature="e#10808#13187#0" />
-                <element signature="e#10903#10938#0" />
-                <element signature="e#11279#11325#0" />
-                <element signature="e#11327#11369#0" />
-                <element signature="e#11530#12969#0" />
-                <element signature="e#13018#13180#0" />
-                <element signature="e#13244#14038#0" />
-                <element signature="e#13336#13410#0" />
-                <element signature="e#13711#13789#0" />
-                <element signature="e#13791#13838#0" />
-                <element signature="e#14090#14923#0" />
-                <element signature="e#14500#14667#0" />
-                <element signature="e#14972#16271#0" />
-                <element signature="e#15532#15656#0" />
-                <element signature="e#15806#16213#0" />
-                <element signature="e#16076#16201#0" />
+                <element signature="n#style#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="e#299#305#1" expanded="true" />
+                <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="e#363#369#1" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -93,18 +77,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="411" column="21" lean-forward="true" selection-start-line="411" selection-start-column="21" selection-end-line="411" selection-end-column="21" />
+            <state relative-caret-position="387">
+              <caret line="537" lean-forward="true" selection-start-line="537" selection-end-line="537" />
               <folding>
-                <element signature="n#Figure#0" />
                 <element signature="n#!!block;n#constructor#0;n#Figure#0" />
                 <element signature="n#!!block;n#getRandFigure#0;n#Figure#0" />
                 <element signature="n#!!block;n#getRandomInt#0;n#Figure#0" />
-                <element signature="e#5490#5806#0" />
-                <element signature="e#5816#6414#0" />
-                <element signature="e#6424#7130#0" />
-                <element signature="e#8688#9122#0" />
-                <element signature="n#!!block;n#createNewFigure#0;n#Game#0" />
                 <element signature="n#!!block;n#placeFigureToHeap#0;n#Game#0" />
                 <element signature="n#!!block;n#getFiguresPosition#0;n#Game#0" />
                 <element signature="n#!!block;n#figureColors#0;n#Game#0" />
@@ -191,6 +169,11 @@
       <find>loading-w</find>
       <find>this.figure.vpos</find>
       <find>vpos</find>
+      <find>getFigureSize</find>
+      <find>fSize.h</find>
+      <find>mh</find>
+      <find>this.figure.fH</find>
+      <find>fH</find>
     </findStrings>
     <dirStrings>
       <dir>D:\code\red_tetris_project\src</dir>
@@ -199,6 +182,11 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -252,8 +240,8 @@
         <option value="$PROJECT_DIR$/src/client/containers/game.js" />
         <option value="$PROJECT_DIR$/src/client/components/GameMap.js" />
         <option value="$PROJECT_DIR$/src/client/actions/game.js" />
-        <option value="$PROJECT_DIR$/src/server/utils/Game.js" />
         <option value="$PROJECT_DIR$/src/server/main.js" />
+        <option value="$PROJECT_DIR$/src/server/utils/Game.js" />
       </list>
     </option>
   </component>
@@ -269,7 +257,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -333,6 +320,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -400,14 +388,8 @@
       <workItem from="1553515180484" duration="21291000" />
       <workItem from="1553541352948" duration="737000" />
       <workItem from="1553600135874" duration="19310000" />
-      <workItem from="1553773320018" duration="16713000" />
-    </task>
-    <task id="LOCAL-00005" summary="Сделал анимацию для меню на всех страничках кроме главной с затемнением&#10;контейнера родителя через передачу значений в пропсы сайд меню контейнера">
-      <created>1551809186417</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1551809186417</updated>
+      <workItem from="1553773320018" duration="26914000" />
+      <workItem from="1553862830754" duration="1158000" />
     </task>
     <task id="LOCAL-00006" summary="Сделал первый вызов функции через редьюсер, ты достаешь екшн, который после&#10;срабатывания скидывает данные в редьюсер после чего ты можешь их вытащить &#10;уже в контейнере. Тоесть, обработка данных идет последством&#10;Контейнер - вызывает екшн - передает данные в редьюс - редьюс преедает данные&#10;в стор - достаем данные в контейнере через пропс который обращается в стор">
       <created>1551885377181</created>
@@ -745,17 +727,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553792332516</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Сделал проверку на конец игры">
+      <created>1553794490290</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1553794490290</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307208000" />
+    <option name="totallyTimeSpent" value="318567000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25189108" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25567323" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -783,7 +772,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="убрал редирект с логина" />
     <MESSAGE value="Добавил добавление юзера в очередь при входе в игру, анимацию ожидания игры." />
     <MESSAGE value="Сделал очистку пропсов игры при выходе" />
     <MESSAGE value="Добавил создание игры, комнаты для игры и дисконекты во время игры&#10;Баг с повторным подключением к игре" />
@@ -808,7 +796,8 @@
     <MESSAGE value="Фиксанул баг из за которго если горизонтальнная линия падает на нижнюю &#10;линию карты, и на нее падает еще одна горизонтальная линия, она падала&#10;не НА первую линию а В линию." />
     <MESSAGE value="Добавил проверку на возможность движения фигуры влево и вправо, раньше&#10;если сбоку была куча, оно просто вьезжало в нее, а теперь если справа&#10;или слева есть помеха, оно не дает сделать движение" />
     <MESSAGE value="Добавил логику проверки на повороты, если фигура не может повернуться&#10;потому что ее зажало с двух сторон и при повороте оно влезет в другую&#10;фигуру, проверка запретит делать поворот" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил логику проверки на повороты, если фигура не может повернуться&#10;потому что ее зажало с двух сторон и при повороте оно влезет в другую&#10;фигуру, проверка запретит делать поворот" />
+    <MESSAGE value="Сделал проверку на конец игры" />
+    <option name="LAST_COMMIT_MESSAGE" value="Сделал проверку на конец игры" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/socket/src/js/reducers/reducer.js" />
@@ -1128,8 +1117,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="224" column="59" selection-start-line="224" selection-start-column="59" selection-end-line="224" selection-end-column="59" />
+        <state relative-caret-position="531">
+          <caret line="246" column="7" lean-forward="true" selection-start-line="246" selection-start-column="7" selection-end-line="246" selection-end-column="7" />
           <folding>
             <element signature="e#980#1307#0" />
             <element signature="e#1338#1895#0" />
@@ -1156,50 +1145,29 @@
             <element signature="e#6848#7307#0" />
             <element signature="e#6875#7042#0" />
             <element signature="e#7070#7267#0" />
-            <element signature="e#8309#8422#0" />
-            <element signature="e#8458#8571#0" />
-            <element signature="e#8939#9377#0" />
-            <element signature="e#9020#9279#0" />
-            <element signature="e#9047#9144#0" />
-            <element signature="e#9172#9269#0" />
-            <element signature="e#9426#10165#0" />
-            <element signature="e#9506#9584#0" />
-            <element signature="e#10215#10751#0" />
-            <element signature="e#10295#10344#0" />
-            <element signature="e#10808#13187#0" />
-            <element signature="e#10903#10938#0" />
-            <element signature="e#11279#11325#0" />
-            <element signature="e#11327#11369#0" />
-            <element signature="e#11530#12969#0" />
-            <element signature="e#13018#13180#0" />
-            <element signature="e#13244#14038#0" />
-            <element signature="e#13336#13410#0" />
-            <element signature="e#13711#13789#0" />
-            <element signature="e#13791#13838#0" />
-            <element signature="e#14090#14923#0" />
-            <element signature="e#14500#14667#0" />
-            <element signature="e#14972#16271#0" />
-            <element signature="e#15532#15656#0" />
-            <element signature="e#15806#16213#0" />
-            <element signature="e#16076#16201#0" />
+            <element signature="n#style#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#299#305#1" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#363#369#1" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="411" column="21" lean-forward="true" selection-start-line="411" selection-start-column="21" selection-end-line="411" selection-end-column="21" />
+        <state relative-caret-position="387">
+          <caret line="537" lean-forward="true" selection-start-line="537" selection-end-line="537" />
           <folding>
-            <element signature="n#Figure#0" />
             <element signature="n#!!block;n#constructor#0;n#Figure#0" />
             <element signature="n#!!block;n#getRandFigure#0;n#Figure#0" />
             <element signature="n#!!block;n#getRandomInt#0;n#Figure#0" />
-            <element signature="e#5490#5806#0" />
-            <element signature="e#5816#6414#0" />
-            <element signature="e#6424#7130#0" />
-            <element signature="e#8688#9122#0" />
-            <element signature="n#!!block;n#createNewFigure#0;n#Game#0" />
             <element signature="n#!!block;n#placeFigureToHeap#0;n#Game#0" />
             <element signature="n#!!block;n#getFiguresPosition#0;n#Game#0" />
             <element signature="n#!!block;n#figureColors#0;n#Game#0" />

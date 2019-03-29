@@ -7,17 +7,29 @@ class Figure {
         return ([
             {
                 rotationIndex: 0,
-                maxRotations: 2,
+                maxRotations: 4,
                 color: 'middle-blue',
                 rotations: [
                     [
-                        [1,1,1,1]
+                        [1,1,1,1],
+                        [0,0,0,0],
+                        [0,0,0,0],
+
                     ], [
-                        [1],
-                        [1],
-                        [1],
-                        [1]
+                        [0,0,1],
+                        [0,0,1],
+                        [0,0,1],
+                        [0,0,1]
+                    ], [
+                        [1,1,1,1],
+                        [0,0,0,0],
+                    ], [
+                        [0,1],
+                        [0,1],
+                        [0,1],
+                        [0,1]
                     ]
+
                 ]
             },{
                 rotationIndex: 0,
@@ -26,15 +38,15 @@ class Figure {
                 rotations: [
                     [
                         [2,0,0],
-                        [2,2,2]
+                        [2,2,2],
+                        [0,0,0]
                     ],
                     [
-                        [2,2],
-                        [2,0],
-                        [2,0]
+                        [0,2,2],
+                        [0,2,0],
+                        [0,2,0]
                     ],
                     [
-                        [0,0,0],
                         [2,2,2],
                         [0,0,2]
                     ],
@@ -51,15 +63,15 @@ class Figure {
                 rotations: [
                     [
                         [0,0,3],
-                        [3,3,3]
-                    ],
-                    [
-                        [3,0],
-                        [3,0],
-                        [3,3]
-                    ],
-                    [
+                        [3,3,3],
                         [0,0,0],
+                    ],
+                    [
+                        [0,3,0],
+                        [0,3,0],
+                        [0,3,3]
+                    ],
+                    [
                         [3,3,3],
                         [3,0,0]
                     ],
@@ -86,17 +98,17 @@ class Figure {
                 rotations: [
                     [
                         [0,5,5],
-                        [5,5,0]
-                    ],
-                    [
-                        [5,0],
-                        [5,5],
-                        [0,5]
-                    ],
-                    [
+                        [5,5,0],
                         [0,0,0],
+                    ],
+                    [
+                        [0,5,0],
                         [0,5,5],
-                        [5,5,0]
+                        [0,0,5]
+                    ],
+                    [
+                        [0,5,5],
+                        [5,5,0],
                     ],
                     [
                         [5,0],
@@ -111,15 +123,15 @@ class Figure {
                 rotations: [
                     [
                         [0,6,0],
-                        [6,6,6]
-                    ],
-                    [
-                        [6,0],
-                        [6,6],
-                        [6,0]
-                    ],
-                    [
+                        [6,6,6],
                         [0,0,0],
+                    ],
+                    [
+                        [0,6,0],
+                        [0,6,6],
+                        [0,6,0]
+                    ],
+                    [
                         [6,6,6],
                         [0,6,0]
                     ],
@@ -136,15 +148,15 @@ class Figure {
                 rotations: [
                     [
                         [7,7,0],
-                        [0,7,7]
-                    ],
-                    [
-                        [0,7],
-                        [7,7],
-                        [7,0]
-                    ],
-                    [
+                        [0,7,7],
                         [0,0,0],
+                    ],
+                    [
+                        [0,0,7],
+                        [0,7,7],
+                        [0,7,0]
+                    ],
+                    [
                         [7,7,0],
                         [0,7,7]
                     ],
@@ -262,7 +274,7 @@ class Game {
 
         console.log('[+] map line : ', mapLine);
         for (let fH = 0; mapLine >= 0 && fH < figureHeight && figureDraw; mapLine--, fH++, figureLineToDraw--) {
-            for (let cell = 0, mapPos = figurePosition; cell < this.map[0].length && cell < figureWidth; cell++, mapPos++) {
+            for (let cell = 0, mapPos = figurePosition; cell < this.map[0].length && cell < figureWidth && mapLine < this.map.length; cell++, mapPos++) {
                 // Условие на случай если угол фигуры пустой, при падении на угол другой фигуры
                 // не перерисовывало его в пустоту
                 if (this.map[mapLine][mapPos] == 0)
@@ -286,11 +298,11 @@ class Game {
         figureLineToDraw = figureHeight - 1;
         mapLine = this.figure.vPos + 1;
 
-        if (!this.map[mapLine])
+        if (!this.map[mapLine - (this.figure.mH - this.figure.fH)])
             onHeap = true;
 
         for (let mL = mapLine, fL = figureLineToDraw; fL >= 0 && mL >= 0; fL--, mL--) {
-            for (let i = figurePosition, cell = 0; cell < this.heap[0].length && cell < figureWidth && !onHeap; i++, cell++) {
+            for (let i = figurePosition, cell = 0; cell < this.heap[0].length && cell < figureWidth && !onHeap && mL < this.heap.length; i++, cell++) {
                 if (this.heap[mL][i] != 0 && figure[fL][cell] != 0) {
                     onHeap = true;
                     break ;
@@ -306,7 +318,7 @@ class Game {
 
         // Проверяем потолок, если фигура упала на хип и при этом не отресовалась
         // полностью, мы ставим флаг ендгейм
-        if (onHeap && this.figure.vPos - this.figure.fH < 0) {
+        if (onHeap && this.figure.vPos - this.figure.mH < 0) {
             console.log('+++==========+++');
             console.log('+++ END GAME +++');
             console.log('+++==========+++');
@@ -352,11 +364,16 @@ class Game {
             hPos: 0,
             fW: 0,
             fH: 0,
+            mW: 0,
+            mH: 0
         };
 
         let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
-        this.figure.fH = fSize.h;
+        this.figure.mH = fSize.mH;
+        this.figure.mW = fSize.mW;
         this.figure.fW = fSize.w;
+        this.figure.fH = fSize.h;
+        this.figure.vPos += fSize.mH - fSize.h;
         this.figure.hPos = this.getRandomInt(0, 9 - fSize.w);
     }
 
@@ -407,6 +424,8 @@ class Game {
     getFigureSize(figure) {
         let fW = 0;
         let fH = 0;
+        let mH = figure.length;
+        let mW = figure[0].length;
         let columnsToCalc = []
 
         for (let i = 0, lineNotEmpty = false; i < figure.length; i++, lineNotEmpty = false) {
@@ -436,7 +455,9 @@ class Game {
 
         return ({
             h: fH,
-            w: fW
+            w: fW,
+            mH,
+            mW
         })
     }
 
@@ -457,16 +478,18 @@ class Game {
         let figure = this.figure.el.rotations[this.figure.el.rotationIndex];
         let hPos = this.figure.hPos;
         let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
-        let fH = fSize.h;
+        let mH = fSize.mH;
         let fW = fSize.w;
+        let fH = fSize.h;
+        let vPos = this.figure.vPos;
 
         if (move == 'ArrowRight') {
-            if (!(this.figure.hPos + this.figure.fW <= 9))
+            if (!(this.figure.hPos + this.figure.fW <= 9 - (figure[0].length - this.figure.fW)))
                 return false;
 
             hPos++;
         } else if (move == 'ArrowLeft') {
-            if (!(this.figure.hPos - 1 >= 0))
+            if (!(this.figure.hPos - 1 >= 0 - (figure[0].length - this.figure.fW)))
                 return false;
 
             hPos--;
@@ -482,8 +505,15 @@ class Game {
 
             figure = this.figure.el.rotations[rotationIndex];
             let fSize = this.getFigureSize(figure);
-            fH = fSize.h;
+            mH = fSize.mH;
             fW = fSize.w;
+            fH = fSize.h;
+
+            if (vPos > 19)
+                vPos = 19 + (mH - fH);
+
+            if (hPos < 0)
+                hPos = 0
 
             if (hPos + fW > 9)
                 hPos -= (hPos + fW) - 10;
@@ -499,15 +529,22 @@ class Game {
 
             figure = this.figure.el.rotations[rotationIndex];
             let fSize = this.getFigureSize(this.figure.el.rotations[rotationIndex]);
-            fH = fSize.h;
+            mH = fSize.mH;
             fW = fSize.w;
+            fH = fSize.h;
+
+            if (vPos > 19)
+                vPos = 19 + (mH - fH);
+
+            if (hPos < 0)
+                hPos = 0
 
             if (hPos + fW > 9)
                 hPos -= (hPos + fW) - 10;
         }
 
-        for (let i = this.figure.vPos, fL = fH - 1; i >= 0 && fL >= 0; i--, fL--) {
-            for (let fC = 0, j = hPos; fC < fW; fC++, j++) {
+        for (let i = vPos, fL = mH - 1; i >= 0 && fL >= 0; i--, fL--) {
+            for (let fC = 0, j = hPos; fC < fW + (figure[0].length - fW) && i < this.heap.length; fC++, j++) {
                 if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
                     canDraw = false;
                     break ;
@@ -557,8 +594,8 @@ class Game {
             for (let line = this.figure.vPos; line >= 0 && line < this.heap.length; line++) {
                 let canDraw = true;
 
-                for (let i = line, fL = 0; i < this.heap.length && fL < this.figure.fH; i++, fL++) {
-                    for (let fC = 0, j = this.figure.hPos; fC < this.figure.fW; fC++, j++) {
+                for (let i = line, fL = 0; i < this.heap.length && fL < this.figure.mH; i++, fL++) {
+                    for (let fC = 0, j = this.figure.hPos; fC < this.figure.fW + (figure[0].length - this.figure.fW); fC++, j++) {
                         if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
                             canDraw = false;
                             break ;
@@ -567,13 +604,18 @@ class Game {
                     if (!canDraw) break ;
                 }
 
+
                 if (canDraw && line == this.map.length - 1) {
-                    this.figure.vPos = line;
+                    console.log('[+] before drop figure : ', figure)
+                    console.log('[+] before drop figure height : ', this.figure.fH)
+                    console.log('[+] before drop figure width: ', this.figure.fW)
+
+                    this.figure.vPos = line + (this.figure.mH - this.figure.fH);
                     break ;
                 }
 
                 if (!canDraw) {
-                    this.figure.vPos = line + this.figure.fH - 2;
+                    this.figure.vPos = line + this.figure.mH - 2;
                     break ;
                 }
             }
@@ -587,8 +629,20 @@ class Game {
             } else this.figure.el.rotationIndex++;
 
             let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
-            this.figure.fH = fSize.h;
+            this.figure.mH = fSize.mH;
+            this.figure.mW = fSize.mW;
             this.figure.fW = fSize.w;
+            this.figure.fH = fSize.h;
+
+            if (this.figure.vPos >= 19)
+                this.figure.vPos = 19 + (this.figure.mH - this.figure.fH);
+
+            console.log('[+] this.figure.mH : ', this.figure.mH);
+            console.log('[+] this.figure.fH : ', this.figure.fH);
+            console.log('[+] this.figure.vPos : ', this.figure.vPos);
+
+            if (this.figure.hPos < 0)
+                this.figure.hPos = 0;
 
             if (this.figure.hPos + this.figure.fW > 9)
                 this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
@@ -598,8 +652,20 @@ class Game {
             } else this.figure.el.rotationIndex--;
 
             let fSize = this.getFigureSize(this.figure.el.rotations[this.figure.el.rotationIndex]);
-            this.figure.fH = fSize.h;
+            this.figure.mH = fSize.mH;
+            this.figure.mW = fSize.mW;
             this.figure.fW = fSize.w;
+            this.figure.fH = fSize.h;
+
+            if (this.figure.vPos >= 19)
+                this.figure.vPos = 19 + (this.figure.mH - this.figure.fH);
+
+            console.log('[+] this.figure.mH : ', this.figure.mH);
+            console.log('[+] this.figure.fH : ', this.figure.fH);
+            console.log('[+] this.figure.vPos : ', this.figure.vPos);
+
+            if (this.figure.hPos < 0)
+                this.figure.hPos = 0;
 
             if (this.figure.hPos + this.figure.fW > 9)
                 this.figure.hPos -= (this.figure.hPos + this.figure.fW) - 10;
