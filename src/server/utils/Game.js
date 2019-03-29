@@ -464,11 +464,11 @@ class Game {
         for (let i = 0; i < columnsToCalc.length; i++)
             columnsToCalc[i] == 1 ? fW++ : 0;
 
-        console.log('=============== CALC FIGURE LENGTH ================');
-        console.log('[+] figure : ', figure);
-        console.log('[+] figure length : ', fW);
-        console.log('[+] figure height : ', fH);
-        console.log('===================================================');
+        // console.log('=============== CALC FIGURE LENGTH ================');
+        // console.log('[+] figure : ', figure);
+        // console.log('[+] figure length : ', fW);
+        // console.log('[+] figure height : ', fH);
+        // console.log('===================================================');
 
         return ({
             h: fH,
@@ -606,27 +606,47 @@ class Game {
         // console.log('[+] canDraw : ', canDraw);
 
         if (key === ' ') {
+            if (this.figure.lastStep)
+                return ;
+
             let figure = this.figure.el.rotations[this.figure.el.rotationIndex];
+
+            // console.log('[+] figure width : ', this.figure.fW);
+            // console.log('[+] figure height : ', this.figure.fH);
+            // console.log('[+] figure map width : ', this.figure.mW);
+            // console.log('[+] figure map height : ', this.figure.mH);
 
             for (let line = this.figure.vPos; line >= 0 && line < this.heap.length; line++) {
                 let canDraw = true;
 
+                // console.log('+++++++++++++++++++++++++++++++++++++++++++')
+
                 for (let i = line, fL = 0; i < this.heap.length && fL < this.figure.mH; i++, fL++) {
-                    for (let fC = 0, j = this.figure.hPos; fC < this.figure.fW + (figure[0].length - this.figure.fW); fC++, j++) {
+
+                    // console.log('--------------------------------')
+                    // console.log('[+] line heap      : ', this.heap[i]);
+                    // console.log('[+] line figure    : ', figure[fL]);
+                    // console.log('[+] map start pos  : ', this.figure.hPos);
+
+                    for (let fC = 0, j = this.figure.hPos; fC < this.figure.fW + (this.figure.mW - this.figure.fW); fC++, j++) {
+                        // console.log('-------')
+                        // console.log('[+] intersection : ', this.heap[i][j] != 0 && figure[fL][fC] != 0);
+                        // console.log('[+] heap cell : ', this.heap[i][j]);
+                        // console.log('[+] map cell : ', figure[fL][fC]);
+                        // console.log('-------')
                         if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
                             canDraw = false;
                             break ;
                         }
+
                     }
+                    // console.log('--------------------------------')
                     if (!canDraw) break ;
                 }
 
+                // console.log('+++++++++++++++++++++++++++++++++++++++++++')
 
                 if (canDraw && line == this.map.length - 1) {
-                    console.log('[+] before drop figure : ', figure)
-                    console.log('[+] before drop figure height : ', this.figure.fH)
-                    console.log('[+] before drop figure width: ', this.figure.fW)
-
                     this.figure.vPos = line + (this.figure.mH - this.figure.fH);
                     break ;
                 }

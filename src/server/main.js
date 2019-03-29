@@ -234,7 +234,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('game.move', async function (data) {
-        if (gamePlayingRooms[data.gameKey].game.checkEndGame())
+        if (!gamePlayingRooms[data.gameKey] || gamePlayingRooms[data.gameKey].game.checkEndGame())
             return ;
 
         gamePlayingRooms[data.gameKey].game.move(data.move);
