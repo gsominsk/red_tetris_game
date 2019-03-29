@@ -603,48 +603,25 @@ class Game {
 
         this.figure.moved = true;
         let canDraw = this.checkFigurePlacing(key);
-        // console.log('[+] canDraw : ', canDraw);
 
         if (key === ' ') {
             if (this.figure.lastStep)
                 return ;
 
             let figure = this.figure.el.rotations[this.figure.el.rotationIndex];
-
-            // console.log('[+] figure width : ', this.figure.fW);
-            // console.log('[+] figure height : ', this.figure.fH);
-            // console.log('[+] figure map width : ', this.figure.mW);
-            // console.log('[+] figure map height : ', this.figure.mH);
-
             for (let line = this.figure.vPos; line >= 0 && line < this.heap.length; line++) {
                 let canDraw = true;
 
-                // console.log('+++++++++++++++++++++++++++++++++++++++++++')
-
                 for (let i = line, fL = 0; i < this.heap.length && fL < this.figure.mH; i++, fL++) {
-
-                    // console.log('--------------------------------')
-                    // console.log('[+] line heap      : ', this.heap[i]);
-                    // console.log('[+] line figure    : ', figure[fL]);
-                    // console.log('[+] map start pos  : ', this.figure.hPos);
-
                     for (let fC = 0, j = this.figure.hPos; fC < this.figure.fW + (this.figure.mW - this.figure.fW); fC++, j++) {
-                        // console.log('-------')
-                        // console.log('[+] intersection : ', this.heap[i][j] != 0 && figure[fL][fC] != 0);
-                        // console.log('[+] heap cell : ', this.heap[i][j]);
-                        // console.log('[+] map cell : ', figure[fL][fC]);
-                        // console.log('-------')
                         if (this.heap[i][j] != 0 && figure[fL][fC] != 0) {
                             canDraw = false;
                             break ;
                         }
 
                     }
-                    // console.log('--------------------------------')
                     if (!canDraw) break ;
                 }
-
-                // console.log('+++++++++++++++++++++++++++++++++++++++++++')
 
                 if (canDraw && line == this.map.length - 1) {
                     this.figure.vPos = line + (this.figure.mH - this.figure.fH);
@@ -674,10 +651,6 @@ class Game {
             if (this.figure.vPos >= 19)
                 this.figure.vPos = 19 + (this.figure.mH - this.figure.fH);
 
-            console.log('[+] this.figure.mH : ', this.figure.mH);
-            console.log('[+] this.figure.fH : ', this.figure.fH);
-            console.log('[+] this.figure.vPos : ', this.figure.vPos);
-
             if (this.figure.hPos < 0)
                 this.figure.hPos = 0;
 
@@ -696,10 +669,6 @@ class Game {
 
             if (this.figure.vPos >= 19)
                 this.figure.vPos = 19 + (this.figure.mH - this.figure.fH);
-
-            console.log('[+] this.figure.mH : ', this.figure.mH);
-            console.log('[+] this.figure.fH : ', this.figure.fH);
-            console.log('[+] this.figure.vPos : ', this.figure.vPos);
 
             if (this.figure.hPos < 0)
                 this.figure.hPos = 0;

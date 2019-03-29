@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/utils/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/utils/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -87,8 +86,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="472" column="17" lean-forward="true" selection-start-line="472" selection-start-column="17" selection-end-line="472" selection-end-column="17" />
+            <state relative-caret-position="16">
+              <caret line="650" lean-forward="true" selection-start-line="650" selection-end-line="650" />
               <folding>
                 <element signature="n#!!block;n#constructor#0;n#Figure#0" />
                 <element signature="n#!!block;n#getRandFigure#0;n#Figure#0" />
@@ -241,8 +240,8 @@
         <option value="$PROJECT_DIR$/src/client/actions/game.js" />
         <option value="$PROJECT_DIR$/src/client/reducers/game.js" />
         <option value="$PROJECT_DIR$/src/client/containers/game.js" />
-        <option value="$PROJECT_DIR$/src/server/utils/Game.js" />
         <option value="$PROJECT_DIR$/src/server/main.js" />
+        <option value="$PROJECT_DIR$/src/server/utils/Game.js" />
       </list>
     </option>
   </component>
@@ -390,14 +389,7 @@
       <workItem from="1553541352948" duration="737000" />
       <workItem from="1553600135874" duration="19310000" />
       <workItem from="1553773320018" duration="26914000" />
-      <workItem from="1553862830754" duration="8435000" />
-    </task>
-    <task id="LOCAL-00008" summary="Добавил анимацию загрузки в подгрузку рейтинга">
-      <created>1551891566638</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1551891566638</updated>
+      <workItem from="1553862830754" duration="8577000" />
     </task>
     <task id="LOCAL-00009" summary="Добавил проверку типизации пропсов у контейнера рейтс и компонента анимации&#10;загрузки">
       <created>1551893637815</created>
@@ -735,11 +727,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553868720795</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="При нажатии на пробел когда фигура уже на хипе она проваливалась вниз, &#10;добавил проверку на последний шаг, тоесть если она уже на хипе нажимая &#10;пробел ничего не произойдет.">
+      <created>1553872640042</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1553872640042</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="325844000" />
+    <option name="totallyTimeSpent" value="325986000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -773,7 +772,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил создание игры, комнаты для игры и дисконекты во время игры&#10;Баг с повторным подключением к игре" />
     <MESSAGE value="Поправил баг с реконектом" />
     <MESSAGE value="Поправил баг с определением юзера если он зарегестрирован. Вернул имена и &#10;рейтинг в игре" />
     <MESSAGE value="Поправил баг из за которого юзер мог играть сам с собой.&#10;Юзер вставал в очередь, удаление комнаты при обновлении сокета не происходило,&#10;после чего юзер находил сам себя в очереди и подключался." />
@@ -798,7 +796,8 @@
     <MESSAGE value="Сделал проверку на конец игры" />
     <MESSAGE value="Переделал логику отрисовки фигур, теперь они крутяться вокруг своей оси" />
     <MESSAGE value="Добавил енд гейм, скорее всего есть баг с появлением фигуры на первой &#10;линии карты" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил енд гейм, скорее всего есть баг с появлением фигуры на первой &#10;линии карты" />
+    <MESSAGE value="При нажатии на пробел когда фигура уже на хипе она проваливалась вниз, &#10;добавил проверку на последний шаг, тоесть если она уже на хипе нажимая &#10;пробел ничего не произойдет." />
+    <option name="LAST_COMMIT_MESSAGE" value="При нажатии на пробел когда фигура уже на хипе она проваливалась вниз, &#10;добавил проверку на последний шаг, тоесть если она уже на хипе нажимая &#10;пробел ничего не произойдет." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/socket/src/js/reducers/reducer.js" />
@@ -1172,8 +1171,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="472" column="17" lean-forward="true" selection-start-line="472" selection-start-column="17" selection-end-line="472" selection-end-column="17" />
+        <state relative-caret-position="16">
+          <caret line="650" lean-forward="true" selection-start-line="650" selection-end-line="650" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Figure#0" />
             <element signature="n#!!block;n#getRandFigure#0;n#Figure#0" />
