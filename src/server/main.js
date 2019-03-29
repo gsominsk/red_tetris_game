@@ -88,15 +88,7 @@ io.on('connection', (socket) => {
         console.log('======================================================================');
 
         console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
-        for (let room in gamePlayingRooms) {
-            if (gamePlayingRooms[room].firstPlayer.socketId == socket.id || gamePlayingRooms[room].secondPlayer.socketId == socket.id) {
-                io.to(gamePlayingRooms[room].roomName).emit('game.disconnect', {
-                    disconnected: true
-                });
-                socket.leave(gamePlayingRooms[room].roomName);
-                delete gamePlayingRooms[room];
-            }
-        }
+        deleteRoom(socket);
         console.log('=====================================================================');
         console.log('[+] Disconnected : ', socket.id);
     });
@@ -113,15 +105,7 @@ io.on('connection', (socket) => {
         console.log('======================================================================');
 
         console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
-        for (let room in gamePlayingRooms) {
-            if (gamePlayingRooms[room].firstPlayer.socketId == socket.id || gamePlayingRooms[room].secondPlayer.socketId == socket.id) {
-                io.to(gamePlayingRooms[room].roomName).emit('game.disconnect', {
-                    disconnected: true
-                });
-                socket.leave(gamePlayingRooms[room].roomName);
-                delete gamePlayingRooms[room];
-            }
-        }
+        deleteRoom(socket);
         console.log('=====================================================================');
     });
 
@@ -223,9 +207,12 @@ io.on('connection', (socket) => {
                 gamePlayingRooms[data.gameKey].game.step();
 
                 // Кто то достиг потолка и игра закончилась
-                // if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
-                //
-                // }
+                if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
+                    clearInterval(gameLoop);
+                    io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.end', {end: true, msg: 'End Game'});
+                    deleteRoom(socket);
+                    return ;
+                }
 
                 let res = {
                     firstPlayer: {
@@ -247,6 +234,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('game.move', async function (data) {
+        if (gamePlayingRooms[data.gameKey].game.checkEndGame())
+            return ;
+
         gamePlayingRooms[data.gameKey].game.move(data.move);
         let res = {
             firstPlayer: {
@@ -459,3 +449,17 @@ io.on('connection', (socket) => {
 
     })
 });
+
+function deleteRoom (socket) {
+    for (let room in gamePlayingRooms) {
+        if (gamePlayingRooms[room].firstPlayer.socketId == socket.id || gamePlayingRooms[room].secondPlayer.socketId == socket.id) {
+            if (!gamePlayingRooms[room].game.checkEndGame()) {
+                io.to(gamePlayingRooms[room].roomName).emit('game.disconnect', {
+                    disconnected: true
+                });
+            }
+            socket.leave(gamePlayingRooms[room].roomName);
+            delete gamePlayingRooms[room];
+        }
+    }
+}

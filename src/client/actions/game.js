@@ -49,6 +49,14 @@ export function gameDisconnectionAction (bool) {
     })
 }
 
+export function gameEnd (data) {
+    return ({
+        type: 'GAME_END',
+        end: data.end,
+        endGameMsg: data.msg
+    })
+}
+
 export function findGame (socket) {
     return ((d) => {
         let sessionKey = window.sessionStorage.getItem('sessionRTG') || false;
@@ -69,6 +77,10 @@ export function findGame (socket) {
 
         socket.on('game.find.loading', (res) => {
             d(gameIsLoading(res.loading));
+        });
+
+        socket.on('game.end', (res) => {
+            d(gameEnd(res))
         });
 
         socket.on('game.disconnect', (res) => {

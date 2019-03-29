@@ -87,7 +87,10 @@ class Game extends React.Component {
                     YOU WIN.<br/>
                     <div className="restart-game-btn" onClick={this.restartGame}>RESTART?</div>
                 </div>
-                <div contentEditable={false} className={`play-wrap ${this.state.open || this.props.game.loading || this.props.game.disconnected ? 'opacity-zero-point-two' : ''}`}>
+                <div contentEditable={false} className={`disconnection-msg ${this.props.game.end ? '' : 'hide'}`}>
+                    {this.props.game.endGameMsg}
+                </div>
+                <div contentEditable={false} className={`play-wrap ${this.state.open || this.props.game.loading || this.props.game.disconnected || this.props.game.end ? 'opacity-zero-point-two' : ''}`}>
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">
                             <div className="player-login">

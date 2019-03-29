@@ -1,6 +1,8 @@
 const initialState = {
     loading: false,
     disconnected: false,
+    end: false,
+    endGameMsg: '',
     firstPlayer: {
         login: 'Anonymous',
         score: 0,
@@ -59,6 +61,13 @@ export default function (state = initialState, action) {
                     score: state.secondPlayer.score,
                     figures: action.secondPlayer.figures
                 }
+            };
+
+        case 'GAME_END':
+            return {
+                ...state,
+                end: action.end,
+                endGameMsg: action.endGameMsg
             };
 
         case 'ON_UNMOUNT_CLEAN':

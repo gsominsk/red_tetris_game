@@ -270,6 +270,22 @@ class Game {
         if (this.figure.lastStep && !this.figure.moved)
             figureDraw = false;
 
+        if (this.figure.vPos == 0 + this.figure.mH - this.figure.fH) {
+            for (let mL = this.figure.vPos, fL = this.figure.fH - 1; mL >= 0; mL--, fL--) {
+                for (let mC = this.figure.hPos, fC = 0; fC < this.figure.mW; fC++, mC++) {
+                    if (this.heap[mL][mC] != 0 && figure[fL][fC] != 0) {
+                        this.endGame = true;
+                        break ;
+                    }
+                }
+                if (this.endGame)
+                    break ;
+            }
+        }
+
+        if (this.endGame)
+            return ;
+
         console.log('[+] figure draw : ', figureDraw);
 
         console.log('[+] map line : ', mapLine);
@@ -318,12 +334,12 @@ class Game {
 
         // Проверяем потолок, если фигура упала на хип и при этом не отресовалась
         // полностью, мы ставим флаг ендгейм
-        if (onHeap && this.figure.vPos - this.figure.mH < 0) {
-            console.log('+++==========+++');
-            console.log('+++ END GAME +++');
-            console.log('+++==========+++');
-            this.endGame = true;
-        }
+        // if (onHeap && this.figure.vPos - this.figure.mH < 0) {
+        //     console.log('+++==========+++');
+        //     console.log('+++ END GAME +++');
+        //     console.log('+++==========+++');
+        //     this.endGame = true;
+        // }
 
         // Проверяем упала ли фигура до дна
         if (onHeap) {
@@ -401,7 +417,8 @@ class Game {
                 }
             }
         }
-        console.log('[+] heap : ', this.heap);
+        // console.log('[+] heap : ');
+        // console.log(this.heap);
         console.log('=====================================================');
     }
 
