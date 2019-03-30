@@ -199,16 +199,18 @@ class Game {
                 figure: {},
                 heap: [],
                 figuresListMarker: 0,
-                socketId: sockets[0]
+                socketId: sockets[0],
+                blockedLines: 0
             },
             two: {
                 map: [],
                 figure: {},
                 heap: [],
                 figuresListMarker: 0,
-                socketId: sockets[1]
+                socketId: sockets[1],
+                blockedLines: 0
             },
-            winner: ''
+            winner: false
         };
 
         console.log('[+] players : ', this.player);
@@ -327,7 +329,12 @@ class Game {
         }
 
         if (this.endGame) {
-            this.setWinner(player);
+            console.log('================== END GAME ===================');
+            console.log('[+] player which overflowed map : ', player);
+            console.log('[+] player which overflowed map : ', this.player[player].socketId);
+            console.log('===============================================');
+            if (!this.player.winner)
+                this.setWinner(this.anotherPlayer(player));
             return ;
         }
 
@@ -389,9 +396,21 @@ class Game {
         console.log('====================================================================');
     }
 
-    step() {
+    step(player) {
         console.log('================= STEP ===================');
         // console.log('[+] figure : ', this.figure);
+
+        if (player) {
+            if (this.player[player].figure.lastStep) {
+                this.createNewFigure(player);
+                this.placeFigureToHeap(player);
+            } else
+                this.player[player].figure.vPos++;
+
+            this.addHeapOnMap(player);
+            this.placeFigureOnMap(player);
+            return ;
+        }
 
         if (this.player.one.figure.lastStep) {
             this.createNewFigure('one');
@@ -414,7 +433,6 @@ class Game {
 
         console.log('==========================================');
     }
-
 
     createNewFigure (player) {
         let figure = {
@@ -454,7 +472,6 @@ class Game {
             mH: 0
         };
 
-
         let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
         this.player[player].figure.mH = fSize.mH;
         this.player[player].figure.mW = fSize.mW;
@@ -483,16 +500,29 @@ class Game {
         for (let i = 0; i < this.player[player].heap.length; i++) {
             let filledLine = [];
             for (let j = 0; j < this.player[player].heap[0].length; j++) {
-                if (this.player[player].heap[i][j] != 0)
+                if (this.player[player].heap[i][j] != 0 && this.player[player].heap[i][j] != 8)
                     filledLine.push(0);
             }
 
             if (filledLine.length == this.player[player].heap[0].length) {
+                this.player[this.anotherPlayer(player)].blockedLines++;
+
                 for (let line = i; line > 0; line--) {
                     this.player[player].heap[line] = this.player[player].heap[line - 1];
                 }
             }
         }
+
+        if (this.player[this.anotherPlayer(player)].blockedLines > 0) {
+            let aP = this.player[this.anotherPlayer(player)];
+
+            for (let bL = aP.blockedLines, i = aP.heap.length - 1; bL >= 0 && i >= 0; bL--, i--) {
+                for (let j = 0; j < aP.heap[0].length; j++) {
+                    aP.heap[i][j] = 8;
+                }
+            }
+        }
+
         // console.log('[+] heap : ');
         // console.log(this.heap);
         console.log('=====================================================');
@@ -562,11 +592,15 @@ class Game {
             4: 'turbo',
             5: 'june-bud',
             6: 'steel-pink',
-            7: 'red'
+            7: 'red',
+            8: 'lightgrey'
         });
     }
 
     checkFigurePlacing (move, player) {
+        if (move == ' ' || move == 'ArrowDown')
+            return ;
+
         let canDraw = true;
         let figure = this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex];
         let hPos = this.player[player].figure.hPos;
@@ -606,35 +640,36 @@ class Game {
                 vPos = 19 + (mH - fH);
 
             if (hPos < 0)
-                hPos = 0
-
-            if (hPos + fW > 9)
-                hPos -= (hPos + fW) - 10;
-        } else if (move = 'ArrowDown') {
-            if (!(this.player[player].figure.el.maxRotations != 0))
-                return false;
-
-            let rotationIndex = this.player[player].figure.el.rotationIndex;
-
-            if (this.player[player].figure.el.rotationIndex - 1 < 0) {
-                rotationIndex = this.player[player].figure.el.maxRotations - 1;
-            } else rotationIndex--;
-
-            figure = this.player[player].figure.el.rotations[rotationIndex];
-            let fSize = this.getFigureSize(this.player[player].figure.el.rotations[rotationIndex]);
-            mH = fSize.mH;
-            fW = fSize.w;
-            fH = fSize.h;
-
-            if (vPos > 19)
-                vPos = 19 + (mH - fH);
-
-            if (hPos < 0)
-                hPos = 0
+                hPos = 0;
 
             if (hPos + fW > 9)
                 hPos -= (hPos + fW) - 10;
         }
+        // else if (move = 'ArrowDown') {
+        //     if (!(this.player[player].figure.el.maxRotations != 0))
+        //         return false;
+        //
+        //     let rotationIndex = this.player[player].figure.el.rotationIndex;
+        //
+        //     if (this.player[player].figure.el.rotationIndex - 1 < 0) {
+        //         rotationIndex = this.player[player].figure.el.maxRotations - 1;
+        //     } else rotationIndex--;
+        //
+        //     figure = this.player[player].figure.el.rotations[rotationIndex];
+        //     let fSize = this.getFigureSize(this.player[player].figure.el.rotations[rotationIndex]);
+        //     mH = fSize.mH;
+        //     fW = fSize.w;
+        //     fH = fSize.h;
+        //
+        //     if (vPos > 19)
+        //         vPos = 19 + (mH - fH);
+        //
+        //     if (hPos < 0)
+        //         hPos = 0
+        //
+        //     if (hPos + fW > 9)
+        //         hPos -= (hPos + fW) - 10;
+        // }
 
         for (let i = vPos, fL = mH - 1; i >= 0 && fL >= 0; i--, fL--) {
             for (let fC = 0, j = hPos; fC < fW + (figure[0].length - fW) && i < this.player[player].heap.length; fC++, j++) {
@@ -684,6 +719,31 @@ class Game {
         let canDraw = this.checkFigurePlacing(key, player);
 
         if (key === ' ') {
+            this.step(player);
+        } else if (key == 'ArrowRight' && canDraw) {
+            this.player[player].figure.hPos++;
+        } else if (key == 'ArrowLeft' && canDraw) {
+            this.player[player].figure.hPos--;
+        } else if (key == 'ArrowUp' && canDraw) {
+            if (this.player[player].figure.el.rotationIndex + 1 >= this.player[player].figure.el.maxRotations) {
+                this.player[player].figure.el.rotationIndex = 0;
+            } else this.player[player].figure.el.rotationIndex++;
+
+            let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
+            this.player[player].figure.mH = fSize.mH;
+            this.player[player].figure.mW = fSize.mW;
+            this.player[player].figure.fW = fSize.w;
+            this.player[player].figure.fH = fSize.h;
+
+            if (this.player[player].figure.vPos >= 19)
+                this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
+
+            if (this.player[player].figure.hPos < 0)
+                this.player[player].figure.hPos = 0;
+
+            if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
+                this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
+        } else if (key == 'ArrowDown') {
             if (this.player[player].figure.lastStep)
                 return ;
 
@@ -712,48 +772,25 @@ class Game {
                     break ;
                 }
             }
-        } else if (key == 'ArrowRight' && canDraw) {
-            this.player[player].figure.hPos++;
-        } else if (key == 'ArrowLeft' && canDraw) {
-            this.player[player].figure.hPos--;
-        } else if (key == 'ArrowUp' && canDraw) {
-            if (this.player[player].figure.el.rotationIndex + 1 >= this.player[player].figure.el.maxRotations) {
-                this.player[player].figure.el.rotationIndex = 0;
-            } else this.player[player].figure.el.rotationIndex++;
 
-            let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
-            this.player[player].figure.mH = fSize.mH;
-            this.player[player].figure.mW = fSize.mW;
-            this.player[player].figure.fW = fSize.w;
-            this.player[player].figure.fH = fSize.h;
-
-            if (this.player[player].figure.vPos >= 19)
-                this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
-
-            if (this.player[player].figure.hPos < 0)
-                this.player[player].figure.hPos = 0;
-
-            if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
-                this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
-        } else if (key == 'ArrowDown' && canDraw) {
-            if (this.player[player].figure.el.rotationIndex - 1 < 0) {
-                this.player[player].figure.el.rotationIndex = this.player[player].figure.el.maxRotations - 1;
-            } else this.player[player].figure.el.rotationIndex--;
-
-            let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
-            this.player[player].figure.mH = fSize.mH;
-            this.player[player].figure.mW = fSize.mW;
-            this.player[player].figure.fW = fSize.w;
-            this.player[player].figure.fH = fSize.h;
-
-            if (this.player[player].figure.vPos >= 19)
-                this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
-
-            if (this.player[player].figure.hPos < 0)
-                this.player[player].figure.hPos = 0;
-
-            if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
-                this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
+            // if (this.player[player].figure.el.rotationIndex - 1 < 0) {
+            //     this.player[player].figure.el.rotationIndex = this.player[player].figure.el.maxRotations - 1;
+            // } else this.player[player].figure.el.rotationIndex--;
+            //
+            // let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
+            // this.player[player].figure.mH = fSize.mH;
+            // this.player[player].figure.mW = fSize.mW;
+            // this.player[player].figure.fW = fSize.w;
+            // this.player[player].figure.fH = fSize.h;
+            //
+            // if (this.player[player].figure.vPos >= 19)
+            //     this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
+            //
+            // if (this.player[player].figure.hPos < 0)
+            //     this.player[player].figure.hPos = 0;
+            //
+            // if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
+            //     this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
         }
 
         this.addHeapOnMap(player);
@@ -766,10 +803,12 @@ class Game {
         this.startBool = true;
     }
 
+    anotherPlayer (player) {
+        return player == 'one' ? 'two' : 'one';
+    }
+
     setWinner (player) {
-        this.player.winner = player == 'one' ?
-            this.player['two'].socketId :
-            this.player['one'].socketId;
+        this.player.winner = this.player[player].socketId;
     }
 
     getWinner () {

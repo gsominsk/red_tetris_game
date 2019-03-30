@@ -118,8 +118,9 @@ input[type="submit"]:hover {
 .red {
     background: red !important;
 }
-
-
+.lightgrey {
+    background: lightgrey !important;
+}
 
 /* ==============================*/
 /* ============ MENU ============*/
