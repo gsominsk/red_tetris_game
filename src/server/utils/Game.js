@@ -213,27 +213,12 @@ class Game {
             winner: false
         };
 
-        console.log('[+] players : ', this.player);
-
         this.figuresList = new Figure();
-
-        // this.map = [];
-        // this.figure = {
-        //     el: [],
-        //     onField: false,
-        //     lastStep: false,
-        //     vPos: 0,
-        //     hPos: 0
-        // };
-        // this.heap = [];
         this.startBool = false;
         this.endGame = false;
-        // this.figuresListMarker = 0;
 
-        // console.log('[+] figures list : ');
-        // console.log(this.figuresList);
-        // generating new field
-        // console.log('[+] generating new figure : ', this.figure.el.rotations[this.figure.el.rotationIndex]);
+        console.log('[+] players : ', this.player);
+
         this.generateMap();
 
         this.createNewFigure('one');
@@ -245,8 +230,6 @@ class Game {
             this.placeFigureToHeap('two');
             this.placeFigureOnMap('two');
         }
-
-        //generate new figure
 
         console.log('======================================================');
     }

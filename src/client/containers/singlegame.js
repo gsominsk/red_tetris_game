@@ -70,6 +70,7 @@ class Game extends React.Component {
     }
 
     componentWillUnmount() {
+        this.props.onUnmountClean();
         this.props.disconnectSingleGame(Io.socket);
     }
 
