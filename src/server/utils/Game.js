@@ -240,9 +240,11 @@ class Game {
         this.placeFigureToHeap('one');
         this.placeFigureOnMap('one');
 
-        this.createNewFigure('two');
-        this.placeFigureToHeap('two');
-        this.placeFigureOnMap('two');
+        if (sockets[1]) {
+            this.createNewFigure('two');
+            this.placeFigureToHeap('two');
+            this.placeFigureOnMap('two');
+        }
 
         //generate new figure
 
@@ -645,31 +647,6 @@ class Game {
             if (hPos + fW > 9)
                 hPos -= (hPos + fW) - 10;
         }
-        // else if (move = 'ArrowDown') {
-        //     if (!(this.player[player].figure.el.maxRotations != 0))
-        //         return false;
-        //
-        //     let rotationIndex = this.player[player].figure.el.rotationIndex;
-        //
-        //     if (this.player[player].figure.el.rotationIndex - 1 < 0) {
-        //         rotationIndex = this.player[player].figure.el.maxRotations - 1;
-        //     } else rotationIndex--;
-        //
-        //     figure = this.player[player].figure.el.rotations[rotationIndex];
-        //     let fSize = this.getFigureSize(this.player[player].figure.el.rotations[rotationIndex]);
-        //     mH = fSize.mH;
-        //     fW = fSize.w;
-        //     fH = fSize.h;
-        //
-        //     if (vPos > 19)
-        //         vPos = 19 + (mH - fH);
-        //
-        //     if (hPos < 0)
-        //         hPos = 0
-        //
-        //     if (hPos + fW > 9)
-        //         hPos -= (hPos + fW) - 10;
-        // }
 
         for (let i = vPos, fL = mH - 1; i >= 0 && fL >= 0; i--, fL--) {
             for (let fC = 0, j = hPos; fC < fW + (figure[0].length - fW) && i < this.player[player].heap.length; fC++, j++) {
@@ -719,31 +696,6 @@ class Game {
         let canDraw = this.checkFigurePlacing(key, player);
 
         if (key === ' ') {
-            this.step(player);
-        } else if (key == 'ArrowRight' && canDraw) {
-            this.player[player].figure.hPos++;
-        } else if (key == 'ArrowLeft' && canDraw) {
-            this.player[player].figure.hPos--;
-        } else if (key == 'ArrowUp' && canDraw) {
-            if (this.player[player].figure.el.rotationIndex + 1 >= this.player[player].figure.el.maxRotations) {
-                this.player[player].figure.el.rotationIndex = 0;
-            } else this.player[player].figure.el.rotationIndex++;
-
-            let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
-            this.player[player].figure.mH = fSize.mH;
-            this.player[player].figure.mW = fSize.mW;
-            this.player[player].figure.fW = fSize.w;
-            this.player[player].figure.fH = fSize.h;
-
-            if (this.player[player].figure.vPos >= 19)
-                this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
-
-            if (this.player[player].figure.hPos < 0)
-                this.player[player].figure.hPos = 0;
-
-            if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
-                this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
-        } else if (key == 'ArrowDown') {
             if (this.player[player].figure.lastStep)
                 return ;
 
@@ -772,6 +724,31 @@ class Game {
                     break ;
                 }
             }
+        } else if (key == 'ArrowRight' && canDraw) {
+            this.player[player].figure.hPos++;
+        } else if (key == 'ArrowLeft' && canDraw) {
+            this.player[player].figure.hPos--;
+        } else if (key == 'ArrowUp' && canDraw) {
+            if (this.player[player].figure.el.rotationIndex + 1 >= this.player[player].figure.el.maxRotations) {
+                this.player[player].figure.el.rotationIndex = 0;
+            } else this.player[player].figure.el.rotationIndex++;
+
+            let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
+            this.player[player].figure.mH = fSize.mH;
+            this.player[player].figure.mW = fSize.mW;
+            this.player[player].figure.fW = fSize.w;
+            this.player[player].figure.fH = fSize.h;
+
+            if (this.player[player].figure.vPos >= 19)
+                this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
+
+            if (this.player[player].figure.hPos < 0)
+                this.player[player].figure.hPos = 0;
+
+            if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
+                this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
+        } else if (key == 'ArrowDown') {
+            this.step(player);
         }
 
         this.addHeapOnMap(player);

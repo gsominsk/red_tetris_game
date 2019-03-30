@@ -26,7 +26,8 @@ class Menu extends React.Component {
             <div className="menu-container">
                 <div className="menu-wrap">
                     <div className="menu-list">
-                        <div className="btn"><Link to="/play">PLAY</Link></div>
+                        <div className="btn"><Link to="/play">MULTIPLAYER</Link></div>
+                        <div className="btn"><Link to="/singleplay">SINGLE</Link></div>
                         <div className="btn"><Link to="/rates">RATES</Link></div>
                         <LogBtn onClick={this.logOutClick} loggedIn={!(this.props.session == null)}/>
                     </div>

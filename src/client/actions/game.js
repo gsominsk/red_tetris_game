@@ -17,6 +17,20 @@ export function gameSuccessLoaded (data) {
     })
 }
 
+export function singleGameSuccessLoaded (data) {
+    return ({
+        type: 'SINGLE_GAME_SUCCESS_LOADED',
+        loading: false,
+        disconnected: false,
+        firstPlayer: {
+            login: data.firstPlayer.login,
+            score: data.firstPlayer.score,
+            figures: data.firstPlayer.figures
+        },
+        gameKey: data.gameKey
+    })
+}
+
 export function gameUpdateSuccess (data) {
     return ({
         type: 'GAME_UPDATE_SUCCESS',
@@ -26,6 +40,15 @@ export function gameUpdateSuccess (data) {
         secondPlayer: {
             figures: data.secondPlayer.figures
         },
+    })
+}
+
+export function singleGameUpdateSuccess (data) {
+    return ({
+        type: 'SINGLE_GAME_UPDATE_SUCCESS',
+        firstPlayer: {
+            figures: data.firstPlayer.figures
+        }
     })
 }
 
@@ -103,8 +126,44 @@ export function disconnectGame (socket) {
     })
 }
 
-export function gameStart (socket) {
+ export function createGame (socket) {
     return ((d) => {
+        let sessionKey = window.sessionStorage.getItem('sessionRTG') || false;
 
+        socket.emit('single.game.create', {sessionKey});
+
+        socket.on('single.game.created', (res) => {
+            d(singleGameSuccessLoaded(res));
+        });
+
+        socket.on('single.game.start.success', (res) => {
+            console.log('[+] SINGLE GAME START SUCCESS')
+            socket.emit('single.game.start', {gameKey: res.gameKey});
+        });
+
+        socket.on('single.game.update.success', (res) => {
+            d(singleGameUpdateSuccess(res));
+        });
+
+        socket.on('single.game.end', (res) => {
+            res.msg = 'You loose.';
+            d(gameEnd(res))
+        });
+
+        socket.on('game.disconnect', (res) => {
+            d(gameDisconnectionAction(res.disconnected));
+        });
+    })
+ }
+
+export function disconnectSingleGame (socket) {
+    return ((d) => {
+        socket.emit('single.game.disconnect.push');
+    })
+}
+
+export function singleFigureMove (socket, data) {
+    return ((d) => {
+        socket.emit('single.game.move', data);
     })
 }

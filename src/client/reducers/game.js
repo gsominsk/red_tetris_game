@@ -48,6 +48,19 @@ export default function (state = initialState, action) {
                 gameKey: action.gameKey
             };
 
+        case 'SINGLE_GAME_SUCCESS_LOADED':
+            return {
+                ...state,
+                loading: action.loading,
+                disconnected: action.disconnected,
+                firstPlayer: {
+                    login: action.firstPlayer.login,
+                    score: action.firstPlayer.score,
+                    figures: action.firstPlayer.figures
+                },
+                gameKey: action.gameKey
+            };
+
         case 'GAME_UPDATE_SUCCESS':
             return {
                 ...state,
@@ -61,6 +74,16 @@ export default function (state = initialState, action) {
                     score: state.secondPlayer.score,
                     figures: action.secondPlayer.figures
                 }
+            };
+
+        case 'SINGLE_GAME_UPDATE_SUCCESS':
+            return {
+                ...state,
+                firstPlayer: {
+                    login: state.firstPlayer.login,
+                    score: state.firstPlayer.score,
+                    figures: action.firstPlayer.figures
+                },
             };
 
         case 'GAME_END':

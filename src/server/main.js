@@ -93,6 +93,108 @@ io.on('connection', (socket) => {
         console.log('[+] Disconnected : ', socket.id);
     });
 
+    socket.on('single.game.create', async function (data) {
+        let err, user;
+        if (data.sessionKey) {
+            [err, user] = await to(User.findOne({
+                session: data.sessionKey
+            }));
+        }
+
+        // Создаем игрока, если зарегестрирован то вводим ключ сессии, если не зарегестрирован
+        // вводим айди сокета.
+        let player = {
+            loggedIn: (!data.sessionKey ? false : true),
+            key: (!data.sessionKey ? socket.id : data.sessionKey),
+            socketId: socket.id,
+            login: user ? user.login : 'Anonymous',
+            score: user ? user.score: '0',
+        };
+
+        let gameKey = hashGenerator(11);
+        gamePlayingRooms[gameKey] = {
+            firstPlayer: {
+                loggedIn: player.loggedIn,
+                socketId: player.socketId,
+                key: player.key
+            },
+            roomName: hashGenerator(12),
+            game: new Game([player.socketId])
+        };
+
+        socket.emit('single.game.created', {
+            firstPlayer: {
+                login: player.login,
+                score: player.score,
+                figures : gamePlayingRooms[gameKey].game.getFiguresPosition('one')
+            },
+            gameKey: gameKey
+        });
+
+        socket.emit('single.game.start.success', {gameKey});
+    });
+
+    socket.on('single.game.start', async function (data) {
+        gamePlayingRooms[data.gameKey].game.start();
+
+        console.log('[+] SINGLE GAME START')
+
+        let gameLoop = setInterval(() => {
+            console.log('[+] SINGLE GAME LOOP')
+            if (gamePlayingRooms[data.gameKey]) {
+                gamePlayingRooms[data.gameKey].game.step('one');
+
+                // Кто то достиг потолка и игра закончилась
+                if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
+                    clearInterval(gameLoop);
+                    socket.emit('single.game.end', {
+                        winner: gamePlayingRooms[data.gameKey].game.getWinner(),
+                        end: true,
+                        msg: 'End Game'
+                    });
+                    deleteRoom(socket);
+                    return ;
+                }
+
+                let res = {
+                    firstPlayer: {
+                        figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition('one')
+                    }
+                };
+
+                socket.emit('single.game.update.success', res);
+            }
+        }, 1000);
+
+        if (!gamePlayingRooms[data.gameKey])
+            clearInterval(gameLoop);
+    })
+
+    socket.on('single.game.move', async function (data) {
+        if (!gamePlayingRooms[data.gameKey] || gamePlayingRooms[data.gameKey].game.checkEndGame())
+            return ;
+
+        let player = 'one';
+        gamePlayingRooms[data.gameKey].game.move(data.move, player);
+        let res = {
+            firstPlayer: {
+                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition(player)
+            }
+        };
+
+        socket.emit('single.game.update.success', res);
+    });
+
+    socket.on('single.game.disconnect.push', async function () {
+        console.log('=============== SINGLE DISCONNECTING USER FROM GAMING ROOM =================');
+        for (let room in gamePlayingRooms) {
+            if (gamePlayingRooms[room].firstPlayer.socketId == socket.id) {
+                delete gamePlayingRooms[room];
+            }
+        }
+        console.log('=============================================================================');
+    });
+
     socket.on('game.disconnect.push', async function () {
         console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
         for(let i = 0; i < gameWaitingPlayers.length; i++){
