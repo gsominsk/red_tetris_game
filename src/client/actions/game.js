@@ -80,6 +80,7 @@ export function findGame (socket) {
         });
 
         socket.on('game.end', (res) => {
+            res.msg = res.winner == socket.id ? 'You win' : 'You looseeeeer'
             d(gameEnd(res))
         });
 

@@ -166,19 +166,19 @@ io.on('connection', (socket) => {
                 key: gameWaitingPlayers[0].key
             },
             roomName: roomName,
-            game: new Game()
+            game: new Game([player.socketId, gameWaitingPlayers[0].socketId])
         };
 
         io.to(roomName).emit('game.find.success', {
             firstPlayer: {
                 login: player.login,
                 score: player.score,
-                figures : gamePlayingRooms[gameKey].game.getFiguresPosition()
+                figures : gamePlayingRooms[gameKey].game.getFiguresPosition('one')
             },
             secondPlayer: {
                 login: gameWaitingPlayers[0].login,
                 score: gameWaitingPlayers[0].score,
-                figures : gamePlayingRooms[gameKey].game.getFiguresPosition()
+                figures : gamePlayingRooms[gameKey].game.getFiguresPosition('two')
             },
             gameKey: gameKey
         });
@@ -209,24 +209,27 @@ io.on('connection', (socket) => {
                 // Кто то достиг потолка и игра закончилась
                 if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
                     clearInterval(gameLoop);
-                    io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.end', {end: true, msg: 'End Game'});
+                    io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.end', {
+                        winner: gamePlayingRooms[data.gameKey].game.getWinner(),
+                        end: true,
+                        msg: 'End Game'
+                    });
                     deleteRoom(socket);
                     return ;
                 }
 
                 let res = {
                     firstPlayer: {
-                        figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()
+                        figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition('one')
                     },
                     secondPlayer: {
-                        figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()
+                        figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition('two')
                     }
                 }
 
                 io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.update.success', res);
             }
         }, 1000);
-
 
         if (!gamePlayingRooms[data.gameKey])
             clearInterval(gameLoop);
@@ -237,18 +240,18 @@ io.on('connection', (socket) => {
         if (!gamePlayingRooms[data.gameKey] || gamePlayingRooms[data.gameKey].game.checkEndGame())
             return ;
 
-        gamePlayingRooms[data.gameKey].game.move(data.move);
+        let player = gamePlayingRooms[data.gameKey].firstPlayer.socketId == socket.id ? 'one' : 'two';
+        gamePlayingRooms[data.gameKey].game.move(data.move, player);
         let res = {
             firstPlayer: {
-                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()
+                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition('one')
             },
             secondPlayer: {
-                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition()
+                figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition('two')
             }
         };
 
         io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.update.success', res);
-
     });
 
     socket.on('login', async function (data) {
