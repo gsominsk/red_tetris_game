@@ -81,7 +81,7 @@ export function findGame (socket) {
 
         socket.on('game.end', (res) => {
             console.log('[+] socket id : ', socket.id);
-            res.msg = res.winner == socket.id ? 'You win' : 'You looseeeeer';
+            res.msg = res.winner == socket.id ? 'You win.' : 'You loose.';
             d(gameEnd(res))
         });
 

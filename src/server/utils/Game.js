@@ -772,25 +772,6 @@ class Game {
                     break ;
                 }
             }
-
-            // if (this.player[player].figure.el.rotationIndex - 1 < 0) {
-            //     this.player[player].figure.el.rotationIndex = this.player[player].figure.el.maxRotations - 1;
-            // } else this.player[player].figure.el.rotationIndex--;
-            //
-            // let fSize = this.getFigureSize(this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex]);
-            // this.player[player].figure.mH = fSize.mH;
-            // this.player[player].figure.mW = fSize.mW;
-            // this.player[player].figure.fW = fSize.w;
-            // this.player[player].figure.fH = fSize.h;
-            //
-            // if (this.player[player].figure.vPos >= 19)
-            //     this.player[player].figure.vPos = 19 + (this.player[player].figure.mH - this.player[player].figure.fH);
-            //
-            // if (this.player[player].figure.hPos < 0)
-            //     this.player[player].figure.hPos = 0;
-            //
-            // if (this.player[player].figure.hPos + this.player[player].figure.fW > 9)
-            //     this.player[player].figure.hPos -= (this.player[player].figure.hPos + this.player[player].figure.fW) - 10;
         }
 
         this.addHeapOnMap(player);
