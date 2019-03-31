@@ -224,8 +224,7 @@ io.on('connection', (socket) => {
             }));
         }
 
-        console.log('================= TRYING TO FIND GAME ====================');
-
+        console.log('==================== GAME FIND ===========================');
         // Создаем игрока, если зарегестрирован то вводим ключ сессии, если не зарегестрирован
         // вводим айди сокета.
         let player = {
@@ -236,8 +235,68 @@ io.on('connection', (socket) => {
             score: user ? user.score: '0',
         };
 
-        console.log('[+] player : ', player);
-        console.log('[+] waiting players length : ', gameWaitingPlayers.length);
+        if (data.hash.length > 0) {
+            let hash = data.hash.split('#')[1].split('[')[0];
+            let playerToConnect = false;
+
+            for (let i = 0; i < gameWaitingPlayers.length; i++) {
+                if (gameWaitingPlayers[i].room == hash) {
+                    playerToConnect = gameWaitingPlayers[i];
+                    break;
+                }
+            }
+
+            if (!playerToConnect) {
+                socket.emit('game.notfound', {notFound: true, msg: 'Game not found.'})
+                return ;
+            }
+
+            let roomName = playerToConnect.room;
+
+            socket.join(roomName);
+
+            // Создаем комнату
+            let gameKey = hashGenerator(11);
+            gamePlayingRooms[gameKey] = {
+                firstPlayer: {
+                    loggedIn: player.loggedIn,
+                    socketId: player.socketId,
+                    key: player.key
+                },
+                secondPlayer: {
+                    loggedIn: playerToConnect.loggedIn,
+                    socketId: playerToConnect.socketId,
+                    key: playerToConnect.key
+                },
+                roomName: roomName,
+                game: new Game([player.socketId, playerToConnect.socketId])
+            };
+
+            hash = `${roomName}[${playerToConnect.login}]`;
+            io.to(roomName).emit('game.find.success', {
+                firstPlayer: {
+                    login: player.login,
+                    score: player.score,
+                    figures : gamePlayingRooms[gameKey].game.getFiguresPosition('one')
+                },
+                secondPlayer: {
+                    login: playerToConnect.login,
+                    score: playerToConnect.score,
+                    figures : gamePlayingRooms[gameKey].game.getFiguresPosition('two')
+                },
+                gameKey: gameKey,
+                hash
+            });
+
+            socket.emit('game.start.success', {
+                gameKey
+            });
+
+            // Удаляем второго игрока из списка ожидания
+            gameWaitingPlayers.splice(0, 1);
+
+            return ;
+        }
 
         // Первая проверка, если других игроков ожидающих игру нету, записываем игрока в комнату
         // ожидания, после чего отправляем обратно что пользователь ожидает игру.
@@ -246,16 +305,14 @@ io.on('connection', (socket) => {
             socket.join(player.room);
             gameWaitingPlayers.push(player);
 
-            console.log('[+] user added to waiting room : ', gameWaitingPlayers);
-
+            let hash = `${player.room}[${player.login}]`;
             return socket.emit('game.find.loading', {
-                loading: true
+                loading: true,
+                hash
             })
         }
 
         let roomName = gameWaitingPlayers[0].room;
-
-        console.log('[+] user found : ', gameWaitingPlayers[0]);
 
         socket.join(roomName);
 
@@ -276,6 +333,7 @@ io.on('connection', (socket) => {
             game: new Game([player.socketId, gameWaitingPlayers[0].socketId])
         };
 
+        let hash = `${roomName}[${gameWaitingPlayers[0].login}]`;
         io.to(roomName).emit('game.find.success', {
             firstPlayer: {
                 login: player.login,
@@ -287,13 +345,18 @@ io.on('connection', (socket) => {
                 score: gameWaitingPlayers[0].score,
                 figures : gamePlayingRooms[gameKey].game.getFiguresPosition('two')
             },
-            gameKey: gameKey
+            gameKey: gameKey,
+            hash
+        });
+
+        socket.emit('game.start.success', {
+            gameKey,
+            login: gameWaitingPlayers[0].login
         });
 
         // Удаляем второго игрока из списка ожидания
         gameWaitingPlayers.splice(0, 1);
 
-        socket.emit('game.start.success', {gameKey});
         console.log('[+] creating room : ', gamePlayingRooms[gameKey].roomName);
         console.log('==========================================================');
     });

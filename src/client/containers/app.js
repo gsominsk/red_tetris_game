@@ -21,8 +21,8 @@ class App extends React.Component {
         return (
             <div className="app-container">
                 <switch>
-                    <Route exact path="/" component={Menu} />
-                    <Route exact path="/play" component={Game} />
+                    <Route exact path="" component={Game} />
+                    {/*<Route exact path="/play" component={Game} />*/}
                     <Route exact path="/singleplay" component={SingleGame} />
                     <Route exact path="/rates" component={Rates} />
                     <Route exact path="/login" component={Login} />

@@ -13,7 +13,9 @@ const initialState = {
         score: 0,
         figures: []
     },
-    gameKey: ''
+    gameKey: '',
+    gameNotFound: false,
+    gameNotFoundMsg: ''
 };
 
 export default function (state = initialState, action) {
@@ -91,6 +93,13 @@ export default function (state = initialState, action) {
                 ...state,
                 end: action.end,
                 endGameMsg: action.endGameMsg
+            };
+
+        case 'GAME_NOT_FOUND':
+            return {
+                ...state,
+                gameNotFound: action.gameNotFound,
+                gameNotFoundMsg: action.gameNotFoundMsg
             };
 
         case 'ON_UNMOUNT_CLEAN':

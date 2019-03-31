@@ -80,13 +80,32 @@ export function gameEnd (data) {
     })
 }
 
-export function findGame (socket) {
+export function gameNotFound (data) {
+    return ({
+        type: 'GAME_NOT_FOUND',
+        gameNotFound: data.notFound,
+        gameNotFoundMsg: data.msg
+    })
+}
+
+export function findGame (socket, data) {
     return ((d) => {
         let sessionKey = window.sessionStorage.getItem('sessionRTG') || false;
+        let hash = data.hash;
 
-        socket.emit('game.find', {sessionKey});
+
+        // console.log('[+] window location : ', window.location);
+        // console.log('[+] window location hash: ', window.location.hash);
+        // console.log('[+] location href : ', location.href);
+
+        socket.emit('game.find', {sessionKey, hash});
+
+        socket.on('game.notfound', (res) => {
+            d(gameNotFound(res));
+        });
 
         socket.on('game.find.success', (res) => {
+            window.location.hash = res.hash;
             d(gameSuccessLoaded(res));
         });
 
@@ -99,6 +118,7 @@ export function findGame (socket) {
         });
 
         socket.on('game.find.loading', (res) => {
+            window.location.hash = res.hash;
             d(gameIsLoading(res.loading));
         });
 

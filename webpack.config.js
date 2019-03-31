@@ -5,7 +5,8 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, 'build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
 
   module: {
@@ -21,5 +22,9 @@ module.exports = {
       test: /\.css$/,
       loader: 'style-loader!css-loader'
     }]
-  }
+  },
+
+  devServer: {
+    historyApiFallback: true,
+  },
 };

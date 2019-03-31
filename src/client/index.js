@@ -5,9 +5,9 @@ import thunk                            from 'redux-thunk'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider }                     from 'react-redux'
 
-import reducer                  from './reducers'
-import App                      from './containers/app'
-import { HashRouter }           from "react-router-dom";
+import reducer              from './reducers'
+import App                  from './containers/app'
+import { BrowserRouter }    from "react-router-dom";
 
 
 const initialState = {};
@@ -25,9 +25,9 @@ function getConfirmation(message, callback) {
 
 ReactDom.render((
       <Provider store={store}>
-          <HashRouter getUserConfirmation={getConfirmation}>
+          <BrowserRouter getUserConfirmation={getConfirmation}>
               <App/>
-          </HashRouter>
+          </BrowserRouter>
       </Provider>
     ),
     document.getElementById('tetris')

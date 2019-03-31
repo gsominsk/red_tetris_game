@@ -29,7 +29,7 @@ class Game extends React.Component {
     restartGame = () => {
         console.log('restart game btn click')
         this.props.onUnmountClean();
-        this.props.findGame(Io.socket);
+        this.props.findGame(Io.socket, {hash: this.props.location.hash});
     };
 
     check = () => {
@@ -62,7 +62,7 @@ class Game extends React.Component {
     };
 
     componentDidMount() {
-        this.props.findGame(Io.socket)
+        this.props.findGame(Io.socket, {hash: this.props.location.hash})
     }
 
     componentWillMount() {
@@ -70,6 +70,8 @@ class Game extends React.Component {
     }
 
     componentWillUnmount() {
+        this.props.location.hash = '';
+        this.props.onUnmountClean();
         this.props.disconnectGame(Io.socket);
     }
 
@@ -90,7 +92,16 @@ class Game extends React.Component {
                 <div contentEditable={false} className={`disconnection-msg ${this.props.game.end ? '' : 'hide'}`}>
                     {this.props.game.endGameMsg}
                 </div>
-                <div contentEditable={false} className={`play-wrap ${this.state.open || this.props.game.loading || this.props.game.disconnected || this.props.game.end ? 'opacity-zero-point-two' : ''}`}>
+                <div contentEditable={false} className={`disconnection-msg ${this.props.game.gameNotFound ? '' : 'hide'}`}>
+                    {this.props.game.gameNotFoundMsg}
+                </div>
+                <div contentEditable={false}
+                     className={`play-wrap ${
+                         this.state.open ||
+                         this.props.game.loading ||
+                         this.props.game.disconnected ||
+                         this.props.game.end ||
+                         this.props.game.gameNotFound ? 'opacity-zero-point-two' : ''}`}>
                     <div className="player-wrap player-one-wrap">
                         <div className="player-info">
                             <div className="player-login">
@@ -127,7 +138,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = (d) => {
     return {
-        findGame: (socket) => d(findGame(socket)),
+        findGame: (socket, data) => d(findGame(socket, data)),
         disconnectGame: (socket) => d(disconnectGame(socket)),
         figureMove: (socket, move) => d(figureMove(socket, move)),
         onUnmountClean: () => d(onUnmountClean())

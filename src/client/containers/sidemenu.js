@@ -24,7 +24,7 @@ class SideMenu extends React.Component {
             <div contentEditable={false} className={`sidemenu-container ${open ? 'open-side-menu' : ''}`}>
                 <div className="sidemenu-wrap">
                     <div className="menu-list">
-                        <div className="btn"><Link to="/play">MULTI PLAYER</Link></div>
+                        <div className="btn"><Link to="/">MULTI PLAYER</Link></div>
                         <div className="btn"><Link to="/singleplay">SINGLE</Link></div>
                         <div className="btn"><Link to="/rates">RATES</Link></div>
                         <LogBtn onClick={this.logOutClick} loggedIn={!(this.props.session == null)}/>
