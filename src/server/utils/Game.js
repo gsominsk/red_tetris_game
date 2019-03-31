@@ -375,8 +375,8 @@ class Game {
             console.log('[+] last step : ', this.player[player].figure.lastStep);
         }
 
-        console.log('[+] figure placed on map : ');
-        console.log(this.player[player].map);
+        // console.log('[+] figure placed on map : ');
+        // console.log(this.player[player].map);
 
         console.log('====================================================================');
     }
@@ -492,6 +492,8 @@ class Game {
             if (filledLine.length == this.player[player].heap[0].length) {
                 this.player[this.anotherPlayer(player)].blockedLines++;
 
+                console.log('[+] another player blocked lines : ', this.player[this.anotherPlayer(player)].blockedLines);
+
                 for (let line = i; line > 0; line--) {
                     this.player[player].heap[line] = this.player[player].heap[line - 1];
                 }
@@ -501,7 +503,7 @@ class Game {
         if (this.player[this.anotherPlayer(player)].blockedLines > 0) {
             let aP = this.player[this.anotherPlayer(player)];
 
-            for (let bL = aP.blockedLines, i = aP.heap.length - 1; bL >= 0 && i >= 0; bL--, i--) {
+            for (let bL = aP.blockedLines, i = aP.heap.length - 1; bL > 0 && i >= 0; bL--, i--) {
                 for (let j = 0; j < aP.heap[0].length; j++) {
                     aP.heap[i][j] = 8;
                 }
@@ -692,7 +694,6 @@ class Game {
                             canDraw = false;
                             break ;
                         }
-
                     }
                     if (!canDraw) break ;
                 }

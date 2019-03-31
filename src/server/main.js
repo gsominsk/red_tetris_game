@@ -167,12 +167,10 @@ io.on('connection', (socket) => {
                 };
 
                 socket.emit('single.game.update.success', res);
+            } else {
+                clearInterval(gameLoop);
             }
         }, 1000);
-
-
-        if (!gamePlayingRooms[data.gameKey])
-            clearInterval(gameLoop);
     })
 
     socket.on('single.game.move', async function (data) {
@@ -235,7 +233,7 @@ io.on('connection', (socket) => {
             score: user ? user.score: '0',
         };
 
-        if (data.hash.length > 0) {
+        if (data.hash && data.hash.length > 0) {
             let hash = data.hash.split('#')[1].split('[')[0];
             let playerToConnect = false;
 
@@ -373,6 +371,7 @@ io.on('connection', (socket) => {
         gamePlayingRooms[data.gameKey].game.start();
 
         let gameLoop = setInterval(() => {
+            console.log('[+] LOOP ')
             if (gamePlayingRooms[data.gameKey]) {
                 gamePlayingRooms[data.gameKey].game.step();
 
@@ -395,9 +394,11 @@ io.on('connection', (socket) => {
                     secondPlayer: {
                         figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition('two')
                     }
-                }
+                };
 
                 io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.update.success', res);
+            } else {
+                clearInterval(gameLoop);
             }
         }, 1000);
 

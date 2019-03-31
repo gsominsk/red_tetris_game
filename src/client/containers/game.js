@@ -29,7 +29,7 @@ class Game extends React.Component {
     restartGame = () => {
         console.log('restart game btn click')
         this.props.onUnmountClean();
-        this.props.findGame(Io.socket, {hash: this.props.location.hash});
+        this.props.findGame(Io.socket, {hash: ''});
     };
 
     check = () => {
@@ -87,13 +87,15 @@ class Game extends React.Component {
                 <div contentEditable={false} className={`disconnection-msg ${this.props.game.disconnected ? '' : 'hide'}`}>
                     PLAYER HAS DISCONNECTED.<br/>
                     YOU WIN.<br/>
-                    <div className="restart-game-btn" onClick={this.restartGame}>RESTART?</div>
+                    <div className="restart-game-btn" onClick={this.restartGame}>START NEW</div>
                 </div>
                 <div contentEditable={false} className={`disconnection-msg ${this.props.game.end ? '' : 'hide'}`}>
                     {this.props.game.endGameMsg}
+                    <div className="restart-game-btn" onClick={this.restartGame}>START NEW</div>
                 </div>
                 <div contentEditable={false} className={`disconnection-msg ${this.props.game.gameNotFound ? '' : 'hide'}`}>
                     {this.props.game.gameNotFoundMsg}
+                    <div className="restart-game-btn" onClick={this.restartGame}>FIND RAND GAME</div>
                 </div>
                 <div contentEditable={false}
                      className={`play-wrap ${

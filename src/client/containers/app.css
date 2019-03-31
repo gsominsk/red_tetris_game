@@ -356,6 +356,7 @@ input[type="submit"]:hover {
     justify-content: center;
     background: lightgreen;
     cursor: pointer;
+    padding: 5px 10px;
 }
 
 .play-container .play-wrap {
