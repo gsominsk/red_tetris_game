@@ -135,9 +135,13 @@ io.on('connection', (socket) => {
     });
 
     socket.on('single.game.start', async function (data) {
-        gamePlayingRooms[data.gameKey].game.start();
-
         console.log('[+] SINGLE GAME START')
+        // console.log('[+] already start : ')
+
+        if (gamePlayingRooms[data.gameKey].game.alreadyStart())
+            return ;
+
+        gamePlayingRooms[data.gameKey].game.start();
 
         let gameLoop = setInterval(() => {
             console.log('[+] SINGLE GAME LOOP')
@@ -165,6 +169,7 @@ io.on('connection', (socket) => {
                 socket.emit('single.game.update.success', res);
             }
         }, 1000);
+
 
         if (!gamePlayingRooms[data.gameKey])
             clearInterval(gameLoop);

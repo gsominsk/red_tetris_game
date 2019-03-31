@@ -376,7 +376,7 @@ class Game {
         }
 
         console.log('[+] figure placed on map : ');
-        // console.log(this.map);
+        console.log(this.player[player].map);
 
         console.log('====================================================================');
     }

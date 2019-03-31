@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/sidemenu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/sidemenu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/containers/singlegame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/containers/singlegame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/utils/Game.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/utils/Game.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,27 +28,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="137" column="52" lean-forward="true" selection-start-line="137" selection-start-column="52" selection-end-line="137" selection-end-column="52" />
+            <state relative-caret-position="531">
+              <caret line="166" column="18" lean-forward="true" selection-start-line="166" selection-start-column="18" selection-end-line="166" selection-end-column="18" />
               <folding>
                 <element signature="e#980#1307#0" />
                 <element signature="e#1338#1895#0" />
                 <element signature="e#2317#2629#0" />
                 <element signature="e#2457#2619#0" />
-                <element signature="e#3900#6832#0" />
-                <element signature="e#4167#4253#0" />
-                <element signature="e#4306#4569#0" />
-                <element signature="e#4708#4796#0" />
-                <element signature="e#4923#5245#0" />
-                <element signature="e#5501#5988#0" />
-                <element signature="e#6886#8631#0" />
-                <element signature="e#8684#9363#0" />
-                <element signature="e#9412#10151#0" />
-                <element signature="e#10201#10737#0" />
-                <element signature="e#10794#13173#0" />
+                <element signature="e#7464#10396#0" />
+                <element signature="e#12976#13715#0" />
+                <element signature="e#13765#14301#0" />
+                <element signature="e#14358#16737#0" />
                 <element signature="n#style#0;n#table#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
@@ -61,21 +53,24 @@
                 <element signature="n#style#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="e#13230#14024#0" />
-                <element signature="e#14076#14909#0" />
-                <element signature="e#14958#16257#0" />
+                <element signature="e#16794#17588#0" />
+                <element signature="e#17640#18473#0" />
+                <element signature="e#18522#19821#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
+            <state relative-caret-position="275">
+              <caret line="375" column="9" lean-forward="true" selection-start-line="375" selection-start-column="9" selection-end-line="375" selection-end-column="9" />
               <folding>
                 <element signature="n#!!block;n#constructor#0;n#Figure#0" />
+                <element signature="e#6390#6706#0" />
+                <element signature="e#6716#7314#0" />
+                <element signature="e#7324#8030#0" />
                 <element signature="n#!!block;n#createNewFigure#0;n#Game#0" />
                 <element signature="n#!!block;n#placeFigureToHeap#0;n#Game#0" />
                 <element signature="n#!!block;n#getFiguresPosition#0;n#Game#0" />
@@ -102,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/containers/singlegame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+            <state relative-caret-position="768">
+              <caret line="62" selection-start-line="62" selection-end-line="62" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -114,7 +109,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/actions/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
+            <state relative-caret-position="2240">
               <caret line="140" column="44" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
             </state>
           </provider>
@@ -123,8 +118,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/reducers/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16">
-              <caret line="55" column="30" lean-forward="true" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+            <state relative-caret-position="880">
+              <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -132,8 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="399" column="16" lean-forward="true" selection-start-line="399" selection-start-column="16" selection-end-line="399" selection-end-column="16" />
+            <state relative-caret-position="6384">
+              <caret line="399" column="16" selection-start-line="399" selection-start-column="16" selection-end-line="399" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -244,10 +239,10 @@
         <option value="$PROJECT_DIR$/src/client/containers/app.css" />
         <option value="$PROJECT_DIR$/src/client/reducers/game.js" />
         <option value="$PROJECT_DIR$/src/client/actions/game.js" />
-        <option value="$PROJECT_DIR$/src/server/main.js" />
         <option value="$PROJECT_DIR$/src/client/containers/sidemenu.js" />
         <option value="$PROJECT_DIR$/src/client/containers/singlegame.js" />
         <option value="$PROJECT_DIR$/src/server/utils/Game.js" />
+        <option value="$PROJECT_DIR$/src/server/main.js" />
       </list>
     </option>
   </component>
@@ -396,14 +391,8 @@
       <workItem from="1553600135874" duration="19310000" />
       <workItem from="1553773320018" duration="26914000" />
       <workItem from="1553862830754" duration="21360000" />
-      <workItem from="1553947461358" duration="18057000" />
-    </task>
-    <task id="LOCAL-00015" summary="Сделал логику на страничке восстановления пароля.&#10;Проверка полей, вывод ошибки, получение и отправка данных.&#10;Сделал разделение формы на форму имейла и форму кода.&#10;Добавил два новых компонента для вывода ошибки или саксес меммеджа.">
-      <created>1552565013538</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1552565013538</updated>
+      <workItem from="1553947461358" duration="18137000" />
+      <workItem from="1554038028204" duration="2375000" />
     </task>
     <task id="LOCAL-00016" summary="Сделал клин логина при анмаунте">
       <created>1552568580983</created>
@@ -741,17 +730,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553969674320</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="небольшие фиксы, удаление лишнего">
+      <created>1553970108101</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1553970108101</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356826000" />
+    <option name="totallyTimeSpent" value="359281000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25567323" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25945538" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -819,7 +815,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил логику отрисовки фигуры на карту по вертикали и горизонтали.&#10;Добавил рандомную позицию по горизонтали фигуры на карте." />
     <MESSAGE value="фикс бага, крашило бы при запуске" />
     <MESSAGE value="Вывод фигуры клиенту" />
     <MESSAGE value="Сделал создание кучи, записываение фигуры в кучу и создание новой фигуры. &#10;Пока что не работает логика наложения друг на друга" />
@@ -844,7 +839,8 @@
     <MESSAGE value="Сделал фикс ендгейма, там была ошибка с определением победителя.&#10;Перенес кнопки - пробел теперь ускореное падение к куче, стрелка вниз &#10;теперь резкое падение к куче." />
     <MESSAGE value="убрал лишнее" />
     <MESSAGE value="Добавил логику для одиночной игры" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил логику для одиночной игры" />
+    <MESSAGE value="небольшие фиксы, удаление лишнего" />
+    <option name="LAST_COMMIT_MESSAGE" value="небольшие фиксы, удаление лишнего" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/socket/src/js/components/Layout.js" />
@@ -1110,13 +1106,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="399" column="16" lean-forward="true" selection-start-line="399" selection-start-column="16" selection-end-line="399" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/game.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="531">
@@ -1137,58 +1126,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/reducers/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="16">
-          <caret line="55" column="30" lean-forward="true" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/actions/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="140" column="44" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="137" column="52" lean-forward="true" selection-start-line="137" selection-start-column="52" selection-end-line="137" selection-end-column="52" />
-          <folding>
-            <element signature="e#980#1307#0" />
-            <element signature="e#1338#1895#0" />
-            <element signature="e#2317#2629#0" />
-            <element signature="e#2457#2619#0" />
-            <element signature="e#3900#6832#0" />
-            <element signature="e#4167#4253#0" />
-            <element signature="e#4306#4569#0" />
-            <element signature="e#4708#4796#0" />
-            <element signature="e#4923#5245#0" />
-            <element signature="e#5501#5988#0" />
-            <element signature="e#6886#8631#0" />
-            <element signature="e#8684#9363#0" />
-            <element signature="e#9412#10151#0" />
-            <element signature="e#10201#10737#0" />
-            <element signature="e#10794#13173#0" />
-            <element signature="n#style#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="e#299#305#1" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="e#363#369#1" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="e#13230#14024#0" />
-            <element signature="e#14076#14909#0" />
-            <element signature="e#14958#16257#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/sidemenu.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -1201,26 +1138,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/containers/singlegame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
+        <state relative-caret-position="768">
+          <caret line="62" selection-start-line="62" selection-end-line="62" />
           <folding>
             <element signature="e#0#44#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/actions/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2240">
+          <caret line="140" column="44" selection-start-line="140" selection-start-column="44" selection-end-line="140" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/reducers/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="880">
+          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/containers/app.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6384">
+          <caret line="399" column="16" selection-start-line="399" selection-start-column="16" selection-end-line="399" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/utils/Game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
+        <state relative-caret-position="275">
+          <caret line="375" column="9" lean-forward="true" selection-start-line="375" selection-start-column="9" selection-end-line="375" selection-end-column="9" />
           <folding>
             <element signature="n#!!block;n#constructor#0;n#Figure#0" />
+            <element signature="e#6390#6706#0" />
+            <element signature="e#6716#7314#0" />
+            <element signature="e#7324#8030#0" />
             <element signature="n#!!block;n#createNewFigure#0;n#Game#0" />
             <element signature="n#!!block;n#placeFigureToHeap#0;n#Game#0" />
             <element signature="n#!!block;n#getFiguresPosition#0;n#Game#0" />
             <element signature="n#!!block;n#getFigureSize#0;n#Game#0" />
             <element signature="n#!!block;n#figureColors#0;n#Game#0" />
             <element signature="n#!!block;n#getRandomInt#0;n#Game#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="166" column="18" lean-forward="true" selection-start-line="166" selection-start-column="18" selection-end-line="166" selection-end-column="18" />
+          <folding>
+            <element signature="e#980#1307#0" />
+            <element signature="e#1338#1895#0" />
+            <element signature="e#2317#2629#0" />
+            <element signature="e#2457#2619#0" />
+            <element signature="e#7464#10396#0" />
+            <element signature="e#12976#13715#0" />
+            <element signature="e#13765#14301#0" />
+            <element signature="e#14358#16737#0" />
+            <element signature="n#style#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#299#305#1" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#363#369#1" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#td#2;n#tr#0;n#tbody#0;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h2#0;n#td#0;n#tr#0;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#tr#1;n#tbody#1;n#table#0;n#td#0;n#!!top" expanded="true" />
+            <element signature="e#16794#17588#0" />
+            <element signature="e#17640#18473#0" />
+            <element signature="e#18522#19821#0" />
           </folding>
         </state>
       </provider>
