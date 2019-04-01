@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="">
+    <list default="true" id="0fd4319d-8550-4fe3-97d0-683ff8be88e8" name="Default Changelist" comment="Переписал сервер, теперь он выглядит несуразно, зато соответствует тз&#10;проекта">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/client/containers/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/client/containers/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/client/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/client/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/client/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/client/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/server/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/helpers/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/helpers/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/redux1.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/redux1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/actions/alert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/actions/server.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/components/test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/containers/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/middleware/storeStateMiddleWare.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/reducers/alert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/client/reducers/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/server/main.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="304">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#215#256#0" expanded="true" />
                 <element signature="e#1871#2096#0" />
@@ -217,27 +219,6 @@
             <path>
               <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
               <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name=".nyc_output" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
-              <item name="dist" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="red_tetris_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="red_tetris_project" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -350,21 +331,7 @@
       <workItem from="1553862830754" duration="21360000" />
       <workItem from="1553947461358" duration="18137000" />
       <workItem from="1554038028204" duration="16077000" />
-      <workItem from="1554125486133" duration="6770000" />
-    </task>
-    <task id="LOCAL-00019" summary="Добавил регистрацию пользователя">
-      <created>1552667887786</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1552667887786</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Апдейт регистрации пользователя, теперь при регистарции идет обновление &#10;стейта регистра в ноль, что бы не выводились лищние данные">
-      <created>1552671049602</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1552671049602</updated>
+      <workItem from="1554125486133" duration="7101000" />
     </task>
     <task id="LOCAL-00021" summary="Сделал вместо двух редьюсеров и екшенов регистер и логин один юзер, &#10;перевел на него контейнеры регистр и юзер.&#10;Сделал вход, но не до конца, пока что только проверку пользователя на &#10;валидность, надо сделать переходы и сессию через локал сторейдж">
       <created>1552673993955</created>
@@ -695,11 +662,25 @@
       <option name="project" value="LOCAL" />
       <updated>1554058135488</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Переписал сервер, теперь он выглядит несуразно, зато соответствует тз&#10;проекта">
+      <created>1554133204483</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1554133204485</updated>
+    </task>
+    <task id="LOCAL-00069" summary="Переписал сервер, теперь он выглядит несуразно, зато соответствует тз&#10;проекта">
+      <created>1554133365623</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1554133365624</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="379753000" />
+    <option name="totallyTimeSpent" value="380084000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -773,7 +754,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Добавил вертикальное наложение фигур на кучу. &#10;Так же надо сделать горизонтальное когда например фигура Г попытается&#10;встать вправо в кучу с вырезом под крючок Г" />
     <MESSAGE value="Сделал движение фигур влево и вправо.&#10;Сделал поворот фигур вокруг своей оси.&#10;Не сделал проверку на то что при повороте оно может влезть в хип." />
     <MESSAGE value="Пофиксил баг из за которого при последнем шаге, фигура не записывалась&#10;на карту, из за того что при последнем шаге один шаг пустой для того&#10;что бы человек мог двинуть фигуру, при этом если мы делали движение, &#10;фигура не записывалась" />
     <MESSAGE value="Поправил баг из за которого фигура зависала в воздухе если попала на кучу&#10;а потом на последнем ходе сдвинулась с нее" />
@@ -798,10 +778,10 @@
     <MESSAGE value="Фикс бага с двойным запуском в для сингплеера." />
     <MESSAGE value="Добавил поиск игры по хешу. Если хеш есть пытается найти игрока с таким &#10;хешем. Если такого игрока нету, выдаст ошибку." />
     <MESSAGE value="Небольшой фикс в кнопке рестарта. Сделал очистку лупов, оказалось она&#10;работает криво. Добавил везде кнопки рестарта из за того что хещи с реактом&#10;работают как то странно." />
-    <option name="LAST_COMMIT_MESSAGE" value="Небольшой фикс в кнопке рестарта. Сделал очистку лупов, оказалось она&#10;работает криво. Добавил везде кнопки рестарта из за того что хещи с реактом&#10;работают как то странно." />
+    <MESSAGE value="Переписал сервер, теперь он выглядит несуразно, зато соответствует тз&#10;проекта" />
+    <option name="LAST_COMMIT_MESSAGE" value="Переписал сервер, теперь он выглядит несуразно, зато соответствует тз&#10;проекта" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/actions/menu.js" />
     <entry file="file://$PROJECT_DIR$/src/client/reducers/menu.js" />
     <entry file="file://$PROJECT_DIR$/src/client/middleware/storeStateMiddleWare.js" />
     <entry file="file://$PROJECT_DIR$/src/client/reducers/index.js">
@@ -1222,10 +1202,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/lcov.info">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="288" column="22" lean-forward="true" selection-start-line="288" selection-start-column="22" selection-end-line="288" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="25" column="33" lean-forward="true" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="304">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#215#256#0" expanded="true" />
             <element signature="e#1871#2096#0" />
