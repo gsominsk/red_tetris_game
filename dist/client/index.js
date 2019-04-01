@@ -20,8 +20,6 @@ var _redux = require('redux');
 
 var _reactRedux = require('react-redux');
 
-var _storeStateMiddleWare = require('./middleware/storeStateMiddleWare');
-
 var _reducers = require('./reducers');
 
 var _reducers2 = _interopRequireDefault(_reducers);
@@ -30,7 +28,7 @@ var _app = require('./containers/app');
 
 var _app2 = _interopRequireDefault(_app);
 
-var _alert = require('./actions/alert');
+var _reactRouterDom = require('react-router-dom');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38,10 +36,17 @@ var initialState = {};
 
 var store = (0, _redux.createStore)(_reducers2.default, initialState, (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)()));
 
-_reactDom2.default.render(_react2.default.createElement(
-  _reactRedux.Provider,
-  { store: store },
-  _react2.default.createElement(_app2.default, null)
-), document.getElementById('tetris'));
+function getConfirmation(message, callback) {
+    var allowTransition = window.confirm(message);
+    callback(allowTransition);
+}
 
-store.dispatch((0, _alert.alert)('Soon, will be here a fantastic Tetris ...'));
+_reactDom2.default.render(_react2.default.createElement(
+    _reactRedux.Provider,
+    { store: store },
+    _react2.default.createElement(
+        _reactRouterDom.BrowserRouter,
+        { getUserConfirmation: getConfirmation },
+        _react2.default.createElement(_app2.default, null)
+    )
+), document.getElementById('tetris'));
