@@ -32,13 +32,13 @@ const initApp = (app, params, cb) => {
         })
     };
 
-    app.on('request', handler)
+    app.on('request', handler);
 
     app.listen({port}, () =>{
         console.log(`[+] Server listening on port : ${port}`)
         cb()
     })
-}
+};
 
 export function create(params){
     const promise = new Promise( (resolve, reject) => {
