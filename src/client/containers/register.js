@@ -59,7 +59,7 @@ class Register extends React.Component {
     };
 
     componentWillUnmount() {
-        this.props.registerClean();
+        this.props.registerClean({session: window.sessionStorage.getItem('sessionRTG')});
     }
 
     render () {
@@ -100,7 +100,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
     return {
         registerFetchData: (url, data) => dispatch(registerFetchData(url, data)),
-        registerClean: () => dispatch(userOnUnmountClean())
+        registerClean: (data) => dispatch(userOnUnmountClean(data))
     };
 };
 

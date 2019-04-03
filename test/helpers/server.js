@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 export const startServer = (params, cb) => {
-    server.start(params)
+    server.create({port: 3000})
         .then( server => cb(null, server) )
         .catch( err => cb(err) )
 };

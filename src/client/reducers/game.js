@@ -2,7 +2,7 @@ const initialState = {
     loading: false,
     disconnected: false,
     end: false,
-    endGameMsg: '',
+    endGameMsg: null,
     firstPlayer: {
         login: 'Anonymous',
         score: 0,
@@ -15,7 +15,7 @@ const initialState = {
     },
     gameKey: '',
     gameNotFound: false,
-    gameNotFoundMsg: ''
+    gameNotFoundMsg: null
 };
 
 export default function (state = initialState, action) {

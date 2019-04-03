@@ -5,3 +5,6 @@ log
 tmp
 node_modules
 socket
+build
+coverage
+dist

@@ -5,17 +5,12 @@ const http          = require('http');
 const socketServer  = require('socket.io');
 const mongoose      = require('mongoose');
 
+const User          = require('./models/User');
+
 import to               from './utils/to'
 import mailer           from './utils/mailer';
 import hashGenerator    from './utils/hashGenerator';
 import Game             from './utils/Game';
-
-const User          = require('./models/User');
-
-const app = express();
-
-// const server            = http.createServer(app);
-// const io                = socketServer(server);
 
 const initApp = (app, params, cb) => {
     const {port} = params;
@@ -35,7 +30,7 @@ const initApp = (app, params, cb) => {
     app.on('request', handler);
 
     app.listen({port}, () =>{
-        console.log(`[+] Server listening on port : ${port}`)
+        // console.log(`[+] Server listening on port : ${port}`)
         cb()
     })
 };
@@ -50,7 +45,6 @@ export function create(params){
                 app.close( () => {
                     app.unref()
                 });
-                console.log(`Engine stopped.`);
                 cb()
             };
 
@@ -67,25 +61,26 @@ const initEngine = io => {
         connections.push(socket);
 
         socket.on('disconnect', () => {
-            console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
+            // console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
             for(let i = 0; i < gameWaitingPlayers.length; i++){
-                console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
+                // console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
                 if (gameWaitingPlayers[i].socketId === socket.id) {
-                    console.log('[+] user disconnected from waiting room : ', gameWaitingPlayers[i]);
+                    // console.log('[+] user disconnected from waiting room : ', gameWaitingPlayers[i]);
                     gameWaitingPlayers.splice(i, 1);
                 }
             }
-            console.log('======================================================================');
 
-            console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+            // console.log('======================================================================');
+            // console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+
             deleteRoom(socket, io);
-            console.log('=====================================================================');
-            console.log('[+] Disconnected : ', socket.id);
+            // console.log('=====================================================================');
+            // console.log('[+] Disconnected : ', socket.id);
         });
 
         socket.on('single.game.create', async function (data) {
             let err, user;
-            if (data.sessionKey) {
+            if (data && data.sessionKey) {
                 [err, user] = await to(User.findOne({
                     session: data.sessionKey
                 }));
@@ -98,7 +93,7 @@ const initEngine = io => {
                 key: (!data.sessionKey ? socket.id : data.sessionKey),
                 socketId: socket.id,
                 login: user ? user.login : 'Anonymous',
-                score: user ? user.score: '0',
+                score: user ? user.score : '0',
             };
 
             let gameKey = hashGenerator(11);
@@ -111,6 +106,8 @@ const initEngine = io => {
                 roomName: hashGenerator(12),
                 game: new Game([player.socketId])
             };
+
+            // console.log(gamePlayingRooms[gameKey]);
 
             socket.emit('single.game.created', {
                 firstPlayer: {
@@ -125,7 +122,7 @@ const initEngine = io => {
         });
 
         socket.on('single.game.start', async function (data) {
-            console.log('[+] SINGLE GAME START')
+            // console.log('[+] SINGLE GAME START')
             // console.log('[+] already start : ')
 
             if (gamePlayingRooms[data.gameKey].game.alreadyStart())
@@ -134,7 +131,7 @@ const initEngine = io => {
             gamePlayingRooms[data.gameKey].game.start();
 
             let gameLoop = setInterval(() => {
-                console.log('[+] SINGLE GAME LOOP')
+                // console.log('[+] SINGLE GAME LOOP')
                 if (gamePlayingRooms[data.gameKey]) {
                     gamePlayingRooms[data.gameKey].game.step('one');
 
@@ -161,7 +158,7 @@ const initEngine = io => {
                     clearInterval(gameLoop);
                 }
             }, 1000);
-        })
+        });
 
         socket.on('single.game.move', async function (data) {
             if (!gamePlayingRooms[data.gameKey] || gamePlayingRooms[data.gameKey].game.checkEndGame())
@@ -172,36 +169,37 @@ const initEngine = io => {
             let res = {
                 firstPlayer: {
                     figures: gamePlayingRooms[data.gameKey].game.getFiguresPosition(player)
-                }
+                },
+                move: data.move
             };
 
             socket.emit('single.game.update.success', res);
         });
 
         socket.on('single.game.disconnect.push', async function () {
-            console.log('=============== SINGLE DISCONNECTING USER FROM GAMING ROOM =================');
+            // console.log('=============== SINGLE DISCONNECTING USER FROM GAMING ROOM =================');
             for (let room in gamePlayingRooms) {
                 if (gamePlayingRooms[room].firstPlayer.socketId == socket.id) {
                     delete gamePlayingRooms[room];
                 }
             }
-            console.log('=============================================================================');
+            // console.log('=============================================================================');
         });
 
         socket.on('game.disconnect.push', async function () {
-            console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
+            // console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
             for(let i = 0; i < gameWaitingPlayers.length; i++){
-                console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
+                // console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
                 if (gameWaitingPlayers[i].socketId === socket.id) {
-                    console.log('[+] user disconnected from waiting room : ', gameWaitingPlayers[i]);
+                    // console.log('[+] user disconnected from waiting room : ', gameWaitingPlayers[i]);
                     gameWaitingPlayers.splice(i, 1);
                 }
             }
-            console.log('======================================================================');
+            // console.log('======================================================================');
 
-            console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+            // console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
             deleteRoom(socket, io);
-            console.log('=====================================================================');
+            // console.log('=====================================================================');
         });
 
         socket.on('game.find', async function (data) {
@@ -212,7 +210,7 @@ const initEngine = io => {
                 }));
             }
 
-            console.log('==================== GAME FIND ===========================');
+            // console.log('==================== GAME FIND ===========================');
             // Создаем игрока, если зарегестрирован то вводим ключ сессии, если не зарегестрирован
             // вводим айди сокета.
             let player = {
@@ -346,15 +344,15 @@ const initEngine = io => {
             // Удаляем второго игрока из списка ожидания
             gameWaitingPlayers.splice(0, 1);
 
-            console.log('[+] creating room : ', gamePlayingRooms[gameKey].roomName);
-            console.log('==========================================================');
+            // console.log('[+] creating room : ', gamePlayingRooms[gameKey].roomName);
+            // console.log('==========================================================');
         });
 
         socket.on('game.start', async function (data) {
-            console.log('================== GAME START ======================');
-            console.log('[+] game key : ', data.gameKey);
-            console.log('[+] socket id : ', socket.id);
-            console.log('[+] playing room : ', gamePlayingRooms[data.gameKey].roomName);
+            // console.log('================== GAME START ======================');
+            // console.log('[+] game key : ', data.gameKey);
+            // console.log('[+] socket id : ', socket.id);
+            // console.log('[+] playing room : ', gamePlayingRooms[data.gameKey].roomName);
 
             if (gamePlayingRooms[data.gameKey].game.alreadyStart())
                 return ;
@@ -362,7 +360,7 @@ const initEngine = io => {
             gamePlayingRooms[data.gameKey].game.start();
 
             let gameLoop = setInterval(() => {
-                console.log('[+] LOOP ')
+                // console.log('[+] LOOP ')
                 if (gamePlayingRooms[data.gameKey]) {
                     gamePlayingRooms[data.gameKey].game.step();
 
@@ -396,7 +394,7 @@ const initEngine = io => {
 
             if (!gamePlayingRooms[data.gameKey])
                 clearInterval(gameLoop);
-            console.log('====================================================');
+            // console.log('====================================================');
         });
 
         socket.on('game.move', async function (data) {
@@ -419,6 +417,9 @@ const initEngine = io => {
 
         socket.on('login', async function (data) {
             let err, user, userSave;
+
+            if (!data || !data.email || !data.password)
+                return socket.emit('login.fetched', {err: 'Not valid data.'});
 
             [err, user] = await to(User.findOne({
                 email: data.email,
@@ -443,6 +444,9 @@ const initEngine = io => {
 
         socket.on('logout', async function (data) {
             let err, user, userSave;
+
+            if (!data || !data.sessionKey)
+                return socket.emit('logout.fetched', {err: 'Not valid data.'});
 
             [err, user] = await to(User.findOne({
                 session: data.sessionKey,
@@ -548,6 +552,10 @@ const initEngine = io => {
 
         socket.on('register', async function (data) {
             let err, userFind, userCreate;
+
+            if (!data || !data.email || !data.password || !data.login)
+                return socket.emit('register.fetched', {err: 'Something goes wrong. Try again or later.'});
+
             [err, userFind] = await to(User.findOne({email: data.email}));
 
             if (err)
@@ -612,68 +620,30 @@ const initEngine = io => {
             }
 
             return socket.emit('rates.fetched', res);
-
         })
     })
 }
 
 function connectToDatabase () {
-    mongoose.set('debug', true);
+    // mongoose.set('debug', true);
     mongoose.connect('mongodb://localhost:27017/rtg', { useNewUrlParser: true });
 
     const db = mongoose.connection;
-    db.on('error', ()=> {console.error('[!] Connection to database failed.')});
-    db.once('open', () => {console.log('[+] Connection to database successful.')});
+    db.on('error', ()=> {/*console.error('[!] Connection to database failed.')*/});
+    db.once('open', () => {/*console.log('[+] Connection to database successful.')*/});
 }
 
-create({port: '3000'})
+// create({port: '3000'})
 
 let connections       = [];
-
-/*
-* =========== GAME WAITING ROOM ===========
-*
-* Представление того как выглядит комната ожидания.
-*
-* {
-*     loggedIn: false, // anonymous player
-*     userKey: '...' // socket id key
-* },{
-*     loggedIn: true, // registered player
-*     userKey: '...' // session key
-* }
-*
-* =========================================
-* */
-
 let gameWaitingPlayers= [];
-
-/*
-* =========== GAME PLAYING ROOM ===========
-*
-* Представление того как выглядит созданная
-* игровая комната.
-*
-* 'gameKey': { //generated game key from hashGenerator
-*     firstPlayer: {
-*         key: '', // socket or session key
-*         loggedIn: false, // anonymous player
-*         socketId: 'key' // socketId of user
-*     },
-*     secondPlayer: {
-*         key: '', // socket or session key
-*         loggedIn: true, // registered player
-*         socketId: 'key' // socketId of user
-*     }
-* }
-*
-* =========================================
-* */
-
 let gamePlayingRooms = {};
 
 function deleteRoom (socket, io) {
     for (let room in gamePlayingRooms) {
+        if (!gamePlayingRooms[room].firstPlayer || gamePlayingRooms[room].secondPlayer)
+            return ;
+
         if (gamePlayingRooms[room].firstPlayer.socketId == socket.id || gamePlayingRooms[room].secondPlayer.socketId == socket.id) {
             if (!gamePlayingRooms[room].game.checkEndGame()) {
                 io.to(gamePlayingRooms[room].roomName).emit('game.disconnect', {

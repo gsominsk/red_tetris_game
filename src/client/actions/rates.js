@@ -1,3 +1,7 @@
+export const RATES_FETCH_DATA_SUCCESS   = 'RATES_FETCH_DATA_SUCCESS';
+export const RATES_HAS_ERRORED          = 'RATES_HAS_ERRORED';
+export const RATES_IS_LOADING           = 'RATES_IS_LOADING';
+
 export function ratesHasError (bool) {
     return ({
         type: 'RATES_HAS_ERRORED',

@@ -30,7 +30,7 @@ class Login extends React.Component {
             }
         });
 
-        this.props.loginOnUnmountClean();
+        this.props.loginOnUnmountClean({session: window.sessionStorage.getItem('sessionRTG')});
     }
 
     menuBtnClick = () =>
@@ -49,7 +49,7 @@ class Login extends React.Component {
         this.state.form[event.target.name] = event.target.value;
 
     componentWillUnmount() {
-        this.props.loginOnUnmountClean();
+        this.props.loginOnUnmountClean({session: window.sessionStorage.getItem('sessionRTG')});
     }
 
     render () {
@@ -86,7 +86,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => {
     return {
         loginFetchData: (url, data) => dispatch(loginFetchData(url, data)),
-        loginOnUnmountClean: () => dispatch(userOnUnmountClean()),
+        loginOnUnmountClean: (data) => dispatch(userOnUnmountClean(data)),
     };
 };
 

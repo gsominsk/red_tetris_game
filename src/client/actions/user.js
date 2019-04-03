@@ -1,3 +1,10 @@
+export const LOGIN_FETCH_DATA_SUCCESS   = 'LOGIN_FETCH_DATA_SUCCESS';
+export const USER_FETCH_DATA_SUCCESS    = 'USER_FETCH_DATA_SUCCESS';
+export const USER_ON_UNMOUNT_CLEAN      = 'USER_ON_UNMOUNT_CLEAN';
+export const EMAIL_SENT_SUCCESS         = 'EMAIL_SENT_SUCCESS';
+export const USER_HAS_ERRORED           = 'USER_HAS_ERRORED';
+export const LOGOUT_SUCCESS             = 'LOGOUT_SUCCESS';
+
 export function userHasErrored (bool, string) {
     return ({
         type: 'USER_HAS_ERRORED',
@@ -39,9 +46,10 @@ export function emailSentSuccess (data) {
     })
 }
 
-export function userOnUnmountClean () {
+export function userOnUnmountClean (data) {
     return ({
-        type: 'USER_ON_UNMOUNT_CLEAN'
+        type: 'USER_ON_UNMOUNT_CLEAN',
+        session: data.session
     })
 }
 
@@ -50,7 +58,7 @@ export function loginFetchData (socket, data) {
         socket.emit('login', data);
 
         socket.on('login.fetched',(res) => {
-            d(userOnUnmountClean());
+            d(userOnUnmountClean({session: null}));
             if (res.err)
                 return d(userHasErrored(true, res.err));
 
@@ -79,7 +87,7 @@ export function registerFetchData (socket, data) {
         socket.emit('register', data);
 
         socket.on('register.fetched', (res) => {
-            d(userOnUnmountClean());
+            d(userOnUnmountClean({session: null}));
             if (res.err)
                 return d(userHasErrored(true, res.err));
 

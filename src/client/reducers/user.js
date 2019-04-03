@@ -3,7 +3,7 @@ const initialState = {
     errMsg: null,
     success: false,
     successMsg: null,
-    session: window.sessionStorage.getItem('sessionRTG'),
+    session: null,
     resetPass: {
         emailSent: false,
         code: null,
@@ -54,7 +54,8 @@ export default function user (state = initialState, action) {
 
         case 'USER_ON_UNMOUNT_CLEAN':
             return {
-                ...initialState
+                ...initialState,
+                session: action.session
             };
 
         case 'USER_HAS_ERRORED':

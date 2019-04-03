@@ -190,8 +190,8 @@ class Figure {
 
 class Game {
     constructor (sockets) {
-        console.log('=============== CREATING GAME FIELD ==================');
-        console.log('[+] sockets : ', sockets);
+        // console.log('=============== CREATING GAME FIELD ==================');
+        // console.log('[+] sockets : ', sockets);
 
         this.player = {
             one: {
@@ -217,7 +217,7 @@ class Game {
         this.startBool = false;
         this.endGame = false;
 
-        console.log('[+] players : ', this.player);
+        // console.log('[+] players : ', this.player);
 
         this.generateMap();
 
@@ -231,11 +231,11 @@ class Game {
             this.placeFigureOnMap('two');
         }
 
-        console.log('======================================================');
+        // console.log('======================================================');
     }
 
     placeFigureOnMap (player) {
-        console.log('==================== PLACE FIGURE ON MAP ===========================');
+        // console.log('==================== PLACE FIGURE ON MAP ===========================');
         /*
         * Отрисовка фигуры.
         * Отрисовка происходит слева направно, снизу вверх.
@@ -287,11 +287,11 @@ class Game {
             // figure = this.player[player].figure.el.rotations[0];
         }
 
-        console.log('[+] figure height : ', this.player[player].figure.mH);
-        console.log('[+] figure width : ', this.player[player].figure.mW);
-        console.log('[+] figure position : ', figurePosition);
-        console.log('[+] figure : ', figure);
-        console.log('[+] figure position start : ', figurePosition);
+        // console.log('[+] figure height : ', this.player[player].figure.mH);
+        // console.log('[+] figure width : ', this.player[player].figure.mW);
+        // console.log('[+] figure position : ', figurePosition);
+        // console.log('[+] figure : ', figure);
+        // console.log('[+] figure position start : ', figurePosition);
 
         let figureLineToDraw = this.player[player].figure.mH - 1;
         let mapLine = this.player[player].figure.vPos;
@@ -314,18 +314,18 @@ class Game {
         }
 
         if (this.endGame) {
-            console.log('================== END GAME ===================');
-            console.log('[+] player which overflowed map : ', player);
-            console.log('[+] player which overflowed map : ', this.player[player].socketId);
-            console.log('===============================================');
+            // console.log('================== END GAME ===================');
+            // console.log('[+] player which overflowed map : ', player);
+            // console.log('[+] player which overflowed map : ', this.player[player].socketId);
+            // console.log('===============================================');
             if (!this.player.winner)
                 this.setWinner(this.anotherPlayer(player));
             return ;
         }
 
-        console.log('[+] figure draw : ', figureDraw);
-
-        console.log('[+] map line : ', mapLine);
+        // console.log('[+] figure draw : ', figureDraw);
+        //
+        // console.log('[+] map line : ', mapLine);
         for (let fH = 0; mapLine >= 0 && fH < this.player[player].figure.mH && figureDraw; mapLine--, fH++, figureLineToDraw--) {
             for (let cell = 0, mapPos = figurePosition; cell < this.player[player].map[0].length && cell < this.player[player].figure.mW && mapLine < this.player[player].map.length; cell++, mapPos++) {
                 // Условие на случай если угол фигуры пустой, при падении на угол другой фигуры
@@ -372,17 +372,17 @@ class Game {
         // Проверяем упала ли фигура до дна
         if (onHeap) {
             this.player[player].figure.lastStep = true;
-            console.log('[+] last step : ', this.player[player].figure.lastStep);
+            // console.log('[+] last step : ', this.player[player].figure.lastStep);
         }
 
         // console.log('[+] figure placed on map : ');
         // console.log(this.player[player].map);
 
-        console.log('====================================================================');
+        // console.log('====================================================================');
     }
 
     step(player) {
-        console.log('================= STEP ===================');
+        // console.log('================= STEP ===================');
         // console.log('[+] figure : ', this.figure);
 
         if (player) {
@@ -416,7 +416,7 @@ class Game {
         this.addHeapOnMap('two');
         this.placeFigureOnMap('two');
 
-        console.log('==========================================');
+        // console.log('==========================================');
     }
 
     createNewFigure (player) {
@@ -440,7 +440,7 @@ class Game {
             }
         }
 
-        console.log('[+] new figure : ', figure);
+        // console.log('[+] new figure : ', figure);
 
         // this.figuresList[this.player[player].figuresListMarker]
 
@@ -472,7 +472,7 @@ class Game {
     }
 
     placeFigureToHeap (player) {
-        console.log('================= PLACING TO HEAP ===================');
+        // console.log('================= PLACING TO HEAP ===================');
         this.player[player].heap = [];
 
         for (let l = 0; l < 20; l++) {
@@ -512,7 +512,7 @@ class Game {
 
         // console.log('[+] heap : ');
         // console.log(this.heap);
-        console.log('=====================================================');
+        // console.log('=====================================================');
     }
 
     getFiguresPosition (player) {
@@ -643,7 +643,7 @@ class Game {
             if (!canDraw) break ;
         }
 
-        console.log('[+] can draw : ', canDraw);
+        // console.log('[+] can draw : ', canDraw);
 
         return canDraw;
     }
@@ -660,7 +660,7 @@ class Game {
     }
 
     addHeapOnMap (player) {
-        console.log('================= ADDING HEAP TO MAP ===================');
+        // console.log('================= ADDING HEAP TO MAP ===================');
         this.player[player].map = [];
         for (let l = 0; l < 20; l++) {
             this.player[player].map[l] = [];
@@ -670,12 +670,12 @@ class Game {
         }
 
         // console.log('[+] map from heap : ', this.map);
-        console.log('========================================================');
+        // console.log('========================================================');
     }
 
     move (key, player) {
-        console.log('================ FIGURE MOVE ====================');
-        console.log('[+] key : ', key);
+        // console.log('================ FIGURE MOVE ====================');
+        // console.log('[+] key : ', key);
 
         this.player[player].figure.moved = true;
         let canDraw = this.checkFigurePlacing(key, player);
@@ -738,7 +738,7 @@ class Game {
         this.addHeapOnMap(player);
         this.placeFigureOnMap(player);
 
-        console.log('=================================================');
+        // console.log('=================================================');
     }
 
     start () {

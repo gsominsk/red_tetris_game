@@ -69,7 +69,7 @@ class NewPass extends React.Component {
     };
 
     componentWillUnmount() {
-        this.props.newPassOnUnmountClean();
+        this.props.newPassOnUnmountClean({session: window.sessionStorage.getItem('sessionRTG')});
     }
 
     render () {
@@ -106,7 +106,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         newPassEmailFetchData: (url, data) => dispatch(newPassEmailFetchData(url, data)),
         newPassResetFetchData: (url, data) => dispatch(newPassResetFetchData(url, data)),
-        newPassOnUnmountClean: (url, data) => dispatch(userOnUnmountClean(url, data)),
+        newPassOnUnmountClean: (data) => dispatch(userOnUnmountClean(data)),
     };
 };
 
