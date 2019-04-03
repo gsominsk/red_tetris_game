@@ -1,6 +1,12 @@
 import React, { Component}  from 'react';
 import PropTypes            from 'prop-types'
 
+export const SuccessTest = () => {
+    return (
+        <Success/>
+    )
+};
+
 export default class Success extends Component {
     static propTypes = {
         render  : PropTypes.bool,

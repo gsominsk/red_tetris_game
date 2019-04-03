@@ -2,6 +2,12 @@ import React, { Component}  from 'react';
 import PropTypes            from 'prop-types'
 import {Link}               from "react-router-dom";
 
+export const LogBtnTest = () => {
+    return (
+        <LogBtn/>
+    )
+};
+
 export default class LogBtn extends Component {
     static propTypes = {
         loggedIn: PropTypes.bool,

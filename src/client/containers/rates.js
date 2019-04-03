@@ -11,6 +11,11 @@ import {
     ratesFetchData
 }                   from "../actions/rates";
 
+export const RatesTest = () => {
+    return (
+        <Rates/>
+    )
+};
 
 class Rates extends React.Component {
     static propTypes = {

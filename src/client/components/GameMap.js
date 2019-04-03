@@ -3,39 +3,44 @@ import PropTypes            from 'prop-types'
 
 import Item     from './MapItem'
 
+export const GameMapTest = () => {
+    return (
+        <GameMap/>
+    )
+}
 
 export default class GameMap extends Component {
-    // static propTypes = {
-    //     loggedIn: PropTypes.bool,
-    //     onClick: PropTypes.func
-    // };
+    static propTypes = {
+        loggedIn: PropTypes.bool,
+        onClick: PropTypes.func
+    };
 
     constructor(props) {
         super(props);
     }
 
-    fillMap(cells) {
-        let mapNum = this.props.player == 1 ? 0 : 200;
-
-        for (let i = 0; i < this.props.figures.length; i++) {
-            let cell = cells[mapNum + this.props.figures[i].pos - 1];
-            cell.classList.add(this.props.figures[i].color);
-        }
-    }
-
-    clearMap(cells) {
-        for (let i = 0; i < 400; i++) {
-            cells[i].classList.remove(
-                'middle-blue',
-                'blurple',
-                'quince-jelly',
-                'turbo',
-                'june-bud',
-                'steel-pink',
-                'red'
-            );
-        }
-    }
+    // fillMap(cells) {
+    //     let mapNum = this.props.player == 1 ? 0 : 200;
+    //
+    //     for (let i = 0; i < this.props.figures.length; i++) {
+    //         let cell = cells[mapNum + this.props.figures[i].pos - 1];
+    //         cell.classList.add(this.props.figures[i].color);
+    //     }
+    // }
+    //
+    // clearMap(cells) {
+    //     for (let i = 0; i < 400; i++) {
+    //         cells[i].classList.remove(
+    //             'middle-blue',
+    //             'blurple',
+    //             'quince-jelly',
+    //             'turbo',
+    //             'june-bud',
+    //             'steel-pink',
+    //             'red'
+    //         );
+    //     }
+    // }
 
     render () {
         let arr = [];
@@ -61,223 +66,3 @@ export default class GameMap extends Component {
         )
     }
 }
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}
-{/*<div className="gf-item"></div>*/}

@@ -1,6 +1,12 @@
 import React, { Component}  from 'react';
 import PropTypes            from 'prop-types'
 
+export const NewPassFormEmailTest = () => {
+    return (
+        <NewPassFormEmail/>
+    )
+};
+
 export default class NewPassFormEmail extends Component {
     static propTypes = {
         onSubmit: PropTypes.func,

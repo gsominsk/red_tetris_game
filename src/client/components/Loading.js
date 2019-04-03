@@ -1,5 +1,12 @@
 import React, { Component}  from 'react';
 import PropTypes            from 'prop-types'
+import Error from "./Error";
+
+export const LoadingTest = () => {
+    return (
+        <Loading/>
+    )
+}
 
 export default class Loading extends Component {
     static propTypes = {

@@ -38,7 +38,6 @@ class Game extends React.Component {
 
     handleKeyPress = (event) => {
         event.preventDefault();
-        console.log('[+] KEY PRESS EVENT : ', event.key)
 
         let validKeys = [
             ' ',

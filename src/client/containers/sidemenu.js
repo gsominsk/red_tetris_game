@@ -6,6 +6,13 @@ import LogBtn           from '../components/LogBtn'
 import Io               from '../components/Socket'
 import {logOutFetch}    from "../actions/user";
 
+export const SideMenuTest = () => {
+    return (
+        <SideMenu/>
+    )
+}
+
+
 class SideMenu extends React.Component {
     constructor (props) {
         super(props);

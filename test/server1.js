@@ -6,16 +6,17 @@ import params from '../params'
 
 chai.should()
 
-
-describe('Server tests', function() {
+describe('Server tests', function () {
     let tetrisServer;
     let socket;
-    before(cb => startServer( params.server, function(err, server){
+    before(cb => startServer(params.server, function (err, server) {
         tetrisServer = server;
         cb()
     }));
 
-    after(function(done){tetrisServer.stop(done)})
+    after(function (done) {
+        tetrisServer.stop(done)
+    })
 
     it('should connect socket', (done) => {
         socket = io.connect("http://localhost:3000");
@@ -27,7 +28,7 @@ describe('Server tests', function() {
     it('fake login with no data', (done) => {
         socket.emit('login');
 
-        socket.on('login.fetched',(res) => {
+        socket.on('login.fetched', (res) => {
             if (res.err && res.err == 'Not valid data.')
                 done();
         });
@@ -36,7 +37,7 @@ describe('Server tests', function() {
     it('fake login with wrong data', (done) => {
         socket.emit('login', {email: '1', password: '1'});
 
-        socket.on('login.fetched',(res) => {
+        socket.on('login.fetched', (res) => {
             if (res.err && res.err == 'Wrong email or password.')
                 done();
         });
@@ -174,6 +175,15 @@ describe('Server tests', function() {
 
         socket.on('rates.fetched', (res) => {
             if (res)
+                done();
+        });
+    });
+
+    it('should send email', (done) => {
+        socket.emit('newpass.email', 'test@i.ua');
+
+        socket.on('newpass.email.success', (res) => {
+            if (res && res.successMsg == 'Your hash code sented on Email.')
                 done();
         });
     });

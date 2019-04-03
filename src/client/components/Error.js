@@ -1,11 +1,17 @@
 import React, { Component}  from 'react';
 import PropTypes            from 'prop-types'
 
+export const ErrorTest = () => {
+    return (
+        <Error/>
+    )
+}
+
 export default class Error extends Component {
     static propTypes = {
         render  : PropTypes.bool,
         msg     :  PropTypes.string
-    }
+    };
 
     constructor(props) {
         super(props);
