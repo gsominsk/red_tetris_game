@@ -276,15 +276,8 @@ class Game {
         let figure = this.player[player].figure.el.rotations[this.player[player].figure.el.rotationIndex];
 
         if (!figure) {
-            // TODO КАКОЙ ТО БАГ, ИНОГДА НЕ НАХОДИТ ФИГУРУ
-            console.log('!!!!!!!!!!!!! FIGURE NOT FOUND !!!!!!!!!!!!!!!');
-            console.log('[+] player : ', player);
-            console.log('[+] this.player[player].figure.el.rotationIndex : ', this.player[player].figure.el.rotationIndex);
-            console.log('[+] this.player[player].figure.el.rotations : ', this.player[player].figure.el.rotations);
-            console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-            throw new Error();
-            // this.player[player].figure.el.rotationIndex = 0;
-            // figure = this.player[player].figure.el.rotations[0];
+            this.player[player].figure.el.rotationIndex = 0;
+            figure = this.player[player].figure.el.rotations[0];
         }
 
         // console.log('[+] figure height : ', this.player[player].figure.mH);
