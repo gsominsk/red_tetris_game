@@ -156,7 +156,7 @@ export function disconnectGame (socket) {
     })
 }
 
- export function createGame (socket) {
+export function createGame (socket) {
     return ((d) => {
         let sessionKey = window.sessionStorage.getItem('sessionRTG') || false;
 

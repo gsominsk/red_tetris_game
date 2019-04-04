@@ -187,7 +187,7 @@ const initEngine = io => {
         });
 
         socket.on('game.disconnect.push', async function () {
-            // console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
+            console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
             for(let i = 0; i < gameWaitingPlayers.length; i++){
                 // console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
                 if (gameWaitingPlayers[i].socketId === socket.id) {
@@ -195,11 +195,11 @@ const initEngine = io => {
                     gameWaitingPlayers.splice(i, 1);
                 }
             }
-            // console.log('======================================================================');
+            console.log('======================================================================');
 
-            // console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+            console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
             deleteRoom(socket, io);
-            // console.log('=====================================================================');
+            console.log('=====================================================================');
         });
 
         socket.on('game.find', async function (data) {
@@ -215,7 +215,7 @@ const initEngine = io => {
             // вводим айди сокета.
             let player = {
                 loggedIn: (!data.sessionKey ? false : true),
-                key: (!data.sessionKey ? socket.id : data.sessionKey),
+                key: socket.id,
                 socketId: socket.id,
                 login: user ? user.login : 'Anonymous',
                 score: user ? user.score: '0',
@@ -368,13 +368,15 @@ const initEngine = io => {
                     if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
                         clearInterval(gameLoop);
                         let winner = gamePlayingRooms[data.gameKey].game.getWinner();
-                        io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.end', {
-                            winner: winner,
-                            end: true,
-                            msg: 'End Game'
+                        updateWinnerScore(winner).then(() => {
+                            io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.end', {
+                                winner: winner,
+                                end: true,
+                                msg: 'End Game'
+                            });
+                            deleteRoom(socket, io);
+                            return ;
                         });
-                        deleteRoom(socket, io);
-                        return ;
                     }
 
                     let res = {
@@ -433,6 +435,7 @@ const initEngine = io => {
                 return socket.emit('login.fetched', {err: 'Wrong email or password.'});
 
             user.session = hashGenerator(10);
+            user.socketId = socket.id;
             [err, userSave] = await to(user.save());
 
             if (err)
@@ -456,6 +459,7 @@ const initEngine = io => {
                 return socket.emit('logout.fetched', {err: 'Something goes wrong. Try again or later.'});
 
             user.session = null;
+            user.socketId = null;
             [err, userSave] = await to(user.save());
 
             if (err || !userSave)
@@ -625,7 +629,7 @@ const initEngine = io => {
 }
 
 function connectToDatabase () {
-    // mongoose.set('debug', true);
+    mongoose.set('debug', true);
     mongoose.connect('mongodb://localhost:27017/rtg', { useNewUrlParser: true });
 
     const db = mongoose.connection;
@@ -633,16 +637,14 @@ function connectToDatabase () {
     db.once('open', () => {/*console.log('[+] Connection to database successful.')*/});
 }
 
-// create({port: '3000'})
-
 let connections       = [];
 let gameWaitingPlayers= [];
 let gamePlayingRooms = {};
 
 function deleteRoom (socket, io) {
     for (let room in gamePlayingRooms) {
-        if (!gamePlayingRooms[room].firstPlayer || gamePlayingRooms[room].secondPlayer)
-            return ;
+        if (!gamePlayingRooms[room].firstPlayer || !gamePlayingRooms[room].secondPlayer)
+            continue ;
 
         if (gamePlayingRooms[room].firstPlayer.socketId == socket.id || gamePlayingRooms[room].secondPlayer.socketId == socket.id) {
             if (!gamePlayingRooms[room].game.checkEndGame()) {
@@ -654,4 +656,21 @@ function deleteRoom (socket, io) {
             delete gamePlayingRooms[room];
         }
     }
+}
+
+async function updateWinnerScore(userSocketId) {
+    let err, user, userSave;
+
+    if (!userSocketId)
+        return ;
+
+    [err, user] = await to(User.findOne({
+        socketId: userSocketId,
+    }));
+
+    if (err || !user)
+        return ;
+
+    user.score += 20;
+    [err, userSave] = await to(user.save());
 }

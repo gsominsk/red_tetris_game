@@ -9,6 +9,7 @@ const users = new Schema({
     password: String,
     loggedIn: Boolean,
     session: String,
+    socketId: String,
     hashCode: String,
     score: Number
 }, {collection:"users"});

@@ -1,8 +1,7 @@
-import React                    from 'react'
+import React, { useEffect }     from 'react'
 import { connect }              from 'react-redux'
 import { Redirect, Link }       from "react-router-dom";
 import PropTypes                from 'prop-types'
-import io                       from "socket.io-client"
 
 import SideMenu from './sidemenu'
 import Error    from '../components/Error'
