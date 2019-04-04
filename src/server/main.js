@@ -634,7 +634,7 @@ const initEngine = io => {
 }
 
 function connectToDatabase () {
-    mongoose.set('debug', true);
+    mongoose.set('debug', false);
     mongoose.connect('mongodb://localhost:27017/rtg', { useNewUrlParser: true });
 
     const db = mongoose.connection;
