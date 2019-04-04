@@ -424,7 +424,8 @@ class Game {
             maxRotations: this.figuresList[this.player[player].figuresListMarker].maxRotations,
             rotationIndex: this.figuresList[this.player[player].figuresListMarker].rotationIndex,
             color: this.figuresList[this.player[player].figuresListMarker].color,
-            rotations: []
+            rotations: [],
+            hPos: 4
         };
 
         for (let r = 0; r < this.figuresList[this.player[player].figuresListMarker].rotations.length; r++) {
@@ -450,7 +451,7 @@ class Game {
             lastStep: false,
             moved: false,
             vPos: 0,
-            hPos: 0,
+            hPos: figure.hPos,
             fW: 0,
             fH: 0,
             mW: 0,
@@ -463,7 +464,6 @@ class Game {
         this.player[player].figure.fW = fSize.w;
         this.player[player].figure.fH = fSize.h;
         this.player[player].figure.vPos += fSize.mH - fSize.h;
-        this.player[player].figure.hPos = this.getRandomInt(0, 9 - fSize.w);
         this.player[player].figuresListMarker++;
 
         if (this.player[player].figuresListMarker >= this.figuresList.length) {
@@ -491,8 +491,6 @@ class Game {
 
             if (filledLine.length == this.player[player].heap[0].length) {
                 this.player[this.anotherPlayer(player)].blockedLines++;
-
-                console.log('[+] another player blocked lines : ', this.player[this.anotherPlayer(player)].blockedLines);
 
                 for (let line = i; line > 0; line--) {
                     this.player[player].heap[line] = this.player[player].heap[line - 1];
