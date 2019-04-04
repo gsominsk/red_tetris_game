@@ -62,9 +62,7 @@ export function loginFetchData (socket, data) {
             if (res.err)
                 return d(userHasErrored(true, res.err));
 
-            let sessionKey = window.sessionStorage.getItem('sessionRTG');
-            if (!sessionKey)
-                window.sessionStorage.setItem('sessionRTG', res.session);
+            window.sessionStorage.setItem('sessionRTG', res.session);
 
             d(loginFetchDataSuccess({success: true, successMsg: res.successMsg, session: res.session}));
         });
@@ -101,7 +99,7 @@ export function newPassEmailFetchData (socket, email) {
         socket.emit('newpass.email', email);
 
         socket.on('newpass.email.success', (res) => {
-            d(userOnUnmountClean());
+            d(userOnUnmountClean({session: window.sessionStorage.getItem('sessionRTG')}));
 
             if (res.err)
                 return d(userHasErrored(true, res.err));
@@ -116,7 +114,7 @@ export function newPassResetFetchData (socket, email) {
         socket.emit('newpass.reset', email);
 
         socket.on('newpass.reset.success', (res) => {
-            d(userOnUnmountClean());
+            d(userOnUnmountClean({session: window.sessionStorage.getItem('sessionRTG')}));
 
             if (res.err)
                 return d(userHasErrored(true, res.err));

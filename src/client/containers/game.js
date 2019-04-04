@@ -65,12 +65,12 @@ class Game extends React.Component {
     }
 
     componentWillMount() {
-        this.props.onUnmountClean();
+        this.props.onUnmountClean({session: window.sessionStorage.getItem('sessionRTG')});
     }
 
     componentWillUnmount() {
         this.props.location.hash = '';
-        this.props.onUnmountClean();
+        this.props.onUnmountClean({session: window.sessionStorage.getItem('sessionRTG')});
         this.props.disconnectGame(Io.socket);
     }
 

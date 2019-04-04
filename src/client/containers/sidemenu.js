@@ -27,6 +27,8 @@ class SideMenu extends React.Component {
     render () {
         const {onClick, open} = this.props;
 
+        console.log('[+] SIDE MENU | session : ', this.props.session);
+
         return (
             <div contentEditable={false} className={`sidemenu-container ${open ? 'open-side-menu' : ''}`}>
                 <div className="sidemenu-wrap">

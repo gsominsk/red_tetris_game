@@ -217,6 +217,7 @@ const initEngine = io => {
                 loggedIn: (!data.sessionKey ? false : true),
                 key: socket.id,
                 socketId: socket.id,
+                session: data.sessionKey || null,
                 login: user ? user.login : 'Anonymous',
                 score: user ? user.score: '0',
             };
@@ -248,12 +249,14 @@ const initEngine = io => {
                     firstPlayer: {
                         loggedIn: player.loggedIn,
                         socketId: player.socketId,
-                        key: player.key
+                        key: player.key,
+                        session: player.session
                     },
                     secondPlayer: {
                         loggedIn: playerToConnect.loggedIn,
                         socketId: playerToConnect.socketId,
-                        key: playerToConnect.key
+                        key: playerToConnect.key,
+                        session: playerToConnect.session
                     },
                     roomName: roomName,
                     game: new Game([player.socketId, playerToConnect.socketId])
@@ -309,12 +312,14 @@ const initEngine = io => {
                 firstPlayer: {
                     loggedIn: player.loggedIn,
                     socketId: player.socketId,
-                    key: player.key
+                    key: player.key,
+                    session: player.session
                 },
                 secondPlayer: {
                     loggedIn: gameWaitingPlayers[0].loggedIn,
                     socketId: gameWaitingPlayers[0].socketId,
-                    key: gameWaitingPlayers[0].key
+                    key: gameWaitingPlayers[0].key,
+                    session: gameWaitingPlayers[0].session
                 },
                 roomName: roomName,
                 game: new Game([player.socketId, gameWaitingPlayers[0].socketId])
@@ -368,7 +373,7 @@ const initEngine = io => {
                     if (gamePlayingRooms[data.gameKey].game.checkEndGame()) {
                         clearInterval(gameLoop);
                         let winner = gamePlayingRooms[data.gameKey].game.getWinner();
-                        updateWinnerScore(winner).then(() => {
+                        updateWinnerScore(winner, data.gameKey).then(() => {
                             io.to(gamePlayingRooms[data.gameKey].roomName).emit('game.end', {
                                 winner: winner,
                                 end: true,
@@ -658,17 +663,29 @@ function deleteRoom (socket, io) {
     }
 }
 
-async function updateWinnerScore(userSocketId) {
+async function updateWinnerScore(winnerSocketId, gameKey) {
     let err, user, userSave;
+    let gr = gamePlayingRooms[gameKey];
 
-    if (!userSocketId)
+    let winnerSession = gr.firstPlayer.socketId == winnerSocketId ? gr.firstPlayer.session : gr.secondPlayer.session;
+
+    if (!winnerSocketId)
         return ;
 
     [err, user] = await to(User.findOne({
-        socketId: userSocketId,
+        socketId: winnerSocketId,
     }));
 
-    if (err || !user)
+    if (err)
+        return ;
+
+    if (!user) {
+        [err, user] = await to(User.findOne({
+            session: winnerSession,
+        }));
+    }
+
+    if (!user)
         return ;
 
     user.score += 20;
