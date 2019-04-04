@@ -301,7 +301,7 @@ class Game {
             figureDraw = false;
 
         if (this.player[player].figure.vPos == 0 + this.player[player].figure.mH - this.player[player].figure.fH) {
-            for (let mL = this.player[player].figure.vPos, fL = this.player[player].figure.fH - 1; mL >= 0; mL--, fL--) {
+            for (let mL = this.player[player].figure.vPos, fL = this.player[player].figure.mH - 1; mL >= 0; mL--, fL--) {
                 for (let mC = this.player[player].figure.hPos, fC = 0; fC < this.player[player].figure.mW; fC++, mC++) {
                     if (this.player[player].heap[mL][mC] != 0 && figure[fL][fC] != 0) {
                         this.endGame = true;
