@@ -26,8 +26,8 @@ class App extends React.Component {
                     <Route exact path="/singleplay" component={SingleGame} />
                     <Route exact path="/rates" component={Rates} />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/login/register" component={Register} />
-                    <Route exact path="/login/newpass" component={NewPass} />
+                    <Route exact path="/register" component={Register} />
+                    <Route exact path="/newpass" component={NewPass} />
                 </switch>
             </div>
         );

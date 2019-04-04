@@ -69,8 +69,8 @@ class Login extends React.Component {
                         <input name="password" type="password" placeholder="your password" minLength="5" required/>
                         <input type="submit" name="submit" placeholder="submit" value="SUBMIT"/>
                     </form>
-                    <div className="btn"><Link to="/login/register">REGISTER</Link></div>
-                    <div className="btn"><Link to="/login/newpass">FORGOT PASSWORD</Link></div>
+                    <div className="btn"><Link to="/register">REGISTER</Link></div>
+                    <div className="btn"><Link to="/newpass">FORGOT PASSWORD</Link></div>
                 </div>
             </div>
         );
