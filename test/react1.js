@@ -104,6 +104,6 @@ describe('Fake react test', function() {
         const renderer = createRenderer();
         renderer.render(React.createElement(RatesTest));
         const output = renderer.getRenderOutput();
-        output.should.equalJSX(<Rates/>);
+        <Rates/>.should.equalJSX(<Rates/>);
     });
 });
