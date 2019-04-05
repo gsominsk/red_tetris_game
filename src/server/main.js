@@ -187,7 +187,7 @@ const initEngine = io => {
         });
 
         socket.on('game.disconnect.push', async function () {
-            console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
+            // console.log('=============== DISCONNECTING USER FROM WAITING ROOM =================');
             for(let i = 0; i < gameWaitingPlayers.length; i++){
                 // console.log('[+] gameWaitingPlayer : ', gameWaitingPlayers[i]);
                 if (gameWaitingPlayers[i].socketId === socket.id) {
@@ -195,11 +195,11 @@ const initEngine = io => {
                     gameWaitingPlayers.splice(i, 1);
                 }
             }
-            console.log('======================================================================');
+            // console.log('======================================================================');
 
-            console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
+            // console.log('=============== DISCONNECTING USER FROM GAMING ROOM =================');
             deleteRoom(socket, io);
-            console.log('=====================================================================');
+            // console.log('=====================================================================');
         });
 
         socket.on('game.find', async function (data) {
@@ -610,7 +610,7 @@ const initEngine = io => {
                 });
 
             if (players.length < 10)
-                socket.emit('rates.fetched', res);
+                return socket.emit('rates.fetched', res);
 
             let topTenLast = res[res.length - 1];
 
